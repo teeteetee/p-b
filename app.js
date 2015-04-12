@@ -145,7 +145,7 @@ app.get('/logout',function(req,res){
 
 app.get('*', function(req,res,next) {   var d = new Date();
   next();}
-  else if (req.ip === '188.226.189.180') {
+   if (req.ip === '188.226.189.180') {
     console.log("c'est moi");
     next();
   } 
