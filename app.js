@@ -162,7 +162,8 @@ app.get('/',function(req,res) {
   var uacheck = userAgent.indexOf("iPhone") != -1 ;
   console.log(uacheck);
    if (req.session.mail != undefined && req.session.lgn != undefined)
-        {res.render('indexreg',{'prfname':"Привет, "+req.session.lgn+"!"});}
+        //{res.render('indexreg',{'prfname':"Привет, "+req.session.lgn+"!"});}
+        {res.render('indexreg');}
    else {
   res.render('index');}
 });
@@ -280,6 +281,13 @@ app.post('/admin/1/:id',function(req,res){
 
 // production error handler
 // no stacktraces leaked to user
+app.use(function(req, res) {
+    var err = new Error('Not Found');
+    err.status = 404;
+    res.render('404');
+});
+
+
 app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     res.render('error', {

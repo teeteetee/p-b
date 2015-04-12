@@ -6,7 +6,7 @@ head
     |     
     meta(name='viewport', content='width=device-width, initial-scale=1')
     |     
-    title Recent ones
+    title P&B
     // Bootstrap
     link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
     // HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
@@ -21,84 +21,18 @@ head
       src:url('/bootstrap/fonts/Roboto-Thin.ttf');
       }
       h1 {
-      font-family:high;
-      font-size:3vw;
-      display:inline;
-      color:white;
-      }
-      body {
-      min-width:768px;
-      background-color:#eee;
+        font-family:roboto-thin;
+        font-size:50px;
       }
       h2 {
-      font-size:6vw;
-      font-family:br;
-      letter-spacing:7px;
+        font-family:roboto-thin;
       }
-      h3 {
-      font-size:3vw;
-      }
-      h4 {
-      font-size:1vw;
-      font-family:arial;
-      letter-spacing:0.3vw;
-      text-transform:uppercase;
-      color:white;
-      }
-      h5 {
-      letter-spacing:2px;
-      text-transform:uppercase;
-      font-family:roboto-thin;
-      font-size:4vw;
-      }
-      img {
-      width:100%;
-      }   
   body
     .container-fluid
       .row
         .col-xs-4.col-xs-offset-4(style='text-align:center;margin-top:10vh;') 
-          a(href='http://recentones.com')
-            img(id='logo',src='/bootstrap/images/rl.png',style='width:100%;')
-          h5 404
-    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')      
-    script.
-      var logocount=0;
-        $('#logo').mouseenter(function(){
-          if(logocount<3)
-           {switch(logocount) {
-                       case(0):
-                        $('#logo').attr('src','/bootstrap/images/gl.png');
-                        logocount++;
-                       break;
-                       case(1):
-                        $('#logo').attr('src','/bootstrap/images/bl.png');
-                        logocount++;
-                       break;
-                       case(2):
-                         $('#logo').attr('src','/bootstrap/images/rl.png');
-                        logocount++;
-                       break;
-                      }
-                    }
-            else {
-              switch(logocount%3)
-              {         case(0):
-                         $('#logo').attr('src','/bootstrap/images/gl.png');
-                         logocount++;
-                        break;
-                        case(1):
-                         $('#logo').attr('src','/bootstrap/images/bl.png');
-                         logocount++;
-                        break;
-                        case(2):
-                         $('#logo').attr('src','/bootstrap/images/rl.png');
-                         logocount++;
-                        break;}
-            }
-          });
-        
-
-            
+          h1 P&B
+          h2 404
+         
 
       
