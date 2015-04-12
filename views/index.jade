@@ -27,8 +27,17 @@ head
       body {
       min-width:768px;
       font-family:roboto-thin;
-      background-image: url('/bootstrap/images/books.jpg') center;
+      background-image: url('/bootstrap/images/books.jpg');
       background-color:#009DC2;
+      filter:brightness(0,7) grayscale(0.5);
+      background-position:center;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      -webkit-filter:brightness(0.6) grayscale(1);
+      -moz-filter:brightness(0.6) grayscale(1);
+      -o-filter:brightness(0.6) grayscale(1);
+      background-size: cover;
       }
       .navbar-nav {
        float: right;
