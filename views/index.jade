@@ -216,9 +216,9 @@ head
             nav(id='nav' style='z-index:1;display:none;')
               ul(class="pager")
                 li(class='previous')
-                  a(href="#") Войти
+                  a( id='login' href="#") Войти
                 li(class='next')
-                  a(href="#") Регистрация
+                  a(href="/register") Регистрация
 
       
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
@@ -228,6 +228,7 @@ head
           $('#shownav').fadeOut();
           $('#nav').fadeIn();
           });
+        $('#login').click(authsubmit());
         var counter =0;
         var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
             menuRight = document.getElementById( 'cbp-spmenu-s2' ),
@@ -304,6 +305,7 @@ head
         //Most libraries like jQuery/Prototype/Dojo do this
         request.send("phr="+vphr+"&lgn="+vlgn);
         }
+        
 
         
       
