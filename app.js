@@ -143,8 +143,7 @@ app.get('/logout',function(req,res){
 //SUBDOMAIN MAGIC 
 
 
-app.get('*', function(req,res,next) {   var d = new Date();
-  next();}
+app.get('*', function(req,res,next) {  
    if (req.ip === '188.226.189.180') {
     console.log("c'est moi");
     next();
