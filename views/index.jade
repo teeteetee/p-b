@@ -211,8 +211,8 @@ head
         .col-xs-4.col-xs-offset-4
           input(class='form-control' type='text' style='margin-bottom:5px;' name='mail' placeholder='email')
           input(class='form-control' type='text' style='margin-bottom:20px;' name='p' placeholder='password')
-          //button(class='btn btn-primary' type='button' style='border-radius:30px;background-color:rgba(255, 255, 255, 0.26);border:0px;') Register
-          nav
+          button(class='btn btn-primary' type='button' id='shownav' style='border-radius:30px;background-color:rgba(255, 255, 255, 0.26);border:0px;') Log in / Register
+          nav(id='nav' style='display:none;')
             ul(class="pager")
               li(class='previous')
                 a(href="#") Войти
@@ -223,6 +223,10 @@ head
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
       script.
+        $('#shownav').click(function(){
+          $('#shownav').slideToggle();
+          $('#nav').slideToggle();
+          });
         var counter =0;
         var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
             menuRight = document.getElementById( 'cbp-spmenu-s2' ),
