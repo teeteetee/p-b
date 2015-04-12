@@ -9,7 +9,7 @@ var bcrypt = require('bcrypt');
 
 var mongo = require('mongodb');
 var db = require('monk')('localhost/tav')
-  , places = db.get('places'),adminplaces = db.get('adminplaces'),top = db.get('top'),clientmail = db.get('clientmail'),clients = db.get('clients'),insidemsg = db.get('insidemsg');
+  , users = db.get('users');
 // POSTS and OBJECTS BELONGS TO MALESHIN PROJECT DELETE WHEN PUSHING TOPANDVIEWS TO PRODUCTION
 var fs = require('fs-extra');
 
@@ -34,63 +34,117 @@ app.use(sessions({
   httpOnly: true
 }));
 
-//var lguser = {};
-//app.use(function(req,res,next){
-//  console.log("CHECKING COOKIES: "+JSON.stringify(req.session)+" "+req.session.lgn);
-//   if(req.session.admin === 1){
-//    lguser = req.session;
-//    next();}
-//   else if(req.session.hostel === 1) 
-//    {lguser = req.session;
-//      next();}
-//   else {
-//   if(req.session && req.session.lgn){
-//     users.findOne({mail:req.session.mail},function(err,user){
-//      console.log('found user: '+JSON.stringify(user));
-//      if(err){
-//        next();
-//      }
-//      else {
-//        if(user.length>0 && user.hostel != 1){
-//        lguser = user;
-//        delete lguser.phr;
-//        delete lguser._id;
-//        delete lguser.enquiries;
-//        delete lguser.regdate;
-//        req.session = lguser;
-//        console.log('USER WITH COOOOOKIEES !');
-//        next();}
-//      else {next();}
-//      } 
-//     });
-//   }
-//   else {
-//    next();
-//   }
-// }
-//});
+var lguser = {};
+app.use(function(req,res,next){
+  console.log("CHECKING COOKIES: "+JSON.stringify(req.session)+" "+req.session.lgn);
+   if(req.session.admin === 1){
+    lguser = req.session;
+    next();}
+   else {
+   if(req.session && req.session.lgn){
+     users.findOne({mail:req.session.mail},function(err,user){
+      console.log('found user: '+JSON.stringify(user));
+      if(err){
+        next();
+      }
+      else {
+        if(user.length>0 && user.hostel != 1){
+        lguser = user;
+        delete lguser.phr;
+        delete lguser._id;
+        delete lguser.enquiries;
+        delete lguser.regdate;
+        req.session = lguser;
+        console.log('USER WITH COOOOOKIEES !');
+        next();}
+      else {next();}
+      } 
+     });
+   }
+   else {
+    next();
+   }
+ }
+});
 
-//app.get('/logout',function(req,res){
-//  console.log('trying to logout');
-//  req.session.reset();
-//  console.log(JSON.stringify(req.session));
-//  res.redirect('/');
-//});
+app.post('/newuser',function(req,res){
+    //THOSE USERS ARE NORMAL PEOPLE, HOSTEL STUF WILL BE REGISTERED THROUGH ADMIN
+    var vmail = req.body.mail; 
+    var vu = req.body.u; //NEEDED TO WRITE COMMENTS, DONT ASK AT REGISTRATION
+    if (vu.length === 0 )
+      {vu = 0;}
+    var vp = bcrypt.hashSync(req.body.p,bcrypt.genSaltSync(10));
+    var ms = {};
+    ms.trouble=1;
+    ms.mtext='email incorrect';
+    // MUST INCLUDE enquiries - all  - accepted WHEN WRITING TO THE DB
+    // CHECK MAIL BEFOR WRTING
+    function validateEmail(email) { 
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+} 
+    if (validateEmail(vmail) === true) {
+    users.find({mail:vmail},function(err,doc){
+      if (err)
+      {
+        //DO SMTH
+      }
+      else {
+        if(doc.length === 0)
+        { var now = new Date();
+          var gmonth = now.getMonth();
+          var gyear = now.getUTCFullYear();
+          var gday = now.getDay();
+          users.insert({mail:vmail,phr:vp,lgn:vu,regdate:{year:gyear,month:gmonth,day:gday}});
+          users.findOne({mail:vmail},function(err,docdoc){
+            console.log('FOUND AFTER INSERTING NEW USER :'+JSON.stringify(docdoc));
+            if (err){
+              //DO SMTH
+            }
+            else{
+               if (docdoc) {
+                req.session = docdoc;
+                ms.trouble =0;
+                ms.mtext='success';
+                // INDEX MUST BE DIFFERENT FOR REGISTERD ONES, IT IS TEMPORARY THE SAME
+                console.log('SOMEBODY REGISTERED');
+                res.send(ms);
+               }
+               else {
+                  ms.mtext ='fail';
+                  res.send(ms);
+               }
+            }
+          });
+        }
+        else {
+           ms.mtext='email exists'
+           res.send(ms);
+        }
+      }// end of err's else
+    });
+    }   
+    else {
+      // INCORRECT EMAIL, SO WE SEND A NOTIFICATION
+      res.send(ms);
+    }
+
+    });
+
+
+app.get('/logout',function(req,res){
+  console.log('trying to logout');
+  req.session.reset();
+  console.log(JSON.stringify(req.session));
+  res.redirect('/');
+});
 
 
 //SUBDOMAIN MAGIC 
 
 
 app.get('*', function(req,res,next) {   var d = new Date();
-  if(req.headers.host === 'api.recentones.com')  //if it's a sub-domain
-   {console.log(d+' got an api request from '+req.ip);
-    req.url = '/api' + req.url; 
-    console.log(req.url); //append some text yourself
   next();}
-  else if(req.headers.host === 'm.recentones.com')  //if it's a sub-domain
-   {req.url = '/m' + req.url; 
-    console.log(req.url); //append some text yourself
-     next();}
   else if (req.ip === '188.226.189.180') {
     console.log("c'est moi");
     next();
@@ -103,16 +157,15 @@ app.get('*', function(req,res,next) {   var d = new Date();
     next();}
    });
  
-app.get('/transitions',function(req,res){
-  res.render('transitions');
-});
-
 
 app.get('/',function(req,res) {
   var userAgent=req.headers['user-agent'];
   var uacheck = userAgent.indexOf("iPhone") != -1 ;
   console.log(uacheck);
-  res.render('index');
+   if (req.session.mail != undefined && req.session.lgn != undefined)
+        {res.render('indexreg',{'prfname':"Привет, "+req.session.lgn+"!"});}
+   else {
+  res.render('index');}
 });
 
 app.get('/books',function(req,res){
@@ -123,54 +176,6 @@ app.get('/settings',function(req,res){
 res.render('settings');
 });
 
- 
-app.post('/m/keepintouch',function(req,res,next){
-  req.url='/keepintouch';
-  next();
-});
-
-app.post('/keepintouch',function(req,res){
-  var cmail = req.body.cm;
-  function validateEmail(email) { 
-    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(email);
- }  
-    var ms = {};
-    ms.trouble = 1;
-    ms.mtext = 'spelling';
-    if (validateEmail(cmail) === true) {
-      var dd= new Date();
-      var vday = dd.getDate().toString();
-      if (vday.length===1){
-        vday='0'+vday;
-      }
-      var vmonth = dd.getMonth()+1;
-      vmonth = vmonth.toString();
-      if (vmonth.length===1){
-        vmonth='0'+vmonth;
-      }
-      var vyear = dd.getUTCFullYear().toString();
-      var fulldate = vyear+vmonth+vday;
-      fulldate = parseInt(fulldate);
-     clientmail.find({},{ limit:1,sort : { cid : -1 } },function(err,doc){
-      if(doc.length>0)
-      { 
-        var newid = doc[0].cid+1;
-        clientmail.insert({cid:newid,mail:cmail,regdate:fulldate});
-        ms.trouble=0;
-        res.send(ms);
-      }
-      else {
-        clientmail.insert({cid:1,mail:cmail,regdate:fulldate});
-        ms.trouble=0;
-        res.send(ms);
-      }
-    });
-}
-    else {
-      res.send(ms);
-    }
-});
 
 app.get('/m',function(req,res){
   places.find({},{ limit:9,sort : { founddateint: -1 } },function(err,doc){
@@ -213,61 +218,65 @@ app.get('/admax',function(req,res){
    if(req.session.sKK76d === 'porC6S78x0XZP1b2p08zGlq')
    {
     var vratingnum;
-   top.count({},function(err,c){
+   users.count({},function(err,c){
     if (err)
     {}
   else {
-    vratingnum= c;
+    res.render('admin',{'users':c});
 
   }
   });
-  var vplacenum; 
-  places.count({},function(err,c){
-    if (err)
-    {}
-  else {
-    vplacenum= c;
-    var vinterested ;
-  clientmail.count({},function(err,c){
-    if (err)
-    {}
-  else {
-    vinterested= c;
-    var vaccepts; 
-    clients.count({},function(err,c){
-    if (err)
-    {}
-  else {
-    vaccepts= c;
-    var market;
-    adminplaces.count({},function(err,c){
-      if(err)
-      {}
-      else
-        market = c;
-     {console.log(c);
-      insidemsg.find({},{sort:{mid:-1}},function(err,c){
-        if(err)
-      {}
-      else{
-              res.render('admin',{'ratingnum':vratingnum,'placenum':vplacenum,'interested':vinterested,'accepts':vaccepts,'market':market,'doc':c});
-
-      }
-      });
- }
-    });
-  }
-  });
-  }
-  });
-  }
-  });
+  
 }
-
    else {
-   res.render('auth');
+   res.render('index');
  }
 
+});
+
+app.get('/admin/userlist',function(req,res){
+  if(req.ip === '188.226.189.180'  || req.session.sKK76d === 'porC6S78x0XZP1b2p08zGlq')
+  {
+    users.find({},function(err,doc){
+    if(err)
+    {
+      res.send('DB ERR')
+    }
+    else {
+      if(doc.length>0)
+      {
+         res.render('userlist',{'doc':doc});
+      }
+      else{
+         res.send('NO PLACES - EMPTY DB');
+      }
+    }
+  });
+  }
+  else{
+    res.redirect('http://ya.ru');
+  }
+});
+
+app.post('/admin/1/:id',function(req,res){
+  var pas = req.body.uu;
+  if (pas != 'withoutthesecurity') {
+    res.redirect('http://recentones.com');
+  }
+  else 
+  {var vpid = parseInt(req.params.id);
+    var ms={};
+    ms.trouble=1;
+    ms.mtext = 'db';
+    places.remove({pid:vpid},function(err,done){
+      if(err){
+        res.send(ms);
+      }
+      else {
+        ms.trouble=0;
+        res.send(ms);
+      }
+    });}
 });
 
 // production error handler
