@@ -184,6 +184,9 @@ head
         background-color:rgba(255, 255, 255, 0.26) !important;
         color:white !important;
       }
+      .hiddenbuttons {
+        display:none;
+      }
   body
     nav(class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1")
       h3(style='text-align:center;color:orange;') People & Books
@@ -211,12 +214,14 @@ head
         .col-xs-4.col-xs-offset-4
           input(class='form-control' type='text' style='margin-bottom:5px;' name='mail' placeholder='email')
           input(class='form-control' type='text' style='margin-bottom:20px;' name='p' placeholder='password')
-          button(class='btn btn-primary' type='button' id='shownav' style='border-radius:30px;background-color:rgba(255, 255, 255, 0.26);border:0px;') Log in / Register
-          nav(id='nav' style='display:none;')
+          //button(class='btn btn-primary' type='button' id='shownav' style='border-radius:30px;background-color:rgba(255, 255, 255, 0.26);border:0px;') Log in / Register
+          nav(id='nav')
             ul(class="pager")
-              li(class='previous')
+              li(class='previous hiddenbuttons')
                 a(href="#") Войти
-              li(class='next')
+              li
+                button(class='btn btn-primary' type='button' id='shownav' style='border-radius:30px;background-color:rgba(255, 255, 255, 0.26);border:0px;') Log in / Register
+              li(class='next hiddenbuttons')
                 a(href="#") Регистрация
 
       
