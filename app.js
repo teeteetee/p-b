@@ -112,51 +112,7 @@ app.get('/',function(req,res) {
   var userAgent=req.headers['user-agent'];
   var uacheck = userAgent.indexOf("iPhone") != -1 ;
   console.log(uacheck);
-  var d = new Date();
-  var year = d.getUTCFullYear().toString();;
-  year = "'"+year.substr(2);
-  //welcome filters
-  //var filters = 'filter: blur(20px) brightness(0.5);';
-  //var ftwo = '-webkit-filter: blur(20px) brightness(0.5);';
-  //var fthree = '-moz-filter: blur(20px) brightness(0.5);';
-  //var ffour = '-o-filter: blur(20px) brightness(0.5);';
-  var filter = 'filter: blur(20px) brightness(0.5);-webkit-filter: blur(20px) brightness(0.5);-moz-filter: blur(20px) brightness(0.5);-o-filter: blur(20px) brightness(0.5);';
-  var blank = '';
-  //res.send('UNDER CONSTRUCTION');
-  places.find({},{ limit:5,sort : { founddateint : -1 } },function(err,doc){
-    if(err)
-    {
-      res.render('emptyindex');
-    }
-    else {
-      console.log(doc);
-      if(doc.length>0)
-      { for (var yy = 0;yy<doc.length;yy++)
-        {
-          console.log('PLACE ID: '+doc[yy].pid+', FOUNDDATE: '+doc[yy].founddateint);
-        }
-        if(doc.length === 5)
-        {doc = doc.splice(0, 4);
-          console.log('SENDING '+doc.length+'DOCUMENTS');
-             if(req.session.visited)
-                {res.render('index',{'doc':JSON.stringify(doc),'more':1,'filters':blank,'display':'none'});}
-              else {
-                req.session.visited =1;
-                res.render('index',{'doc':JSON.stringify(doc),'more':1,'filters':filter,'display':'block'});}
-              }
-        else {
-         if(req.session.visited)
-                {res.render('index',{'doc':JSON.stringify(doc),'more':0,'filters':blank,'display':'none'});}
-              else {
-                req.session.visited =1;
-                res.render('index',{'doc':JSON.stringify(doc),'more':0,'filters':filter,'display':'block'});}
-              }
-      }
-      else{
-        res.render('emptyindex');
-      }
-    }
-  });
+  res.render('/index');
 });
 
 app.get('/books',function(req,res){
