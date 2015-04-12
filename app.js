@@ -112,7 +112,7 @@ app.get('/',function(req,res) {
   var userAgent=req.headers['user-agent'];
   var uacheck = userAgent.indexOf("iPhone") != -1 ;
   console.log(uacheck);
-  res.render('/index');
+  res.render('index');
 });
 
 app.get('/books',function(req,res){
