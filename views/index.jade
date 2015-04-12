@@ -29,15 +29,17 @@ head
       font-family:roboto-thin;
       background-image: url('/bootstrap/images/books.jpg');
       background-color:#009DC2;
-      filter:brightness(0,7) grayscale(0.5);
       background-position:center;
-      -webkit-background-size: cover;
+      background-size: cover;
+      }
+      .container {
+        -webkit-background-size: cover;
       -moz-background-size: cover;
       -o-background-size: cover;
       -webkit-filter:brightness(0.6) grayscale(1);
       -moz-filter:brightness(0.6) grayscale(1);
       -o-filter:brightness(0.6) grayscale(1);
-      background-size: cover;
+      filter:brightness(0,7) grayscale(0.5);
       }
       .navbar-nav {
        float: right;
@@ -187,7 +189,7 @@ head
       a(href='#') О проекте
       a(href="#") Выйти
     .sidebar(style='width:74px;position:fixed;height:100%;background-color:#1d1d1d;text-align:center;z-index:2000;')
-      img(class="media-object img-circle" src="/bootstrap/images/books.jpg" style='margin-left:5px;margin-top:30px;width:64px;height:64px;' alt="...")
+      //img(class="media-object img-circle" src="/bootstrap/images/books.jpg" style='margin-left:5px;margin-top:30px;width:64px;height:64px;' alt="...")
       span(class='glyphicon glyphicon-align-justify' id='showLeft' style='color:#333;font-size:30px;margin-top:20px;')
     .container(style='padding-left:84px;width:100% !important;padding-right:none;')  
       
