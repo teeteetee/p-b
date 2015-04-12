@@ -213,9 +213,9 @@ head
           //button(class='btn btn-primary' type='button' style='border-radius:30px;background-color:rgba(255, 255, 255, 0.26);border:0px;') Register
           nav
             ul(class="pager")
-              li
+              li(class='previous')
                 a(href="#") Войти
-              li
+              li(class='next')
                 a(href="#") Регистрация
 
       
@@ -252,7 +252,7 @@ head
         console.log('checking email');
         var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(email);} 
-        
+
         $('#loginb').click(function(){
         var errcount =0;
         var vp =$('#p').val();
