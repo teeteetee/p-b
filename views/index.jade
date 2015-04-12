@@ -209,8 +209,8 @@ head
         #message.col-xs-12
       .row(style='text-align:center;')
         .col-xs-4.col-xs-offset-4
-          input(class='form-control' type='text' style='margin-bottom:5px;' name='mail' placeholder='email')
-          input(class='form-control' type='text' style='margin-bottom:20px;' name='p' placeholder='password')
+          input(class='form-control' type='text' style='margin-bottom:5px;' id='vlgn' name='mail' placeholder='email')
+          input(class='form-control' type='text' style='margin-bottom:20px;' id='vphr' name='p' placeholder='password')
           #wrap(style='width:100%;')
             button(class='btn btn-primary' type='button' id='shownav' style='position:absolute;margin-left:-60;left:50%;z-index:2;border-radius:30px;background-color:rgba(255, 255, 255, 0.26);border:0px;') Log in / Register
             nav(id='nav' style='z-index:1;display:none;')
@@ -259,77 +259,51 @@ head
         var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(email);} 
 
-        $('#loginb').click(function(){
-        var errcount =0;
-        var vp =$('#p').val();
-        var vpc =$('#pc').val();
-        $('#message').empty();
-        console.log(vp.length);
-        if(vpc.length === 0 && vp.length === 0) {
-        console.log('in pass length 0');
-        $('#message').append("<h5 style='color:#fc454e;'>Provide a password, and verify it</h5>");
-        $('#p').empty();
-        $('#pc').empty();
-        errcount++;
-        }
-        if(vp != vpc && errcount===0) {
-        $('#message').append("<h5 style='color:#fc454e;'>passwords don't match</h5>");
-        $('#p').empty();
-        $('#pc').empty();
-        errcount++;
-        }
-        
-        var vmail = $('#mail').val();
-        console.log(vmail);
-        var mailx = validateEmail(vmail);
-        if(mailx != true)
-        {
-        $('#message').append("<h5 style='color:#fc454e;'>incorrect email</h5>");
-        errcount++;
-        }
-        var username = $('#u').val();
-        console.log(username);
-        if (username.length === 0)
-        {
-        $('#message').empty;
-        $('#message').append("<h5 style='color:#fc454e;'>Add a profile name </h5>");
-        errcount++;
-        }
-        if (errcount>0){
-        return
-        }
-        console.log('submitting now');
-        //$("#regform").submit();
-        request = new XMLHttpRequest();
-        request.onreadystatechange = function () {
-        var DONE = this.DONE || 4;
-        if (this.readyState === DONE){
-        parsed = JSON.parse(request.responseText);
-        console.log(parsed);
-        // do your job here
-        if (parsed.trouble === 1)
-        {
-        $('#message').empty();
-        switch (parsed.mtext)
-        {
-        case('fail'):
-        $('#message').append("<h5 style='color:#fc454e;'>Sorry, omething is slightly off with the DB, try again in a couple of minutes or contact support</h5>");
-        break;
-        case('email exists'):
-        $('#message').append("<h5 style='color:#fc454e;'>Provided email is already used by one of the users</h5>");
-        break;
-        
-        }
-        }
-        else { console.log('HEY');window.location = 'http://topandviews.ru';}
-        }
-        };
-        request.open('POST', '/newuser', true);
-        request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
-        request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        // Most libraries like jQuery/Prototype/Dojo do this
-        request.send("mail="+vmail+"&u="+username+"&p="+vp);
-        });
+        // AUTHSUBMIT FUNCTION
+      var allowauth = 1;
+      function authsubmit() {
+      allowauth = 0;
+      var vlgn = $('#vlgn').val();
+      var vphr = $('#vphr').val();
+      console.log(vlgn +" , "+vphr);
+      request = new XMLHttpRequest();
+      request.onreadystatechange = function () {
+      var DONE = this.DONE || 4;
+      if (this.readyState === DONE){
+      var index;
+      parsed = JSON.parse(request.responseText);
+      console.log(parsed);
+      if(parsed.trouble === 1)
+      {
+      console.log('TROUBLE === 1');
+      switch (parsed.mtext){
+      case('db'):
+      $('#message').empty();
+      $('#message').append("<h5 style='color:#fc454e;'>Sorry, omething is slightly off with the DB, try again in a couple of minutes or contact support</h5>");
+      allowauth = 1;
+      break;
+      case('wrong pas'):
+      $('#message').empty();
+      $('#message').append("<h5 style='color:#fc454e;'>Wrong password</h5>");
+      allowauth = 1;
+      break;
+      case('wronguser'):
+      $('#message').empty();
+      $('#message').append("<h5 style='color:#fc454e;'>Wrong email</h5>");
+      allowauth =1;
+      break;
+      }}
+      else {
+      window.location = 'http://peopleandbooks.com';
+      }
+      }
+      };
+      request.open('POST', '/check', true);
+      request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+      request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      //Most libraries like jQuery/Prototype/Dojo do this
+      request.send("phr="+vphr+"&lgn="+vlgn);
+      }
 
         
       

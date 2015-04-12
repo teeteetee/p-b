@@ -91,15 +91,15 @@ head
             table(class='table')
               tbody
                 each user, i in doc
-                  tr(id='row#{user.pid}')
+                  tr(id='row#{user.uid}')
                     td
-                      | #{user.pid}
+                      | #{user.uid}
                     td 
                       | #{user.mail}
                     td
                       | #{user.regdate.day}.#{user.regdate.month}.#{user.regdate.year}
                     td
-                      button(onclick='removeuser(#{user.pid})',class='btn btn-danger',type='button') Удалить 
+                      button(onclick='removeuser(#{user.uid})',class='btn btn-danger',type='button') Удалить 
      
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script.

@@ -67,6 +67,10 @@ app.use(function(req,res,next){
  }
 });
 
+app.get('/register',function(req,res){
+ res.render('register');
+});
+
 app.post('/newuser',function(req,res){
     //THOSE USERS ARE NORMAL PEOPLE, HOSTEL STUF WILL BE REGISTERED THROUGH ADMIN
     var vmail = req.body.mail; 
@@ -82,7 +86,27 @@ app.post('/newuser',function(req,res){
     function validateEmail(email) { 
     var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
-} 
+    } 
+
+    function generateId() {
+     users.find({},{limit:1,sort:{pid:-1}},function(err,doc){
+     if(err){
+         console.log('DB ERR WHILE GENERATING ID')
+         return 0;
+        }
+      else {
+        if(doc.length>0){
+            var newid = doc[0].pid;
+                newid++;
+                return newid;
+          }
+        else {
+                return 1;
+          }
+            }
+          });
+     } // generateId declaration end
+
     if (validateEmail(vmail) === true) {
     users.find({mail:vmail},function(err,doc){
       if (err)
@@ -95,7 +119,8 @@ app.post('/newuser',function(req,res){
           var gmonth = now.getMonth();
           var gyear = now.getUTCFullYear();
           var gday = now.getDay();
-          users.insert({mail:vmail,phr:vp,lgn:vu,regdate:{year:gyear,month:gmonth,day:gday}});
+          var vuid = generateId();
+          users.insert({mail:vmail,uid:vuid,phr:vp,lgn:vu,regdate:{year:gyear,month:gmonth,day:gday}});
           users.findOne({mail:vmail},function(err,docdoc){
             console.log('FOUND AFTER INSERTING NEW USER :'+JSON.stringify(docdoc));
             if (err){
@@ -130,6 +155,52 @@ app.post('/newuser',function(req,res){
     }
 
     });
+
+app.post('/check',function(req,res){
+  //CHECK FOR PASSPORT PRIOR TO HOSTEL CHECK, SORT THIS OUT AFTER ALPHA
+  //"LASTIMEONLINE" MUST BE ADDED AFTER ALPHA
+  vphr=req.body.phr;
+  vlgn=req.body.lgn; // email
+  console.log(vphr+" , "+vlgn);
+  //adding a marker to send to client
+  // MARKER MECHANICS IS NOT PRESENT YET , NEEDS TO BE IMPLEMENTED
+   var  ms = {};
+  ms.trouble=1;
+  ms.mtext='db';
+  //end of marker
+  users.findOne({mail:vlgn},function(err,confirmed){
+    if (err)
+      {res.send(ms);}
+    else 
+    {
+      if (confirmed)
+      {console.log('we have found :'+JSON.stringify(confirmed));
+         
+      
+          if(bcrypt.compareSync(vphr,confirmed.phr))
+          {
+          
+          req.session = confirmed;
+          console.log("THAT'S WHAT I WROTE TO HIS COOKIES: "+JSON.stringify(req.session));
+          ms.trouble = 0;
+          ms.mtext= 'success';
+          res.send(ms);
+           }
+           else {
+            ms.mtext='wrong pas';
+              res.send(ms);
+              //WRONG PASSWORD
+           }
+         
+      }
+      else {
+        ms.mtext='wronguser'
+        res.send(ms);
+      }
+    }
+  });
+});
+
 
 
 app.get('/logout',function(req,res){
