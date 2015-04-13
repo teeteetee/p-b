@@ -215,11 +215,15 @@ head
         .col-xs-12(style='text-align:center;')
           h1(style='font-family:high;font-size:100px;font-weight:bold;color:white;') 30 
             span(style='color:rgba(0, 0, 0, 0.15);') | 20
-      each date,i in doc
-            each book,q in date
-              .row
-                .col-xs-12
-                  h4(class='alreadyb') #{books.booktitle}
+      //each date,i in doc
+      //      each book,q in date
+      //        .row
+      //          .col-xs-12
+      //            h4(class='alreadyb') #{books.booktitle}
+      .row
+        .col-xs-12
+          h4 #{doc}
+          h3 #{uid}
     footer(class='footer')
       .container
         .row.adding(id='addbook' style='display:none;padding-top:20px;background-color:#378961;')
