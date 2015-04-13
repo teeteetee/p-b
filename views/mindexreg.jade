@@ -226,22 +226,22 @@ head
           .col-xs-12
             .form-group
               label(for="exampleInputEmail1" style='color:white;') Название
-              input(type="email" class="form-control" id="exampleInputEmail1" placeholder="Crime and punishment")
+              input(type="email" class="form-control" id="booktitle" placeholder="Crime and punishment")
             .form-group
               label(for="exampleInputEmail1" style='color:white;') Автор
-              input(type="email" class="form-control" id="exampleInputEmail1" placeholder="Dostoevsky F.M.")
+              input(type="email" class="form-control" id="author" placeholder="Dostoevsky F.M.")
             .checkbox
               label
-                input(type="checkbox") 
+                input(type="checkbox" id='star') 
                 span(class='glyphicon glyphicon-star' style='color:#F2D45C;margin-left:10px;')
             .checkbox
               label
-                input(type="checkbox") 
+                input(type="checkbox" id='attention') 
                 span(class='glyphicon glyphicon-exclamation-sign' style='color:rgba(255, 255, 255, 0.65);margin-left:10px;')
             nav
               ul(class="pager")
                 li(class="previous")
-                  a(style='background-color:#EFAF4F;') Add
+                  a(style='background-color:#EFAF4F;'id='booksubmitbutton') Add
                 li(class="next")
                   a( class='addbookbutton' style='background-color:#999;') Close
         .row.adding(id='addmovie' style='display:none;padding-top:20px;background-color:#99362F;')
@@ -338,6 +338,52 @@ head
                         break;
                       }
         };
+      // BOOK SUBMIT FUNCTION
+      var allowsubmit = 1;
+      function booksubmit() {
+      if(!allowsubmit) {
+        return
+      }
+      var author = $('#author').val();
+      if(!author){
+        author='--';
+      }
+      var booktitle = $('#booktitle').val();
+      if(!booktitle) {
+        alert('Specify book title');
+        allowsubmit=1;
+        return
+      }
+      var uid = #{uid};
+      var star = $('#star').val();
+      var attention = $('#author').val();
+      allowsubmit = 0;
+      request = new XMLHttpRequest();
+      request.onreadystatechange = function () {
+      var DONE = this.DONE || 4;
+      if (this.readyState === DONE){
+      var index;
+      parsed = JSON.parse(request.responseText);
+      console.log(parsed);
+      if(parsed.trouble === 1)
+      {
+      console.log('TROUBLE === 1');
+      alert('Server is down, try again later.')
+      allowsubmit=1;
+      }
+      else {
+      window.location = 'http://m.peopleandbooks.com';
+      }
+      }
+      };
+      request.open('POST', '/addbook', true);
+      request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+      request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      //Most libraries like jQuery/Prototype/Dojo do this
+      console.log("author="+author+"&booktitle="+booktitle+"&star="+star+"&attention="+attention);
+      request.send("author="+author+"&booktitle="+booktitle+"&star="+star+"&attention="+attention+"&uid="uid);
+      }
+      
       // AUTHSUBMIT FUNCTION
       var allowauth = 1;
       function authsubmit() {
@@ -383,5 +429,7 @@ head
       //Most libraries like jQuery/Prototype/Dojo do this
       request.send("phr="+vphr+"&lgn="+vlgn);
       }
-    
+      $('#booksubmitbutton').click(function(){
+
+        });
            

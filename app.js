@@ -110,6 +110,7 @@ app.post('/addbook',function(req,res){
     var vauthor = req.params.author;
     var vstar = req.params.star;
     var vattention = req.params.attention;
+    console.log('ADDING A BOOK: '+vuid+' '+vbooktitle+' '+vauthor+' '+vstar+' '+vattention);
     var dd= new Date();
     var vday = dd.getDate().toString();
     if (vday.length===1){
@@ -366,7 +367,7 @@ app.get('/',function(req,res) {
 
               }
               else {
-                res.render('indexreg',{'doc':done.dates});
+                res.render('indexreg',{'doc':done.dates,'uid':done.uid});
               }
             }
           });
