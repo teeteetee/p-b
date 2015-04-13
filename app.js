@@ -256,7 +256,7 @@ app.get('/m',function(req,res){
    else {
   res.render('mindex');}
   });
-});
+
 
 app.get('/dropplaces',function(req,res){
   if(req.ip === '188.226.189.180' || req.session.sKK76d === 'porC6S78x0XZP1b2p08zGlq')
