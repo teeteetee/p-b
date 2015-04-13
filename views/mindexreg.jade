@@ -226,7 +226,7 @@ head
       //    h3 #{uid}
     footer(class='footer')
       .container
-        .row.adding(id='addbook' style='display:none;padding-top:20px;background-color:#378961;')
+        .row(id='addbook' style='display:none;padding-top:20px;background-color:#378961;')
           .col-xs-12
             .form-group
               label(for="exampleInputEmail1" style='color:white;') Название
@@ -248,7 +248,7 @@ head
                   a(style='background-color:#EFAF4F;'id='booksubmitbutton') Add
                 li(class="next")
                   a( class='addbookbutton' style='background-color:#999;') Close
-        .row.adding(id='addmovie' style='display:none;padding-top:20px;background-color:#99362F;')
+        .row(id='addmovie' style='display:none;padding-top:20px;background-color:#99362F;')
           .col-xs-12
             .form-group
               label(for="exampleInputEmail1" style='color:white;font-size:15px;') Название
@@ -279,18 +279,6 @@ head
             h1(style='color:white;font-size:40px;padding-top:10px;padding-bottom:10px;margin-top:0px;margin-bottom:0px;') M
           .col-xs-3
             span(class='glyphicon glyphicon-align-justify ' id='showLeft' style='color:white;font-size:30px;padding-top:13px;')
-    //      .col-xs-12(style='text-align:center;')
-    //        .btn-group(role="group" aria-label="..." style='margin-top:10px;margin-bottom:10px;')
-    //          button(type="button active" class="btn btn-default") Books
-    //          button(type="button" class="btn btn-default" ) Movies
-    //button(type='button' id='showLeft' style='color:white;font-size:30px;position:absolute;bottom:10px;right:5px;border:0px;background-color:transparent;') 
-    //  span(class='glyphicon glyphicon-align-justify ')
-    //button(type='button' id='showLeft' style='color:white;font-size:30px;position:absolute;bottom:10px;left:5px;border:0px;background-color:transparent;') 
-    //  span(class='glyphicon glyphicon-align-plus ')
-
-    
-      //
-        h5(id='more',style='color:black;margin-bottom:10px;cursor:pointer;') Еще 
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
     script(src='/js/bootstrap.min.js')
     script.
