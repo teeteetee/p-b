@@ -336,6 +336,8 @@ head
           });
       $('#showmovies').click(function(){
          $('#maincont').css('background-color','#CA5B52');
+         $('.activebutton').removeClass('activebutton');
+         $('#showmovies').addClass('activebutton');
         });
         $('#login').click(authsubmit);
       var counter =0;
