@@ -215,66 +215,11 @@ head
         .col-xs-12(style='text-align:center;')
           h1(style='font-family:high;font-size:100px;font-weight:bold;color:white;') 30 
             span(style='color:rgba(0, 0, 0, 0.15);') | 20
-      .row
-        .col-xs-12
-          h4(class='alreadyb') Ф.М. Достоевский "Идиот"
-      .row
-        .col-xs-12
-          h4(class='alreadyb') Д. Перетолчин "Мировые войны и мировые элиты"
-            span(class='glyphicon glyphicon-star' style='color:#F2D45C;margin-left:10px;')
-      .row
-        .col-xs-12
-          h4(class='alreadyb') Ф.М. Достоевский "Идиот"
-      .row
-        .col-xs-12
-          h4(class='yet') Ф.М. Достоевский "Идиот"
-            span(class='glyphicon glyphicon-exclamation-sign' style='color:rgba(255, 255, 255, 0.65);margin-left:10px;')
-      .row
-        .col-xs-12
-          h4(class='alreadyb') Ф.М. Достоевский "Идиот"
-            span(class='glyphicon glyphicon-star' style='color:#F2D45C;margin-left:10px;')
-      .row
-        .col-xs-12
-          h4(class='alreadyb') Ф.М. Достоевский "Идиот"
-      .row
-        .col-xs-12
-          h4(class='yet') Ф.М. Достоевский "Идиот"
-      .row
-        .col-xs-12
-          h4(class='yet') Ф.М. Достоевский "Идиот"
-            span(class='glyphicon glyphicon-exclamation-sign' style='color:rgba(255, 255, 255, 0.65);margin-left:10px;')
-      .row
-        .col-xs-12
-          h4(class='yet') Ф.М. Достоевский "Идиот"
-      .row
-        .col-xs-12
-          h4(class='yet') Ф.М. Достоевский "Идиот" 
-      .row
-        .col-xs-12
-          h4(class='yet') Ф.М. Достоевский "Идиот"
-            span(class='glyphicon glyphicon-exclamation-sign' style='color:rgba(255, 255, 255, 0.65);margin-left:10px;')
-      .row
-        .col-xs-12
-          h4(class='alreadyb') Ф.М. Достоевский "Идиот"
-            span(class='glyphicon glyphicon-star' style='color:#F2D45C;margin-left:10px;')
-      .row
-        .col-xs-12
-          h4(class='alreadyb') Ф.М. Достоевский "Идиот"  
-      .row
-        .col-xs-12
-          h4(class='alreadyb') Д. Перетолчин "Мировые войны и мировые элиты"
-            span(class='glyphicon glyphicon-star' style='color:#F2D45C;margin-left:10px;')
-      .row
-        .col-xs-12
-          h4(class='alreadyb') Ф.М. Достоевский "Идиот"
-      .row
-        .col-xs-12
-          h4(class='yet') Ф.М. Достоевский "Идиот"
-            span(class='glyphicon glyphicon-exclamation-sign' style='color:rgba(255, 255, 255, 0.65);margin-left:10px;')
-      .row
-        .col-xs-12
-          h4(class='alreadyb') Ф.М. Достоевский "Идиот"
-            span(class='glyphicon glyphicon-star' style='color:#F2D45C;margin-left:10px;')     
+      each date,i in doc
+            each book,q in date
+              .row
+                .col-xs-12
+                  h4(class='alreadyb') #{books.booktitle}
     footer(class='footer')
       .container
         .row.adding(id='addbook' style='display:none;padding-top:20px;background-color:#378961;')

@@ -101,6 +101,116 @@ app.get('/logout',function(req,res){
   res.redirect('/');
 });
 
+app.post('/addbook',function(req,res){
+  if (req.session.mail != undefined && req.session.lgn != undefined){
+    var ms = {};
+    ms.trouble =1;
+    var vuid = parseInt(req.params.uid);
+    var vbooktitle = req.params.booktitle;
+    var vauthor = req.params.author;
+    var vstar = req.params.star;
+    var vattention = req.params.attention;
+    var dd= new Date();
+    var vday = dd.getDate().toString();
+    if (vday.length===1){
+      vday='0'+vday;
+    }
+    var vmonth = dd.getMonth()+1;
+    vmonth = vmonth.toString();
+    if (vmonth.length===1){
+      vmonth='0'+vmonth;
+    }
+    var vyear = dd.getUTCFullYear().toString();
+    var fulldate = vyear+vmonth+vday;
+    fulldate = parseInt(fulldate);
+
+    if(!vbooktitle){
+      vbooktitle = '--';
+    }
+    if(!author){
+      author = '--';
+    }
+       if(!emptydaycheck){
+        // date is empty
+          users.insert({uid:vuid},{$push:{dates:{dateint:fulldate,books:[{author:vauthor,booktitle:vbooktitle,star:vstar,attention:vattention}]}}});
+          ms.trouble=0;
+          res.send(ms);
+       }
+       else {
+        var modifieddate = {
+          author:vauthor,
+          booktitle:vbooktitle,
+          star:vstar,
+          attention:vattention};
+         var booksarray = getbooksarray(fulldate);
+         booksarray.books.push(modifieddate);
+         users.insert({uid:vuid},{$push:{dates:booksarray}});
+         ms.trouble=0;
+          res.send(ms);
+       }
+  }
+  else {
+    res.send(ms);
+  }
+});
+
+function getbooksarray (fulldate) {
+ users.findOne({uid:vuid},function(err,done){
+  if(err){
+    return 0
+  }
+  else {
+    if(done)
+    {var datearray = done.dates;
+     return getdatefromarray(fulldate,datearray)
+    }
+    else {
+      return 0
+    }
+  }
+ }
+}
+
+function getdatefromarray(nameKey, myArray){
+    for (var i=0; i < myArray.length; i++) {
+        if (myArray[i].dateint === nameKey) {
+            return myArray[i];
+        }
+    }
+}
+
+function emptydaycheck () {
+  users.findOne({uid:vuid,dateint:fulldate},function(err,done){
+    if (err)
+    {
+      console.log('DB ERR emtydaycheck()');
+      return 0
+    }
+    else {
+      if(done)
+      {
+        //empty
+        return 0
+      }
+      else{
+        // date has books
+        return 1
+      }
+    }
+  });
+}
+
+app.post('/addmovie',function(req,res){
+  if (req.session.mail != undefined && req.session.lgn != undefined){
+    var vuid = parseInt(req.params.uid);
+    var vmovietitle = req.params.movietitle;
+    var vyear = req.params.year;
+    
+  }
+  else {
+
+  }
+});
 
 app.get('/register',function(req,res){
  res.render('register');
@@ -246,7 +356,22 @@ app.get('/',function(req,res) {
   console.log(uacheck);
    if (req.session.mail != undefined && req.session.lgn != undefined)
         //{res.render('indexreg',{'prfname':"Привет, "+req.session.lgn+"!"});}
-        {res.render('indexreg');}
+        { 
+          users.findOne({mail:req.session.mail},function(err,done){
+            if(err){
+              res.render('indexreg');
+            }
+            else {
+              if(done){
+
+              }
+              else {
+                res.render('indexreg',{'doc':done.dates});
+              }
+            }
+          });
+          res.render('indexreg');
+        }
    else {
   res.render('index');}
 });
