@@ -249,21 +249,12 @@ res.render('settings');
 
 
 app.get('/m',function(req,res){
-  places.find({},{ limit:9,sort : { founddateint: -1 } },function(err,doc){
-    if(err)
-    {
-      res.render('memptyindex');
-    }
-    else {
-      if(doc.length>0)
-      {
         //res.render('index',{'places':doc});
-        res.render('mindex',{'doc':JSON.stringify(doc)});
-      }
-      else{
-        res.render('memptyindex');
-      }
-    }
+        if (req.session.mail != undefined && req.session.lgn != undefined)
+        //{res.render('indexreg',{'prfname':"Привет, "+req.session.lgn+"!"});}
+        {res.render('mindexreg');}
+   else {
+  res.render('mindex');}
   });
 });
 

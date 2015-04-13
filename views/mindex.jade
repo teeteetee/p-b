@@ -6,7 +6,7 @@ head
     |     
     meta(name='viewport', content='width=device-width, initial-scale=1')
     |     
-    title Recent ones
+    title P&B
     // Bootstrap
     link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
     // HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
@@ -20,110 +20,55 @@ head
       font-family:roboto-thin;
       src:url('/bootstrap/fonts/Roboto-Thin.ttf');
       }
-      @font-face {
-      font-family:high;
-      src: url('/bootstrap/fonts/Attentica.ttf');
-      }
-      @font-face {
-      font-family:br;
-      src: url('/bootstrap/fonts/bebasneue_regular.ttf');
-      }
-      @font-face {
-      font-family:bt;
-      src: url('/bootstrap/fonts/bebasneue_thin.ttf');
-      }
       h1 {
-      font-size:6vw;
-      font-family:roboto-thin;
-      letter-spacing:0.3vw;
-      text-transform:uppercase;
-      color:#bbb;
-      margin-top:0px;
-      margin-bottom:0px;
-      }
-      body {
-      padding-top:51px;
-      background-color:#fff;
-      background-image:url('/bootstrap/images/stripe4.png');
+        font-family:robot-thin;
       }
       h2 {
-      font-size:6vw;
-      font-family:br;
-      letter-spacing:7px;
+        font-family:robot-thin;
       }
       h3 {
-      font-size:3vw;
-      font-family:arial;
-      letter-spacing:0.3vw;
-      text-transform:uppercase;
-      color:#eee;
-      margin-top:0px;
-      margin-bottom:0px;
+        font-family:robot-thin;
       }
       h4 {
-      font-size:2vw;
-      font-family:roboto-thin;
-      letter-spacing:0.3vw;
-      text-transform:uppercase;
+        font-family:robot-thin;
       }
       h5 {
-      letter-spacing:2px;
-      text-transform:uppercase;
-      font-family:high;
-      color:white;
-      font-size:8vw;
-      margin-bottom:0px;
+        font-family:robot-thin;
       }
-      .preview {
-      margin:0px;
-      padding:0px;
-      border-right:1px solid black;
-      -webkit-filter: grayscale(100%);
-      -moz-filter: grayscale(100%);
-      -o-filter: grayscale(100%);
-      -ms-filter: grayscale(100%);
+      h6 {
+        font-family:robot-thin;
       }
-      .preview:hover {
-      -webkit-filter: grayscale(0%);
-      -moz-filter: grayscale(0%);
-      -o-filter: grayscale(0%);
-      -ms-filter: grayscale(0%);
+      textarea:hover, 
+      input:hover, 
+      textarea:active, 
+      input:active, 
+      textarea:focus, 
+      input:focus,
+      button:focus,
+      button:active,
+      button:hover
+      {
+          outline:0px !important;
+          -webkit-appearance:none;
       }
-      img {
+      .bckgrnd {
       width:100%;
+      height:100%;
+      background-image:url('/bootstrap/images/books.jpg');
+      position:fixed;
+      background-color:#668176;
+      background-position:center;
+      background-size: cover;
+      background-repeat:no-repeat;
+      filter: brightness(0.6);
+      -webkit-filter: brightness(0.6);
+      -moz-filter: brightness(0.6);
+      -o-filter: brightness(0.6);
       }
-      .imgrow {
-      border-bottom:1px solid black;
-      }
-      .placenamebckgrnd {
-      color:white;
-      width:100%;
-      background-color:black;
-      text-align:center;
-      z-index:1;
-      }
-      .placename {
-      background-color:rgba(0,0,0,0.26);
-      position:absolute;
-      color:black;
-      width:100%;
-      text-align:center;
-      top:0px;
-      z-index:2;
-      padding:1vh;
-      }
-      #white{
-      background-color:white;
-      }
-      .imgrow {
-      background-color:#333;
-      }
-      .container-fluid {
-      background-color:#eee;
-      }  
-      a:hover {
-        text-decoration:none;
-        outline:none;
+      nav ul li a {
+        border:0px !important;
+        background-color:rgba(255, 255, 255, 0.26) !important;
+        color:white !important;
       }
   body
     nav(class='navbar navbar-fixed-top navbar-inverse')
@@ -136,9 +81,7 @@ head
             span.icon-bar
             span.icon-bar
           h2(class='navbar-brand',style='font-size8:8vw;margin-top:0px;margin-bottom:0px;') 
-            span 
-              img(src='/bootstrap/images/rl.png',style='width:20px;') 
-            |  Лента  
+            a(class='navar-brand') People&Books
         #navbar.navbar-collapse.collapse(aria-expanded='false',style='height:1px;')
           ul(class='nav navbar-nav')
             li
@@ -146,53 +89,80 @@ head
                 h1 Рейтинги
             li
               a(href='/search')  
-                h1 Поиск
+                h1 Опроекте
             li 
               a(href='/misc/1') 
                 h1 Контакты
-    #inserts.container
+    .bckgrnd
+    .container
+      .row(style='text-align:center;margin-top:15%;margin-bottom:20px;')
+        .col-xs-12
+          h1(style='font-size:50px;') Organise your reading. 
+          h3 Never forget a book.
+      .row
+        #message.col-xs-12
+      .row(style='text-align:center;')
+        .col-xs-12
+          input(class='form-control' type='email' style='margin-bottom:5px;' id='vlgn' name='mail' placeholder='email')
+          input(class='form-control' type='password' style='margin-bottom:20px;' id='vphr' name='p' placeholder='password')
+          #wrap(style='width:100%;')
+            button(class='btn btn-primary' type='button' id='shownav' style='position:absolute;margin-left:-60;left:50%;z-index:2;border-radius:30px;background-color:rgba(255, 255, 255, 0.26);border:0px;') Log in / Register
+            nav(id='nav' style='z-index:1;display:none;')
+              ul(class="pager")
+                li(class='previous')
+                  a( id='login' href="#") Войти
+                li(class='next')
+                  a(href="/register") Регистрация
+    
       //
         h5(id='more',style='color:black;margin-bottom:10px;cursor:pointer;') Еще 
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
     script(src='/js/bootstrap.min.js')
     script.
-        
-        var toplist = !{doc};
-        function populate(toplist) {for (var i=0;i<toplist.length;i++){
-                  var insert ="<div class='row' style='border-bottom:1px solid #ddd;' id='row"+i+"'><div class='col-xs-12' style='padding:0px;'><div class='placename'><h5>"+toplist[i].placenameru+"</h5><h3>"+toplist[i].regdate.day+"."+toplist[i].regdate.month+"."+toplist[i].regdate.year+"</h3></div><div class='placenamebckgrnd'><a href='http://m.recentones.com/places/"+toplist[i].pid+"'><img src='"+toplist[i].mainpreview+"' style='width:100%;'></a></div></div></div>";
-                  $('#inserts').append(insert);
-                }}
-        
-         $('#more').click(function(){
-          request = new XMLHttpRequest();
-          request.onreadystatechange = function () {
-          var DONE = this.DONE || 4;
-          if (this.readyState === DONE){
-          parsed = JSON.parse(request.responseText);
-          console.log(parsed);
-          if(parsed.trouble === 1)
-          {
-          console.log('TROUBLE === 1');
-          switch (parsed.mtext){
-          case('db'):
-          alert('Sorry, our database is being updated');
-          break;
-          case('empty'):
-          break;
-          }}
-          else {
-          //trouble === 0
-          $('#inserts').empty();
-          toplist = parsed.mdata;
-          populate(toplist);
-          }
-          }
-          };
-          request.open('POST', '/more', true);
-          request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
-          request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-          //Most libraries like jQuery/Prototype/Dojo do this
-          request.send('mult='+moreid);
-          });
-          populate(toplist);
+      // AUTHSUBMIT FUNCTION
+      var allowauth = 1;
+      function authsubmit() {
+      allowauth = 0;
+      var vlgn = $('#vlgn').val();
+      var vphr = $('#vphr').val();
+      console.log(vlgn +" , "+vphr);
+      request = new XMLHttpRequest();
+      request.onreadystatechange = function () {
+      var DONE = this.DONE || 4;
+      if (this.readyState === DONE){
+      var index;
+      parsed = JSON.parse(request.responseText);
+      console.log(parsed);
+      if(parsed.trouble === 1)
+      {
+      console.log('TROUBLE === 1');
+      switch (parsed.mtext){
+      case('db'):
+      $('#message').empty();
+      $('#message').append("<h5 style='color:#fc454e;'>Sorry, omething is slightly off with the DB, try again in a couple of minutes or contact support</h5>");
+      allowauth = 1;
+      break;
+      case('wrong pas'):
+      $('#message').empty();
+      $('#message').append("<h5 style='color:#fc454e;'>Wrong password</h5>");
+      allowauth = 1;
+      break;
+      case('wronguser'):
+      $('#message').empty();
+      $('#message').append("<h5 style='color:#fc454e;'>Wrong email</h5>");
+      allowauth =1;
+      break;
+      }}
+      else {
+      window.location = 'http://peopleandbooks.com';
+      }
+      }
+      };
+      request.open('POST', '/check', true);
+      request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+      request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      //Most libraries like jQuery/Prototype/Dojo do this
+      request.send("phr="+vphr+"&lgn="+vlgn);
+      }
+    
            
