@@ -168,6 +168,38 @@ head
           width: 100%;
           background-color:mediumaquamarine;
       }
+      input[type="text"], textarea {
+      outline: none;
+      box-shadow:none !important;
+      }
+      .datecl {
+        color:#333;
+      }
+      .yet{
+       color:white;
+      }
+      .alreadyb{
+      color:rgba(0, 0, 0, 0.27);
+      }
+      .alreadym{
+      color:rgba(255, 255, 255, 0.21);
+      }
+      .leftPaddingExtended{
+        padding-left:30px;
+      }
+      textarea:hover, 
+      input:hover, 
+      textarea:active, 
+      input:active, 
+      textarea:focus, 
+      input:focus,
+      button:focus,
+      button:active,
+      button:hover
+      {
+          outline:0px !important;
+          -webkit-appearance:none;
+      }
   body
     nav(class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1")
       h3(style='text-align:center;color:orange;') People & Books
@@ -181,39 +213,74 @@ head
       a(href='http://m.peopleandbooks.com/about') О проекте
       a(href="/logout") Выйти
     .container(style='background-color:teal;overflow:auto:height:100%;')
-      .row
-        .col-xs-12
-          h1 Hello, mate ! 
-      .row
-        .col-xs-12
-          h1 Hello, mate ! 
-      .row
-        .col-xs-12
-          h1 Hello, mate ! 
-      .row
-        .col-xs-12
-          h1 Hello, mate ! 
-      .row
-        .col-xs-12
-          h1 Hello, mate ! 
-      .row
-        .col-xs-12
-          h1 Hello, mate ! 
-      .row
-        .col-xs-12
-          h1 Hello, mate ! 
-      .row
-        .col-xs-12
-          h1 Hello, mate ! 
-      .row
-        .col-xs-12
-          h1 Hello, mate ! 
-      .row
-        .col-xs-12
-          h1 Hello, mate ! 
-      .row
-        .col-xs-12
-          h1 Hello, mate !         
+      .col-xs-12(id='books' style='background-color:rgba(108, 166, 149, 1);height:100%;overflow:auto;')
+        .row
+          .col-xs-12(style='text-align:center;')
+            h1(style='font-family:high;font-size:200px;font-weight:bold;color:white;') 30 
+             span(style='color:rgba(0, 0, 0, 0.15);') | 20
+            button(class='btn btn-default addbookbutton' style='border-radius:30px;margin-bottom:20px;border:0px;color:white;background-color:rgba(255, 255, 255, 0.38);' type='button') Добавить книгу
+        .row.adding(id='addbook' style='display:none;padding-top:20px;')
+          .col-xs-12
+            .form-group
+              label(for="exampleInputEmail1") Название
+              input(type="email" class="form-control" id="exampleInputEmail1" placeholder="Crime and punishment")
+            .form-group
+              label(for="exampleInputEmail1") Автор
+              input(type="email" class="form-control" id="exampleInputEmail1" placeholder="Dostoevsky F.M.")
+            .checkbox
+              label
+                input(type="checkbox") 
+                span(class='glyphicon glyphicon-star' style='color:#F2D45C;margin-left:10px;')
+            .checkbox
+              label
+                input(type="checkbox") 
+                span(class='glyphicon glyphicon-exclamation-sign' style='color:rgba(255, 255, 255, 0.65);margin-left:10px;')
+            nav
+              ul(class="pager")
+                li(class="previous")
+                  a(style='background-color:#EFAF4F;') Add
+                li(class="next")
+                  a( class='addbookbutton' style='background-color:#999;') Close
+        .row.leftPaddingExtended
+          .col-xs-3
+            h4(class='datecl') 12.05.2015
+          .col-xs-9
+            h4(class='alreadyb') Ф.М. Достоевский "Идиот"
+        .row.leftPaddingExtended
+          .col-xs-9.col-xs-offset-3
+            h4(class='alreadyb') Д. Перетолчин "Мировые войны и мировые элиты"
+              span(class='glyphicon glyphicon-star' style='color:#F2D45C;margin-left:10px;')
+        .row.leftPaddingExtended
+          .col-xs-9.col-xs-offset-3
+            h4(class='alreadyb') Ф.М. Достоевский "Идиот"
+        .row.leftPaddingExtended
+          .col-xs-9.col-xs-offset-3
+            h4(class='yet') Ф.М. Достоевский "Идиот"
+              span(class='glyphicon glyphicon-exclamation-sign' style='color:rgba(255, 255, 255, 0.65);margin-left:10px;')
+        .row.leftPaddingExtended
+          .col-xs-3
+            h4(class='datecl') 12.05.2015
+          .col-xs-9
+            h4(class='alreadyb') Ф.М. Достоевский "Идиот"
+              span(class='glyphicon glyphicon-star' style='color:#F2D45C;margin-left:10px;')
+        .row.leftPaddingExtended
+          .col-xs-3
+            h4(class='datecl') 12.05.2015
+          .col-xs-9
+            h4(class='alreadyb') Ф.М. Достоевский "Идиот"
+        .row.leftPaddingExtended
+          .col-xs-9.col-xs-offset-3
+            h4(class='yet') Ф.М. Достоевский "Идиот"
+        .row.leftPaddingExtended
+          .col-xs-9.col-xs-offset-3
+            h4(class='yet') Ф.М. Достоевский "Идиот"
+              span(class='glyphicon glyphicon-exclamation-sign' style='color:rgba(255, 255, 255, 0.65);margin-left:10px;')
+        .row.leftPaddingExtended
+          .col-xs-9.col-xs-offset-3
+            h4(class='yet') Ф.М. Достоевский "Идиот"
+        .row.leftPaddingExtended
+          .col-xs-9.col-xs-offset-3
+            h4(class='yet') Ф.М. Достоевский "Идиот"        
     footer(class='footer')
       .container
         .row
@@ -230,6 +297,12 @@ head
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
     script(src='/js/bootstrap.min.js')
     script.
+      $('.addbookbutton').click(function(){
+          $('#addbook').slideToggle();
+          });
+        $('.addmoviebutton').click(function(){
+          $('#addmovie').slideToggle();
+          });
       $('#shownav').click(function(){
           $('#shownav').fadeOut();
           $('#nav').fadeIn();
