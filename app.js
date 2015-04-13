@@ -169,8 +169,8 @@ function getbooksarray (fulldate) {
       return 0
     }
   }
- }
-});
+ });
+}
 
 function getdatefromarray(nameKey, myArray){
     for (var i=0; i < myArray.length; i++) {
