@@ -64,20 +64,6 @@ head
           outline:0px !important;
           -webkit-appearance:none;
       }
-      .bckgrnd {
-      width:100%;
-      height:100%;
-      background-image:url('/bootstrap/images/books.jpg');
-      position:fixed;
-      background-color:#668176;
-      background-position:center;
-      background-size: cover;
-      background-repeat:no-repeat;
-      filter: brightness(0.6);
-      -webkit-filter: brightness(0.6);
-      -moz-filter: brightness(0.6);
-      -o-filter: brightness(0.6);
-      }
       nav ul li a {
         border:0px !important;
         background-color:rgba(255, 255, 255, 0.26) !important;
@@ -99,7 +85,7 @@ head
       }
       
       .cbp-spmenu h3 {
-        color: skyblue;
+        color: indianred;
         font-size: 1.9em;
         padding: 20px;
         padding-top:27px;
@@ -212,13 +198,14 @@ head
       }
   body
     nav(class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1")
-      h3(style='text-align:center;color:orange;') People & Books
-      form(class="navbar-form navbar-right" method='post' action='/srch' id='srch' role="search")
-        .input-group
-           input(type="text" class="form-control" name='searchfield' id='searchfield' style='background-color:#333;color:white;border-color:#333;border-top-left-radius:30px;border-bottom-left-radius:30px;') 
-           span(class='input-group-btn')
-             button(class="btn btn-default" type="submit" id='searchbutton' style='padding-top:9px;padding-bottom:9px;background-color:#333;color:gray;border-color:#333;border-top-right-radius:30px;border-bottom-right-radius:30px;')
-               span(class='glyphicon glyphicon-search') 
+      h3(style='text-align:center;') People & Books
+      // 
+        form(class="navbar-form navbar-right" method='post' action='/srch' id='srch' role="search")
+          .input-group
+             input(type="text" class="form-control" name='searchfield' id='searchfield' style='background-color:#333;color:white;border-color:#333;border-top-left-radius:30px;border-bottom-left-radius:30px;') 
+             span(class='input-group-btn')
+               button(class="btn btn-default" type="submit" id='searchbutton' style='padding-top:9px;padding-bottom:9px;background-color:#333;color:gray;border-color:#333;border-top-right-radius:30px;border-bottom-right-radius:30px;')
+                 span(class='glyphicon glyphicon-search') 
       a(href="http://m.peopleandbooks.com/settings") Настройки
       a(href='http://m.peopleandbooks.com/about') О проекте
       a(href="/logout") Выйти
