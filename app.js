@@ -364,10 +364,10 @@ app.get('/',function(req,res) {
             }
             else {
               if(done){
-
+                res.render('indexreg',{'doc':done.dates,'uid':done.uid});
               }
               else {
-                res.render('indexreg',{'doc':done.dates,'uid':done.uid});
+                res.render('indexreg');
               }
             }
           });
@@ -398,10 +398,10 @@ app.get('/m',function(req,res){
             }
             else {
               if(done){
-
+                  res.render('mindexreg',{'doc':done.dates,'uid':done.uid});
               }
               else {
-                res.render('mindexreg',{'doc':done.dates,'uid':done.uid});
+                res.render('mindexreg');
               }
             }
           });
