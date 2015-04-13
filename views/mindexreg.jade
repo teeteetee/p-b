@@ -187,30 +187,27 @@ head
     //            h1 Контакты
     nav(class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1")
       h3(style='text-align:center;color:orange;') People & Books
-      a(href="#") Настройки
+      form(class="navbar-form navbar-right" method='post' action='/srch' id='srch' role="search")
+        .input-group
+           input(type="text" class="form-control" name='searchfield' id='searchfield' style='background-color:#333;color:white;border-color:#333;border-top-left-radius:30px;border-bottom-left-radius:30px;') 
+           span(class='input-group-btn')
+             button(class="btn btn-default" type="submit" id='searchbutton' style='padding-top:9px;padding-bottom:9px;background-color:#333;color:gray;border-color:#333;border-top-right-radius:30px;border-bottom-right-radius:30px;')
+               span(class='glyphicon glyphicon-search') 
+      a(href="http://m.peopleandbooks.com/settings") Настройки
       a(href='http://m.peopleandbooks.com/about') О проекте
-    .bckgrnd
-    .container
-      .row(style='text-align:center;margin-top:15%;margin-bottom:20px;')
-        .col-xs-12
-          h1(style='font-size:50px;') Organise your reading. 
-          h3 Never forget a book.
-      .row
-        #message.col-xs-12
-      .row(style='text-align:center;')
-        .col-xs-12
-          input(class='form-control' type='email' style='margin-bottom:5px;' id='vlgn' name='mail' placeholder='email')
-          input(class='form-control' type='password' style='margin-bottom:20px;' id='vphr' name='p' placeholder='password')
-          #wrap(style='width:100%;')
-            button(class='btn btn-primary' type='button' id='shownav' style='position:absolute;margin-left:-60;left:50%;z-index:2;border-radius:30px;background-color:rgba(255, 255, 255, 0.26);border:0px;') Log in / Register
-            nav(id='nav' style='z-index:1;display:none;')
-              ul(class="pager")
-                li(class='previous')
-                  a( id='login' href="#") Войти
-                li(class='next')
-                  a(href="/register") Регистрация
-    button(type='button' id='showLeft' style='color:white;font-size:30px;position:absolute;bottom:15px;right:15px;border:0px;background-color:transparent;') 
-      span(class='glyphicon glyphicon-align-justify ')
+      a(href="/logout") Выйти
+    .container(style='background-color:teal;')
+      
+    footer(class='footer')
+      .container
+        .row
+          .col-xs-10.col-xs-offset-1
+            .btn-group(role="group" aria-label="...")
+              button(type="button active" class="btn btn-default") Books
+              button(type="button" class="btn btn-default") Movies
+          .col-xs-1
+            button(type='button' id='showLeft' style='color:white;font-size:30px;position:absolute;bottom:15px;right:15px;border:0px;background-color:transparent;') 
+             span(class='glyphicon glyphicon-align-justify ')
 
     
       //
