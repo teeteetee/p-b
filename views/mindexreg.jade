@@ -217,12 +217,12 @@ head
     footer(class='footer')
       .container
         .row
-          .col-xs-8.col-xs-offset-2(style='text-align:center;')
+          .col-xs-12(style='text-align:center;')
             .btn-group(role="group" aria-label="..." style='margin:5px;')
               button(type="button active" class="btn btn-default") Books
               button(type="button" class="btn btn-default" ) Movies
-          .col-xs-2
-            span(class='glyphicon glyphicon-align-justify ' id='showLeft' style='color:white;font-size:30px;')
+    button(type='button' id='showLeft' style='color:white;font-size:30px;position:absolute;bottom:15px;right:15px;border:0px;background-color:transparent;') 
+      span(class='glyphicon glyphicon-align-justify ')
 
     
       //
