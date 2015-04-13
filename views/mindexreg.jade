@@ -166,7 +166,7 @@ head
           position: fixed;
           bottom: 0;
           width: 100%;
-          background-color:tan;
+          background-color:mediumaquamarine;
       }
   body
     nav(class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1")
@@ -217,13 +217,12 @@ head
     footer(class='footer')
       .container
         .row
-          .col-xs-10.col-xs-offset-1(style='text-align:center;')
+          .col-xs-8.col-xs-offset-2(style='text-align:center;')
             .btn-group(role="group" aria-label="..." style='margin:5px;')
-              button(type="button active" class="btn btn-default" style='border-bottom-left-radius:30px !important;border-top-left-radius:30px !important;') Books
-              button(type="button" class="btn btn-default" style='border-bottom-right-radius:30px !important;border-top-right-radius:30px !important;') Movies
-          .col-xs-1
-            button(type='button' id='showLeft' style='color:white;font-size:30px;position:absolute;bottom:15px;right:15px;border:0px;background-color:transparent;') 
-             span(class='glyphicon glyphicon-align-justify ')
+              button(type="button active" class="btn btn-default") Books
+              button(type="button" class="btn btn-default" ) Movies
+          .col-xs-2
+            span(class='glyphicon glyphicon-align-justify ' id='showLeft' style='color:white;font-size:30px;')
 
     
       //
