@@ -69,6 +69,15 @@ app.use(function(req,res,next){
 
 //SUBDOMAIN MAGIC 
 
+app.get('*',function(req,res,next){
+  if (req.ip === '188.226.189.180') {
+    console.log("c'est moi "+req.headers.host);
+    next();
+  } 
+  else{
+    next();
+  }
+});
 
 app.get('*', function(req,res,next) {  
 
@@ -76,10 +85,6 @@ app.get('*', function(req,res,next) {
    {req.url = '/m' + req.url; 
     console.log(req.url); //append some text yourself
      next();}
-     if (req.ip === '188.226.189.180') {
-    console.log("c'est moi "+req.headers.host);
-    next();
-  } 
   else{
    console.log('-------------- REQUEST --------------')
    console.log('User-Agent: ' + req.headers['user-agent']);
