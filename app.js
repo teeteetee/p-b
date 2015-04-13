@@ -391,6 +391,7 @@ app.get('/m',function(req,res){
         //{res.render('indexreg',{'prfname':"Привет, "+req.session.lgn+"!"});}
         {
            console.log('going to query');
+           console.log(req.session.mail);
           users.findOne({mail:req.session.mail},function(err,done){
             if(err){
               res.render('mindexreg');
