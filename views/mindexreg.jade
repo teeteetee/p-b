@@ -208,6 +208,9 @@ head
         background-color: rgba(0, 0, 0, 0.33);
        box-shadow: inset 0px 0px 10px 3px rgb(56, 86, 77);
       }
+      .activebutton {
+        background-color:#252525;
+      }
   body
     nav(class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1")
       h3(style='text-align:center;color:orange;') People & Books
@@ -221,12 +224,52 @@ head
       a(href='http://m.peopleandbooks.com/about') О проекте
       a(href="/logout") Выйти
     .container(style='background-color:teal;overflow:auto;height:100%;padding-left:0px;padding-right:0px;')
-      .col-xs-12(id='books' style='background-color:rgba(108, 166, 149, 1);height:100%;overflow:auto;')
-        .row
-          .col-xs-12(style='text-align:center;')
+      .row
+       .col-xs-12(style='text-align:center;')
             h1(style='font-family:high;font-size:100px;font-weight:bold;color:white;') 30 
              span(style='color:rgba(0, 0, 0, 0.15);') | 20
-            button(class='btn btn-default addbookbutton' style='border-radius:30px;margin-bottom:20px;border:0px;color:white;background-color:rgba(255, 255, 255, 0.38);' type='button') Добавить книгу
+      .row
+        .col-xs-3
+          h5(class='datecl') 12.05.2015
+        .col-xs-9
+          h5(class='alreadyb') Ф.М. Достоевский "Идиот"
+      .row
+        .col-xs-9.col-xs-offset-3
+          h5(class='alreadyb') Д. Перетолчин "Мировые войны и мировые элиты"
+            span(class='glyphicon glyphicon-star' style='color:#F2D45C;margin-left:10px;')
+      .row
+        .col-xs-9.col-xs-offset-3
+          h5(class='alreadyb') Ф.М. Достоевский "Идиот"
+      .row
+        .col-xs-9.col-xs-offset-3
+          h5(class='yet') Ф.М. Достоевский "Идиот"
+            span(class='glyphicon glyphicon-exclamation-sign' style='color:rgba(255, 255, 255, 0.65);margin-left:10px;')
+      .row
+        .col-xs-3
+          h5(class='datecl') 12.05.2015
+        .col-xs-9
+          h5(class='alreadyb') Ф.М. Достоевский "Идиот"
+            span(class='glyphicon glyphicon-star' style='color:#F2D45C;margin-left:10px;')
+      .row
+        .col-xs-3
+          h5(class='datecl') 12.05.2015
+        .col-xs-9
+          h5(class='alreadyb') Ф.М. Достоевский "Идиот"
+      .row
+        .col-xs-9.col-xs-offset-3
+          h5(class='yet') Ф.М. Достоевский "Идиот"
+      .row
+        .col-xs-9.col-xs-offset-3
+          h5(class='yet') Ф.М. Достоевский "Идиот"
+            span(class='glyphicon glyphicon-exclamation-sign' style='color:rgba(255, 255, 255, 0.65);margin-left:10px;')
+      .row
+        .col-xs-9.col-xs-offset-3
+          h5(class='yet') Ф.М. Достоевский "Идиот"
+      .row
+        .col-xs-9.col-xs-offset-3
+          h5(class='yet') Ф.М. Достоевский "Идиот"        
+    footer(class='footer')
+      .container
         .row.adding(id='addbook' style='display:none;padding-top:20px;')
           .col-xs-12
             .form-group
@@ -249,57 +292,15 @@ head
                   a(style='background-color:#EFAF4F;') Add
                 li(class="next")
                   a( class='addbookbutton' style='background-color:#999;') Close
-        .row
-          .col-xs-3
-            h5(class='datecl') 12.05.2015
-          .col-xs-9
-            h5(class='alreadyb') Ф.М. Достоевский "Идиот"
-        .row
-          .col-xs-9.col-xs-offset-3
-            h5(class='alreadyb') Д. Перетолчин "Мировые войны и мировые элиты"
-              span(class='glyphicon glyphicon-star' style='color:#F2D45C;margin-left:10px;')
-        .row
-          .col-xs-9.col-xs-offset-3
-            h5(class='alreadyb') Ф.М. Достоевский "Идиот"
-        .row
-          .col-xs-9.col-xs-offset-3
-            h5(class='yet') Ф.М. Достоевский "Идиот"
-              span(class='glyphicon glyphicon-exclamation-sign' style='color:rgba(255, 255, 255, 0.65);margin-left:10px;')
-        .row
-          .col-xs-3
-            h5(class='datecl') 12.05.2015
-          .col-xs-9
-            h5(class='alreadyb') Ф.М. Достоевский "Идиот"
-              span(class='glyphicon glyphicon-star' style='color:#F2D45C;margin-left:10px;')
-        .row
-          .col-xs-3
-            h5(class='datecl') 12.05.2015
-          .col-xs-9
-            h5(class='alreadyb') Ф.М. Достоевский "Идиот"
-        .row
-          .col-xs-9.col-xs-offset-3
-            h5(class='yet') Ф.М. Достоевский "Идиот"
-        .row
-          .col-xs-9.col-xs-offset-3
-            h5(class='yet') Ф.М. Достоевский "Идиот"
-              span(class='glyphicon glyphicon-exclamation-sign' style='color:rgba(255, 255, 255, 0.65);margin-left:10px;')
-        .row
-          .col-xs-9.col-xs-offset-3
-            h5(class='yet') Ф.М. Достоевский "Идиот"
-        .row
-          .col-xs-9.col-xs-offset-3
-            h5(class='yet') Ф.М. Достоевский "Идиот"        
-    footer(class='footer')
-      .container
         .row(style='text-align:center;')
-          .col-xs-3
+          .col-xs-3(id='addbookbutton')
             h1( style='color:white;font-size:40px;padding-top:10px;padding-bottom:10px;margin-top:0px;margin-bottom:0px;') +
-          .col-xs-3(style='background-color:#c1c1c1;')
+          .col-xs-3.activebutton( id='showbooks')
             h1(style='color:white;font-size:40px;padding-top:10px;padding-bottom:10px;margin-top:0px;margin-bottom:0px;') B
-          .col-xs-3
+          .col-xs-3(id='showmovies')
             h1(style='color:white;font-size:40px;padding-top:10px;padding-bottom:10px;margin-top:0px;margin-bottom:0px;') M
           .col-xs-3
-            span(class='glyphicon glyphicon-align-justify ' id='showLeft' style='color:white;font-size:30px;padding-top:20px;')
+            span(class='glyphicon glyphicon-align-justify ' id='showLeft' style='color:white;font-size:30px;padding-top:13px;')
     //      .col-xs-12(style='text-align:center;')
     //        .btn-group(role="group" aria-label="..." style='margin-top:10px;margin-bottom:10px;')
     //          button(type="button active" class="btn btn-default") Books
