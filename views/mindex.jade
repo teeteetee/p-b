@@ -80,29 +80,50 @@ head
       background-color: rgba(34, 34, 34, 0.34);
       border:none;
       }
+      nav#slide-menu {
+      position: fixed;
+      top: 0;
+      left: -100px;
+      bottom: 0;
+      display: block;
+      float: left;
+      width: 100%;
+      max-width: 284px;
+      height: 100%;
+      -moz-transition: all 300ms;
+      -webkit-transition: all 300ms;
+      transition: all 300ms;
+      }
   body
-    nav(class='navbar navbar-fixed-top navbar-inverse')
-      .container
-        .navbar-header
-          button(type='button',class='navbar-toggle collapsed',data-toggle='collapse',data-target='#navbar',aria-expanded='false',aria-controls='navbar')
-            span.sr-only 
-              Toggle navigation
-            span.icon-bar
-            span.icon-bar
-            span.icon-bar
-          h2(class='navbar-brand',style='font-size8:8vw;margin-top:0px;margin-bottom:0px;') 
-            a(class='navar-brand') People&Books
-        #navbar.navbar-collapse.collapse(aria-expanded='false',style='height:1px;')
-          ul(class='nav navbar-nav')
-            li
-              a(href='/top') 
-                h1 Рейтинги
-            li
-              a(href='/search')  
-                h1 Опроекте
-            li 
-              a(href='/misc/1') 
-                h1 Контакты
+    //nav(class='navbar navbar-fixed-top navbar-inverse')
+    //  .container
+    //    .navbar-header
+    //      button(type='button',class='navbar-toggle collapsed',data-toggle='collapse',data-target='#navbar',aria-expanded='false',aria-controls='navbar')
+    //        span.sr-only 
+    //          Toggle navigation
+    //        span.icon-bar
+    //        span.icon-bar
+    //        span.icon-bar
+    //      h2(class='navbar-brand',style='font-size8:8vw;margin-top:0px;margin-bottom:0px;') 
+    //        a(class='navar-brand') People&Books
+    //    #navbar.navbar-collapse.collapse(aria-expanded='false',style='height:1px;')
+    //      ul(class='nav navbar-nav')
+    //        li
+    //          a(href='/top') 
+    //            h1 Рейтинги
+    //        li
+    //          a(href='/search')  
+    //            h1 Опроекте
+    //        li 
+    //          a(href='/misc/1') 
+    //            h1 Контакты
+    nav(id="slide-menu")
+      ul
+        li(class="timeline") Timeline
+        li(class="events") Events
+        li(class="calendar") Calendar
+        li(class="sep settings") Settings
+        li(class="logout") Logout
     .bckgrnd
     .container
       .row(style='text-align:center;margin-top:15%;margin-bottom:20px;')
@@ -123,12 +144,27 @@ head
                   a( id='login' href="#") Войти
                 li(class='next')
                   a(href="/register") Регистрация
+      .row
+        .col-xs-12(style='text-align:left;position:absolute;bottom:0px;')
+          span(class='glyphicon glyphicon-align-justify menu-trigger' style='color:white;font-size:30px;margin-top:20px;')
+
     
       //
         h5(id='more',style='color:black;margin-bottom:10px;cursor:pointer;') Еще 
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
     script(src='/js/bootstrap.min.js')
     script.
+      (function() {
+       var $body = document.body
+       , $menu_trigger = $body.getElementsByClassName('menu-trigger')[0];
+     
+       if ( typeof $menu_trigger !== 'undefined' ) {
+         $menu_trigger.addEventListener('click', function() {
+           $body.className = ( $body.className == 'menu-active' )? '' : 'menu-active';
+         });
+       }
+     
+     }).call(this);
       $('#shownav').click(function(){
           $('#shownav').fadeOut();
           $('#nav').fadeIn();
