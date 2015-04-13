@@ -103,51 +103,6 @@ app.get('/logout',function(req,res){
 
 app.post('/addbook',function(req,res){
   if (req.session.mail != undefined && req.session.lgn != undefined){
-    function getbooksarray (fulldate) {
- users.findOne({uid:vuid},function(err,done){
-  if(err){
-    return 0
-  }
-  else {
-    if(done)
-    {var datearray = done.dates;
-     return getdatefromarray(fulldate,datearray)
-    }
-    else {
-      return 0
-    }
-  }
- }
-}
-
-function getdatefromarray(nameKey, myArray){
-    for (var i=0; i < myArray.length; i++) {
-        if (myArray[i].dateint === nameKey) {
-            return myArray[i];
-        }
-    }
-}
-
-function emptydaycheck () {
-  users.findOne({uid:vuid,dateint:fulldate},function(err,done){
-    if (err)
-    {
-      console.log('DB ERR emtydaycheck()');
-      return 0
-    }
-    else {
-      if(done)
-      {
-        //empty
-        return 0
-      }
-      else{
-        // date has books
-        return 1
-      }
-    }
-  });
-}
     var ms = {};
     ms.trouble =1;
     var vuid = parseInt(req.params.uid);
@@ -200,7 +155,51 @@ function emptydaycheck () {
   }
 });
 
+function getbooksarray (fulldate) {
+ users.findOne({uid:vuid},function(err,done){
+  if(err){
+    return 0
+  }
+  else {
+    if(done)
+    {var datearray = done.dates;
+     return getdatefromarray(fulldate,datearray)
+    }
+    else {
+      return 0
+    }
+  }
+ }
+});
 
+function getdatefromarray(nameKey, myArray){
+    for (var i=0; i < myArray.length; i++) {
+        if (myArray[i].dateint === nameKey) {
+            return myArray[i];
+        }
+    }
+}
+
+function emptydaycheck () {
+  users.findOne({uid:vuid,dateint:fulldate},function(err,done){
+    if (err)
+    {
+      console.log('DB ERR emtydaycheck()');
+      return 0
+    }
+    else {
+      if(done)
+      {
+        //empty
+        return 0
+      }
+      else{
+        // date has books
+        return 1
+      }
+    }
+  });
+}
 
 app.post('/addmovie',function(req,res){
   if (req.session.mail != undefined && req.session.lgn != undefined){
