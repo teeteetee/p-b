@@ -67,6 +67,35 @@ app.use(function(req,res,next){
  }
 });
 
+//SUBDOMAIN MAGIC 
+
+
+app.get('*', function(req,res,next) {  
+   if (req.ip === '188.226.189.180') {
+    console.log("c'est moi");
+    next();
+  } 
+  else if(req.headers.host === 'm.peopleandbooks.com')  //if it's a sub-domain
+   {req.url = '/m' + req.url; 
+    console.log(req.url); //append some text yourself
+     next();}
+  else{
+   console.log('-------------- REQUEST --------------')
+   console.log('User-Agent: ' + req.headers['user-agent']);
+   console.log('URL: '+req.url);
+   console.log(req.ip);
+    next();}
+   });
+
+
+app.get('/logout',function(req,res){
+  console.log('trying to logout');
+  req.session.reset();
+  console.log(JSON.stringify(req.session));
+  res.redirect('/');
+});
+
+
 app.get('/register',function(req,res){
  res.render('register');
 });
@@ -203,29 +232,6 @@ app.post('/check',function(req,res){
 
 
 
-app.get('/logout',function(req,res){
-  console.log('trying to logout');
-  req.session.reset();
-  console.log(JSON.stringify(req.session));
-  res.redirect('/');
-});
-
-
-//SUBDOMAIN MAGIC 
-
-
-app.get('*', function(req,res,next) {  
-   if (req.ip === '188.226.189.180') {
-    console.log("c'est moi");
-    next();
-  } 
-  else{
-   console.log('-------------- REQUEST --------------')
-   console.log('User-Agent: ' + req.headers['user-agent']);
-   console.log('URL: '+req.url);
-   console.log(req.ip);
-    next();}
-   });
  
 
 app.get('/',function(req,res) {
