@@ -205,7 +205,8 @@ head
           -webkit-appearance:none;
       }
       #addbook{
-        background-color:#333;
+        background-color: rgba(0, 0, 0, 0.33);
+       box-shadow: inset 0px 0px 10px 3px rgb(56, 86, 77);
       }
   body
     nav(class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1")
@@ -290,13 +291,23 @@ head
             h5(class='yet') Ф.М. Достоевский "Идиот"        
     footer(class='footer')
       .container
-        .row
-          .col-xs-12(style='text-align:center;')
-            .btn-group(role="group" aria-label="..." style='margin-top:10px;margin-bottom:10px;')
-              button(type="button active" class="btn btn-default") Books
-              button(type="button" class="btn btn-default" ) Movies
-    button(type='button' id='showLeft' style='color:white;font-size:30px;position:absolute;bottom:10px;right:5px;border:0px;background-color:transparent;') 
-      span(class='glyphicon glyphicon-align-justify ')
+        .row(style='text-align:center;')
+          .col-xs-3
+            span(class='glyphicon glyphicon-align-plus ' style='color:white;font-size:30px;')
+          .col-xs-3
+            span(class='glyphicon glyphicon-align-film ' style='color:white;font-size:30px;')
+          .col-xs-3
+            span(class='glyphicon glyphicon-align-book ' style='color:white;font-size:30px;')
+          .col-xs-3
+            span(class='glyphicon glyphicon-align-justify ' style='color:white;font-size:30px;')
+    //      .col-xs-12(style='text-align:center;')
+    //        .btn-group(role="group" aria-label="..." style='margin-top:10px;margin-bottom:10px;')
+    //          button(type="button active" class="btn btn-default") Books
+    //          button(type="button" class="btn btn-default" ) Movies
+    //button(type='button' id='showLeft' style='color:white;font-size:30px;position:absolute;bottom:10px;right:5px;border:0px;background-color:transparent;') 
+    //  span(class='glyphicon glyphicon-align-justify ')
+    //button(type='button' id='showLeft' style='color:white;font-size:30px;position:absolute;bottom:10px;left:5px;border:0px;background-color:transparent;') 
+    //  span(class='glyphicon glyphicon-align-plus ')
 
     
       //
