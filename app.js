@@ -72,7 +72,7 @@ app.use(function(req,res,next){
 
 app.get('*', function(req,res,next) {  
    if (req.ip === '188.226.189.180') {
-    console.log("c'est moi");
+    console.log("c'est moi "+req.url);
     next();
   } 
   else if(req.headers.host === 'm.peopleandbooks.com')  //if it's a sub-domain
