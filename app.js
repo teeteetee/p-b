@@ -371,7 +371,6 @@ app.get('/',function(req,res) {
               }
             }
           });
-          res.render('indexreg');
         }
    else {
   res.render('index');}
@@ -390,7 +389,21 @@ app.get('/m',function(req,res){
         //res.render('index',{'places':doc});
         if (req.session.mail != undefined && req.session.lgn != undefined)
         //{res.render('indexreg',{'prfname':"Привет, "+req.session.lgn+"!"});}
-        {res.render('mindexreg');}
+        {
+          users.findOne({mail:req.session.mail},function(err,done){
+            if(err){
+              res.render('mindexreg');
+            }
+            else {
+              if(done){
+
+              }
+              else {
+                res.render('mindexreg',{'doc':done.dates,'uid':done.uid});
+              }
+            }
+          });
+        }
    else {
   res.render('mindex');}
   });
