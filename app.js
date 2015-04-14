@@ -380,8 +380,10 @@ app.get('/',function(req,res) {
   console.log(uacheck);
    if (req.session.mail != undefined && req.session.lgn != undefined)
         //{res.render('indexreg',{'prfname':"Привет, "+req.session.lgn+"!"});}
-        { 
+        { console.log(req.session);
           users.findOne({mail:req.session.mail},function(err,done){
+            console.log('-----found-----');
+            console.log(done);
             if(err){
               res.render('indexreg');
             }
