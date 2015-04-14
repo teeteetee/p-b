@@ -233,8 +233,8 @@ head
         .col-xs-6(id='books' style='background-color:rgba(108, 166, 149, 1);height:100%;overflow:auto;')
           .row
             .col-xs-12(style='text-align:center;')
-              h1(style='font-family:high;font-size:200px;font-weight:bold;color:white;') 30 
-               span(style='color:rgba(0, 0, 0, 0.15);') | 20
+              h1(style='font-family:high;font-size:200px;font-weight:bold;color:white;') #{newbooks} 
+               span(style='color:rgba(0, 0, 0, 0.15);') | #{readbooks}
               button(class='btn btn-default addbookbutton' style='border-radius:30px;margin-bottom:20px;border:0px;color:white;background-color:rgba(255, 255, 255, 0.38);' type='button') Добавить книгу
           .row.adding(id='addbook' style='display:none;padding-top:20px;')
             .col-xs-12
@@ -267,8 +267,8 @@ head
         .col-xs-6(id='movies' style='background-color:rgba(0, 0, 0, 0.1);height:100%;overflow:auto;')
           .row
             .col-xs-12(style='text-align:center;')
-              h1(style='font-family:high;font-size:200px;font-weight:bold;color:white;') 45 
-               span(class='alreadym') | 10
+              h1(style='font-family:high;font-size:200px;font-weight:bold;color:white;') #{newmovies} 
+               span(class='alreadym') | #{seenmovies}
               button(class='btn btn-default addmoviebutton' style='border-radius:30px;margin-bottom:20px;border:0px;background-color:rgba(255, 255, 255, 0.38);color:white;' type='button') Добавить фильм
            .row.adding(id='addmovie' style='display:none;padding-top:20px;')
             .col-xs-12
