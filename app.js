@@ -430,7 +430,7 @@ app.get('/m',function(req,res){
                  }
               }
               else {
-                do a mistake template
+                //do a mistake template
                 res.render('emptymindexreg',{'uid':done.uid});
               }
             }
