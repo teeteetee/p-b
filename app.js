@@ -107,6 +107,13 @@ app.post('/addbook',function(req,res){
     ms.trouble =1;
     var vuid = parseInt(req.params.uid);
     var vbooktitle = req.params.booktitle;
+    var vnewbook = req.params.newbook;
+    if(newbook) {
+      newbook = 0;
+    }
+    else {
+      newbook=1;
+    }
     var vauthor = req.params.author;
     var vstar = req.params.star;
     var vattention = req.params.attention;
@@ -133,19 +140,22 @@ app.post('/addbook',function(req,res){
     }
        if(!emptydaycheck){
         // date is empty
-          users.insert({uid:vuid},{$push:{dates:{dateint:fulldate,books:[{author:vauthor,booktitle:vbooktitle,star:vstar,attention:vattention}]}}});
+          users.update({uid:vuid},{$push:{dates:{dateint:fulldate,books:[{newbook:vnewbook,author:vauthor,booktitle:vbooktitle,star:vstar,attention:vattention}]}}});
+          users.update({uid:vuid},{$inc{newbooks:1}});
           ms.trouble=0;
           res.send(ms);
        }
        else {
         var modifieddate = {
+          newbook:vnewbook,
           author:vauthor,
           booktitle:vbooktitle,
           star:vstar,
           attention:vattention};
          var booksarray = getbooksarray(fulldate);
          booksarray.books.push(modifieddate);
-         users.insert({uid:vuid},{$push:{dates:booksarray}});
+         users.update({uid:vuid},{$push:{dates:booksarray}});
+         users.update({uid:vuid},{$inc{newbooks:1}});
          ms.trouble=0;
           res.send(ms);
        }
@@ -277,7 +287,7 @@ app.post('/newuser',function(req,res){
           fulldate = parseInt(fulldate);
           // end of generate date
           var vuid = generateId();
-          users.insert({mail:vmail,uid:vuid,phr:vp,lgn:vu,regdateint:fulldate,regdate:{year:vyear,month:vmonth,day:vday}});
+          users.insert({mail:vmail,uid:vuid,phr:vp,lgn:vu,newbooks:0,readbooks:0,regdateint:fulldate,regdate:{year:vyear,month:vmonth,day:vday}});
           users.findOne({mail:vmail},function(err,docdoc){
             console.log('FOUND AFTER INSERTING NEW USER :'+JSON.stringify(docdoc));
             if (err){
@@ -411,7 +421,7 @@ app.get('/m',function(req,res){
               if(done){
                 console.log(done);
                 if(!done.dates){
-                  res.render('emptymindexreg');
+                  res.render('emptymindexreg',{'uid':done.uid});
                 }
                 else
                   {

@@ -213,13 +213,13 @@ head
     .container( id='maincont' style='background-color:#52CA8F;overflow:auto;height:100%;padding-left:20px;padding-right:0px;padding-bottom:74px;')
       .row
         .col-xs-12(style='text-align:center;')
-          h1(style='font-family:high;font-size:100px;font-weight:bold;color:white;') 30 
-            span(style='color:rgba(0, 0, 0, 0.15);') | 20
+          h1(style='font-family:high;font-size:100px;font-weight:bold;color:white;') 0 
+            span(style='color:rgba(0, 0, 0, 0.15);') | 0
       .row(style='text-align:center;')
         .col-xs-12
           h2 Welcome !
           h3 Add a book by touching + at the bottom of the screen
-          h2 (-:
+          //add a smile here or something
     footer(class='footer')
       .container
         .row(id='addbook' style='display:none;padding-top:20px;background-color:#378961;')
@@ -230,6 +230,10 @@ head
             .form-group
               label(for="exampleInputEmail1" style='color:white;') Автор
               input(type="email" class="form-control" id="author" placeholder="Dostoevsky F.M.")
+            .checkbox
+              label
+                input(type="checkbox" id='newbook' name='newbook') 
+                | Уже прочитал
             .checkbox
               label
                 input(type="checkbox" id='star') 
@@ -252,6 +256,10 @@ head
             .form-group
               label(for="exampleInputEmail1" style='color:white;font-size:15px;') Автор
               input(type="email" class="form-control" id="exampleInputEmail1" placeholder="Dostoevsky F.M.")
+            .checkbox
+              label
+                input(type="checkbox" id='newmovie' name='newmovie') 
+                | Уже посмотрел
             .checkbox
               label
                 input(type="checkbox") 
@@ -345,6 +353,7 @@ head
       var uid = #{uid};
       var star = $('#star').val();
       var attention = $('#author').val();
+      var newbook = $('#newbook').val();
       allowsubmit = 0;
       request = new XMLHttpRequest();
       request.onreadystatechange = function () {
@@ -368,8 +377,8 @@ head
       request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
       request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
       //Most libraries like jQuery/Prototype/Dojo do this
-      console.log("author="+author+"&booktitle="+booktitle+"&star="+star+"&attention="+attention);
-      request.send("author="+author+"&booktitle="+booktitle+"&star="+star+"&attention="+attention+"&uid="uid);
+      console.log("author="+author+"&booktitle="+booktitle+"&star="+star+"&attention="+attention+"&newbook="+newbook);
+      request.send("author="+author+"&booktitle="+booktitle+"&star="+star+"&attention="+attention+"&uid="uid+"&newbook="+newbook);
       }
       
       // AUTHSUBMIT FUNCTION
