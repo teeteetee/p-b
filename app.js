@@ -160,7 +160,7 @@ app.post('/addbook',function(req,res){
     if(!vauthor){
       vauthor = '--';
     }
-    users.update({uid:vuid},{$push:{books:{author:vauthor;booktitle:vbooktitle,newbook:vnewbook,star:vstar,attention:vattention,regdateint:fulldate}});
+    users.update({uid:vuid},{$push:{books:{author:vauthor,booktitle:vbooktitle,newbook:vnewbook,star:vstar,attention:vattention,regdateint:fulldate}});
     ms.trouble=1;
     res.send(ms);
   }
