@@ -249,23 +249,23 @@ app.post('/newuser',function(req,res){
     return re.test(email);
     } 
 
-    function generateId() {
+    function generateId(callback) {
      users.find({},{limit:1,sort:{uid:-1}},function(err,doc){
      if(err){
          console.log('DB ERR WHILE GENERATING ID');
-         return 0;
+         callback(0);
         }
       else {
-       // if(doc.length>0){
-       //     var newid = doc[0].uid;
-       //         newid++;
-       //         console.log('returning uid='+newid);
-       //         return newid;
-       //   }
-       // else {
-       //       console.log('returning uid=1');
-                return 1;
-        //  }
+        if(doc.length>0){
+            var newid = doc[0].uid;
+                newid++;
+                console.log('returning uid='+newid);
+                callback(newid);
+          }
+        else {
+              console.log('returning uid=');
+                callback(1);
+          }
             }
           });
      } // generateId declaration end
@@ -297,13 +297,8 @@ app.post('/newuser',function(req,res){
           var fulldate = vyear+vmonth+vday;
           fulldate = parseInt(fulldate);
           // end of generate date
-          var vuid = generateId();
-          console.log('------------------');
-          console.log(generateId());
-          console.log('------------------');
-          var ttt = blanktest();
-          console.log(ttt);
-          console.log('-----------genersted ID:'+vuid+'--------------');
+          generateId(insert);
+          function insert(vuid) {
           users.insert({mail:vmail,uid:vuid,phr:vp,lgn:vu,newbooks:0,readbooks:0,regdateint:fulldate,regdate:{year:vyear,month:vmonth,day:vday}});
           users.findOne({mail:vmail},function(err,docdoc){
             console.log('FOUND AFTER INSERTING NEW USER :'+JSON.stringify(docdoc));
@@ -325,6 +320,7 @@ app.post('/newuser',function(req,res){
                }
             }
           });
+          }
         }
         else {
            ms.mtext='email exists'
