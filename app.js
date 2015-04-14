@@ -9,7 +9,7 @@ var bcrypt = require('bcrypt');
 
 var mongo = require('mongodb');
 var db = require('monk')('localhost/tav')
-  , users = db.get('users');
+  , users = db.get('users'),insidemsg = db.get('insidemsg');
 // POSTS and OBJECTS BELONGS TO MALESHIN PROJECT DELETE WHEN PUSHING TOPANDVIEWS TO PRODUCTION
 var fs = require('fs-extra');
 
@@ -536,6 +536,76 @@ app.post('/admin/1/:id',function(req,res){
     });}
 });
 
+app.post('/admin/insidemsg/remove',function(req,res){
+  console.log('removing a message');
+  var vmid = parseInt(req.body.mid);
+  var pas = req.body.pas;
+  if (pas != 'withoutthesecurity' || !vmid) {
+    res.redirect('http://recentones.com');
+  }
+  else 
+  { var ms={};
+    ms.trouble=1;
+    ms.mtext = 'db';
+    insidemsg.remove({mid:vmid},function(err,done){
+      if(err){
+        res.send(ms);
+      }
+      else {
+        ms.trouble=0;
+        res.send(ms);
+      }
+    });
+  }
+
+});
+
+app.post('/admin/insidemsg',function(req,res){
+  console.log('creating message;');
+  var vheading = req.body.heading;
+  var vtextbody = req.body.textbody;
+  var d = new Date();
+  var vday = d.getDate().toString();
+  var vmonth = d.getMonth()+1;
+  vmonth = vmonth.toString();
+  var vyear = d.getUTCFullYear().toString();
+  console.log('beginning');
+  if (vday.length===1){
+         vday='0'+vday;
+       }
+  if (vmonth.length===1){
+         vmonth='0'+vmonth;
+       }
+  var vregdateint= vyear+vmonth+vday;
+  vregdateint = parseInt(vregdateint);
+  var ms = {};
+  ms.trouble=1;
+  ms.mtext = 'db';
+  console.log('middle');
+  insidemsg.find({},{limit:1,sort:{mid:-1}},function(err,doc){
+    if(err)
+    {
+      //clap your hands
+      res.send(ms);
+    }
+   else {
+    if(doc.length>0){
+      console.log('end');
+         var newid = doc[0].mid;
+         newid++;
+         console.log(newid);
+         insidemsg.insert({mid: newid,heading: vheading,textbody: vtextbody,regdateint: vregdateint,regdate:{day:vday,month:vmonth,year:vyear}});
+      ms.trouble=0;
+      res.send(ms);
+       }
+       else {
+         insidemsg.insert({mid: 1,heading: vheading,textbody: vtextbody,regdateint: vregdateint,regdate:{day:vday,month:vmonth,year:vyear}});
+         ms.trouble=0;
+      res.send(ms);
+       }
+   }
+  });
+});
 // production error handler
 // no stacktraces leaked to user
 app.use(function(req, res) {
