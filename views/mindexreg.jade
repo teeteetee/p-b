@@ -278,7 +278,9 @@ head
     script.
        var dates = !{doc};
        dates.forEach(function(element,index,array){
+           console.log(element);
            element.books.forEach(function(velement,vindex,varray){
+               console.log(velement);
                $('#insert').append("<h4 style='color:white;>"+velement.booktitle+"</h4>");
             });
         });
