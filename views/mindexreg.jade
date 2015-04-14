@@ -224,7 +224,52 @@ head
       //  .col-xs-12
       //    h4 #{doc}
       //    h3 #{uid}
-    
+    footer(class='footer')
+      .container
+        .row(id='addbook' style='display:none;padding-top:20px;background-color:#378961;')
+          .col-xs-12
+            .form-group
+              label(for="exampleInputEmail1" style='color:white;') Название
+              input(type="email" class="form-control" id="booktitle" placeholder="Crime and punishment")
+            .form-group
+              label(for="exampleInputEmail1" style='color:white;') Автор
+              input(type="email" class="form-control" id="author" placeholder="Dostoevsky F.M.")
+            .checkbox
+              label
+                input(type="checkbox" id='star') 
+                span(class='glyphicon glyphicon-star' style='color:#F2D45C;margin-left:10px;')
+            .checkbox
+              label
+                input(type="checkbox" id='attention') 
+                span(class='glyphicon glyphicon-exclamation-sign' style='color:rgba(255, 255, 255, 0.65);margin-left:10px;')
+            nav
+              ul(class="pager")
+                li(class="previous")
+                  a(style='background-color:#EFAF4F;'id='booksubmitbutton') Add
+                li(class="next")
+                  a( class='addbookbutton' style='background-color:#999;') Close
+        .row(id='addmovie' style='display:none;padding-top:20px;background-color:#99362F;')
+          .col-xs-12
+            .form-group
+              label(for="exampleInputEmail1" style='color:white;font-size:15px;') Название
+              input(type="email" class="form-control" id="exampleInputEmail1" placeholder="Crime and punishment")
+            .form-group
+              label(for="exampleInputEmail1" style='color:white;font-size:15px;') Автор
+              input(type="email" class="form-control" id="exampleInputEmail1" placeholder="Dostoevsky F.M.")
+            .checkbox
+              label
+                input(type="checkbox") 
+                span(class='glyphicon glyphicon-star' style='color:#F2D45C;margin-left:10px;')
+            .checkbox
+              label
+                input(type="checkbox") 
+                span(class='glyphicon glyphicon-exclamation-sign' style='color:rgba(255, 255, 255, 0.65);margin-left:10px;')
+            nav
+              ul(class="pager")
+                li(class="previous")
+                  a(style='background-color:#EFAF4F;') Add
+                li(class="next")
+                  a( class='addbookbutton' style='background-color:#999;') Close
         .row(style='text-align:center;')
           .col-xs-3.addbookbutton
             h1( style='color:white;font-size:40px;padding-top:10px;padding-bottom:10px;margin-top:0px;margin-bottom:0px;') +
