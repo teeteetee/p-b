@@ -416,6 +416,7 @@ app.get('/m',function(req,res){
           users.findOne({mail:req.session.mail},function(err,done){
             if(err){
               //do a mistake template
+              console.log('DB ERR');
               res.render('emptymindexreg',{'uid':done.uid});
             }
             else {
@@ -426,11 +427,13 @@ app.get('/m',function(req,res){
                 }
                 else
                   {
+                    console.log('!DONE.DATES');
                     res.render('mindexreg',{'doc':done.dates,'uid':done.uid});
                  }
               }
               else {
                 //do a mistake template
+                console.log('!DONE');
                 res.render('emptymindexreg',{'uid':done.uid});
               }
             }
