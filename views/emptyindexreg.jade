@@ -213,15 +213,16 @@ head
         left:74px;
         width:100%;
         height:100%;
-        position:fixed;
+        position:absolute;
         text-align:center;
         padding-top:20%;
+        z-index:3000;
       }
       .container {
-        filter:blur(4px);
-        -webkit-filter:blur(4px);
-        -o-filter:blur(4px);
-        -moz-filter:blur(4px);
+        filter:blur(4px) brightness(0.8);
+        -webkit-filter:blur(4px) brightness(0.8);
+        -o-filter:blur(4px) brightness(0.8);
+        -moz-filter:blur(4px) brightness(0.8);
         transition:filter 1s;
       }
   body
@@ -243,79 +244,80 @@ head
     .sidebar(style='width:74px;position:fixed;height:100%;background-color:#1d1d1d;text-align:center;z-index:2000;')
       //img(class="media-object img-circle" src="/bootstrap/images/seo.jpg" style='margin-left:5px;margin-top:30px;width:64px;height:64px;' alt="...")
       span(class='glyphicon glyphicon-align-justify' id='showLeft' style='color:#333;font-size:30px;margin-top:20px;')
-    #welcome
-        h2(style='color:white;') Welcome !
-        h3(style='color:white;') Add a book or a movie
-        button(class='btn' style='border-radius:30px;border:0px;color:white;background-color:rgba(255, 255, 255, 0.38);') Enter
-    .container(style='padding-left:84px;width:100% !important;padding-right:none;')  
-      #heightcheck.row
-        .col-xs-6(id='books' style='background-color:rgba(108, 166, 149, 1);height:100%;overflow:auto;')
-          .row
-            .col-xs-12(style='text-align:center;')
-              h1(style='font-family:high;font-size:200px;font-weight:bold;color:white;') 0 
-               span(style='color:rgba(0, 0, 0, 0.15);') | 0
-              button(class='btn btn-default addbookbutton' style='border-radius:30px;margin-bottom:20px;border:0px;color:white;background-color:rgba(255, 255, 255, 0.38);' type='button') Добавить книгу
-          .row.adding(id='addbook' style='display:none;padding-top:20px;')
-            .col-xs-12
-              .form-group
-                label(for="exampleInputEmail1") Название
-                input(type="email" class="form-control" id="exampleInputEmail1" placeholder="Crime and punishment")
-              .form-group
-                label(for="exampleInputEmail1") Автор
-                input(type="email" class="form-control" id="exampleInputEmail1" placeholder="Dostoevsky F.M.")
-              .checkbox
-                label
-                  input(type="checkbox") 
-                  span(class='glyphicon glyphicon-star' style='color:#F2D45C;margin-left:10px;')
-              .checkbox
-                label
-                  input(type="checkbox") 
-                  span(class='glyphicon glyphicon-exclamation-sign' style='color:rgba(255, 255, 255, 0.65);margin-left:10px;')
-              nav
-                ul(class="pager")
-                  li(class="previous")
-                    a(style='background-color:#EFAF4F;') Add
-                  li(class="next")
-                    a( class='addbookbutton' style='background-color:#999;') Close
-        .col-xs-6(id='movies' style='background-color:rgba(0, 0, 0, 0.1);height:100%;overflow:auto;')
-          .row
-            .col-xs-12(style='text-align:center;')
-              h1(style='font-family:high;font-size:200px;font-weight:bold;color:white;') 0 
-               span(class='alreadym') | 0
-              button(class='btn btn-default addmoviebutton' style='border-radius:30px;margin-bottom:20px;border:0px;background-color:rgba(255, 255, 255, 0.38);color:white;' type='button') Добавить фильм
-           .row.adding(id='addmovie' style='display:none;padding-top:20px;')
-            .col-xs-12
-              .form-group
-                label(for="exampleInputEmail1") Название
-                input(type="email" class="form-control" id="exampleInputEmail1" placeholder="No country for old men")
-              .form-group
-                label(for="exampleInputEmail1") Год
-                input(type="email" class="form-control" id="exampleInputEmail1" placeholder="2007")
-              .checkbox
-                label
-                  input(type="checkbox") 
-                  | Уже посмотрел
-              .checkbox
-                label
-                  input(type="checkbox") 
-                  span(class='glyphicon glyphicon-star' style='color:#F2D45C;margin-left:10px;')
-              .checkbox
-                label
-                  input(type="checkbox") 
-                  span(class='glyphicon glyphicon-exclamation-sign' style='color:rgba(255, 255, 255, 0.65);margin-left:10px;')
-              nav
-                ul(class="pager")
-                  li(class="previous")
-                    a(style='background-color:#EFAF4F;') Add
-                  li(class="next")
-                    a( class='addmoviebutton' style='background-color:#999;') Close
+    #wrap 
+      #welcome
+          h2(style='color:white;') Welcome !
+          h3(style='color:white;') Add a book or a movie
+          button(class='btn' style='border-radius:30px;border:0px;color:white;background-color:rgba(255, 255, 255, 0.38);') Enter
+      .container(style='padding-left:84px;width:100% !important;padding-right:none;')  
+        #heightcheck.row
+          .col-xs-6(id='books' style='background-color:rgba(108, 166, 149, 1);height:100%;overflow:auto;')
+            .row
+              .col-xs-12(style='text-align:center;')
+                h1(style='font-family:high;font-size:200px;font-weight:bold;color:white;') 0 
+                 span(style='color:rgba(0, 0, 0, 0.15);') | 0
+                button(class='btn btn-default addbookbutton' style='border-radius:30px;margin-bottom:20px;border:0px;color:white;background-color:rgba(255, 255, 255, 0.38);' type='button') Добавить книгу
+            .row.adding(id='addbook' style='display:none;padding-top:20px;')
+              .col-xs-12
+                .form-group
+                  label(for="exampleInputEmail1") Название
+                  input(type="email" class="form-control" id="exampleInputEmail1" placeholder="Crime and punishment")
+                .form-group
+                  label(for="exampleInputEmail1") Автор
+                  input(type="email" class="form-control" id="exampleInputEmail1" placeholder="Dostoevsky F.M.")
+                .checkbox
+                  label
+                    input(type="checkbox") 
+                    span(class='glyphicon glyphicon-star' style='color:#F2D45C;margin-left:10px;')
+                .checkbox
+                  label
+                    input(type="checkbox") 
+                    span(class='glyphicon glyphicon-exclamation-sign' style='color:rgba(255, 255, 255, 0.65);margin-left:10px;')
+                nav
+                  ul(class="pager")
+                    li(class="previous")
+                      a(style='background-color:#EFAF4F;') Add
+                    li(class="next")
+                      a( class='addbookbutton' style='background-color:#999;') Close
+          .col-xs-6(id='movies' style='background-color:rgba(0, 0, 0, 0.1);height:100%;overflow:auto;')
+            .row
+              .col-xs-12(style='text-align:center;')
+                h1(style='font-family:high;font-size:200px;font-weight:bold;color:white;') 0 
+                 span(class='alreadym') | 0
+                button(class='btn btn-default addmoviebutton' style='border-radius:30px;margin-bottom:20px;border:0px;background-color:rgba(255, 255, 255, 0.38);color:white;' type='button') Добавить фильм
+             .row.adding(id='addmovie' style='display:none;padding-top:20px;')
+              .col-xs-12
+                .form-group
+                  label(for="exampleInputEmail1") Название
+                  input(type="email" class="form-control" id="exampleInputEmail1" placeholder="No country for old men")
+                .form-group
+                  label(for="exampleInputEmail1") Год
+                  input(type="email" class="form-control" id="exampleInputEmail1" placeholder="2007")
+                .checkbox
+                  label
+                    input(type="checkbox") 
+                    | Уже посмотрел
+                .checkbox
+                  label
+                    input(type="checkbox") 
+                    span(class='glyphicon glyphicon-star' style='color:#F2D45C;margin-left:10px;')
+                .checkbox
+                  label
+                    input(type="checkbox") 
+                    span(class='glyphicon glyphicon-exclamation-sign' style='color:rgba(255, 255, 255, 0.65);margin-left:10px;')
+                nav
+                  ul(class="pager")
+                    li(class="previous")
+                      a(style='background-color:#EFAF4F;') Add
+                    li(class="next")
+                      a( class='addmoviebutton' style='background-color:#999;') Close
              
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
       script.
         $('#welcomebutton').click({
           $('#welcome').fadeOut();
-          $('.container').css({'-webkit-filter':'blur(0px)','-o-filter':'blur(0px)','-moz-filter':'blur(0px)','filter':'blur(0px)'})
+          $('.container').css({'-webkit-filter':'blur(0px) brightness(1)','-o-filter':'blur(0px) brightness(1)','-moz-filter':'blur(0px) brightness(1)','filter':'blur(0px) brightness(1)'})
           });
         $('.addbookbutton').click(function(){
           $('#addbook').slideToggle();
