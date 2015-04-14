@@ -41,7 +41,7 @@ app.use(function(req,res,next){
     lguser = req.session;
     next();}
    else {
-   if(req.session && req.session.lgn){
+   if(req.session.lgn){
      users.findOne({mail:req.session.mail},function(err,user){
       console.log('found user: '+JSON.stringify(user));
       if(err){
@@ -60,6 +60,7 @@ app.use(function(req,res,next){
                 next();}
               else {next();}}
         else {
+          req.session.reset();
           next();
         }
       } 
@@ -328,17 +329,12 @@ app.post('/newuser',function(req,res){
     });
 
 app.post('/check',function(req,res){
-  //CHECK FOR PASSPORT PRIOR TO HOSTEL CHECK, SORT THIS OUT AFTER ALPHA
-  //"LASTIMEONLINE" MUST BE ADDED AFTER ALPHA
   vphr=req.body.phr;
   vlgn=req.body.lgn; // email
   console.log(vphr+" , "+vlgn);
-  //adding a marker to send to client
-  // MARKER MECHANICS IS NOT PRESENT YET , NEEDS TO BE IMPLEMENTED
    var  ms = {};
   ms.trouble=1;
   ms.mtext='db';
-  //end of marker
   users.findOne({mail:vlgn},function(err,confirmed){
     if (err)
       {res.send(ms);}
