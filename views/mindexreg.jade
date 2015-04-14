@@ -302,15 +302,6 @@ head
         });
         $('#login').click(authsubmit);
       //populating view with books
-      var dates = !{doc};
-       dates.forEach(function(element,index,array){
-           console.log(element);
-           element.books.forEach(function(velement,vindex,varray){
-               console.log(velement.booktitle);
-               $('#insert').append("<h4 style='color:white;'>"+velement.booktitle+"</h4>");
-            });
-        });
-       //end of populating
       var counter =0;
         var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
             menuRight = document.getElementById( 'cbp-spmenu-s2' ),
