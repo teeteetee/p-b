@@ -206,10 +206,12 @@ head
     .container( id='maincont' style='background-color:#52CA8F;overflow:auto;height:100%;padding-left:20px;padding-right:0px;padding-bottom:74px;')
       .row
         .col-xs-12(style='text-align:center;')
-          h1(style='font-family:high;font-size:100px;font-weight:bold;color:white;') 30 
-            span(style='color:rgba(0, 0, 0, 0.15);') | 20
-      .row
-        #insert.col-xs-12
+          h1(id='newbooks' style='font-family:high;font-size:100px;font-weight:bold;color:white;') #{newbooks} 
+            span(id='readbooks' style='color:rgba(0, 0, 0, 0.15);') | #{readbooks}
+      #showbooks.row
+        #bookinsert.col-xs-12
+      #showmovies.row(style='display:none;')
+        #bookinsert.col-xs-12
     footer(class='footer')
       .container
         .row(id='addbook' style='display:none;padding-top:20px;background-color:#378961;')
@@ -277,16 +279,23 @@ head
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
     script(src='/js/bootstrap.min.js')
     script.
-      var dates = !{doc};
-      function populate (array)
-       {array.forEach(function(element,index,array){
-                  console.log(element);
-                  element.books.forEach(function(velement,vindex,varray){
-                      console.log(velement.booktitle);
-                      $('#insert').append("<h4 style='color:white;'>"+velement.booktitle+"</h4>");
-                   });
-               });}
-      populate(dates);
+      var bookdates = !{bookdoc};
+      var moviedates = !{moviedoc};
+      function populate (array,target)
+       {
+        if(array){array.forEach(function(element,index,array){
+                          console.log(element);
+                          element.books.forEach(function(velement,vindex,varray){
+                              console.log(velement.booktitle);
+                              $(target).append("<h4 style='color:white;'>"+velement.booktitle+"</h4>");
+                           });
+                       });}
+        else{
+          return
+        }
+     }
+      populate(bookdates,'#bookinsert');
+      populate(moviedates,'#movieinsert');
       // CA5B52 for movies 99362F
       $('.addbookbutton').click(function(){
           if($('#showbooks').hasClass('activebutton'))

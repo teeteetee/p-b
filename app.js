@@ -150,7 +150,7 @@ app.post('/addbook',function(req,res){
        emptydaycheck(scenario1(vuid),scenario2(vuid));
         function scenario1(vuid){
         // date is empty
-          users.update({uid:vuid},{$push:{dates:{dateint:fulldate,books:[{newbook:vnewbook,author:vauthor,booktitle:vbooktitle,star:vstar,attention:vattention}]}}});
+          users.update({uid:vuid},{$push:{bookdates:{dateint:fulldate,books:[{newbook:vnewbook,author:vauthor,booktitle:vbooktitle,star:vstar,attention:vattention}]}}});
           users.update({uid:vuid},{$inc:{newbooks:1}});
           ms.trouble=0;
           res.send(ms);
@@ -165,7 +165,7 @@ app.post('/addbook',function(req,res){
          var booksarray = getbooksarray(fulldate,getdatefromarray);
          function ending (booksarray)
          {booksarray.books.push(modifieddate);
-                  users.update({uid:vuid},{$push:{dates:booksarray}});
+                  users.update({uid:vuid},{$push:{bookdates:booksarray}});
                   users.update({uid:vuid},{$inc:{newbooks:1}});
                   ms.trouble=0;
                    res.send(ms);}
@@ -183,7 +183,7 @@ function getbooksarray (fulldate,callback) {
   }
   else {
     if(done)
-    {var datearray = done.dates;
+    {var datearray = done.bookdates;
      callback(fulldate,datearray,ending);
     }
     else {
@@ -450,7 +450,7 @@ app.get('/m',function(req,res){
                 else
                   {
                     console.log('!DONE.DATES');
-                    res.render('mindexreg',{'doc':JSON.stringify(done.dates),'uid':done.uid});
+                    res.render('mindexreg',{'bookdoc':JSON.stringify(done.bookdates),'moviedoc':JSON.stringify(done.moviedates),'uid':done.uid,'newbooks':done.newbooks,'readbooks':done.readbooks});
                  }
               }
               else {
