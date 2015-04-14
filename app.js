@@ -111,9 +111,9 @@ app.post('/addbook',function(req,res){
   var ms = {};
   ms.trouble =1;
   if (req.session.mail && req.session.lgn ){
-    var vuid = parseInt(req.params.uid);
-    var vbooktitle = req.params.booktitle;
-    var vnewbook = req.params.newbook;
+    var vuid = parseInt(req.body.uid);
+    var vbooktitle = req.body.booktitle;
+    var vnewbook = req.body.newbook;
     if(vnewbook) {
       vnewbook = 0;
     }
@@ -121,9 +121,9 @@ app.post('/addbook',function(req,res){
       vnewbook=1;
     }
     console.log('breakpoint one');
-    var vauthor = req.params.author;
-    var vstar = req.params.star;
-    var vattention = req.params.attention;
+    var vauthor = req.body.author;
+    var vstar = req.body.star;
+    var vattention = req.body.attention;
     console.log('ADDING A BOOK: '+vuid+' '+vbooktitle+' '+vauthor+' '+vstar+' '+vattention);
     var dd= new Date();
     var vday = dd.getDate().toString();
