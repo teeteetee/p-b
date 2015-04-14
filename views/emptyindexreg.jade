@@ -1,0 +1,338 @@
+doctype html(lang='en')
+head
+    meta(charset='utf-8')
+    |     
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    |     
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    |     
+    title P&B
+    // Bootstrap
+    link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    // HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+    // WARNING: Respond.js doesn't work if you view the page via file://
+    //if lt IE 9
+      script(src='https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js')
+      |       
+      script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')     
+    style.
+      @font-face {
+      font-family:roboto-thin;
+      src:url('/bootstrap/fonts/Roboto-Thin.ttf');
+      }
+      @font-face {
+      font-family:high;
+      src: url('/bootstrap/fonts/Attentica.ttf');
+      }
+      body {
+      min-width:768px;
+      font-family:roboto-thin;
+      background-color:#009DC2;
+      }
+      .navbar-nav {
+       float: right;
+      }
+      h1{
+        font-family:roboto-thin;
+      }
+      h2{
+        font-family:roboto-thin;
+      }
+      h3{
+        font-family:roboto-thin;
+      }
+      h4{
+        font-family:roboto-thin;
+      }
+      h5{
+        font-family:roboto-thin;
+      }
+      h6{
+        font-family:roboto-thin;
+      }
+      btn {
+        font-family:roboto-thin;
+      }
+      #showLeft:hover {
+       color:white !important;
+      }
+      .cbp-spmenu {
+        background: #1d1d1d;
+        position: fixed;
+      }
+      
+      .cbp-spmenu h3 {
+        color: skyblue;
+        font-size: 1.9em;
+        padding: 20px;
+        padding-top:27px;
+        margin: 0;
+        font-weight: 300;
+      }
+      
+      .cbp-spmenu a {
+        display: block;
+        color: #999;
+        font-size: 1.1em;
+        font-weight: 300;
+      }
+      
+      .cbp-spmenu a:hover {
+        background: #333;
+        text-decoration:none !important;
+      }
+      
+      .cbp-spmenu a:active {
+        background: #afdefa;
+        color: #47a3da;
+      }
+      .cbp-spmenu-vertical {
+        width: 240px;
+        margin-left:74px;
+        border-left:1px solid #333;
+        height: 100%;
+        top: 0;
+        z-index: 1000;
+      }
+      
+      .cbp-spmenu-vertical a {
+        padding: 1em;
+      }
+      .cbp-spmenu-left {
+        left: -240px;
+      }
+      .cbp-spmenu-left.cbp-spmenu-open {
+        left: 0px;
+      }
+      .cbp-spmenu-push {
+        overflow-x: hidden;
+        position: relative;
+        left: 0;
+      }
+      
+      .cbp-spmenu-push-toright {
+        left: 240px;
+      }
+      
+      .cbp-spmenu-push-toleft {
+        left: -240px;
+      }
+      .cbp-spmenu,
+      .cbp-spmenu-push {
+        -webkit-transition: all 0.3s ease;
+        -moz-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+      }
+      .adding{
+        box-shadow: inset 0px 0px 10px 1px #181818;
+        background-color:#333;
+        color:#999;
+      }
+      .adding input {
+        background-color:#333;
+        color:white;
+      }
+      .previous {
+        background-color:#EFAF4F !important;
+        border:0px;
+        border-radius:30px;
+      }
+      .previous a {
+        color:#623B00 !important;
+      }
+      .next {
+        background-color:#565555 !important;
+      }
+      .next:hover{
+        cursor:pointer
+      }
+      .previous:hover {
+        background-color:#DA8403;
+        color:white;
+        cursor:pointer;
+      }
+      .previous:active {
+        background-color:#DA8403;
+        color:white;
+      }
+      .previous:focus {
+        background-color:#DA8403;
+        color:white;
+      }
+      .pager li>a, .pager li>span {
+      display: inline-block;
+      padding: 5px 14px;
+      border: 0px;
+      border-radius: 30px;
+      }
+      a {
+        color:white !important;
+      }
+      .container {
+        transition: 0.5s -webkit-filter linear;
+      }
+      .navbar-right {
+        float: none !important; 
+      }
+      .navbar-form {
+        padding-top: 6 !important;
+      }
+      input[type="text"], textarea {
+      outline: none;
+      box-shadow:none !important;
+      }
+      .datecl {
+        color:#333;
+      }
+      .yet{
+       color:white;
+      }
+      .alreadyb{
+      color:rgba(0, 0, 0, 0.27);
+      }
+      .alreadym{
+      color:rgba(255, 255, 255, 0.21);
+      }
+      .leftPaddingExtended{
+        padding-left:30px;
+      }
+      textarea:hover, 
+      input:hover, 
+      textarea:active, 
+      input:active, 
+      textarea:focus, 
+      input:focus,
+      button:focus,
+      button:active,
+      button:hover
+      {
+          outline:0px !important;
+          -webkit-appearance:none;
+      }
+  body
+    script.
+      if(screen.width < 414){
+      window.location='http://m.peopleandbooks.com/';
+      }
+    nav(class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1")
+      h3(style='text-align:center;color:orange;') People & Books
+      form(class="navbar-form navbar-right" method='post' action='/srch' id='srch' role="search")
+        .input-group
+           input(type="text" class="form-control" name='searchfield' id='searchfield' style='background-color:#333;color:white;border-color:#333;border-top-left-radius:30px;border-bottom-left-radius:30px;') 
+           span(class='input-group-btn')
+             button(class="btn btn-default" type="submit" id='searchbutton' style='padding-top:9px;padding-bottom:9px;background-color:#333;color:gray;border-color:#333;border-top-right-radius:30px;border-bottom-right-radius:30px;')
+               span(class='glyphicon glyphicon-search') 
+      a(href="#") Настройки
+      a(href='/about') О проекте
+      a(href="/logout") Выйти
+    .sidebar(style='width:74px;position:fixed;height:100%;background-color:#1d1d1d;text-align:center;z-index:2000;')
+      //img(class="media-object img-circle" src="/bootstrap/images/seo.jpg" style='margin-left:5px;margin-top:30px;width:64px;height:64px;' alt="...")
+      span(class='glyphicon glyphicon-align-justify' id='showLeft' style='color:#333;font-size:30px;margin-top:20px;')
+    .container(style='padding-left:84px;width:100% !important;padding-right:none;')  
+      #heightcheck.row
+        .col-xs-6(id='books' style='background-color:rgba(108, 166, 149, 1);height:100%;overflow:auto;')
+          .row
+            .col-xs-12(style='text-align:center;')
+              h1(style='font-family:high;font-size:200px;font-weight:bold;color:white;') 0 
+               span(style='color:rgba(0, 0, 0, 0.15);') | 0
+              button(class='btn btn-default addbookbutton' style='border-radius:30px;margin-bottom:20px;border:0px;color:white;background-color:rgba(255, 255, 255, 0.38);' type='button') Добавить книгу
+          .row.adding(id='addbook' style='display:none;padding-top:20px;')
+            .col-xs-12
+              .form-group
+                label(for="exampleInputEmail1") Название
+                input(type="email" class="form-control" id="exampleInputEmail1" placeholder="Crime and punishment")
+              .form-group
+                label(for="exampleInputEmail1") Автор
+                input(type="email" class="form-control" id="exampleInputEmail1" placeholder="Dostoevsky F.M.")
+              .checkbox
+                label
+                  input(type="checkbox") 
+                  span(class='glyphicon glyphicon-star' style='color:#F2D45C;margin-left:10px;')
+              .checkbox
+                label
+                  input(type="checkbox") 
+                  span(class='glyphicon glyphicon-exclamation-sign' style='color:rgba(255, 255, 255, 0.65);margin-left:10px;')
+              nav
+                ul(class="pager")
+                  li(class="previous")
+                    a(style='background-color:#EFAF4F;') Add
+                  li(class="next")
+                    a( class='addbookbutton' style='background-color:#999;') Close
+          .row(style='text-align:center;padding-right:20px;')
+            .col-xs-12
+              h2 Welcome !
+              h3 Add a book by touching + at the bottom of the screen
+        .col-xs-6(id='movies' style='background-color:rgba(0, 0, 0, 0.1);height:100%;overflow:auto;')
+          .row
+            .col-xs-12(style='text-align:center;')
+              h1(style='font-family:high;font-size:200px;font-weight:bold;color:white;') 0 
+               span(class='alreadym') | 0
+              button(class='btn btn-default addmoviebutton' style='border-radius:30px;margin-bottom:20px;border:0px;background-color:rgba(255, 255, 255, 0.38);color:white;' type='button') Добавить фильм
+           .row.adding(id='addmovie' style='display:none;padding-top:20px;')
+            .col-xs-12
+              .form-group
+                label(for="exampleInputEmail1") Название
+                input(type="email" class="form-control" id="exampleInputEmail1" placeholder="No country for old men")
+              .form-group
+                label(for="exampleInputEmail1") Год
+                input(type="email" class="form-control" id="exampleInputEmail1" placeholder="2007")
+              .checkbox
+                label
+                  input(type="checkbox") 
+                  | Уже посмотрел
+              .checkbox
+                label
+                  input(type="checkbox") 
+                  span(class='glyphicon glyphicon-star' style='color:#F2D45C;margin-left:10px;')
+              .checkbox
+                label
+                  input(type="checkbox") 
+                  span(class='glyphicon glyphicon-exclamation-sign' style='color:rgba(255, 255, 255, 0.65);margin-left:10px;')
+              nav
+                ul(class="pager")
+                  li(class="previous")
+                    a(style='background-color:#EFAF4F;') Add
+                  li(class="next")
+                    a( class='addmoviebutton' style='background-color:#999;') Close
+          .row(style='text-align:center;padding-right:20px;')
+            .col-xs-12
+              h2 Welcome !
+              h3 Add a movie by touching + at the bottom of the screen
+             
+      script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
+      script(async src='/js/bootstrap.min.js')
+      script.
+        $('.addbookbutton').click(function(){
+          $('#addbook').slideToggle();
+          });
+        $('.addmoviebutton').click(function(){
+          $('#addmovie').slideToggle();
+          });
+        var counter =0;
+        var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
+            menuRight = document.getElementById( 'cbp-spmenu-s2' ),
+            showLeft = document.getElementById( 'showLeft' ),
+            showRight = document.getElementById( 'showRight' ),
+            showLeftPush = document.getElementById( 'showLeftPush' ),
+            showRightPush = document.getElementById( 'showRightPush' ),
+            body = document.body;
+        
+        showLeft.onclick = function() {
+          switch(counter)
+            {case(1):
+                         counter=0;
+                         $('#showLeft').removeClass('active' );
+                         $('#cbp-spmenu-s1').removeClass('cbp-spmenu-open' );
+                         $('.container').css('-webkit-filter','brightness(1)');
+                        break;
+                        case(0):
+                          counter=1;
+                          $('#showLeft').addClass('active' );
+                          $('#cbp-spmenu-s1').addClass('cbp-spmenu-open' );
+                          $('.container').css('-webkit-filter','brightness(0.6)');
+                        break;
+                      }
+        };
+        
+        
+      
