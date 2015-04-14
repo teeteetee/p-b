@@ -252,7 +252,7 @@ app.post('/newuser',function(req,res){
     function generateId() {
      users.find({},{limit:1,sort:{pid:-1}},function(err,doc){
      if(err){
-         console.log('DB ERR WHILE GENERATING ID')
+         console.log('DB ERR WHILE GENERATING ID');
          return 0;
         }
       else {
@@ -269,6 +269,10 @@ app.post('/newuser',function(req,res){
             }
           });
      } // generateId declaration end
+
+     function blanktest () {
+      return 1;
+     }
 
     if (validateEmail(vmail) === true) {
     users.find({mail:vmail},function(err,doc){
@@ -296,6 +300,9 @@ app.post('/newuser',function(req,res){
           var vuid = generateId();
           console.log('------------------');
           console.log(generateId());
+          console.log('------------------');
+          var ttt = blanktest();
+          console.log(ttt);
           console.log('-----------genersted ID:'+vuid+'--------------');
           users.insert({mail:vmail,uid:vuid,phr:vp,lgn:vu,newbooks:0,readbooks:0,regdateint:fulldate,regdate:{year:vyear,month:vmonth,day:vday}});
           users.findOne({mail:vmail},function(err,docdoc){
