@@ -70,8 +70,7 @@ head
     nav(class="navbar navbar-inverse navbar-static-top",style='margin-bottom:0px;')
           .container
             .navbar-header
-              a(class="navbar-brand" style='padding:5px;' href="/")
-                img(alt="Logo",src="/bootstrap/images/rl.png",height='40',width='40')
+              a(class="navbar-brand" href="#") People & Books
             .collapse.navbar-collapse#navbar-collapse-9
               ul(class='nav navbar-nav')
                 li(class='active')
@@ -86,13 +85,12 @@ head
       .row(style='padding-top:20px;padding-bottom:20px;text-align:center;')
         .col-xs-12
           form(method='post' action='/drop/users' role='form' )
-        .col-xs-4
-          h5 Drop Users DB
-        .col-xs-4
-          input(type='text',style='margin:1vh;',name='p')
-        .col-xs-4
-          button( class='btn btn-danger' style='border-radius:30px;',type='submit')
-            h5(style='color:#c35;') Drop 
+          .row
+            .col-xs-12
+              input(type='text',style='margin:1vh;',name='p')
+          .row
+            .col-xs-12
+              button( class='btn btn-danger' style='border-radius:30px;',type='submit') Drop 
       .row
         .col-xs-12
           .panel.panel-default
