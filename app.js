@@ -260,11 +260,11 @@ app.post('/newuser',function(req,res){
             var newid = doc[0].uid;
                 newid++;
                 console.log('returning uid='+newid);
-                return newid;
+                return newid
           }
         else {
               console.log('returning uid=1');
-                return 1;
+                return 1
           }
             }
           });
