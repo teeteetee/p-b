@@ -229,6 +229,9 @@ head
       //img(class="media-object img-circle" src="/bootstrap/images/seo.jpg" style='margin-left:5px;margin-top:30px;width:64px;height:64px;' alt="...")
       span(class='glyphicon glyphicon-align-justify' id='showLeft' style='color:#333;font-size:30px;margin-top:20px;')
     .container(style='padding-left:84px;width:100% !important;padding-right:none;')  
+      #welcome(style='width:100%;height:100%;position:fixed;filter:blur(4px);text-align:center;padding-top:20%;')
+        h2 Welcome !
+        h3 Add a book or a movie
       #heightcheck.row
         .col-xs-6(id='books' style='background-color:rgba(108, 166, 149, 1);height:100%;overflow:auto;')
           .row
@@ -258,10 +261,6 @@ head
                     a(style='background-color:#EFAF4F;') Add
                   li(class="next")
                     a( class='addbookbutton' style='background-color:#999;') Close
-          .row(style='text-align:center;padding-right:20px;')
-            .col-xs-12
-              h2 Welcome !
-              h3 Add a book by touching + at the bottom of the screen
         .col-xs-6(id='movies' style='background-color:rgba(0, 0, 0, 0.1);height:100%;overflow:auto;')
           .row
             .col-xs-12(style='text-align:center;')
@@ -294,10 +293,6 @@ head
                     a(style='background-color:#EFAF4F;') Add
                   li(class="next")
                     a( class='addmoviebutton' style='background-color:#999;') Close
-          .row(style='text-align:center;padding-right:20px;')
-            .col-xs-12
-              h2 Welcome !
-              h3 Add a movie by touching + at the bottom of the screen
              
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
