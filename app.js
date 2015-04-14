@@ -261,12 +261,23 @@ app.post('/newuser',function(req,res){
       }
       else {
         if(doc.length === 0)
-        { var now = new Date();
-          var gmonth = now.getMonth();
-          var gyear = now.getUTCFullYear();
-          var gday = now.getDay();
+        { //generate date
+          var dd= new Date();
+          var vday = dd.getDate().toString();
+          if (vday.length===1){
+            vday='0'+vday;
+          }
+          var vmonth = dd.getMonth()+1;
+          vmonth = vmonth.toString();
+          if (vmonth.length===1){
+            vmonth='0'+vmonth;
+          }
+          var vyear = dd.getUTCFullYear().toString();
+          var fulldate = vyear+vmonth+vday;
+          fulldate = parseInt(fulldate);
+          // end of generate date
           var vuid = generateId();
-          users.insert({mail:vmail,uid:vuid,phr:vp,lgn:vu,regdate:{year:gyear,month:gmonth,day:gday}});
+          users.insert({mail:vmail,uid:vuid,phr:vp,lgn:vu,regdateint:fulldate,regdate:{year:vyear,month:vmonth,day:vday}});
           users.findOne({mail:vmail},function(err,docdoc){
             console.log('FOUND AFTER INSERTING NEW USER :'+JSON.stringify(docdoc));
             if (err){
@@ -402,7 +413,10 @@ app.get('/m',function(req,res){
                 if(!done.dates){
                   res.render('emptymindexreg');
                 }
-                  res.render('mindexreg',{'doc':done.dates,'uid':done.uid});
+                else
+                  {
+                    res.render('mindexreg',{'doc':done.dates,'uid':done.uid});
+                 }
               }
               else {
                 res.render('mindexreg');
