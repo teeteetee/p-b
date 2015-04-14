@@ -398,6 +398,7 @@ app.get('/m',function(req,res){
             }
             else {
               if(done){
+                  console.log(done);
                   res.render('mindexreg',{'doc':done.dates,'uid':done.uid});
               }
               else {
