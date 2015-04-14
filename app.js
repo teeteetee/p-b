@@ -147,15 +147,15 @@ app.post('/addbook',function(req,res){
     if(!vauthor){
       vauthor = '--';
     }
-       emptydaycheck(scenario1(vuid),scenario2(vuid));
-        function scenario1(vuid){
+       emptydaycheck(scenario1(vuid),scenario2(vuid),fulldate);
+        function scenario2(vuid){
         // date is empty
           users.update({uid:vuid},{$push:{bookdates:{dateint:fulldate,books:[{newbook:vnewbook,author:vauthor,booktitle:vbooktitle,star:vstar,attention:vattention}]}}});
           users.update({uid:vuid},{$inc:{newbooks:1}});
           ms.trouble=0;
           res.send(ms);
        }
-       function scenario2(vuid) {
+       function scenario1(vuid) {
         var modifieddate = {
           newbook:vnewbook,
           author:vauthor,
@@ -201,7 +201,7 @@ function getdatefromarray(nameKey, myArray,callback){
     }
 }
 
-function emptydaycheck (callback1,callback2) {
+function emptydaycheck (callback1,callback2,fulldate) {
   users.findOne({uid:vuid,dateint:fulldate},function(err,done){
     if (err)
     {
@@ -211,11 +211,18 @@ function emptydaycheck (callback1,callback2) {
     else {
       if(done)
       {
-        //empty
-        callback1;
+        done.bookdates.forEach(function(element,index,array){
+          if(element.dateint === fulldate)
+          {callback1;
+            return;}
+          else {
+            if(index+1 === done.bookdates.length) {
+              callback2;
+            }
+          }
+        });
       }
       else{
-        // date has books
         callback2;
       }
     }
