@@ -273,18 +273,20 @@ head
             h1(style='color:white;font-size:40px;padding-top:10px;padding-bottom:10px;margin-top:0px;margin-bottom:0px;') M
           .col-xs-3
             span(class='glyphicon glyphicon-align-justify ' id='showLeft' style='color:white;font-size:30px;padding-top:13px;')
-    script.
-      var dates = !{doc};
-       dates.forEach(function(element,index,array){
-           console.log(element);
-           element.books.forEach(function(velement,vindex,varray){
-               console.log(velement.booktitle);
-               $('#insert').append("<h4 style='color:white;'>"+velement.booktitle+"</h4>");
-            });
-        });
+    
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
     script(src='/js/bootstrap.min.js')
     script.
+      var dates = !{doc};
+      function populate (array)
+       {array.forEach(function(element,index,array){
+                  console.log(element);
+                  element.books.forEach(function(velement,vindex,varray){
+                      console.log(velement.booktitle);
+                      $('#insert').append("<h4 style='color:white;'>"+velement.booktitle+"</h4>");
+                   });
+               });}
+      populate(dates);
       // CA5B52 for movies 99362F
       $('.addbookbutton').click(function(){
           if($('#showbooks').hasClass('activebutton'))
