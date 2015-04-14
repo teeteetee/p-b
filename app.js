@@ -263,8 +263,8 @@ app.post('/newuser',function(req,res){
                 return newid;
           }
         else {
-              console.log('returning uid=1');
-                return 1;
+              console.log('returning uid=70');
+                return 70;
           }
             }
           });
