@@ -282,7 +282,12 @@ head
       var books = !{books};
       //var movies = !{movies};
       books.forEach(function(element,index,array){$('#insertbooks').append("<h4 style='color:white;'>"+element.booktitle+"</h4>");}
-      // CA5B52 for movies 99362F
+      $('.addbookbutton').click(function(){
+          if($('#showbooks').hasClass('activebutton'))
+          {$('#addbook').slideToggle();}
+          else
+            {$('#addmovie').slideToggle();}
+          });
         $('.addmoviebutton').click(function(){
           $('#addmovie').slideToggle();
           });
