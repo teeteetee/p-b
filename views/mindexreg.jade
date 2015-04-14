@@ -278,8 +278,8 @@ head
     script.
        var dates = !{doc};
        function populate(array) {
-        for(each i in array) {
-          for(each v in i.books){
+        for each(var i in array) {
+          for each(var v in i.books){
             $('#insert').append("<h4 style='color:white;>"+v.booktitle+"</h4>");
           }
 
