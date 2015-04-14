@@ -114,16 +114,28 @@ app.post('/addbook',function(req,res){
     var vuid = parseInt(req.body.uid);
     var vbooktitle = req.body.booktitle;
     var vnewbook = req.body.newbook;
-    if(vnewbook) {
+    if(vnewbook==='on') {
       vnewbook = 0;
     }
     else {
-      vnewbook=1;
+      vnewbook=parseInt(vnewbook);
     }
     console.log('breakpoint one');
     var vauthor = req.body.author;
     var vstar = req.body.star;
+    if(vstar==='on') {
+      vstar = 0;
+    }
+    else {
+      vstar=parseInt(vstar);
+    }
     var vattention = req.body.attention;
+    if(vattention==='on') {
+      vattention = 0;
+    }
+    else {
+      vattention=parseInt(vattention);
+    }
     console.log('ADDING A BOOK: '+vuid+' '+vbooktitle+' '+vauthor+' '+vstar+' '+vattention);
     var dd= new Date();
     var vday = dd.getDate().toString();
@@ -142,92 +154,18 @@ app.post('/addbook',function(req,res){
 
     if(!vbooktitle){
       vbooktitle = '--';
+      //SEND ERROR
     }
     console.log('breakpoint three');
     if(!vauthor){
       vauthor = '--';
     }
-       emptydaycheck(scenario1(vuid),scenario2(vuid),fulldate);
-        function scenario2(vuid){
-        // date is empty
-          users.update({uid:vuid},{$push:{bookdates:{dateint:fulldate,books:[{newbook:vnewbook,author:vauthor,booktitle:vbooktitle,star:vstar,attention:vattention}]}}});
-          users.update({uid:vuid},{$inc:{newbooks:1}});
-          ms.trouble=0;
-          res.send(ms);
-       }
-       function scenario1(vuid) {
-        var modifieddate = {
-          newbook:vnewbook,
-          author:vauthor,
-          booktitle:vbooktitle,
-          star:vstar,
-          attention:vattention};
-         getbooksarray(fulldate,getdatefromarray,ending(booksarray,vuid));
-         function ending (booksarray,vuid)
-         {booksarray.books.push(modifieddate);
-                  users.update({uid:vuid},{$push:{bookdates:booksarray}});
-                  users.update({uid:vuid},{$inc:{newbooks:1}});
-                  ms.trouble=0;
-                   res.send(ms);}
-       }
-  }
-  else {
+    users.update({uid:vuid},{$push:{books:{author:vauthor;booktitle:vbooktitle,newbook:vnewbook,star:vstar,attention:vattention,regdateint:fulldate}});
+    ms.trouble=1;
     res.send(ms);
   }
+       
 });
-
-function getbooksarray (fulldate,callback) {
- users.findOne({uid:vuid},function(err,done){
-  if(err){
-    return 0;
-  }
-  else {
-    if(done)
-    {var datearray = done.bookdates;
-     callback(fulldate,datearray,ending,vuid);
-    }
-    else {
-      return 0;
-    }
-  }
- });
-}
-
-function getdatefromarray(nameKey, myArray,callback,vuid){
-    for (var i=0; i < myArray.length; i++) {
-        if (myArray[i].dateint === nameKey) {
-            callback(myArray[i],vuid);
-        }
-    }
-}
-
-function emptydaycheck (callback1,callback2,fulldate) {
-  users.findOne({uid:vuid,dateint:fulldate},function(err,done){
-    if (err)
-    {
-      console.log('DB ERR emtydaycheck()');
-      return 0;
-    }
-    else {
-      if(done)
-      {
-        done.bookdates.forEach(function(element,index,array){
-          if(element.dateint === fulldate)
-          {callback1;
-            return;}
-          else {
-            if(index+1 === done.bookdates.length) {
-              callback2;
-            }
-          }
-        });
-      }
-      else{
-        callback2;
-      }
-    }
-  });
-}
 
 app.post('/addmovie',function(req,res){
   if (req.session.mail != undefined && req.session.lgn != undefined){
