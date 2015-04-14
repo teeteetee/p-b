@@ -114,11 +114,11 @@ app.post('/addbook',function(req,res){
     var vuid = parseInt(req.params.uid);
     var vbooktitle = req.params.booktitle;
     var vnewbook = req.params.newbook;
-    if(newbook) {
-      newbook = 0;
+    if(vnewbook) {
+      vnewbook = 0;
     }
     else {
-      newbook=1;
+      vnewbook=1;
     }
     console.log('breakpoint one');
     var vauthor = req.params.author;
