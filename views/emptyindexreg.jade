@@ -257,40 +257,42 @@ head
           .col-xs-6(id='books' style='background-color:rgba(108, 166, 149, 1);height:100%;overflow:auto;')
             .row
               .col-xs-12(style='text-align:center;')
-                h1(style='font-family:high;font-size:200px;font-weight:bold;color:white;') 0 
-                 span(style='color:rgba(0, 0, 0, 0.15);') | 0
+                h1(style='font-family:high;font-size:200px;font-weight:bold;color:white;') 30 
+                 span(style='color:rgba(0, 0, 0, 0.15);') | 20
                 button(class='btn btn-default addbookbutton' style='border-radius:30px;margin-bottom:20px;border:0px;color:white;background-color:rgba(255, 255, 255, 0.38);' type='button') Добавить книгу
             .row.adding(id='addbook' style='display:none;padding-top:20px;')
               .col-xs-12
                 .form-group
                   label(for="exampleInputEmail1") Название
-                  input(type="email" class="form-control" id="exampleInputEmail1" placeholder="Crime and punishment")
+                  input(type="email" class="form-control" id="booktitle" placeholder="Crime and punishment")
                 .form-group
                   label(for="exampleInputEmail1") Автор
-                  input(type="email" class="form-control" id="exampleInputEmail1" placeholder="Dostoevsky F.M.")
+                  input(type="email" class="form-control" id="author" placeholder="Dostoevsky F.M.")
                 .checkbox
                   label
-                    input(type="checkbox" id='') 
+                    input(type="checkbox" id='newbook') 
                     | Уже прочитал
                 .checkbox
                   label
-                    input(type="checkbox") 
+                    input(type="checkbox" id='star') 
                     span(class='glyphicon glyphicon-star' style='color:#F2D45C;margin-left:10px;')
                 .checkbox
                   label
-                    input(type="checkbox") 
+                    input(type="checkbox" id='attention') 
                     span(class='glyphicon glyphicon-exclamation-sign' style='color:rgba(255, 255, 255, 0.65);margin-left:10px;')
                 nav
                   ul(class="pager")
                     li(class="previous")
-                      a(style='background-color:#EFAF4F;') Add
+                      a(style='background-color:#EFAF4F;' id='booksubmitbutton') Add
                     li(class="next")
                       a( class='addbookbutton' style='background-color:#999;') Close
+            .row
+              #bookinsert.col-xs-12
           .col-xs-6(id='movies' style='background-color:rgba(0, 0, 0, 0.1);height:100%;overflow:auto;')
             .row
               .col-xs-12(style='text-align:center;')
-                h1(style='font-family:high;font-size:200px;font-weight:bold;color:white;') 0 
-                 span(class='alreadym') | 0
+                h1(style='font-family:high;font-size:200px;font-weight:bold;color:white;') 45 
+                 span(class='alreadym') | 10
                 button(class='btn btn-default addmoviebutton' style='border-radius:30px;margin-bottom:20px;border:0px;background-color:rgba(255, 255, 255, 0.38);color:white;' type='button') Добавить фильм
              .row.adding(id='addmovie' style='display:none;padding-top:20px;')
               .col-xs-12
@@ -302,7 +304,7 @@ head
                   input(type="email" class="form-control" id="exampleInputEmail1" placeholder="2007")
                 .checkbox
                   label
-                    input(type="checkbox") 
+                    input(type="checkbox" id='newmovie') 
                     | Уже посмотрел
                 .checkbox
                   label
@@ -315,10 +317,11 @@ head
                 nav
                   ul(class="pager")
                     li(class="previous")
-                      a(style='background-color:#EFAF4F;') Add
+                      a(style='background-color:#EFAF4F;' id='moviesubmitbutton') Add
                     li(class="next")
                       a( class='addmoviebutton' style='background-color:#999;') Close
-             
+            .row
+              #moviesinsert.col-xs-12
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
       script.
@@ -357,6 +360,65 @@ head
                         break;
                       }
         };
-        
+        var allowsubmit = 1;
+        function booksubmit() {
+        if(!allowsubmit) {
+          return
+        }
+        var author = $('#author').val();
+        if(!author){
+          author='--';
+        }
+        var booktitle = $('#booktitle').val();
+        if(!booktitle) {
+          alert('Specify book title');
+          allowsubmit=1;
+          return
+        }
+        var uid = #{uid};
+        var star = $('#star').val();
+        var attention = $('#author').val();
+        var newbook = $('#newbook').val();
+        allowsubmit = 0;
+        request = new XMLHttpRequest();
+        request.onreadystatechange = function () {
+        var DONE = this.DONE || 4;
+        if (this.readyState === DONE){
+        var index;
+        parsed = JSON.parse(request.responseText);
+        console.log(parsed);
+        if(parsed.trouble === 1)
+        {
+        console.log('TROUBLE === 1');
+        alert('Server is down, try again later.')
+        allowsubmit=1;
+        }
+        else {
+        var bookclass = 'yet';
+        var insert = "<h4 class='"+bookclass+"'' style='color:white;'>"+booktitle+"</h4>";
+        if(newbook!='on')
+        {
+         bookclass='alreadyb'
+        }
+        if(star!='on'&&newbook!='on'){
+          insert+="<span style='color:#F2D45C;margin-left:10px;' class='glyphicon glyphicon-star'></span>";
+        }
+        if(attention!='on'&&newbook==='on'){
+          insert+="<span style='color:rgba(255, 255, 255, 0.65);margin-left:10px;' class='glyphicon glyphicon-exclamation-sign'></span>";
+        }
+        $(insert).prependTo('#bookinsert').hide().slideDown();
+        allowsubmit=1;
+        //window.location = 'http://m.peopleandbooks.com';
+        }
+        }
+        };
+        request.open('POST', '/addbook', true);
+        request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+        request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        //Most libraries like jQuery/Prototype/Dojo do this
+        console.log("author="+author+"&booktitle="+booktitle+"&star="+star+"&attention="+attention);
+        request.send("author="+author+"&booktitle="+booktitle+"&star="+star+"&attention="+attention+"&uid="+uid+"&newbook"+newbook);
+        }
+        $('#booksubmitbutton').click(booksubmit(););
         
       
