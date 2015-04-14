@@ -389,19 +389,13 @@ app.get('/m',function(req,res){
             }
             else {
               if(done){
-                console.log(done);
-                if(!done.dates){
-                  res.render('emptymindexreg',{'uid':done.uid});
-                }
-                else
-                  {
-                    console.log('!DONE.DATES');
-                    if(done.movies)
-                    res.render('mindexreg',{'books':done.books,'movies':done.movies,'uid':done.uid,'newbooks':done.newbooks,'readbooks':done.readbooks,'newmovies':done.newmovies,'seenmovies':done.seenmovies});
+                    
+                    if(done.movies){
+                    res.render('mindexreg',{'books':done.books,'movies':done.movies,'uid':done.uid,'newbooks':done.newbooks,'readbooks':done.readbooks,'newmovies':done.newmovies,'seenmovies':done.seenmovies});}
                     else {
                     res.render('mindexreg',{'books':done.books,'movies':0,'uid':done.uid,'newbooks':done.newbooks,'readbooks':done.readbooks,'newmovies':done.newmovies,'seenmovies':done.seenmovies});
                     }
-                 }
+                 
               }
               else {
                 //do a mistake template
