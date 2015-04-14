@@ -347,13 +347,12 @@ app.get('/',function(req,res) {
             }
             else {
               if(done){
-                if(done.dates)
-                {
-                  res.render('indexreg',{'doc':done.dates,'uid':done.uid});
-                }
-                else {
-                  res.render('emptyindexreg',{'uid':done.uid});
-                }
+                 
+                    if(done.movies){
+                    res.render('indexreg',{'books':JSON.stringify(done.books),'movies':done.movies,'uid':done.uid,'newbooks':done.newbooks,'readbooks':done.readbooks,'newmovies':done.newmovies,'seenmovies':done.seenmovies});}
+                    else {
+                    res.render('indexreg',{'books':JSON.stringify(done.books),'movies':0,'uid':done.uid,'newbooks':done.newbooks,'readbooks':done.readbooks,'newmovies':done.newmovies,'seenmovies':done.seenmovies});
+                    }
               }
               else {
                 res.render('index');
