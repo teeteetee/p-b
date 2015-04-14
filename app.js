@@ -588,6 +588,7 @@ app.post('/drop/users',function(req,res){
      if(req.body.p ===  pp)
      {users.remove({});
      console.log('USERS DB DROPPED FROM '+ req.ip);
+     req.session.reset();
      res.redirect('http://peopleandbooks.com/admax');}
     else {
       res.redirect('http://peopleandbooks.com');
