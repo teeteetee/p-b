@@ -398,7 +398,7 @@ app.get('/',function(req,res) {
                 }
               }
               else {
-                res.render('emptyindexreg',{'uid':done.uid});
+                res.render('index');
               }
             }
           });
