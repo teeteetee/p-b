@@ -216,10 +216,10 @@ head
           h1(style='font-family:high;font-size:100px;font-weight:bold;color:white;') 30 
             span(style='color:rgba(0, 0, 0, 0.15);') | 20
       each date,i in doc
-            each book,q in date
-              .row
-                .col-xs-12
-                  h4(class='alreadyb') #{book.booktitle}
+        each book,q in date
+          .row
+            .col-xs-12
+              h4(class='alreadyb') #{book.booktitle}
       //.row
       //  .col-xs-12
       //    h4 #{doc}
