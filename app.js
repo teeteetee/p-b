@@ -115,10 +115,10 @@ app.post('/addbook',function(req,res){
     var vbooktitle = req.body.booktitle;
     var vnewbook = req.body.newbook;
     if(vnewbook==='on') {
-      vnewbook = 0;
+      vnewbook = 1;
     }
     else {
-      vnewbook=parseInt(vnewbook);
+      vnewbook=0;
     }
     console.log('breakpoint one');
     var vauthor = req.body.author;

@@ -370,6 +370,7 @@ head
       allowsubmit=1;
       }
       else {
+      $('#addbook').slideToggle();
       var bookclass = 'yet';
       var insert = "<h4 class='"+bookclass+"'' style='color:white;'>"+booktitle+"</h4>";
       if(newbook!='on')
@@ -384,13 +385,15 @@ head
       }
       $('#welcome').fadeOut();
       $('#booksrow').slideToggle();
-      if(newbook!='on')
+      if(newbook==='on')
       {var newbooks = parseInt($('#newbooks').text());
             newbooks++;
             $('#newbooks').text(newbooks);}
       else {
         var readbooks = parseInt($('#readbooks').text());
+            console.log(readbooks);
             readbooks++;
+            console.log(readbooks);
             $('#readbooks').text(readbooks);
       }
       $(insert).prependTo('#bookinsert').hide().slideDown();
