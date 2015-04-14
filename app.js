@@ -472,9 +472,23 @@ app.get('/admax',function(req,res){
   
 }
    else {
-   res.render('index');
+   res.render('adminauth');
  }
 
+});
+
+app.post('/admax',function(req,res){
+  var pas = 'christ';
+  var log = 'jesus';
+  var vpas = req.body.vpas;
+  var vlog = req.body.vlog;
+  if(pas === vpas && log === vlog) {
+    req.session.sKK76d = 'porC6S78x0XZP1b2p08zGlq';
+    res.redirect('http://peopleandbooks.com/admax');
+  }
+  else {
+    res.render('adminauth');
+  }
 });
 
 app.get('/admin/userlist',function(req,res){
