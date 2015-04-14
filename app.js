@@ -293,7 +293,7 @@ app.post('/newuser',function(req,res){
           var fulldate = vyear+vmonth+vday;
           fulldate = parseInt(fulldate);
           // end of generate date
-          var vuid = generateId;
+          var vuid = generateId();
           console.log('-----------genersted ID:'+vuid+'--------------');
           users.insert({mail:vmail,uid:vuid,phr:vp,lgn:vu,newbooks:0,readbooks:0,regdateint:fulldate,regdate:{year:vyear,month:vmonth,day:vday}});
           users.findOne({mail:vmail},function(err,docdoc){
