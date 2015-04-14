@@ -386,8 +386,14 @@ app.get('/',function(req,res) {
               res.render('indexreg');
             }
             else {
-              if(done.dates){
-                res.render('indexreg',{'doc':done.dates,'uid':done.uid});
+              if(done){
+                if(done.dates)
+                {
+                  res.render('indexreg',{'doc':done.dates,'uid':done.uid});
+                }
+                else {
+                  res.render('emptyindexreg',{'uid':done.uid});
+                }
               }
               else {
                 res.render('emptyindexreg',{'uid':done.uid});
