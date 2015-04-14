@@ -108,9 +108,9 @@ app.get('/logout',function(req,res){
 
 app.post('/addbook',function(req,res){
   console.log('adding a book');
-  if (req.session.mail != undefined && req.session.lgn != undefined){
-    var ms = {};
-    ms.trouble =1;
+  var ms = {};
+  ms.trouble =1;
+  if (req.session.mail && req.session.lgn ){
     var vuid = parseInt(req.params.uid);
     var vbooktitle = req.params.booktitle;
     var vnewbook = req.params.newbook;
