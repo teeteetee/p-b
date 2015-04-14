@@ -280,7 +280,7 @@ head
     script(src='/js/bootstrap.min.js')
     script.
       var bookdates = !{bookdoc};
-      //var moviedates = !{moviedoc};
+      var moviedates = !{moviedoc};
       function populate (array,target)
        {
         array.forEach(function(element,index,array){
@@ -291,8 +291,10 @@ head
                            });
                        });
       }
-      populate(bookdates,'#bookinsert');
-      //populate(moviedates,'#movieinsert');
+      if(bookdates)
+      {populate(bookdates,'#bookinsert');}
+      if(moviedates)
+      {populate(moviedates,'#movieinsert');}
       // CA5B52 for movies 99362F
       $('.addbookbutton').click(function(){
           if($('#showbooks').hasClass('activebutton'))
