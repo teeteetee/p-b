@@ -250,22 +250,22 @@ app.post('/newuser',function(req,res){
     } 
 
     function generateId() {
-     users.find({},{limit:1,sort:{pid:-1}},function(err,doc){
+     users.find({},{limit:1,sort:{uid:-1}},function(err,doc){
      if(err){
          console.log('DB ERR WHILE GENERATING ID');
          return 0;
         }
       else {
-        if(doc.length>0){
-            var newid = doc[0].uid;
-                newid++;
-                console.log('returning uid='+newid);
-                return newid;
-          }
-        else {
-              console.log('returning uid=70');
-                return 70;
-          }
+       // if(doc.length>0){
+       //     var newid = doc[0].uid;
+       //         newid++;
+       //         console.log('returning uid='+newid);
+       //         return newid;
+       //   }
+       // else {
+       //       console.log('returning uid=1');
+                return 1;
+        //  }
             }
           });
      } // generateId declaration end
