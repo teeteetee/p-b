@@ -283,17 +283,14 @@ head
       //var moviedates = !{moviedoc};
       function populate (array,target)
        {
-        if(array){array.forEach(function(element,index,array){
+        array.forEach(function(element,index,array){
                           console.log(element);
                           element.books.forEach(function(velement,vindex,varray){
                               console.log(velement.booktitle);
                               $(target).append("<h4 style='color:white;'>"+velement.booktitle+"</h4>");
                            });
-                       });}
-        else{
-          return 0;
-        }
-     }
+                       });
+      }
       populate(bookdates,'#bookinsert');
       //populate(moviedates,'#movieinsert');
       // CA5B52 for movies 99362F
