@@ -147,15 +147,15 @@ app.post('/addbook',function(req,res){
     if(!vauthor){
       vauthor = '--';
     }
-       emptydaycheck(scenario1,scenario2);
-        function scenario1(){
+       emptydaycheck(scenario1(vuid),scenario2(vuid));
+        function scenario1(vuid){
         // date is empty
           users.update({uid:vuid},{$push:{dates:{dateint:fulldate,books:[{newbook:vnewbook,author:vauthor,booktitle:vbooktitle,star:vstar,attention:vattention}]}}});
           users.update({uid:vuid},{$inc:{newbooks:1}});
           ms.trouble=0;
           res.send(ms);
        }
-       function scenario2() {
+       function scenario2(vuid) {
         var modifieddate = {
           newbook:vnewbook,
           author:vauthor,
