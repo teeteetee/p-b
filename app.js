@@ -173,7 +173,7 @@ app.post('/addbook',function(req,res){
 function getbooksarray (fulldate) {
  users.findOne({uid:vuid},function(err,done){
   if(err){
-    return 0
+    return 0;
   }
   else {
     if(done)
@@ -181,7 +181,7 @@ function getbooksarray (fulldate) {
      return getdatefromarray(fulldate,datearray)
     }
     else {
-      return 0
+      return 0;
     }
   }
  });
@@ -200,17 +200,17 @@ function emptydaycheck () {
     if (err)
     {
       console.log('DB ERR emtydaycheck()');
-      return 0
+      return 0;
     }
     else {
       if(done)
       {
         //empty
-        return 0
+        return 0;
       }
       else{
         // date has books
-        return 1
+        return 1;
       }
     }
   });
@@ -260,11 +260,11 @@ app.post('/newuser',function(req,res){
             var newid = doc[0].uid;
                 newid++;
                 console.log('returning uid='+newid);
-                return newid
+                return newid;
           }
         else {
               console.log('returning uid=1');
-                return 1
+                return 1;
           }
             }
           });
@@ -476,10 +476,10 @@ app.get('/dropplaces',function(req,res){
 function messagescount () {
   insidemsg.count({},function(err,c){
     if(err) {
-      return 0
+      return 0;
     }
     else {
-      return c
+      return c;
     }
   });
 }
@@ -488,10 +488,10 @@ function getmessages () {
   insidemsg.find({},function(err,doc){
     if (err)
     {
-      return 0
+      return 0;
     }
     else {
-      return doc
+      return doc;
     }
   });
 }
