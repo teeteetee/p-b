@@ -147,26 +147,28 @@ app.post('/addbook',function(req,res){
     if(!vauthor){
       vauthor = '--';
     }
-       if(!emptydaycheck){
+       emptydaycheck(scenario1,scenario2);
+        function scenario1(){
         // date is empty
           users.update({uid:vuid},{$push:{dates:{dateint:fulldate,books:[{newbook:vnewbook,author:vauthor,booktitle:vbooktitle,star:vstar,attention:vattention}]}}});
           users.update({uid:vuid},{$inc:{newbooks:1}});
           ms.trouble=0;
           res.send(ms);
        }
-       else {
+       function scenario2() {
         var modifieddate = {
           newbook:vnewbook,
           author:vauthor,
           booktitle:vbooktitle,
           star:vstar,
           attention:vattention};
-         var booksarray = getbooksarray(fulldate);
-         booksarray.books.push(modifieddate);
-         users.update({uid:vuid},{$push:{dates:booksarray}});
-         users.update({uid:vuid},{$inc:{newbooks:1}});
-         ms.trouble=0;
-          res.send(ms);
+         var booksarray = getbooksarray(fulldate,getdatefromarray);
+         function ending (booksarray)
+         {booksarray.books.push(modifieddate);
+                  users.update({uid:vuid},{$push:{dates:booksarray}});
+                  users.update({uid:vuid},{$inc:{newbooks:1}});
+                  ms.trouble=0;
+                   res.send(ms);}
        }
   }
   else {
@@ -174,7 +176,7 @@ app.post('/addbook',function(req,res){
   }
 });
 
-function getbooksarray (fulldate) {
+function getbooksarray (fulldate,callback) {
  users.findOne({uid:vuid},function(err,done){
   if(err){
     return 0;
@@ -182,7 +184,7 @@ function getbooksarray (fulldate) {
   else {
     if(done)
     {var datearray = done.dates;
-     return getdatefromarray(fulldate,datearray)
+     callback(fulldate,datearray,ending);
     }
     else {
       return 0;
@@ -191,15 +193,15 @@ function getbooksarray (fulldate) {
  });
 }
 
-function getdatefromarray(nameKey, myArray){
+function getdatefromarray(nameKey, myArray,callback){
     for (var i=0; i < myArray.length; i++) {
         if (myArray[i].dateint === nameKey) {
-            return myArray[i];
+            callback(myArray[i]);
         }
     }
 }
 
-function emptydaycheck () {
+function emptydaycheck (callback1,callback2) {
   users.findOne({uid:vuid,dateint:fulldate},function(err,done){
     if (err)
     {
@@ -210,11 +212,11 @@ function emptydaycheck () {
       if(done)
       {
         //empty
-        return 0;
+        callback1;
       }
       else{
         // date has books
-        return 1;
+        callback2;
       }
     }
   });
