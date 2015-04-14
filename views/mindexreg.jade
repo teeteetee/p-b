@@ -215,11 +215,8 @@ head
         .col-xs-12(style='text-align:center;')
           h1(style='font-family:high;font-size:100px;font-weight:bold;color:white;') 30 
             span(style='color:rgba(0, 0, 0, 0.15);') | 20
-      each date,i in doc
-        each book,q in date
-          .row
-            .col-xs-12
-              h4(class='alreadyb') #{book.booktitle}
+      .row
+        #insert.col-xs-12
       //.row
       //  .col-xs-12
       //    h4 #{doc}
@@ -290,6 +287,15 @@ head
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
     script(src='/js/bootstrap.min.js')
     script.
+       var dates = #{doc};
+       function populate(array) {
+        for(let i in array) {
+          for(let v in i){
+            $('#insert').append("<h4 style='color:white;>"+v.booktitle+"</h4>");
+          }
+
+        }
+       }
       // CA5B52 for movies 99362F
       $('.addbookbutton').click(function(){
           if($('#showbooks').hasClass('activebutton'))
