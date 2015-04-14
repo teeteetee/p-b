@@ -1,0 +1,154 @@
+doctype html(lang='en')
+head
+    meta(charset='utf-8')
+    |     
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    |     
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    |     
+    title P&B
+    // Bootstrap
+    link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    // HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+    // WARNING: Respond.js doesn't work if you view the page via file://
+    //if lt IE 9
+      script(src='https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js')
+      |       
+      script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')     
+    style.
+      @font-face {
+      font-family:roboto-thin;
+      src:url('/bootstrap/fonts/Roboto-Thin.ttf');
+      }
+      @font-face {
+      font-family:high;
+      src: url('/bootstrap/fonts/Attentica.ttf');
+      }
+      body {
+      min-width:768px;
+      background-color:#eee;
+      }
+      #header {
+      padding-top:0.5vw;
+      padding-bottom:0.5vw;
+      background-color:gray;
+      }
+      #timeperiod {
+      background-color:#fff;
+      } 
+      .linebelow{
+        border-bottom:1px solid #ddd;
+      }
+      .rl{
+        border-right:1px solid #ddd;
+      }
+      .lightup:hover{
+       background-color:#C8E4E5;
+      }
+      button {
+        border-radius:30px !important;
+      }
+
+  body
+    nav(class="navbar navbar-inverse navbar-static-top",style='margin-bottom:0px;')
+          .container
+            .navbar-header
+              a(class="navbar-brand" href="#") People & Books
+            .collapse.navbar-collapse#navbar-collapse-9
+              ul(class='nav navbar-nav')
+                li(class='active')
+                  a(href='#',style='font-family:high;font-size:20px;letter-spacing:2px;') Админка
+    .container(style='min-height:100vh;')  
+      .row(style='margin-top:10px;margin-bottom:10px;')
+        .col-xs-6
+          .list-group
+            a(href="#",class="list-group-item active") Главная панель 
+            a(href="http://recentones.com/admin/userlist",class="list-group-item") Список пользователей
+              span(class="badge") #{users}
+        .col-xs-6(style='max-height:340px;overflow:auto;')
+          ul(class='list-group', id='insertmessages')
+            li(class='list-group-item active', style='background-color:#b0b0b0;border-color:#999999;') На повестке
+      .row
+        .col-xs-8
+          .panel.panel-default
+            .panel-heading
+              h3(class="panel-title") Добавить пункт в повестку
+            .panel-body
+              .form-group
+                label(for="heading") Заголовок
+                input( class="form-control" id="heading" placeholder="Ударные темпы труда")
+              .form-group
+                label(for="textbody") Сообщение
+                textarea(class="form-control" id="textbody")
+              button(type="button" id='send' class="btn btn-primary") Добавить
+
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js') 
+    script.
+      function postmessage(){
+      var heading = $('#heading').val();
+      var textbody = $('#textbody').val();
+      request = new XMLHttpRequest();
+      request.onreadystatechange = function () {
+      var DONE = this.DONE || 4;
+      if (this.readyState === DONE){
+      parsed = JSON.parse(request.responseText);
+      console.log(parsed);
+      if(parsed.trouble === 1)
+      {
+      alert('На сервере проблемы, звоните айтишнику');
+      }
+      else {
+      //trouble === 0
+        console.log('message posted;');
+        $('#heading').val('');
+        $('#textbody').val('');
+      }
+      }
+      };
+      request.open('POST', '/admin/insidemsg', true);
+      request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+      request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      //Most libraries like jQuery/Prototype/Dojo do this
+      console.log('heading='+heading+'&textbody='+textbody);
+      request.send('heading='+heading+'&textbody='+textbody);
+      }
+
+      function removefn(mid){
+        console.log('in remove');
+      request = new XMLHttpRequest();
+      request.onreadystatechange = function () {
+      var DONE = this.DONE || 4;
+      if (this.readyState === DONE){
+      parsed = JSON.parse(request.responseText);
+      console.log(parsed);
+      if(parsed.trouble === 1)
+      {
+      alert('На сервере проблемы, звоните айтишнику');
+      }
+      else {
+      //trouble === 0
+      eval("$('#removeblock"+mid+"').slideToggle();$('#msg"+mid+"').slideToggle();");
+      eval("$('#msg"+mid+"').remove();");
+      }
+      }
+      };
+      request.open('POST', '/admin/insidemsg/remove', true);
+      request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+      request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      //Most libraries like jQuery/Prototype/Dojo do this
+      request.send('mid='+mid+"&pas=withoutthesecurity");
+      }
+
+      $(document).keypress(function(event){
+      var keycode = (event.keyCode ? event.keyCode : event.which);
+      if(keycode == '13' && $('#heading').val() && $('#textbody').val()){
+        event.preventDefault();
+        postmessage();  
+      }
+      });
+
+      $('#send').click(function(){
+      if ( $('#heading').val() && $('#textbody').val()) {
+          postmessage();
+      }
+      });

@@ -455,6 +455,29 @@ app.get('/dropplaces',function(req,res){
   }
   });
 
+function messagescount () {
+  insidemsg.count({},function(err,c){
+    if(err) {
+      return 0
+    }
+    else {
+      return c
+    }
+  });
+}
+
+function getmessages () {
+  insidemsg.find({},function(err,doc){
+    if (err)
+    {
+      return 0
+    }
+    else {
+      return doc
+    }
+  });
+}
+
 app.get('/admax',function(req,res){
   console.log("CHECKING COOKIES: "+JSON.stringify(req.session)+" "+req.session.lgn);
   var lguser={};
@@ -463,9 +486,18 @@ app.get('/admax',function(req,res){
     var vratingnum;
    users.count({},function(err,c){
     if (err)
-    {}
+    {
+      res.send('DB ERR')
+    }
   else {
-    res.render('admin',{'users':c});
+    if(messagescount)
+    {
+       var messages = getmessages;
+      res.render('admin',{'users':c,'doc':messages});
+     }
+     else {
+      res.render('adminzeromsg',{'users':c});
+     }
 
   }
   });
