@@ -315,7 +315,7 @@ head
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
       script.
-        $('#welcomebutton').click({
+        $('#welcomebutton').click(function(){
           $('#welcome').fadeOut();
           $('.container').css({'-webkit-filter':'blur(0px) brightness(1)','-o-filter':'blur(0px) brightness(1)','-moz-filter':'blur(0px) brightness(1)','filter':'blur(0px) brightness(1)'});
           });
