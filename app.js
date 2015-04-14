@@ -257,11 +257,13 @@ app.post('/newuser',function(req,res){
         }
       else {
         if(doc.length>0){
-            var newid = doc[0].pid;
+            var newid = doc[0].uid;
                 newid++;
+                console.log('returning uid='+newid);
                 return newid;
           }
         else {
+              console.log('returning uid=1');
                 return 1;
           }
             }
