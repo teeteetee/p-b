@@ -276,6 +276,7 @@ head
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
     script(src='/js/bootstrap.min.js')
     script.
+      // CA5B52 for movies 99362F
        var dates = !{doc};
        dates.forEach(function(element,index,array){
            console.log(element);
@@ -284,7 +285,6 @@ head
                $('#insert').append("<h4 style='color:white;'>"+velement.booktitle+"</h4>");
             });
         });
-      // CA5B52 for movies 99362F
       $('.addbookbutton').click(function(){
           if($('#showbooks').hasClass('activebutton'))
           {$('#addbook').slideToggle();}
