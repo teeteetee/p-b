@@ -277,15 +277,18 @@ head
     script(src='/js/bootstrap.min.js')
     script.
        var dates = !{doc};
-       function populate(array) {
-        for each(var i in array) {
-          for each(var v in i.books){
-            $('#insert').append("<h4 style='color:white;>"+v.booktitle+"</h4>");
-          }
-
-        }
-       }
-       populate(dates);
+       dates.forEach(function(element,index,array){
+           element.books.forEach(function(velement,vindex,varray){
+               $('#insert').append("<h4 style='color:white;>"+velement.booktitle+"</h4>");
+            });
+        });
+       //function populate(array) {
+       // for each(var i in array) {
+       //   for each(var v in i.books){
+       //     $('#insert').append("<h4 style='color:white;>"+v.booktitle+"</h4>");
+       //   }
+      // }
+       //}
       // CA5B52 for movies 99362F
       $('.addbookbutton').click(function(){
           if($('#showbooks').hasClass('activebutton'))
