@@ -294,6 +294,8 @@ app.post('/newuser',function(req,res){
           fulldate = parseInt(fulldate);
           // end of generate date
           var vuid = generateId();
+          console.log('------------------');
+          console.log(generateId());
           console.log('-----------genersted ID:'+vuid+'--------------');
           users.insert({mail:vmail,uid:vuid,phr:vp,lgn:vu,newbooks:0,readbooks:0,regdateint:fulldate,regdate:{year:vyear,month:vmonth,day:vday}});
           users.findOne({mail:vmail},function(err,docdoc){
