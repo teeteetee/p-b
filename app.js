@@ -162,7 +162,7 @@ app.post('/addbook',function(req,res){
           booktitle:vbooktitle,
           star:vstar,
           attention:vattention};
-         var booksarray = getbooksarray(fulldate,getdatefromarray,ending(booksarray,vuid));
+         getbooksarray(fulldate,getdatefromarray,ending(booksarray,vuid));
          function ending (booksarray,vuid)
          {booksarray.books.push(modifieddate);
                   users.update({uid:vuid},{$push:{bookdates:booksarray}});
