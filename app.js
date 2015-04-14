@@ -184,7 +184,7 @@ function getbooksarray (fulldate,callback) {
   else {
     if(done)
     {var datearray = done.bookdates;
-     callback(fulldate,datearray,ending);
+     callback(fulldate,datearray,ending,vuid);
     }
     else {
       return 0;
@@ -193,10 +193,10 @@ function getbooksarray (fulldate,callback) {
  });
 }
 
-function getdatefromarray(nameKey, myArray,callback){
+function getdatefromarray(nameKey, myArray,callback,vuid){
     for (var i=0; i < myArray.length; i++) {
         if (myArray[i].dateint === nameKey) {
-            callback(myArray[i]);
+            callback(myArray[i],vuid);
         }
     }
 }
