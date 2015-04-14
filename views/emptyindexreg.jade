@@ -210,16 +210,19 @@ head
           -webkit-appearance:none;
       }
       #welcome{
-        left:84px;
+        left:74px;
         width:100%;
         height:100%;
         position:fixed;
+        text-align:center;
+        padding-top:20%;
+      }
+      .container {
         filter:blur(4px);
         -webkit-filter:blur(4px);
         -o-filter:blur(4px);
         -moz-filter:blur(4px);
-        text-align:center;
-        padding-top:20%;
+        transition:filter 1s;
       }
   body
     script.
@@ -244,6 +247,7 @@ head
       #welcome
         h2 Welcome !
         h3 Add a book or a movie
+        button(class='btn' style='border-radius:30px;border:0px;color:white;background-color:rgba(255, 255, 255, 0.38);') Enter
       #heightcheck.row
         .col-xs-6(id='books' style='background-color:rgba(108, 166, 149, 1);height:100%;overflow:auto;')
           .row
@@ -309,6 +313,10 @@ head
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
       script.
+        $('#welcomebutton').click({
+          $('#welcome').fadeOut();
+          $('.container').css({'-webkit-filter':'blur(0px)','-o-filter':'blur(0px)','-moz-filter':'blur(0px)','filter':'blur(0px)'})
+          });
         $('.addbookbutton').click(function(){
           $('#addbook').slideToggle();
           });
