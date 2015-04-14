@@ -415,7 +415,8 @@ app.get('/m',function(req,res){
            console.log(req.session.mail);
           users.findOne({mail:req.session.mail},function(err,done){
             if(err){
-              res.render('mindexreg');
+              //do a mistake template
+              res.render('emptymindexreg',{'uid':done.uid});
             }
             else {
               if(done){
@@ -429,7 +430,8 @@ app.get('/m',function(req,res){
                  }
               }
               else {
-                res.render('mindexreg');
+                do a mistake template
+                res.render('emptymindexreg',{'uid':done.uid});
               }
             }
           });
