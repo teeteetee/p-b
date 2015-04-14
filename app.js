@@ -161,7 +161,7 @@ app.post('/addbook',function(req,res){
       vauthor = '--';
     }
     users.update({uid:vuid},{$push:{books:{author:vauthor,booktitle:vbooktitle,newbook:vnewbook,star:vstar,attention:vattention,regdateint:fulldate}}});
-    ms.trouble=1;
+    ms.trouble=0;
     res.send(ms);
   }
        
@@ -250,7 +250,7 @@ app.post('/newuser',function(req,res){
           // end of generate date
           generateId(insert);
           function insert(vuid) {
-          users.insert({mail:vmail,uid:vuid,phr:vp,lgn:vu,newbooks:0,readbooks:0,regdateint:fulldate,regdate:{year:vyear,month:vmonth,day:vday}});
+          users.insert({mail:vmail,uid:vuid,phr:vp,lgn:vu,newbooks:0,readbooks:0,newmovies:0,seenmovies:0,regdateint:fulldate,regdate:{year:vyear,month:vmonth,day:vday}});
           users.findOne({mail:vmail},function(err,docdoc){
             console.log('FOUND AFTER INSERTING NEW USER :'+JSON.stringify(docdoc));
             if (err){
@@ -395,7 +395,11 @@ app.get('/m',function(req,res){
                 else
                   {
                     console.log('!DONE.DATES');
-                    res.render('mindexreg',{'bookdoc':JSON.stringify(done.bookdates),'moviedoc':JSON.stringify(done.moviedates),'uid':done.uid,'newbooks':done.newbooks,'readbooks':done.readbooks});
+                    if(done.movies)
+                    res.render('mindexreg',{'books':done.books,'movies':done.movies,'uid':done.uid,'newbooks':done.newbooks,'readbooks':done.readbooks,'newmovies':done.newmovies,'seenmovies':done.seenmovies});
+                    else {
+                    res.render('mindexreg',{'books':done.books,'movies':0,'uid':done.uid,'newbooks':done.newbooks,'readbooks':done.readbooks,'newmovies':done.newmovies,'seenmovies':done.seenmovies});
+                    }
                  }
               }
               else {
