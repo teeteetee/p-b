@@ -450,7 +450,7 @@ app.get('/m',function(req,res){
                 else
                   {
                     console.log('!DONE.DATES');
-                    res.render('mindexreg',{'doc':done.dates,'uid':done.uid});
+                    res.render('mindexreg',{'doc':JSON.stringify(done.dates),'uid':done.uid});
                  }
               }
               else {
