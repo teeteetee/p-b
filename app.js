@@ -37,7 +37,7 @@ app.use(sessions({
 var lguser = {};
 app.use(function(req,res,next){
   console.log("CHECKING COOKIES: "+JSON.stringify(req.session)+" "+req.session.lgn);
-   if(req.session.admin === 1){
+   if(req.session.sKK76d === 'porC6S78x0XZP1b2p08zGlq'){
     lguser = req.session;
     next();}
    else {
@@ -48,7 +48,7 @@ app.use(function(req,res,next){
         next();
       }
       else {
-        if(user.length>0 && user.hostel != 1){
+        if(user.length>0 ){
         lguser = user;
         delete lguser.phr;
         delete lguser._id;
