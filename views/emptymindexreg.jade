@@ -1,0 +1,422 @@
+doctype html(lang='en')
+head
+    meta(charset='utf-8')
+    |     
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    |     
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    |     
+    title P&B
+    // Bootstrap
+    link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    // HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+    // WARNING: Respond.js doesn't work if you view the page via file://
+    //if lt IE 9
+      script(src='https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js')
+      |       
+      script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')     
+    style.
+      @font-face {
+      font-family:roboto-thin;
+      src:url('/bootstrap/fonts/Roboto-Thin.ttf');
+      }
+      @font-face {
+      font-family:high;
+      src: url('/bootstrap/fonts/Attentica.ttf');
+      }
+      body {
+        font-family:roboto-thin;
+      }
+      h1 {
+        font-family:roboto-thin;
+        color:white;
+      }
+      h2 {
+        font-family:roboto-thin;
+        color:white;
+      }
+      h3 {
+        font-family:roboto-thin;
+        color:white;
+      }
+      h4 {
+        font-family:roboto-thin;
+        color:white;
+      }
+      h5 {
+        font-family:roboto-thin;
+        color:white;
+      }
+      h6 {
+        font-family:roboto-thin;
+        color:white;
+      }
+      textarea:hover, 
+      input:hover, 
+      textarea:active, 
+      input:active, 
+      textarea:focus, 
+      input:focus,
+      button:focus,
+      button:active,
+      button:hover
+      {
+          outline:0px !important;
+          -webkit-appearance:none;
+      }
+      nav ul li a {
+        border:0px !important;
+        background-color:rgba(255, 255, 255, 0.26) !important;
+        color:white !important;
+      }
+      .navbar-inverse {
+      background-color: rgba(34, 34, 34, 0.34);
+      border:none;
+      }
+      .navbar-form{
+        margin-left:0px;
+        margin-right:0px;
+        bottom:30px;
+        position:absolute;
+      }
+      .cbp-spmenu {
+        background: #1d1d1d;
+        position: fixed;
+      }
+      
+      .cbp-spmenu h3 {
+        color: indianred;
+        font-size: 1.9em;
+        padding: 20px;
+        padding-top:27px;
+        margin: 0;
+        font-weight: 300;
+      }
+      
+      .cbp-spmenu a {
+        display: block;
+        color: #ddd;
+        font-size: 20px;
+        font-weight: 300;
+      }
+      
+      .cbp-spmenu a:hover {
+        background: #333;
+        text-decoration:none !important;
+      }
+      
+      .cbp-spmenu a:active {
+        background: #afdefa;
+        color: #47a3da;
+      }
+      .cbp-spmenu-vertical {
+        width: 240px;
+        margin-left:74px;
+        border-left:1px solid #333;
+        height: 100%;
+        top: 0;
+        z-index: 1000;
+      }
+      
+      .cbp-spmenu-vertical a {
+        padding: 1em;
+      }
+      .cbp-spmenu-left {
+        left: -315px;
+      }
+      .cbp-spmenu-left.cbp-spmenu-open {
+        left: -74px;
+      }
+      .cbp-spmenu-push {
+        overflow-x: hidden;
+        position: relative;
+        left: 0;
+      }
+      
+      .cbp-spmenu-push-toright {
+        left: 240px;
+      }
+      
+      .cbp-spmenu-push-toleft {
+        left: -240px;
+      }
+      .cbp-spmenu,
+      .cbp-spmenu-push {
+        -webkit-transition: all 0.3s ease;
+        -moz-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+      }
+      .container {
+        transition: 0.5s -webkit-filter linear;
+        transition: background-color 0.5s linear;
+      }
+      .navbar-right {
+        float: none !important; 
+      }
+      footer {
+          position: fixed;
+          bottom: 0;
+          width: 100%;
+          background-color:#333;
+      }
+      input[type="text"], textarea {
+      outline: none;
+      box-shadow:none !important;
+      }
+      .datecl {
+        color:#333;
+      }
+      .yet{
+       color:white;
+      }
+      .alreadyb{
+      color:rgba(0, 0, 0, 0.27);
+      }
+      .alreadym{
+      color:rgba(255, 255, 255, 0.21);
+      }
+      {
+        padding-left:30px;
+      }
+      textarea:hover, 
+      input:hover, 
+      textarea:active, 
+      input:active, 
+      textarea:focus, 
+      input:focus,
+      button:focus,
+      button:active,
+      button:hover
+      {
+          outline:0px !important;
+          -webkit-appearance:none;
+      }
+      #addbook{
+        background-color: #A9A9A9;
+      }
+      .activebutton {
+        background-color:#252525;
+      }
+  body
+    nav(class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1")
+      h3(style='text-align:center;') People & Books
+      // 
+        form(class="navbar-form navbar-right" method='post' action='/srch' id='srch' role="search")
+          .input-group
+             input(type="text" class="form-control" name='searchfield' id='searchfield' style='background-color:#333;color:white;border-color:#333;border-top-left-radius:30px;border-bottom-left-radius:30px;') 
+             span(class='input-group-btn')
+               button(class="btn btn-default" type="submit" id='searchbutton' style='padding-top:9px;padding-bottom:9px;background-color:#333;color:gray;border-color:#333;border-top-right-radius:30px;border-bottom-right-radius:30px;')
+                 span(class='glyphicon glyphicon-search') 
+      a(href="http://m.peopleandbooks.com/settings") Настройки
+      a(href='http://m.peopleandbooks.com/about') О проекте
+      a(href="/logout") Выйти
+    .container( id='maincont' style='background-color:#52CA8F;overflow:auto;height:100%;padding-left:20px;padding-right:0px;padding-bottom:74px;')
+      .row
+        .col-xs-12(style='text-align:center;')
+          h1(style='font-family:high;font-size:100px;font-weight:bold;color:white;') 30 
+            span(style='color:rgba(0, 0, 0, 0.15);') | 20
+      .row
+        .col-xs-12
+          h2 Welcome !
+          h3 Add a book by touching + at the bottom of the screen
+    footer(class='footer')
+      .container
+        .row(id='addbook' style='display:none;padding-top:20px;background-color:#378961;')
+          .col-xs-12
+            .form-group
+              label(for="exampleInputEmail1" style='color:white;') Название
+              input(type="email" class="form-control" id="booktitle" placeholder="Crime and punishment")
+            .form-group
+              label(for="exampleInputEmail1" style='color:white;') Автор
+              input(type="email" class="form-control" id="author" placeholder="Dostoevsky F.M.")
+            .checkbox
+              label
+                input(type="checkbox" id='star') 
+                span(class='glyphicon glyphicon-star' style='color:#F2D45C;margin-left:10px;')
+            .checkbox
+              label
+                input(type="checkbox" id='attention') 
+                span(class='glyphicon glyphicon-exclamation-sign' style='color:rgba(255, 255, 255, 0.65);margin-left:10px;')
+            nav
+              ul(class="pager")
+                li(class="previous")
+                  a(style='background-color:#EFAF4F;' id='booksubmitbutton') Add
+                li(class="next")
+                  a( class='addbookbutton' style='background-color:#999;') Close
+        .row(id='addmovie' style='display:none;padding-top:20px;background-color:#99362F;')
+          .col-xs-12
+            .form-group
+              label(for="exampleInputEmail1" style='color:white;font-size:15px;') Название
+              input(type="email" class="form-control" id="exampleInputEmail1" placeholder="Crime and punishment")
+            .form-group
+              label(for="exampleInputEmail1" style='color:white;font-size:15px;') Автор
+              input(type="email" class="form-control" id="exampleInputEmail1" placeholder="Dostoevsky F.M.")
+            .checkbox
+              label
+                input(type="checkbox") 
+                span(class='glyphicon glyphicon-star' style='color:#F2D45C;margin-left:10px;')
+            .checkbox
+              label
+                input(type="checkbox") 
+                span(class='glyphicon glyphicon-exclamation-sign' style='color:rgba(255, 255, 255, 0.65);margin-left:10px;')
+            nav
+              ul(class="pager")
+                li(class="previous")
+                  a(style='background-color:#EFAF4F;') Add
+                li(class="next")
+                  a( class='addbookbutton' style='background-color:#999;') Close
+        .row(style='text-align:center;')
+          .col-xs-3.addbookbutton
+            h1( style='color:white;font-size:40px;padding-top:10px;padding-bottom:10px;margin-top:0px;margin-bottom:0px;') +
+          .col-xs-3.activebutton( id='showbooks')
+            h1(style='color:white;font-size:40px;padding-top:10px;padding-bottom:10px;margin-top:0px;margin-bottom:0px;') B
+          .col-xs-3(id='showmovies')
+            h1(style='color:white;font-size:40px;padding-top:10px;padding-bottom:10px;margin-top:0px;margin-bottom:0px;') M
+          .col-xs-3
+            span(class='glyphicon glyphicon-align-justify ' id='showLeft' style='color:white;font-size:30px;padding-top:13px;')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
+    script(src='/js/bootstrap.min.js')
+    script.
+      // CA5B52 for movies 99362F
+      $('.addbookbutton').click(function(){
+          if($('#showbooks').hasClass('activebutton'))
+          {$('#addbook').slideToggle();}
+          else
+            {$('#addmovie').slideToggle();}
+          });
+        $('.addmoviebutton').click(function(){
+          $('#addmovie').slideToggle();
+          });
+      $('#shownav').click(function(){
+          $('#shownav').fadeOut();
+          $('#nav').fadeIn();
+          });
+      $('#showmovies').click(function(){
+         $('#maincont').css('background-color','#CA5B52');
+         $('.activebutton').removeClass('activebutton');
+         $('#showmovies').addClass('activebutton');
+        });
+      $('#showbooks').click(function(){
+         $('#maincont').css('background-color','#52CA8F');
+         $('.activebutton').removeClass('activebutton');
+         $('#showbooks').addClass('activebutton');
+        });
+        $('#login').click(authsubmit);
+      var counter =0;
+        var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
+            menuRight = document.getElementById( 'cbp-spmenu-s2' ),
+            showLeft = document.getElementById( 'showLeft' ),
+            showRight = document.getElementById( 'showRight' ),
+            body = document.body;
+        
+        showLeft.onclick = function() {
+          switch(counter)
+            {case(1):
+                         counter=0;
+                         $('#showLeft').removeClass('active' );
+                         $('#cbp-spmenu-s1').removeClass('cbp-spmenu-open' );
+                         $('.container').css('-webkit-filter','brightness(1)');
+                        break;
+                        case(0):
+                          counter=1;
+                          $('#showLeft').addClass('active' );
+                          $('#cbp-spmenu-s1').addClass('cbp-spmenu-open' );
+                          $('.container').css('-webkit-filter','brightness(0.6)');
+                        break;
+                      }
+        };
+      // BOOK SUBMIT FUNCTION
+      var allowsubmit = 1;
+      function booksubmit() {
+      if(!allowsubmit) {
+        return
+      }
+      var author = $('#author').val();
+      if(!author){
+        author='--';
+      }
+      var booktitle = $('#booktitle').val();
+      if(!booktitle) {
+        alert('Specify book title');
+        allowsubmit=1;
+        return
+      }
+      var uid = #{uid};
+      var star = $('#star').val();
+      var attention = $('#author').val();
+      allowsubmit = 0;
+      request = new XMLHttpRequest();
+      request.onreadystatechange = function () {
+      var DONE = this.DONE || 4;
+      if (this.readyState === DONE){
+      var index;
+      parsed = JSON.parse(request.responseText);
+      console.log(parsed);
+      if(parsed.trouble === 1)
+      {
+      console.log('TROUBLE === 1');
+      alert('Server is down, try again later.')
+      allowsubmit=1;
+      }
+      else {
+      window.location = 'http://m.peopleandbooks.com';
+      }
+      }
+      };
+      request.open('POST', '/addbook', true);
+      request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+      request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      //Most libraries like jQuery/Prototype/Dojo do this
+      console.log("author="+author+"&booktitle="+booktitle+"&star="+star+"&attention="+attention);
+      request.send("author="+author+"&booktitle="+booktitle+"&star="+star+"&attention="+attention+"&uid="uid);
+      }
+      
+      // AUTHSUBMIT FUNCTION
+      var allowauth = 1;
+      function authsubmit() {
+      allowauth = 0;
+      var vlgn = $('#vlgn').val();
+      var vphr = $('#vphr').val();
+      console.log(vlgn +" , "+vphr);
+      request = new XMLHttpRequest();
+      request.onreadystatechange = function () {
+      var DONE = this.DONE || 4;
+      if (this.readyState === DONE){
+      var index;
+      parsed = JSON.parse(request.responseText);
+      console.log(parsed);
+      if(parsed.trouble === 1)
+      {
+      console.log('TROUBLE === 1');
+      switch (parsed.mtext){
+      case('db'):
+      $('#message').empty();
+      $('#message').append("<h5 style='color:#fc454e;'>Sorry, omething is slightly off with the DB, try again in a couple of minutes or contact support</h5>");
+      allowauth = 1;
+      break;
+      case('wrong pas'):
+      $('#message').empty();
+      $('#message').append("<h5 style='color:#fc454e;'>Wrong password</h5>");
+      allowauth = 1;
+      break;
+      case('wronguser'):
+      $('#message').empty();
+      $('#message').append("<h5 style='color:#fc454e;'>Wrong email</h5>");
+      allowauth =1;
+      break;
+      }}
+      else {
+      window.location = 'http://peopleandbooks.com';
+      }
+      }
+      };
+      request.open('POST', '/check', true);
+      request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+      request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      //Most libraries like jQuery/Prototype/Dojo do this
+      request.send("phr="+vphr+"&lgn="+vlgn);
+      }
+      $('#booksubmitbutton').click(function(){
+
+        });
+           
