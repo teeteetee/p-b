@@ -407,7 +407,7 @@ res.render('settings');
 
 
 app.get('/m',function(req,res){
-        //res.render('index',{'places':doc});
+        console.log('---------going to render midexes----------');
         if (req.session.mail != undefined && req.session.lgn != undefined)
         //{res.render('indexreg',{'prfname':"Привет, "+req.session.lgn+"!"});}
         {
