@@ -107,6 +107,7 @@ app.get('/logout',function(req,res){
 });
 
 app.post('/addbook',function(req,res){
+  console.log('adding a book');
   if (req.session.mail != undefined && req.session.lgn != undefined){
     var ms = {};
     ms.trouble =1;
@@ -119,6 +120,7 @@ app.post('/addbook',function(req,res){
     else {
       newbook=1;
     }
+    console.log('breakpoint one');
     var vauthor = req.params.author;
     var vstar = req.params.star;
     var vattention = req.params.attention;
@@ -129,6 +131,7 @@ app.post('/addbook',function(req,res){
       vday='0'+vday;
     }
     var vmonth = dd.getMonth()+1;
+    console.log('breakpoint two');
     vmonth = vmonth.toString();
     if (vmonth.length===1){
       vmonth='0'+vmonth;
@@ -140,6 +143,7 @@ app.post('/addbook',function(req,res){
     if(!vbooktitle){
       vbooktitle = '--';
     }
+    console.log('breakpoint three');
     if(!author){
       author = '--';
     }
