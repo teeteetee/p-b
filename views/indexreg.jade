@@ -258,48 +258,8 @@ head
                     a(style='background-color:#EFAF4F;') Add
                   li(class="next")
                     a( class='addbookbutton' style='background-color:#999;') Close
-          each date,i in doc
-            each book,q in date
-             .row.leftPaddingExtended
-               .col-xs-3
-                 h4(class='datecl') 12.05.2015
-               .col-xs-9
-                 h4(class='alreadyb') Ф.М. Достоевский "Идиот"
-          .row.leftPaddingExtended
-            .col-xs-9.col-xs-offset-3
-              h4(class='alreadyb') Д. Перетолчин "Мировые войны и мировые элиты"
-                span(class='glyphicon glyphicon-star' style='color:#F2D45C;margin-left:10px;')
-          .row.leftPaddingExtended
-            .col-xs-9.col-xs-offset-3
-              h4(class='alreadyb') Ф.М. Достоевский "Идиот"
-          .row.leftPaddingExtended
-            .col-xs-9.col-xs-offset-3
-              h4(class='yet') Ф.М. Достоевский "Идиот"
-                span(class='glyphicon glyphicon-exclamation-sign' style='color:rgba(255, 255, 255, 0.65);margin-left:10px;')
-          .row.leftPaddingExtended
-            .col-xs-3
-              h4(class='datecl') 12.05.2015
-            .col-xs-9
-              h4(class='alreadyb') Ф.М. Достоевский "Идиот"
-                span(class='glyphicon glyphicon-star' style='color:#F2D45C;margin-left:10px;')
-          .row.leftPaddingExtended
-            .col-xs-3
-              h4(class='datecl') 12.05.2015
-            .col-xs-9
-              h4(class='alreadyb') Ф.М. Достоевский "Идиот"
-          .row.leftPaddingExtended
-            .col-xs-9.col-xs-offset-3
-              h4(class='yet') Ф.М. Достоевский "Идиот"
-          .row.leftPaddingExtended
-            .col-xs-9.col-xs-offset-3
-              h4(class='yet') Ф.М. Достоевский "Идиот"
-                span(class='glyphicon glyphicon-exclamation-sign' style='color:rgba(255, 255, 255, 0.65);margin-left:10px;')
-          .row.leftPaddingExtended
-            .col-xs-9.col-xs-offset-3
-              h4(class='yet') Ф.М. Достоевский "Идиот"
-          .row.leftPaddingExtended
-            .col-xs-9.col-xs-offset-3
-              h4(class='yet') Ф.М. Достоевский "Идиот"
+          .row
+            #insertbooks.col-xs-12
         .col-xs-6(id='movies' style='background-color:rgba(0, 0, 0, 0.1);height:100%;overflow:auto;')
           .row
             .col-xs-12(style='text-align:center;')
@@ -332,49 +292,19 @@ head
                     a(style='background-color:#EFAF4F;') Add
                   li(class="next")
                     a( class='addmoviebutton' style='background-color:#999;') Close
-          .row.leftPaddingExtended
-            .col-xs-3
-              h4(class='datecl') 12.05.2015
-            .col-xs-9
-              h4(class='yet') Ф.М. Достоевский "Идиот"
-          .row.leftPaddingExtended
-            .col-xs-9.col-xs-offset-3
-              h4(class='alreadym') Ф.М. Достоевский "Идиот"
-          .row.leftPaddingExtended
-            .col-xs-9.col-xs-offset-3
-              h4(class='alreadym') Ф.М. Достоевский "Идиот"
-                span(class='glyphicon glyphicon-star' style='color:#F2D45C;margin-left:10px;')
-          .row.leftPaddingExtended
-            .col-xs-9.col-xs-offset-3
-              h4(class='yet') Ф.М. Достоевский "Идиот"
-          .row.leftPaddingExtended
-            .col-xs-3
-              h4(class='datecl') 12.05.2015
-            .col-xs-9
-              h4(class='alreadym') Ф.М. Достоевский "Идиот"
-                span(class='glyphicon glyphicon-star' style='color:#F2D45C;margin-left:10px;')
-          .row.leftPaddingExtended
-            .col-xs-3
-              h4(class='datecl') 12.05.2015
-            .col-xs-9
-              h4(class='yet') Ф.М. Достоевский "Идиот"
-            .row.leftPaddingExtended
-              .col-xs-9.col-xs-offset-3
-                h4(class='alreadym') Ф.М. Достоевский "Идиот"
-            .row.leftPaddingExtended
-              .col-xs-9.col-xs-offset-3
-                h4(class='yet') Ф.М. Достоевский "Идиот"
-                  span(class='glyphicon glyphicon-exclamation-sign' style='color:rgba(255, 255, 255, 0.65);margin-left:10px;')
-            .row.leftPaddingExtended
-              .col-xs-9.col-xs-offset-3
-                h4(class='alreadym') Ф.М. Достоевский "Идиот"
-            .row.leftPaddingExtended
-              .col-xs-9.col-xs-offset-3
-                h4(class='alreadym') Ф.М. Достоевский "Идиот"
-             
+          .row
+            #insermovies.col-xs-12
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
       script.
+        var dates = !{doc};
+        dates.forEach(function(element,index,array){
+           console.log(element);
+           element.books.forEach(function(velement,vindex,varray){
+               console.log(velement.booktitle);
+               $('#insertbooks').append("<h4 style='color:white;'>"+velement.booktitle+"</h4>");
+            });
+        });
         $('.addbookbutton').click(function(){
           $('#addbook').slideToggle();
           });
