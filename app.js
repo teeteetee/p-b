@@ -144,8 +144,8 @@ app.post('/addbook',function(req,res){
       vbooktitle = '--';
     }
     console.log('breakpoint three');
-    if(!author){
-      author = '--';
+    if(!vauthor){
+      vauthor = '--';
     }
        if(!emptydaycheck){
         // date is empty
