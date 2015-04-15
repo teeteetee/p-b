@@ -37,12 +37,12 @@ app.use(sessions({
 
 var lguser = {};
 app.use(function(req,res,next){
-  console.log("CHECKING COOKIES: "+JSON.stringify(req.session)+" "+req.session.lgn);
+  console.log("CHECKING COOKIES: "+JSON.stringify(req.session)+" "+req.session.mail);
    if(req.session.sKK76d === 'porC6S78x0XZP1b2p08zGlq'){
     lguser = req.session;
     next();}
    else {
-   if(req.session.lgn){
+   if(req.session.mail){
      users.findOne({mail:req.session.mail},function(err,user){
       console.log('found user: '+JSON.stringify(user));
       if(err){
@@ -278,12 +278,12 @@ app.post('/newuser',function(req,res){
 
 app.post('/check',function(req,res){
   vphr=req.body.phr;
-  vmail=req.body.mail; // email
-  console.log(vphr+" , "+vmail);
+  vlgn=req.body.lgn; // email
+  console.log(vphr+" , "+vlgn);
    var  ms = {};
   ms.trouble=1;
   ms.mtext='db';
-  users.findOne({mail:vmail},function(err,confirmed){
+  users.findOne({mail:vlgn},function(err,confirmed){
     if (err)
       {res.send(ms);}
     else 
