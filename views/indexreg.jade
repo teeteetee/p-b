@@ -220,6 +220,9 @@ head
       label {
         color:white;
       }
+      btn{
+        margin:10px;
+      }
   body
     script.
       if(screen.width < 414){
@@ -325,16 +328,24 @@ head
                {
                 popbookclass='alreadyb';
                }
-               var popinsert = "<h4 class='"+popbookclass+"'>"+element.booktitle;
+               var popinsert = "<class='row' onclick='openmodpanel("+element.bid+")' id='book"+element.bid+"'><div class='col-xs-12'><h4 class='"+popbookclass+"'>"+element.booktitle;
                if(element.star===1&&element.newbook===0){
                  popinsert+="<span style='color:#F2D45C;margin-left:10px;' class='glyphicon glyphicon-star'></span>";
                }
                if(element.attention===1&&element.newbook===1){
                  popinsert+="<span style='color:rgba(255, 255, 255, 0.65);margin-left:10px;' class='glyphicon glyphicon-exclamation-sign'></span>";
                }
-               popinsert+="</h4>";
+               popinsert+="</h4></div></div><div class='row modpanel' id='modbook"+element.bid+"' style='display:none;background-color:#333;'><div class='col-xs-12'>";
+               if(newbook){
+                popinsert+="<button class='btn btn-primary' type='button'>Прочитана</button><button class='btn btn-danger' type='button'>Удалить</button>";
+               }
+               popinsert+="<button class='btn btn-danger' type='button'>Удалить</button>";
                $('#bookinsert').prepend(popinsert);
             });
+        function openmodpanel(bid) {
+          $('.modpanel').slideToggle();
+         eval("$('#modbookrow"+bid+"').slideToggle();");
+        }
         $('.addbookbutton').click(function(){
           if($('#addmovie').css('display') === 'block')
           {

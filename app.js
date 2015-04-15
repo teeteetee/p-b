@@ -143,14 +143,22 @@ app.post('/addbook',function(req,res){
     if(!vauthor){
       vauthor = '--';
     }
-    users.update({uid:vuid},{$push:{books:{author:vauthor,booktitle:vbooktitle,newbook:vnewbook,star:vstar,attention:vattention,regdateint:fulldate}}});
-    if(vnewbook)
-    {users.update({uid:vuid},{$inc:{newbooks:1}});}
-    else {
-      users.update({uid:vuid},{$inc:{readbooks:1}});
-    }
-    ms.trouble=0;
-    res.send(ms);
+    users.findOne({uid:vuid},function(err,doc){
+      if(err) {
+        res.send(ms);
+      }
+      else {
+        var vbid = doc.totalbooks+1;
+            users.update({uid:vuid},{$push:{books:{bid:vbid;author:vauthor,booktitle:vbooktitle,newbook:vnewbook,star:vstar,attention:vattention,regdateint:fulldate}}});
+            if(vnewbook)
+            {users.update({uid:vuid},{$inc:{newbooks:1,totalbooks:1}});}
+            else {
+              users.update({uid:vuid},{$inc:{readbooks:1,totalbooks:1}});
+            }
+            ms.trouble=0;
+            res.send(ms);
+           }
+    });
   }
     else {
       res.send(ms);
@@ -241,7 +249,7 @@ app.post('/newuser',function(req,res){
           generateId(insert);
           function insert(vuid) {
             //lgn:vu
-          users.insert({mail:vmail,uid:vuid,phr:vp,newbooks:0,readbooks:0,newmovies:0,seenmovies:0,regdateint:fulldate,regdate:{year:vyear,month:vmonth,day:vday}});
+          users.insert({mail:vmail,uid:vuid,phr:vp,totalbooks:0,totalmoviews:0;newbooks:0,readbooks:0,newmovies:0,seenmovies:0,regdateint:fulldate,regdate:{year:vyear,month:vmonth,day:vday}});
           users.findOne({mail:vmail},function(err,docdoc){
             console.log('FOUND AFTER INSERTING NEW USER :'+JSON.stringify(docdoc));
             if (err){
