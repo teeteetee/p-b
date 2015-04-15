@@ -152,7 +152,9 @@ app.post('/addbook',function(req,res){
     ms.trouble=0;
     res.send(ms);
   }
-       
+    else {
+      res.send(ms);
+    }   
 });
 
 app.post('/addmovie',function(req,res){
