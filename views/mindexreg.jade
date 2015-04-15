@@ -410,7 +410,7 @@ head
       request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
       request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
       //Most libraries like jQuery/Prototype/Dojo do this
-      console.log("author="+author+"&booktitle="+booktitle+"&star="+star+"&attention="+attention);
+      console.log("author="+author+"&booktitle="+booktitle+"&star="+star+"&attention="+attention+"&uid="+uid+"&newbook="+newbook);
       request.send("author="+author+"&booktitle="+booktitle+"&star="+star+"&attention="+attention+"&uid="+uid+"&newbook="+newbook);
       }
       
