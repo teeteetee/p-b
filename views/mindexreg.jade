@@ -387,6 +387,9 @@ head
         $("#checkbox").prop("newbook", false);
         $("#checkbox").prop("star", false);
         $("#checkbox").prop("attention", false);
+      var newbooksval = $('#newbooks').text();
+      newbooksval++;
+      $('#newbooks').text(newbooksval);
       var bookclass = 'yet';
       var insert = "<h4 class='"+bookclass+"'' style='color:white;'>"+booktitle;
       if(newbook!='on')
