@@ -211,17 +211,12 @@ head
           outline:0px !important;
           -webkit-appearance:none;
       }
-      #bookinsert{
-        padding-left:40px;
-      }
-      #moviewinsert {
-        padding-left:40px;
-      }
       label {
         color:white;
       }
       btn{
         margin:10px;
+        border-radius:30px;
       }
   body
     script.
@@ -335,11 +330,11 @@ head
                if(element.attention===1&&element.newbook===1){
                  popinsert+="<span style='color:rgba(255, 255, 255, 0.65);margin-left:10px;' class='glyphicon glyphicon-exclamation-sign'></span>";
                }
-               popinsert+="</h4></div></div><div class='row modpanel' id='modbook"+element.bid+"' style='display:none;background-color:#333;'><div class='col-xs-12'>";
+               popinsert+="</h4></div></div><div class='row modpanel' id='modbook"+element.bid+"' style='text-alig:center;display:none;background-color:#333;'><div class='col-xs-12'>";
                if(newbook){
-                popinsert+="<button class='btn btn-primary' type='button'>Прочитана</button><button class='btn btn-danger' type='button'>Удалить</button>";
+                popinsert+="<button class='btn btn-primary' type='button'>Прочитана</button>";
                }
-               popinsert+="<button class='btn btn-danger' type='button'>Удалить</button>";
+               popinsert+="<button class='btn btn-danger' type='button'>Удалить</button></div</div>";
                $('#bookinsert').prepend(popinsert);
             });
         function openmodpanel(bid) {
