@@ -304,7 +304,21 @@ head
         var books = !{books};
         var movies = !{movies};
         books.forEach(function(element,index,array){
-               $('#bookinsert').append("<h4 style='color:white;'>"+element.booktitle+"</h4>");
+               //$('#bookinsert').append("<h4 style='color:white;'>"+element.booktitle+"</h4>");
+               var popbookclass = 'yet';
+               var popinsert = "<h4 class='"+popbookclass+"'' style='color:white;'>"+booktitle;
+               if(newbook!=1)
+               {
+                bookclass='alreadyb'
+               }
+               if(star===1&&newbook===0){
+                 popinsert+="<span style='color:#F2D45C;margin-left:10px;' class='glyphicon glyphicon-star'></span>";
+               }
+               if(attention===1&&newbook===1){
+                 popinsert+="<span style='color:rgba(255, 255, 255, 0.65);margin-left:10px;' class='glyphicon glyphicon-exclamation-sign'></span>";
+               }
+               popinsert+="</h4>";
+               $('#bookinsert').prepend(insert);
             });
         $('.addbookbutton').click(function(){
           $('#addbook').slideToggle();
@@ -372,7 +386,7 @@ head
         }
         else {
         var bookclass = 'yet';
-        var insert = "<h4 class='"+bookclass+"'' style='color:white;'>"+booktitle+"</h4>";
+        var insert = "<h4 class='"+bookclass+"'' style='color:white;'>"+booktitle;
         if(newbook!='on')
         {
          bookclass='alreadyb'
@@ -383,6 +397,7 @@ head
         if(attention!='on'&&newbook==='on'){
           insert+="<span style='color:rgba(255, 255, 255, 0.65);margin-left:10px;' class='glyphicon glyphicon-exclamation-sign'></span>";
         }
+        insert+="</h4>";
         $(insert).prependTo('#bookinsert').hide().slideDown();
         allowsubmit=1;
         //window.location = 'http://m.peopleandbooks.com';
