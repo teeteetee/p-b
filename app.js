@@ -149,7 +149,7 @@ app.post('/addbook',function(req,res){
       }
       else {
         var vbid = doc.totalbooks+1;
-            users.update({uid:vuid},{$push:{books:{bid:vbid;author:vauthor,booktitle:vbooktitle,newbook:vnewbook,star:vstar,attention:vattention,regdateint:fulldate}}});
+            users.update({uid:vuid},{$push:{books:{bid:vbid,author:vauthor,booktitle:vbooktitle,newbook:vnewbook,star:vstar,attention:vattention,regdateint:fulldate}}});
             if(vnewbook)
             {users.update({uid:vuid},{$inc:{newbooks:1,totalbooks:1}});}
             else {
