@@ -165,6 +165,42 @@ app.post('/addbook',function(req,res){
     }   
 });
 
+app.post('/modbook',function(req,res){
+  var ms={};
+  ms.trouble=1;
+  var rem = parseInt(req.body.rem);
+  var vuid = parseInt(req.body.uid);
+  var vbid = parseInt(req.body.bid);
+  console.log('rem: '+rem+',vuid: '+vuid+', vbid: '+vbid);
+  users.findOne({uid:vuid},function(err,doc){
+    if(err){
+       ms.mtext='db';
+       res.send(ms);
+    }
+    else {
+      doc.books.forEach(function(element,index,array){
+        if(element.bid===vbid) {
+          if(rem){
+           doc.books.splice(index, 1);
+           users.update({uid:vuid},{books:doc.books});
+           ms.trouble=0;
+           res.send(ms);
+           console.log('removed a book;');
+          }
+          else {
+           element.newbook=0;
+           users.update({uid:vuid},{books:doc.books});
+           ms.trouble=0;
+           res.send(ms); 
+           console.log('chanhed books property');
+          }
+        }
+      });
+    }
+  });
+});
+
+
 app.post('/addmovie',function(req,res){
   if (req.session.mail != undefined && req.session.lgn != undefined){
     var vuid = parseInt(req.params.uid);
