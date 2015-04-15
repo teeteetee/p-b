@@ -371,6 +371,11 @@ head
       }
       else {
       $('#addbook').slideToggle();
+       $('#author').val('');
+        $('#booktitle').val('');
+        $("#checkbox").prop("newbook", false);
+        $("#checkbox").prop("star", false);
+        $("#checkbox").prop("attention", false);
       var bookclass = 'yet';
       var insert = "<h4 class='"+bookclass+"'' style='color:white;'>"+booktitle+"</h4>";
       if(newbook!='on')
