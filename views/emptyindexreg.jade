@@ -260,7 +260,7 @@ head
           button(class='btn' id='welcomebutton' style='border-radius:30px;border:0px;color:white;background-color:rgba(255, 255, 255, 0.38);') Enter
       .container(style='padding-left:84px;width:100% !important;padding-right:none;')  
         #heightcheck.row
-          .col-xs-6(id='books' style='background-color:rgba(108, 166, 149, 1);height:100%;overflow:auto;')
+          .col-xs-6(id='books' style='background-color:#52CA8F;height:100%;overflow:auto;')
             .row
               .col-xs-12(style='text-align:center;')
                 h1(style='font-family:high;font-size:200px;font-weight:bold;color:white;') 0
@@ -281,11 +281,13 @@ head
                 .checkbox
                   label
                     input(type="checkbox" id='star') 
-                    span(class='glyphicon glyphicon-star' style='color:#F2D45C;margin-left:10px;')
+                    span(class='glyphicon glyphicon-star' style='color:#F2D45C;margin-right:10px;')
+                    | Книга понравилась
                 .checkbox
                   label
                     input(type="checkbox" id='attention') 
-                    span(class='glyphicon glyphicon-exclamation-sign' style='color:rgba(255, 255, 255, 0.65);margin-left:10px;')
+                    span(class='glyphicon glyphicon-exclamation-sign' style='color:rgba(255, 255, 255, 0.65);margin-right:10px;')
+                    | Прочитать скорее
                 nav
                   ul(class="pager")
                     li(class="previous")
@@ -294,7 +296,7 @@ head
                       a( class='addbookbutton' style='background-color:#999;') Close
             .row
               #bookinsert.col-xs-12
-          .col-xs-6(id='movies' style='background-color:rgba(0, 0, 0, 0.1);height:100%;overflow:auto;')
+          .col-xs-6(id='movies' style='background-color:#CA5B52;height:100%;overflow:auto;')
             .row
               .col-xs-12(style='text-align:center;')
                 h1(style='font-family:high;font-size:200px;font-weight:bold;color:white;') 0 
@@ -315,11 +317,13 @@ head
                 .checkbox
                   label
                     input(type="checkbox") 
-                    span(class='glyphicon glyphicon-star' style='color:#F2D45C;margin-left:10px;')
+                    span(class='glyphicon glyphicon-star' style='color:#F2D45C;margin-right:10px;')
+                    | Фильм понравился
                 .checkbox
                   label
                     input(type="checkbox") 
-                    span(class='glyphicon glyphicon-exclamation-sign' style='color:rgba(255, 255, 255, 0.65);margin-left:10px;')
+                    span(class='glyphicon glyphicon-exclamation-sign' style='color:rgba(255, 255, 255, 0.65);margin-right:10px;')
+                    | Посмотреть скорее
                 nav
                   ul(class="pager")
                     li(class="previous")
