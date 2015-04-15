@@ -306,19 +306,19 @@ head
         books.forEach(function(element,index,array){
                //$('#bookinsert').append("<h4 style='color:white;'>"+element.booktitle+"</h4>");
                var popbookclass = 'yet';
-               var popinsert = "<h4 class='"+popbookclass+"'' style='color:white;'>"+booktitle;
+               var popinsert = "<h4 class='"+popbookclass+"'' style='color:white;'>"+element.booktitle;
                if(newbook!=1)
                {
-                bookclass='alreadyb'
+                bookclass='alreadyb';
                }
-               if(star===1&&newbook===0){
+               if(element.star===1&&element.newbook===0){
                  popinsert+="<span style='color:#F2D45C;margin-left:10px;' class='glyphicon glyphicon-star'></span>";
                }
-               if(attention===1&&newbook===1){
+               if(element.attention===1&&element.newbook===1){
                  popinsert+="<span style='color:rgba(255, 255, 255, 0.65);margin-left:10px;' class='glyphicon glyphicon-exclamation-sign'></span>";
                }
                popinsert+="</h4>";
-               $('#bookinsert').prepend(insert);
+               $('#bookinsert').prepend(popinsert);
             });
         $('.addbookbutton').click(function(){
           $('#addbook').slideToggle();
