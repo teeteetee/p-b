@@ -377,15 +377,15 @@ head
         $("#checkbox").prop("star", false);
         $("#checkbox").prop("attention", false);
       var bookclass = 'yet';
-      var insert = "<h4 class='"+bookclass+"'' style='color:white;'>"+booktitle+"</h4>";
-      if(newbook!='on')
+      if(newbook===0)
       {
-       bookclass='alreadyb'
+       bookclass='alreadyb';
       }
-      if(star!='on'&&newbook!='on'){
+      var insert = "<h4 class='"+bookclass+"'' style='color:white;'>"+booktitle;
+      if(star===1&&newbook===0){
         insert+="<span style='color:#F2D45C;margin-left:10px;' class='glyphicon glyphicon-star'></span>";
       }
-      if(attention!='on'&&newbook==='on'){
+      if(attention===1&&newbook===1){
         insert+="<span style='color:rgba(255, 255, 255, 0.65);margin-left:10px;' class='glyphicon glyphicon-exclamation-sign'></span>";
       }
       $('#welcome').fadeOut();
@@ -401,6 +401,7 @@ head
             console.log(readbooks);
             $('#readbooks').text(readbooks);
       }
+      insert+="</h4>";
       $(insert).prependTo('#bookinsert').hide().slideDown();
       allowsubmit=1;
       }
