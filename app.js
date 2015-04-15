@@ -131,6 +131,7 @@ app.post('/addbook',function(req,res){
       vstar=parseInt(vstar);
     }
     var vattention = req.body.attention;
+    console.log('attention: '+vattention);
     if(vattention==='on') {
       vattention = 0;
     }
