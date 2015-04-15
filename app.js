@@ -344,7 +344,7 @@ app.get('/',function(req,res) {
                     }
               }
               else {
-                res.render('emptyindexreg');
+                res.render('emptyindexreg',{'uid':done.uid});
               }
             }
           });
