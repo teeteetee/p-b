@@ -324,7 +324,7 @@ app.get('/',function(req,res) {
   var userAgent=req.headers['user-agent'];
   var uacheck = userAgent.indexOf("iPhone") != -1 ;
   console.log(uacheck);
-   if (req.session.mail != undefined && req.session.lgn != undefined)
+   if (req.session.mail != undefined && req.session.mail != undefined)
         //{res.render('indexreg',{'prfname':"Привет, "+req.session.lgn+"!"});}
         { console.log(req.session);
           users.findOne({mail:req.session.mail},function(err,done){
