@@ -144,7 +144,11 @@ app.post('/addbook',function(req,res){
       vauthor = '--';
     }
     users.update({uid:vuid},{$push:{books:{author:vauthor,booktitle:vbooktitle,newbook:vnewbook,star:vstar,attention:vattention,regdateint:fulldate}}});
-    users.update({uid:vuid},{$inc:{newbooks:1}});
+    if(vnewbook)
+    {users.update({uid:vuid},{$inc:{newbooks:1}});}
+    else {
+      users.update({uid:vuid},{$inc:{readbooks:1}});
+    }
     ms.trouble=0;
     res.send(ms);
   }
