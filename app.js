@@ -174,9 +174,9 @@ app.get('/register',function(req,res){
 app.post('/newuser',function(req,res){
     //THOSE USERS ARE NORMAL PEOPLE, HOSTEL STUF WILL BE REGISTERED THROUGH ADMIN
     var vmail = req.body.mail; 
-    var vu = req.body.u; //NEEDED TO WRITE COMMENTS, DONT ASK AT REGISTRATION
-    if (vu.length === 0 )
-      {vu = 0;}
+    //var vu = req.body.u; //NEEDED TO WRITE COMMENTS, DONT ASK AT REGISTRATION
+    //if (vu.length === 0 )
+    //  {vu = 0;}
     var vp = bcrypt.hashSync(req.body.p,bcrypt.genSaltSync(10));
     var ms = {};
     ms.trouble=1;
@@ -238,7 +238,8 @@ app.post('/newuser',function(req,res){
           // end of generate date
           generateId(insert);
           function insert(vuid) {
-          users.insert({mail:vmail,uid:vuid,phr:vp,lgn:vu,newbooks:0,readbooks:0,newmovies:0,seenmovies:0,regdateint:fulldate,regdate:{year:vyear,month:vmonth,day:vday}});
+            //lgn:vu
+          users.insert({mail:vmail,uid:vuid,phr:vp,newbooks:0,readbooks:0,newmovies:0,seenmovies:0,regdateint:fulldate,regdate:{year:vyear,month:vmonth,day:vday}});
           users.findOne({mail:vmail},function(err,docdoc){
             console.log('FOUND AFTER INSERTING NEW USER :'+JSON.stringify(docdoc));
             if (err){
@@ -277,12 +278,12 @@ app.post('/newuser',function(req,res){
 
 app.post('/check',function(req,res){
   vphr=req.body.phr;
-  vlgn=req.body.lgn; // email
-  console.log(vphr+" , "+vlgn);
+  vmail=req.body.mail; // email
+  console.log(vphr+" , "+vmail);
    var  ms = {};
   ms.trouble=1;
   ms.mtext='db';
-  users.findOne({mail:vlgn},function(err,confirmed){
+  users.findOne({mail:vmail},function(err,confirmed){
     if (err)
       {res.send(ms);}
     else 
