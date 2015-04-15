@@ -350,6 +350,11 @@ head
         };
       // BOOK SUBMIT FUNCTION
       var allowsubmit = 1;
+      function valmonitor() {
+        console.log('newbook: '+$('#newbook').val());
+        console.log('star: '+$('#star').val());
+        console.log('attention: '+$('#attention').val());
+      }
       function booksubmit() {
       if(!allowsubmit) {
         return
@@ -386,9 +391,9 @@ head
         $('#addbook').slideToggle();
         $('#author').val('');
         $('#booktitle').val('');
-        $("#checkbox").prop("newbook", false);
-        $("#checkbox").prop("star", false);
-        $("#checkbox").prop("attention", false);
+        $("#newbook").prop("newbook", false);
+        $("#star").prop("star", false);
+        $("#attention").prop("attention", false);
       if(newbook!='on')
       {newbookscount++;
       var newvals =" "+newbookscount+" <span id='readbooks' style='color:rgba(0, 0, 0, 0.15);')> | "+readbookscount+"</span>";
@@ -471,5 +476,5 @@ head
       //Most libraries like jQuery/Prototype/Dojo do this
       request.send("phr="+vphr+"&lgn="+vlgn);
       }
-      $('#booksubmitbutton').click(booksubmit);
+      $('#booksubmitbutton').click(valmonitor);
            
