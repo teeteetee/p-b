@@ -323,16 +323,14 @@ head
           $('#nav').fadeIn();
           });
       $('#showmovies').click(function(){
-         $('#booksrow').fadeOut();
+         $('#booksrow').fadeOut('400',function(){$('#moviesrow').fadeIn();});
          $('#maincont').css('background-color','#CA5B52');
-         $('#moviesrow').fadeIn();
          $('.activebutton').removeClass('activebutton');
          $('#showmovies').addClass('activebutton');
         });
       $('#showbooks').click(function(){
-         $('#moviesrow').fadeOut();
+         $('#moviesrow').fadeOut('400',function(){$('#booksrow').fadeIn();});
          $('#maincont').css('background-color','#52CA8F');
-         $('#booksrow').fadeIn();
          $('.activebutton').removeClass('activebutton');
          $('#showbooks').addClass('activebutton');
         });
