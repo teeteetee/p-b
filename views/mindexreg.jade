@@ -279,6 +279,8 @@ head
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
     script(src='/js/bootstrap.min.js')
     script.
+      var newbookscount = #{newbooks};
+      var readbookscount = #{readbooks};
       var books = !{books};
       //var movies = !{movies};
       books.forEach(function(element,index,array){
@@ -387,15 +389,22 @@ head
         $("#checkbox").prop("newbook", false);
         $("#checkbox").prop("star", false);
         $("#checkbox").prop("attention", false);
-      var newbooksval = $('#newbooks').text();
-      newbooksval++;
-      $('#newbooks').text(newbooksval);
+      if(newbook!='on')
+      {newbookscount++;
+      var newvals =" "+newbookscount+" <span id='readbooks' style='color:rgba(0, 0, 0, 0.15);')> | "+readbookscount+"</span>";
+      $('#newbooks').text(newvals);
+      }
+      else {
+        readbookscount++;
+      var newvals =" "+newbookscount+" <span id='readbooks' style='color:rgba(0, 0, 0, 0.15);')> | "+readbookscount+"</span>";
+      $('#newbooks').text(newvals);
+      }
       var bookclass = 'yet';
-      var insert = "<h4 class='"+bookclass+"'' style='color:white;'>"+booktitle;
       if(newbook!='on')
       {
-       bookclass='alreadyb'
+       bookclass='alreadyb';
       }
+      var insert = "<h4 class='"+bookclass+"'' style='color:white;'>"+booktitle;
       if(star!='on'&&newbook!='on'){
         insert+="<span style='color:#F2D45C;margin-left:10px;' class='glyphicon glyphicon-star'></span>";
       }
