@@ -351,9 +351,9 @@ head
       // BOOK SUBMIT FUNCTION
       var allowsubmit = 1;
       function valmonitor() {
-        console.log('newbook: '+$('#newbook').checked);
-        console.log('star: '+$('#star').checked);
-        console.log('attention: '+$('#attention').checked);
+        console.log('newbook: '+$('#newbook').is(':checked'));
+        console.log('star: '+$('#star').is(':checked'));
+        console.log('attention: '+$('#attention').is(':checked'));
       }
       function booksubmit() {
       if(!allowsubmit) {
