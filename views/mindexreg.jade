@@ -392,12 +392,12 @@ head
       if(newbook!='on')
       {newbookscount++;
       var newvals =" "+newbookscount+" <span id='readbooks' style='color:rgba(0, 0, 0, 0.15);')> | "+readbookscount+"</span>";
-      $('#newbooks').text(newvals);
+      $('#newbooks').empty().append(newvals);
       }
       else {
         readbookscount++;
       var newvals =" "+newbookscount+" <span id='readbooks' style='color:rgba(0, 0, 0, 0.15);')> | "+readbookscount+"</span>";
-      $('#newbooks').text(newvals);
+      $('#newbooks').empty().append(newvals);
       }
       var bookclass = 'yet';
       if(newbook!='on')

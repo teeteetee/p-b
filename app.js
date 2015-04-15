@@ -115,10 +115,13 @@ app.post('/addbook',function(req,res){
     var vuid = parseInt(req.body.uid);
     var vbooktitle = req.body.booktitle;
     var vnewbook = req.body.newbook;
+    console.log('vnewbook :'+vnewbook);
     if(vnewbook==='on') {
       vnewbook = 1;
+      console.log('vnewbook :'+vnewbook);
     }
     else {
+      console.log('vnewbook :'+vnewbook);
       vnewbook=0;
     }
     console.log('breakpoint one');
