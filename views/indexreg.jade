@@ -336,9 +336,17 @@ head
                $('#bookinsert').prepend(popinsert);
             });
         $('.addbookbutton').click(function(){
+          if($('#addmovie').css('display') === 'block')
+          {
+            $('#addmovie').slideToggle();
+          }
           $('#addbook').slideToggle();
           });
         $('.addmoviebutton').click(function(){
+          if($('#addbook').css('display') === 'block')
+          {
+            $('#addbook').slideToggle();
+          }
           $('#addmovie').slideToggle();
           });
         var counter =0;
