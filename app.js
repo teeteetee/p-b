@@ -119,7 +119,7 @@ app.post('/addbook',function(req,res){
     var vauthor = req.body.author;
     var vstar = parseInt(req.body.star);
     var vattention = parseInt(req.body.attention);
-    console.log('ADDING A BOOK: vuid'+vuid+' ,booktitle:'+vbooktitle+' ,author: '+vauthor+' ,star: '+vstar+' ,attention '+vattention+', newbook'+newbook);
+    console.log('ADDING A BOOK: vuid'+vuid+' ,booktitle:'+vbooktitle+' ,author: '+vauthor+' ,star: '+vstar+' ,attention '+vattention+', newbook'+vnewbook);
     var dd= new Date();
     var vday = dd.getDate().toString();
     if (vday.length===1){
