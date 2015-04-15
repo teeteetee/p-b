@@ -323,12 +323,20 @@ head
           $('#nav').fadeIn();
           });
       $('#showmovies').click(function(){
+         if($('#addbook').css('display') === 'block')
+         {
+          $('#addbook').slideToggle();
+         }
          $('#booksrow').fadeOut('400',function(){$('#moviesrow').fadeIn();});
          $('#maincont').css('background-color','#CA5B52');
          $('.activebutton').removeClass('activebutton');
          $('#showmovies').addClass('activebutton');
         });
       $('#showbooks').click(function(){
+        if($('#addmovie').css('display') === 'block')
+         {
+          $('#addmovie').slideToggle();
+         }
          $('#moviesrow').fadeOut('400',function(){$('#booksrow').fadeIn();});
          $('#maincont').css('background-color','#52CA8F');
          $('.activebutton').removeClass('activebutton');
