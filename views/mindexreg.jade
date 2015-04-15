@@ -205,17 +205,21 @@ head
       a(href="http://peopleandbooks.com/logout") Выйти
     .container( id='maincont' style='background-color:#52CA8F;overflow:auto;height:100%;padding-left:20px;padding-right:0px;padding-bottom:74px;')
       #booksrow.row
-        #bookinsert.col-xs-12
+        .col-xs-12
           .row
             .col-xs-12(style='text-align:center;')
               h1(id='newbooks' style='font-family:high;font-size:100px;font-weight:bold;color:white;padding-right:20px;') #{newbooks} 
                 span(id='readbooks' class='alreadyb') | #{readbooks}
+          .row
+            #bookinsert.col-xs-12
       #moviesrow.row(style='display:none;')
-        #bookinsert.col-xs-12
+        .col-xs-12
           .row
             .col-xs-12(style='text-align:center;')
               h1(id='newbooks' style='font-family:high;font-size:100px;font-weight:bold;color:white;padding-right:20px;') #{newmovies} 
                 span(id='readbooks' class='alreadym') | #{seenmovies}
+          .row
+            #movieinsert.col-xs-12
     footer(class='footer')
       .container
         .row(id='addbook' style='display:none;padding-top:20px;background-color:#378961;')
