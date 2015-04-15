@@ -221,9 +221,9 @@ head
             nav(id='nav' style='z-index:1;display:none;')
               ul(class="pager")
                 li(class='previous')
-                  a( id='login' href="#") Войти
+                  a( id='login' style='cursor:pointer;') Войти
                 li(class='next')
-                  a(id='regbutton') Регистрация
+                  a(id='regbutton' style='cursor:pointer;') Регистрация
 
       
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
@@ -384,10 +384,12 @@ head
             if(regbuttoncount===0){
              $('#pc').slideToggle();
              regbuttoncount++;
+             console.log('first regbuttoncount: '+regbuttoncount);
             }
             else{
-              runregister;
               regbuttoncount--;
+              console.log('second regbuttoncount: '+regbuttoncount);
+              runregister();
             }
             });
 
