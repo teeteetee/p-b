@@ -190,6 +190,9 @@ head
       .activebutton {
         background-color:#252525;
       }
+      label {
+        color:white;
+      }
   body
     nav(class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1")
       h3(style='text-align:center;') People & Books
@@ -238,10 +241,12 @@ head
               label
                 input(type="checkbox" checked='' id='star' value='0') 
                 span(class='glyphicon glyphicon-star' style='color:#F2D45C;margin-left:10px;')
+                | Книга понравилась
             .checkbox
               label
                 input(type="checkbox" checked='' id='attention' value='0') 
                 span(class='glyphicon glyphicon-exclamation-sign' style='color:rgba(255, 255, 255, 0.65);margin-left:10px;')
+                | Прочитать скорее
             nav
               ul(class="pager")
                 li(class="previous")
@@ -264,10 +269,12 @@ head
               label
                 input(type="checkbox" value='1') 
                 span(class='glyphicon glyphicon-star' style='color:#F2D45C;margin-left:10px;')
+                | Фильм понравился
             .checkbox
               label
                 input(type="checkbox" value='1') 
                 span(class='glyphicon glyphicon-exclamation-sign' style='color:rgba(255, 255, 255, 0.65);margin-left:10px;')
+                | Посмотреть скорее
             nav
               ul(class="pager")
                 li(class="previous")
