@@ -210,10 +210,10 @@ head
           -webkit-appearance:none;
       }
       #bookinsert{
-        padding-left:20px;
+        padding-left:40px;
       }
       #moviewinsert {
-        padding-left:20px;
+        padding-left:40px;
       }
   body
     script.
@@ -312,7 +312,7 @@ head
         books.forEach(function(element,index,array){
                //$('#bookinsert').append("<h4 style='color:white;'>"+element.booktitle+"</h4>");
                var popbookclass = 'yet';
-               if(newbook!=1)
+               if(element.newbook!=1)
                {
                 popbookclass='alreadyb';
                }
