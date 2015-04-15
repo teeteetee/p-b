@@ -213,8 +213,8 @@ head
         #message.col-xs-12
       .row(style='text-align:center;')
         .col-xs-4.col-xs-offset-4
-          input(class='form-control' type='email' style='margin-bottom:5px;' id='vlgn' name='mail' placeholder='email')
-          input(class='form-control' type='password' style='margin-bottom:5px;' id='vphr' name='p' placeholder='password')
+          input(class='form-control' type='email' style='margin-bottom:5px;' id='mail' name='mail' placeholder='email')
+          input(class='form-control' type='password' style='margin-bottom:5px;' id='p' name='p' placeholder='password')
           input(class='form-control' type='password' style='margin-bottom:20px;display:none;' id='pc' name='p' placeholder='password confirmation')
           #wrap(style='width:100%;margin-top:15px;')
             button(class='btn btn-primary' type='button' id='shownav' style='position:absolute;margin-left:-60;left:50%;z-index:2;border-radius:30px;background-color:rgba(255, 255, 255, 0.26);border:0px;') Log in / Register
@@ -317,8 +317,8 @@ head
         // RUNREGISTER FUNCTION
         function runregister() {
          var errcount =0;
-        var vp =$('#p').val();
-        var vpc =$('#pc').val();
+        var vp = $('#p').val();
+        var vpc = $('#pc').val();
         $('#message').empty();
         console.log(vp.length);
         if(vpc.length === 0 && vp.length === 0) {
