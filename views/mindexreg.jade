@@ -350,11 +350,6 @@ head
         };
       // BOOK SUBMIT FUNCTION
       var allowsubmit = 1;
-      function valmonitor() {
-        console.log('newbook: '+$('#newbook').is(':checked'));
-        console.log('star: '+$('#star').is(':checked'));
-        console.log('attention: '+$('#attention').is(':checked'));
-      }
       function booksubmit() {
       if(!allowsubmit) {
         return
@@ -494,5 +489,5 @@ head
       //Most libraries like jQuery/Prototype/Dojo do this
       request.send("phr="+vphr+"&lgn="+vlgn);
       }
-      $('#booksubmitbutton').click(valmonitor);
+      $('#booksubmitbutton').click(booksubmit);
            

@@ -114,34 +114,12 @@ app.post('/addbook',function(req,res){
   if (req.session.mail && req.session.lgn ){
     var vuid = parseInt(req.body.uid);
     var vbooktitle = req.body.booktitle;
-    var vnewbook = req.body.newbook;
-    console.log('vnewbook :'+vnewbook);
-    if(vnewbook==='on') {
-      vnewbook = 1;
-      console.log('vnewbook :'+vnewbook);
-    }
-    else {
-      console.log('vnewbook :'+vnewbook);
-      vnewbook=0;
-    }
+    var vnewbook = parseInt(req.body.newbook);
     console.log('breakpoint one');
     var vauthor = req.body.author;
-    var vstar = req.body.star;
-    if(vstar==='on') {
-      vstar = 0;
-    }
-    else {
-      vstar=parseInt(vstar);
-    }
-    var vattention = req.body.attention;
-    console.log('attention: '+vattention);
-    if(vattention==='on') {
-      vattention = 0;
-    }
-    else {
-      vattention=parseInt(vattention);
-    }
-    console.log('ADDING A BOOK: '+vuid+' '+vbooktitle+' '+vauthor+' '+vstar+' '+vattention);
+    var vstar = parseInt(req.body.star);
+    var vattention = parseInt(req.body.attention);
+    console.log('ADDING A BOOK: vuid'+vuid+' ,booktitle:'+vbooktitle+' ,author: '+vauthor+' ,star: '+vstar+' ,attention '+vattention+', newbook'+newbook);
     var dd= new Date();
     var vday = dd.getDate().toString();
     if (vday.length===1){
