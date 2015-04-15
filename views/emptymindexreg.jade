@@ -211,19 +211,28 @@ head
       a(href='http://m.peopleandbooks.com/about') О проекте
       a(href="http://peopleandbooks.com/logout") Выйти
     .container( id='maincont' style='background-color:#52CA8F;overflow:auto;height:100%;padding-left:20px;padding-right:0px;padding-bottom:74px;')
-      .row
-        .col-xs-12(style='text-align:center;')
-          h1( id='newbooks' style='font-family:high;font-size:100px;font-weight:bold;color:white;padding-right:20px;') 0 
-            span(id ='readbooks' style='color:rgba(0, 0, 0, 0.15);') | 0
-      #welcome.row(style='text-align:center;padding-right:20px;')
-        .col-xs-12
-          h2 Welcome !
-          h3 Add a book by touching + at the bottom of the screen
-          //add a smile here or something
-      #booksrow.row(style='display:none;')
+      #booksrow.row
         #bookinsert.col-xs-12
+          .row
+            .col-xs-12(style='text-align:center;')
+              h1(id='newbooks' style='font-family:high;font-size:100px;font-weight:bold;color:white;padding-right:20px;') #{newbooks} 
+                span(id='readbooks' class='alreadyb') | #{readbooks}
+          #welcomeb.row(style='text-align:center;padding-right:20px;')
+            .col-xs-12
+              h2 Welcome !
+              h3 Add a book by touching + at the bottom of the screen
+              //add a smile here or something
       #moviesrow.row(style='display:none;')
         #bookinsert.col-xs-12
+          .row
+            .col-xs-12(style='text-align:center;')
+              h1(id='newbooks' style='font-family:high;font-size:100px;font-weight:bold;color:white;padding-right:20px;') #{newmovies} 
+                span(id='readbooks' class='alreadym') | #{seenmovies}
+          #welcomem.row(style='text-align:center;padding-right:20px;')
+            .col-xs-12
+              h2 Welcome !
+              h3 Add a book by touching + at the bottom of the screen
+          //add a smile here or something
     footer(class='footer')
       .container
         .row(id='addbook' style='display:none;padding-top:20px;background-color:#378961;')
@@ -410,7 +419,7 @@ head
       if(attention===1&&newbook===1){
         insert+="<span style='color:rgba(255, 255, 255, 0.65);margin-left:10px;' class='glyphicon glyphicon-exclamation-sign'></span>";
       }
-      $('#welcome').fadeOut();
+      $('#welcomeb').fadeOut();
       $('#booksrow').slideToggle();
       if(newbook==='on')
       {var newbooks = parseInt($('#newbooks').text());
