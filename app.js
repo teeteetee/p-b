@@ -111,7 +111,7 @@ app.post('/addbook',function(req,res){
   console.log('adding a book');
   var ms = {};
   ms.trouble =1;
-  if (req.session.mail && req.session.lgn ){
+  if (req.session.mail ){
     var vuid = parseInt(req.body.uid);
     var vbooktitle = req.body.booktitle;
     var vnewbook = parseInt(req.body.newbook);
