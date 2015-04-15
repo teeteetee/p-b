@@ -364,7 +364,7 @@ head
       }
       var uid = #{uid};
       var star = $('#star').val();
-      var attention = $('#author').val();
+      var attention = $('#attention').val();
       var newbook = $('#newbook').val();
       allowsubmit = 0;
       request = new XMLHttpRequest();
@@ -411,7 +411,7 @@ head
       request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
       //Most libraries like jQuery/Prototype/Dojo do this
       console.log("author="+author+"&booktitle="+booktitle+"&star="+star+"&attention="+attention);
-      request.send("author="+author+"&booktitle="+booktitle+"&star="+star+"&attention="+attention+"&uid="+uid+"&newbook"+newbook);
+      request.send("author="+author+"&booktitle="+booktitle+"&star="+star+"&attention="+attention+"&uid="+uid+"&newbook="+newbook);
       }
       
       // AUTHSUBMIT FUNCTION
