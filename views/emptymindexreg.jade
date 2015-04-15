@@ -352,9 +352,27 @@ head
         return
       }
       var uid = #{uid};
-      var star = $('#star').val();
-      var attention = $('#attention').val();
-      var newbook = $('#newbook').val();
+      var star;
+      var attention;
+      var newbook;
+      if($('#star').is(':checked')){
+        star = 1;
+      }
+      else {
+        star=0;
+      }
+      if($('#attention').is(':checked')){
+        attention = 1;
+      }
+      else {
+        attention=0;
+      }
+      if($('#newbook').is(':checked')){
+        newbook = 0;
+      }
+      else {
+        newbook=1;
+      }
       allowsubmit = 0;
       request = new XMLHttpRequest();
       request.onreadystatechange = function () {
