@@ -342,9 +342,17 @@ head
           $('.container').css({'-webkit-filter':'blur(0px) brightness(1)','-o-filter':'blur(0px) brightness(1)','-moz-filter':'blur(0px) brightness(1)','filter':'blur(0px) brightness(1)'});
           });
         $('.addbookbutton').click(function(){
+          if($('#addmovie').css('display') === 'block')
+          {
+            $('#addmovie').slideToggle();
+          }
           $('#addbook').slideToggle();
           });
         $('.addmoviebutton').click(function(){
+          if($('#addbook').css('display') === 'block')
+          {
+            $('#addbook').slideToggle();
+          }
           $('#addmovie').slideToggle();
           });
         var counter =0;
