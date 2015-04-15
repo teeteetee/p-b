@@ -370,9 +370,27 @@ head
         return
       }
       var uid = #{uid};
-      var star = $('#star').val();
-      var attention = $('#attention').val();
-      var newbook = $('#newbook').val();
+      var star;
+      var attention;
+      var newbook;
+      if($('#star').is(':checked')){
+        star = 1;
+      }
+      else {
+        star=0;
+      }
+      if($('#attention').is(':checked')){
+        attention = 1;
+      }
+      else {
+        attention=0;
+      }
+      if($('#newbook').is(':checked')){
+        newbook = 0;
+      }
+      else {
+        newbook=1;
+      }
       allowsubmit = 0;
       request = new XMLHttpRequest();
       request.onreadystatechange = function () {
@@ -394,7 +412,7 @@ head
         $("#newbook").prop("newbook", false);
         $("#star").prop("star", false);
         $("#attention").prop("attention", false);
-      if(newbook!='on')
+      if(newbook=1)
       {newbookscount++;
       var newvals =" "+newbookscount+" <span id='readbooks' style='color:rgba(0, 0, 0, 0.15);')> | "+readbookscount+"</span>";
       $('#newbooks').empty().append(newvals);
@@ -405,15 +423,15 @@ head
       $('#newbooks').empty().append(newvals);
       }
       var bookclass = 'yet';
-      if(newbook!='on')
+      if(newbook=0)
       {
        bookclass='alreadyb';
       }
       var insert = "<h4 class='"+bookclass+"'' style='color:white;'>"+booktitle;
-      if(star!='on'&&newbook!='on'){
+      if(star=1&&newbook=0){
         insert+="<span style='color:#F2D45C;margin-left:10px;' class='glyphicon glyphicon-star'></span>";
       }
-      if(attention!='on'&&newbook==='on'){
+      if(attention=1'on'&&newbook===1){
         insert+="<span style='color:rgba(255, 255, 255, 0.65);margin-left:10px;' class='glyphicon glyphicon-exclamation-sign'></span>";
       }
       insert+="</h4>";
