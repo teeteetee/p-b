@@ -412,7 +412,7 @@ head
         $("#newbook").prop("newbook", false);
         $("#star").prop("star", false);
         $("#attention").prop("attention", false);
-      if(newbook=1)
+      if(newbook===1)
       {newbookscount++;
       var newvals =" "+newbookscount+" <span id='readbooks' style='color:rgba(0, 0, 0, 0.15);')> | "+readbookscount+"</span>";
       $('#newbooks').empty().append(newvals);
@@ -423,7 +423,7 @@ head
       $('#newbooks').empty().append(newvals);
       }
       var bookclass = 'yet';
-      if(newbook=0)
+      if(newbook===0)
       {
        bookclass='alreadyb';
       }
