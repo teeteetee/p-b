@@ -32,7 +32,7 @@ app.use(sessions({
   duration:4320 * 60 *1000,
   activeduration:1440 * 60 * 1000,
   httpOnly: true,
-  domain:'.peopleandboos.com'
+  domain:'.peopleandbooks.com'
 }));
 
 var lguser = {};
