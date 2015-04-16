@@ -37,43 +37,43 @@ app.use(sessions({
   }
 }));
 
-var lguser = {};
-app.use(function(req,res,next){
-  console.log("CHECKING COOKIES: "+JSON.stringify(req.session)+" "+req.session.mail);
-   if(req.session.sKK76d === 'porC6S78x0XZP1b2p08zGlq'){
-    lguser = req.session;
-    next();}
-   else {
-   if(req.session.mail){
-     users.findOne({mail:req.session.mail},function(err,user){
-      console.log('found user: '+JSON.stringify(user));
-      if(err){
-        next();
-      }
-      else {
-        if(user)
-        {if(user.length>0 ){
-                lguser = user;
-                delete lguser.phr;
-                delete lguser._id;
-                delete lguser.regdate;
-                req.session= lguser;
-                console.log('USER WITH COOOOOKIEES !');
-                next();}
-              else {next();}
-            }
-        else {
-          req.session.reset();
-          next();
-        }
-      } 
-     });
-   }
-   else {
-    next();
-   }
- }
-});
+//var lguser = {};
+//app.use(function(req,res,next){
+//  console.log("CHECKING COOKIES: "+JSON.stringify(req.session)+" "+req.session.mail);
+//   if(req.session.sKK76d === 'porC6S78x0XZP1b2p08zGlq'){
+//    lguser = req.session;
+//    next();}
+//   else {
+//   if(req.session.mail){
+//     users.findOne({mail:req.session.mail},function(err,user){
+//      console.log('found user: '+JSON.stringify(user));
+//      if(err){
+//        next();
+//      }
+//      else {
+//        if(user)
+//        {if(user.length>0 ){
+//                lguser = user;
+//                delete lguser.phr;
+//                delete lguser._id;
+//                delete lguser.regdate;
+//                req.session= lguser;
+//                console.log('USER WITH COOOOOKIEES !');
+//                next();}
+//              else {next();}
+//            }
+//        else {
+//          req.session.reset();
+//          next();
+//        }
+//      } 
+//     });
+//   }
+//   else {
+//    next();
+//   }
+// }
+//});
 
 //SUBDOMAIN MAGIC 
 
