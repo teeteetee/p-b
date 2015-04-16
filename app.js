@@ -403,7 +403,7 @@ app.get('/',function(req,res) {
               res.render('indexreg');
             }
             else {
-              if(done.books||done.movies){
+              if(done){
                  
                     if(done.movies){
                     res.render('indexreg',{'books':JSON.stringify(done.books),'movies':done.movies,'uid':done.uid,'newbooks':done.newbooks,'readbooks':done.readbooks,'newmovies':done.newmovies,'seenmovies':done.seenmovies});}
