@@ -6,7 +6,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var sessions = require('client-sessions');
 var bcrypt = require('bcrypt');
-var Cookies = require('cookies');
 
 var mongo = require('mongodb');
 var db = require('monk')('localhost/tav')
@@ -33,46 +32,46 @@ app.use(sessions({
   duration:4320 * 60 *1000,
   activeduration:1440 * 60 * 1000,
   httpOnly: true,
-  domain:'.peopleandbooks.com'
+  domain:'.peopleandboos.com'
 }));
 
-//var lguser = {};
-//app.use(function(req,res,next){
-//  console.log("CHECKING COOKIES: "+JSON.stringify(req.session)+" "+req.session.mail);
-//   if(req.session.sKK76d === 'porC6S78x0XZP1b2p08zGlq'){
-//    lguser = req.session;
-//    next();}
-//   else {
-//   if(req.session.mail){
-//     users.findOne({mail:req.session.mail},function(err,user){
-//      console.log('found user: '+JSON.stringify(user));
-//      if(err){
-//        next();
-//      }
-//      else {
-//        if(user)
-//        {if(user.length>0 ){
-//                lguser = user;
-//                delete lguser.phr;
-//                delete lguser._id;
-//                delete lguser.enquiries;
-//                delete lguser.regdate;
-//                req.session = lguser;
-//                console.log('USER WITH COOOOOKIEES !');
-//                next();}
-//              else {next();}}
-//        else {
-//          req.session.reset();
-//          next();
-//        }
-//      } 
-//     });
-//   }
-//   else {
-//    next();
-//   }
-// }
-//});
+var lguser = {};
+app.use(function(req,res,next){
+  console.log("CHECKING COOKIES: "+JSON.stringify(req.session)+" "+req.session.mail);
+   if(req.session.sKK76d === 'porC6S78x0XZP1b2p08zGlq'){
+    lguser = req.session;
+    next();}
+   else {
+   if(req.session.mail){
+     users.findOne({mail:req.session.mail},function(err,user){
+      console.log('found user: '+JSON.stringify(user));
+      if(err){
+        next();
+      }
+      else {
+        if(user)
+        {if(user.length>0 ){
+                lguser = user;
+                delete lguser.phr;
+                delete lguser._id;
+                delete lguser.enquiries;
+                delete lguser.regdate;
+                req.session = lguser;
+                console.log('USER WITH COOOOOKIEES !');
+                next();}
+              else {next();}}
+        else {
+          req.session.reset();
+          next();
+        }
+      } 
+     });
+   }
+   else {
+    next();
+   }
+ }
+});
 
 //SUBDOMAIN MAGIC 
 
@@ -102,164 +101,11 @@ app.get('*', function(req,res,next) {
 
 
 app.get('/logout',function(req,res){
-  //req.session.reset();
-  var cookies = new Cookies(req, res);
-  cookies.set('session');
-  res.redirect('http://peopleandbooks.com');
+  console.log('trying to logout');
+  req.session.reset();
+  console.log(JSON.stringify(req.session));
+  res.redirect('/');
 });
-
-app.post('/check',function(req,res){
-  vphr=req.body.phr;
-  vlgn=req.body.lgn; // email
-  console.log(vphr+" , "+vlgn);
-   var  ms = {};
-  ms.trouble=1;
-  ms.mtext='db';
-  users.findOne({mail:vlgn},function(err,confirmed){
-    if (err)
-      {res.send(ms);}
-    else 
-    { console.log('-----CONFORMED FROM CHECK()------');
-      console.log(confirmed);
-      console.log('----------------------------------');
-      if (confirmed)
-      {console.log('we have found :'+JSON.stringify(confirmed));
-         
-      
-          if(bcrypt.compareSync(vphr,confirmed.phr))
-          {
-          req.session.mail = confirmed.mail;
-          //req.session = confirmed;
-          //console.log("THAT'S WHAT I WROTE TO HIS COOKIES: "+JSON.stringify(req.session));
-          ms.trouble = 0;
-          ms.mtext= 'success';
-          res.send(ms);
-           }
-           else {
-            ms.mtext='wrong pas';
-              res.send(ms);
-              //WRONG PASSWORD
-           }
-         
-      }
-      else {
-        ms.mtext='wronguser'
-        res.send(ms);
-      }
-    }
-  });
-});
-
-
-
- 
-
-app.get('/',function(req,res) {
-  var userAgent=req.headers['user-agent'];
-  var uacheck = userAgent.indexOf("iPhone") != -1 ;
-  console.log(uacheck);
-   if (req.session.mail != undefined )
-        //{res.render('indexreg',{'prfname':"Привет, "+req.session.lgn+"!"});}
-        { console.log(req.session);
-          users.findOne({mail:req.session.mail},function(err,done){
-            console.log('-----found-----');
-            console.log(done);
-            if(err){
-              //CORRECT THIS
-              res.render('indexreg');
-            }
-            else {
-                if(done) {
-                  if(!done.books&&!done.movies)
-                     {
-                      res.render('emptyindexreg',{'uid':done.uid});
-                     }
-                     else {
-                      if(done.books&&done.movies){
-                      res.render('indexreg',{'books':JSON.stringify(done.books),'movies':JSON.stringify(done.movies),'uid':done.uid,'newbooks':done.newbooks,'readbooks':done.readbooks,'newmovies':done.newmovies,'seenmovies':done.seenmovies});
-                      }
-                      else if(done.books&&!done.movies){
-                      res.render('indexreg',{'books':JSON.stringify(done.books),'movies':0,'uid':done.uid,'newbooks':done.newbooks,'readbooks':done.readbooks,'newmovies':done.newmovies,'seenmovies':done.seenmovies});
-                      }
-                      else{
-                      res.render('indexreg',{'books':0,'movies':JSON.stringify(done.movies),'uid':done.uid,'newbooks':done.newbooks,'readbooks':done.readbooks,'newmovies':done.newmovies,'seenmovies':done.seenmovies});
-
-                      }
-                     }
-                }
-                else {
-                  res.render('index');
-                }
-             // if(done.books||done.movies){
-             //    
-             //       if(done.movies){
-             //       res.render('indexreg',{'books':JSON.stringify(done.books),'movies':done.movies,'uid':done.uid,'newbooks':done.newbooks,'readbooks':done.readbooks,'newmovies':done.newmovies,'seenmovies':done.seenmovies});}
-             //       else {
-             //       console.log(done.books);
-             //       res.render('indexreg',{'books':JSON.stringify(done.books),'movies':0,'uid':done.uid,'newbooks':done.newbooks,'readbooks':done.readbooks,'newmovies':done.newmovies,'seenmovies':done.seenmovies});
-             //       }
-             // }
-             // else {
-             //   res.render('emptyindexreg',{'uid':done.uid});
-             // }
-            }
-          });
-        }
-   else {
-  res.render('index');}
-});
-
-app.get('/books',function(req,res){
-res.render('books');
-});
-
-app.get('/settings',function(req,res){
-res.render('settings');
-});
-
-
-app.get('/m',function(req,res){
-        console.log('---------going to render midexes----------');
-        if (req.session.mail != undefined)
-        //{res.render('indexreg',{'prfname':"Привет, "+req.session.lgn+"!"});}
-        {
-           console.log('going to query');
-           console.log(req.session.mail);
-          users.findOne({mail:req.session.mail},function(err,done){
-            if(err){
-              //do a mistake template
-              console.log('DB ERR');
-              res.render('emptymindexreg',{'uid':done.uid});
-            }
-            else {
-              if(done) {
-                  if(!done.books&&!done.movies)
-                     {
-                      res.render('emptymindexreg',{'uid':done.uid});
-                     }
-                     else {
-                      if(done.books&&done.movies){
-                      res.render('mindexreg',{'books':JSON.stringify(done.books),'movies':JSON.stringify(done.movies),'uid':done.uid,'newbooks':done.newbooks,'readbooks':done.readbooks,'newmovies':done.newmovies,'seenmovies':done.seenmovies});
-                      }
-                      else if(done.books&&!done.movies){
-                      res.render('mindexreg',{'books':JSON.stringify(done.books),'movies':0,'uid':done.uid,'newbooks':done.newbooks,'readbooks':done.readbooks,'newmovies':done.newmovies,'seenmovies':done.seenmovies});
-                      }
-                      else{
-                      res.render('mindexreg',{'books':0,'movies':JSON.stringify(done.movies),'uid':done.uid,'newbooks':done.newbooks,'readbooks':done.readbooks,'newmovies':done.newmovies,'seenmovies':done.seenmovies});
-
-                      }
-                     }
-                }
-                else {
-                  res.send('mindex');
-                }
-            }
-          });
-        }
-   else {
-  res.render('mindex');}
-  });
-
 
 app.post('/addbook',function(req,res){
   console.log('adding a book');
@@ -310,7 +156,6 @@ app.post('/addbook',function(req,res){
               users.update({uid:vuid},{$inc:{readbooks:1,totalbooks:1}});
             }
             ms.trouble=0;
-            ms.bid = vbid;
             res.send(ms);
            }
     });
@@ -319,58 +164,6 @@ app.post('/addbook',function(req,res){
       res.send(ms);
     }   
 });
-
-app.post('/modbook',function(req,res){
-  var ms={};
-  ms.trouble=1;
-  var rem = parseInt(req.body.rem);
-  var vuid = parseInt(req.body.uid);
-  var vbid = parseInt(req.body.bid);
-  console.log('rem: '+rem+',vuid: '+vuid+', vbid: '+vbid);
-  if(!vuid||!vbid) {
-    console.log('missing data for book modification');
-    ms.mtext='inconsistent';
-    res.send(ms);
-    return;
-  }
-  users.findOne({uid:vuid},function(err,doc){
-    if(err){
-       ms.mtext='db';
-       res.send(ms);
-    }
-    else {
-      doc.books.forEach(function(element,index,array){
-        if(element.bid===vbid) {
-          if(rem){
-           var newbook = element.newbook;
-           doc.books.splice(index, 1);
-           users.update({uid:vuid},{$set:{books:doc.books}});
-           users.update({uid:vuid},{$inc:{totalbooks:-1,}});
-           if(newbook) {
-           users.update({uid:vuid},{$inc:{newbooks:-1,}});
-           }
-           else {
-           users.update({uid:vuid},{$inc:{readbooks:-1,}});
-           }
-           ms.trouble=0;
-           res.send(ms);
-           console.log('removed a book;');
-          }
-          else {
-           element.newbook=0;
-           users.update({uid:vuid},{$set:{books:doc.books}});
-           users.update({uid:vuid},{$inc:{newbooks:-1,}});
-           users.update({uid:vuid},{$inc:{readbooks:1,}});
-           ms.trouble=0;
-           res.send(ms); 
-           console.log('chanhed books property');
-          }
-        }
-      });
-    }
-  });
-});
-
 
 app.post('/addmovie',function(req,res){
   if (req.session.mail != undefined && req.session.lgn != undefined){
@@ -395,6 +188,9 @@ app.post('/newuser',function(req,res){
     //if (vu.length === 0 )
     //  {vu = 0;}
     var vp = bcrypt.hashSync(req.body.p,bcrypt.genSaltSync(10));
+    var ms = {};
+    ms.trouble=1;
+    ms.mtext='email incorrect';
     // MUST INCLUDE enquiries - all  - accepted WHEN WRITING TO THE DB
     // CHECK MAIL BEFOR WRTING
     function validateEmail(email) { 
@@ -416,13 +212,16 @@ app.post('/newuser',function(req,res){
                 callback(newid);
           }
         else {
-              console.log('returning uid=1');
+              console.log('returning uid=');
                 callback(1);
           }
             }
           });
      } // generateId declaration end
 
+     function blanktest () {
+      return 1;
+     }
 
     if (validateEmail(vmail) === true) {
     users.find({mail:vmail},function(err,doc){
@@ -450,7 +249,6 @@ app.post('/newuser',function(req,res){
           generateId(insert);
           function insert(vuid) {
             //lgn:vu
-          console.log('----------VUID NEW USER-----------');
           users.insert({mail:vmail,uid:vuid,phr:vp,totalbooks:0,totalmoviews:0,newbooks:0,readbooks:0,newmovies:0,seenmovies:0,regdateint:fulldate,regdate:{year:vyear,month:vmonth,day:vday}});
           users.findOne({mail:vmail},function(err,docdoc){
             console.log('FOUND AFTER INSERTING NEW USER :'+JSON.stringify(docdoc));
@@ -460,34 +258,154 @@ app.post('/newuser',function(req,res){
             else{
                if (docdoc) {
                 req.session = docdoc;
-               // ms.trouble =0;
-               // ms.mtext='success';
-               // // INDEX MUST BE DIFFERENT FOR REGISTERD ONES, IT IS TEMPORARY THE SAME
-               console.log('SOMEBODY REGISTERED');
-               // res.send(ms);
-               res.redirect('/');
+                ms.trouble =0;
+                ms.mtext='success';
+                // INDEX MUST BE DIFFERENT FOR REGISTERD ONES, IT IS TEMPORARY THE SAME
+                console.log('SOMEBODY REGISTERED');
+                res.send(ms);
                }
                else {
-                  res.redirect('/');
+                  ms.mtext ='fail';
+                  res.send(ms);
                }
             }
           });
           }
         }
         else {
-           //ms.mtext='email exists';
-           res.redirect('/');
+           ms.mtext='email exists'
+           res.send(ms);
         }
       }// end of err's else
     });
     }   
     else {
       // INCORRECT EMAIL, SO WE SEND A NOTIFICATION
-      res.redirect('/');
+      res.send(ms);
     }
 
     });
 
+app.post('/check',function(req,res){
+  vphr=req.body.phr;
+  vlgn=req.body.lgn; // email
+  console.log(vphr+" , "+vlgn);
+   var  ms = {};
+  ms.trouble=1;
+  ms.mtext='db';
+  users.findOne({mail:vlgn},function(err,confirmed){
+    if (err)
+      {res.send(ms);}
+    else 
+    {
+      if (confirmed)
+      {console.log('we have found :'+JSON.stringify(confirmed));
+         
+      
+          if(bcrypt.compareSync(vphr,confirmed.phr))
+          {
+          
+          req.session = confirmed;
+          console.log("THAT'S WHAT I WROTE TO HIS COOKIES: "+JSON.stringify(req.session));
+          ms.trouble = 0;
+          ms.mtext= 'success';
+          res.send(ms);
+           }
+           else {
+            ms.mtext='wrong pas';
+              res.send(ms);
+              //WRONG PASSWORD
+           }
+         
+      }
+      else {
+        ms.mtext='wronguser'
+        res.send(ms);
+      }
+    }
+  });
+});
+
+
+
+ 
+
+app.get('/',function(req,res) {
+  var userAgent=req.headers['user-agent'];
+  var uacheck = userAgent.indexOf("iPhone") != -1 ;
+  console.log(uacheck);
+   if (req.session.mail != undefined && req.session.mail != undefined)
+        //{res.render('indexreg',{'prfname':"Привет, "+req.session.lgn+"!"});}
+        { console.log(req.session);
+          users.findOne({mail:req.session.mail},function(err,done){
+            console.log('-----found-----');
+            console.log(done);
+            if(err){
+              res.render('indexreg');
+            }
+            else {
+              if(done.books||done.movies){
+                 
+                    if(done.movies){
+                    res.render('indexreg',{'books':JSON.stringify(done.books),'movies':done.movies,'uid':done.uid,'newbooks':done.newbooks,'readbooks':done.readbooks,'newmovies':done.newmovies,'seenmovies':done.seenmovies});}
+                    else {
+                    console.log(done.books);
+                    res.render('indexreg',{'books':JSON.stringify(done.books),'movies':0,'uid':done.uid,'newbooks':done.newbooks,'readbooks':done.readbooks,'newmovies':done.newmovies,'seenmovies':done.seenmovies});
+                    }
+              }
+              else {
+                res.render('emptyindexreg',{'uid':done.uid});
+              }
+            }
+          });
+        }
+   else {
+  res.render('index');}
+});
+
+app.get('/books',function(req,res){
+res.render('books');
+});
+
+app.get('/settings',function(req,res){
+res.render('settings');
+});
+
+
+app.get('/m',function(req,res){
+        console.log('---------going to render midexes----------');
+        if (req.session.mail != undefined && req.session.lgn != undefined)
+        //{res.render('indexreg',{'prfname':"Привет, "+req.session.lgn+"!"});}
+        {
+           console.log('going to query');
+           console.log(req.session.mail);
+          users.findOne({mail:req.session.mail},function(err,done){
+            if(err){
+              //do a mistake template
+              console.log('DB ERR');
+              res.render('emptymindexreg',{'uid':done.uid});
+            }
+            else {
+              if(done){
+                    
+                    if(done.movies){
+                    res.render('mindexreg',{'books':JSON.stringify(done.books),'movies':done.movies,'uid':done.uid,'newbooks':done.newbooks,'readbooks':done.readbooks,'newmovies':done.newmovies,'seenmovies':done.seenmovies});}
+                    else {
+                    res.render('mindexreg',{'books':JSON.stringify(done.books),'movies':0,'uid':done.uid,'newbooks':done.newbooks,'readbooks':done.readbooks,'newmovies':done.newmovies,'seenmovies':done.seenmovies});
+                    }
+                 
+              }
+              else {
+                //do a mistake template
+                console.log('!DONE');
+                res.render('emptymindexreg',{'uid':done.uid});
+              }
+            }
+          });
+        }
+   else {
+  res.render('mindex');}
+  });
 
 
 app.get('/dropplaces',function(req,res){
@@ -538,7 +456,7 @@ app.get('/admax',function(req,res){
    users.count({},function(err,c){
     if (err)
     {
-      res.send('DB ERR');
+      res.send('DB ERR')
     }
   else {
     if(messagescount)
@@ -558,13 +476,6 @@ app.get('/admax',function(req,res){
    res.render('adminauth');
  }
 
-});
-
-app.get('/dropit',function(req,res){
-  users.remove({});
-  req.session.reset();
-  console.log('users dropped');
-  res.redirect('http://peopleandbooks.com');
 });
 
 app.post('/admax',function(req,res){
