@@ -323,7 +323,7 @@ head
                {
                 popbookclass='alreadyb';
                }
-               var popinsert = "<div class='row' onclick='openmodpanel("+element.bid+")' id='book"+element.bid+"'><div class='col-xs-12'><h4 class='"+popbookclass+"' style='margin-left:40px;'>"+element.booktitle;
+               var popinsert = "<div class='row' onclick='openmodpanel("+element.bid+")' id='book"+element.bid+"'><div class='col-xs-12'><h4 id='heading"+element.bid+"' class='"+popbookclass+"' style='margin-left:40px;'>"+element.booktitle;
                if(element.star===1&&element.newbook===0){
                  popinsert+="<span style='color:#F2D45C;margin-left:10px;' class='glyphicon glyphicon-star'></span>";
                }
@@ -514,7 +514,7 @@ head
           if (eval("$('#modbook"+bid+"').css('display')") === 'block' )
          {eval("$('#modbook"+bid+"').slideToggle();");}
            eval("$('#readbutton"+bid+"').remove();");
-           eval("$('#book"+bid+"').removeClass('yet').addClass('alreadyb');");
+           eval("$('#heading"+bid+"').removeClass('yet').addClass('alreadyb');");
          }
         }
         }
