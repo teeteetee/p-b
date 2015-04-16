@@ -345,7 +345,7 @@ head
                    eval("$('#modbook"+bid+"').slideToggle();");
                    modcount++;}
           else {
-            $('.modpanel').css('display','none');
+            eval("$('#modbook"+bid+"').slideToggle();");
             modcount--;
           }
         }
