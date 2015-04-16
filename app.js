@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var sessions = require('client-sessions');
 var bcrypt = require('bcrypt');
+var Cookies = require('cookies');
 
 var mongo = require('mongodb');
 var db = require('monk')('localhost/tav')
@@ -103,7 +104,7 @@ app.get('*', function(req,res,next) {
 app.get('/logout',function(req,res){
   //req.session.reset();
   var cookies = new Cookies(req, res);
-  cookies.set(session);
+  cookies.set('session');
   res.redirect('http://peopleandbooks.com');
 });
 
