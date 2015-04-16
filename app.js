@@ -334,7 +334,7 @@ app.get('/',function(req,res) {
   var userAgent=req.headers['user-agent'];
   var uacheck = userAgent.indexOf("iPhone") != -1 ;
   console.log(uacheck);
-   if (req.session.mail != undefined && req.session.mail != undefined)
+   if (req.session.mail != undefined )
         //{res.render('indexreg',{'prfname':"Привет, "+req.session.lgn+"!"});}
         { console.log(req.session);
           users.findOne({mail:req.session.mail},function(err,done){
@@ -344,17 +344,17 @@ app.get('/',function(req,res) {
               res.render('indexreg');
             }
             else {
-              if(done.books||done.movies){
+              if(done){
                  
-                    if(done.movies){
-                    res.render('indexreg',{'books':JSON.stringify(done.books),'movies':done.movies,'uid':done.uid,'newbooks':done.newbooks,'readbooks':done.readbooks,'newmovies':done.newmovies,'seenmovies':done.seenmovies});}
-                    else {
-                    console.log(done.books);
-                    res.render('indexreg',{'books':JSON.stringify(done.books),'movies':0,'uid':done.uid,'newbooks':done.newbooks,'readbooks':done.readbooks,'newmovies':done.newmovies,'seenmovies':done.seenmovies});
-                    }
+                    if(!done.books&&!done.movies)
+                      {res.render('emptyindexreg',{'uid':done.uid});
+                      }
+                    else{
+                    res.render('indexreg',{'books':JSON.stringify(done.books),'movies':JSON.stringify(done.movies),'uid':done.uid,'newbooks':done.newbooks,'readbooks':done.readbooks,'newmovies':done.newmovies,'seenmovies':done.seenmovies});
+                  }  
               }
               else {
-                res.render('emptyindexreg',{'uid':done.uid});
+                res.render('index');
               }
             }
           });
