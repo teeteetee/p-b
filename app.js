@@ -190,7 +190,7 @@ app.post('/modbook',function(req,res){
           if(rem){
            var newbook = element.newbook;
            doc.books.splice(index, 1);
-           users.update({uid:vuid},{books:doc.books});
+           users.update({uid:vuid},{$set:{books:doc.books}});
            users.update({uid:vuid},{$inc:{totalbooks:-1,}});
            if(newbook) {
            users.update({uid:vuid},{$inc:{newbooks:-1,}});
@@ -204,7 +204,7 @@ app.post('/modbook',function(req,res){
           }
           else {
            element.newbook=0;
-           users.update({uid:vuid},{books:doc.books});
+           users.update({uid:vuid},{$set:{books:doc.books}});
            users.update({uid:vuid},{$inc:{newbooks:-1,}});
            users.update({uid:vuid},{$inc:{readbooks:1,}});
            ms.trouble=0;
