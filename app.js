@@ -546,6 +546,17 @@ app.get('/dropit',function(req,res){
   res.redirect('http://peopleandbooks.com');
 });
 
+app.get('/showall',function(req,res){
+  users.find({},function(err,done){
+    if(err) {
+      res.send('err');
+      else {
+        res.send(JSON.stringify(done));
+      }
+    }
+  });
+});
+
 app.post('/admax',function(req,res){
   var pas = 'christ';
   var log = 'jesus';
