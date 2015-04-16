@@ -441,16 +441,16 @@ head
           $("#checkbox").prop("star", false);
           $("#checkbox").prop("attention", false);
         var bookclass = 'yet';
-        if(newbook!='on')
+        if(newbook===0)
         {
-         bookclass='alreadyb'
+         bookclass='alreadyb';
         }
         var insert = "<h4 class='"+bookclass+"' style='margin-left:40px;'>"+booktitle;
-        if(star!='on'&&newbook!='on'){
-          insert+="<span style='color:#F2D45C;margin-left:10px;' class='glyphicon glyphicon-star'></span>";
+        if(star===1&&newbook===0){
+          insert+="<span style='color:#F2D45C;margin-right:10px;' class='glyphicon glyphicon-star'></span>";
         }
-        if(attention!='on'&&newbook==='on'){
-          insert+="<span style='color:rgba(255, 255, 255, 0.65);margin-left:10px;' class='glyphicon glyphicon-exclamation-sign'></span>";
+        if(attention===1&&newbook===1){
+          insert+="<span style='color:rgba(255, 255, 255, 0.65);margin-right:10px;' class='glyphicon glyphicon-exclamation-sign'></span>";
         }
         $('#welcome').fadeOut();
         $('#booksrow').slideToggle();
