@@ -25,14 +25,15 @@ app.use(logger('dev'));
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 app.use(express.compress());
-app.use(express.static(path.join(__dirname, 'public'), { maxAge: 2540000000 }));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(sessions({
   cookieName: 'session',
   secret:'2342kjhkj2h3i2uh32j3hk2jDKLKSl23kh42u3ih4',
   duration:4320 * 60 *1000,
   activeduration:1440 * 60 * 1000,
-  httpOnly: true,
   cookie: {
+    maxAge: 2540000000 ,
+    httpOnly: true,
     domain: '.peopleandbooks.com'  
   }
 }));
