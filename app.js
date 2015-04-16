@@ -313,6 +313,7 @@ app.post('/newuser',function(req,res){
             else{
                if (docdoc) {
                 req.session = docdoc;
+                console.log('session now is: '+req.session);
                 ms.trouble =0;
                 ms.mtext='success';
                 // INDEX MUST BE DIFFERENT FOR REGISTERD ONES, IT IS TEMPORARY THE SAME
@@ -506,7 +507,7 @@ function getmessages () {
 }
 
 app.get('/admax',function(req,res){
-  console.log("CHECKING COOKIES: "+JSON.stringify(req.session)+" "+req.session.lgn);
+  console.log("CHECKING COOKIES: "+JSON.stringify(req.session));
   var lguser={};
    if(req.session.sKK76d === 'porC6S78x0XZP1b2p08zGlq')
    {
