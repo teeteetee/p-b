@@ -54,14 +54,14 @@ app.use(function(req,res,next){
         if(user)
         {if(user.length>0 ){
                 lguser = user;
-                //delete lguser.phr;
-                //delete lguser._id;
-                //delete lguser.enquiries;
-                //delete lguser.regdate;
-                req.session.mail = user.mail;
+                delete lguser.phr;
+                delete lguser._id;
+                delete lguser.regdate;
+                req.session= lguser;
                 console.log('USER WITH COOOOOKIEES !');
                 next();}
-              else {next();}}
+              else {next();}
+            }
         else {
           req.session.reset();
           next();
