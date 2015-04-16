@@ -54,11 +54,11 @@ app.use(function(req,res,next){
         if(user)
         {if(user.length>0 ){
                 lguser = user;
-                delete lguser.phr;
-                delete lguser._id;
-                delete lguser.enquiries;
-                delete lguser.regdate;
-                req.session = lguser;
+                //delete lguser.phr;
+                //delete lguser._id;
+                //delete lguser.enquiries;
+                //delete lguser.regdate;
+                req.session.mail = user.mail;
                 console.log('USER WITH COOOOOKIEES !');
                 next();}
               else {next();}}
@@ -363,7 +363,7 @@ app.post('/check',function(req,res){
           if(bcrypt.compareSync(vphr,confirmed.phr))
           {
           
-          req.session = confirmed;
+          req.session.mail = confirmed.mail;
           console.log("THAT'S WHAT I WROTE TO HIS COOKIES: "+JSON.stringify(req.session));
           ms.trouble = 0;
           ms.mtext= 'success';
