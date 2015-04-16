@@ -313,7 +313,7 @@ app.post('/newuser',function(req,res){
             else{
                if (docdoc) {
                 req.session = docdoc;
-                console.log('session now is: '+req.session);
+                console.log('session now is: '+JSON.stringify(req.session));
                 ms.trouble =0;
                 ms.mtext='success';
                 // INDEX MUST BE DIFFERENT FOR REGISTERD ONES, IT IS TEMPORARY THE SAME
