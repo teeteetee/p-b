@@ -156,6 +156,7 @@ app.post('/addbook',function(req,res){
               users.update({uid:vuid},{$inc:{readbooks:1,totalbooks:1}});
             }
             ms.trouble=0;
+            ms.bid = vbid;
             res.send(ms);
            }
     });

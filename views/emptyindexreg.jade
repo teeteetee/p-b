@@ -432,6 +432,7 @@ head
         allowsubmit=1;
         }
         else {
+        var bid = parsed.bid;
         $('#addbook').slideToggle();
          $('#author').val('');
           $('#booktitle').val('');
@@ -443,7 +444,7 @@ head
         {
          bookclass='alreadyb';
         }
-        var insert = "<h4 class='"+bookclass+"' style='color:white;'>"+booktitle;
+        var insert = "<h4 class='"+bookclass+"' id='heading"+bid+"' style='margin-left:40px;'>"+booktitle;
         if(star===1&&newbook===0){
           insert+="<span style='color:#F2D45C;margin-left:10px;' class='glyphicon glyphicon-star'></span>";
         }
@@ -463,7 +464,15 @@ head
               console.log(readbooks);
               $('#readbooks').text(readbooks);
         }
-        insert+="</h4>";
+        if(element.attention===1&&element.newbook===1){
+                 insert+="<span style='color:rgba(255, 255, 255, 0.65);margin-left:10px;' class='glyphicon glyphicon-exclamation-sign'></span>";
+               }
+               insert+="</h4></div></div><div class='row modpanel' id='modbook"+bid+"' style='text-align:center;display:none;background-color:#333;'><div class='col-xs-12'>";
+               if(newbook){
+                insert+="<button id='readbutton"+bid+"' class='btn btn-primary' onclick=(modify(0,"+bid+")) type='button'>Прочитана</button>";
+               }
+               insert+="<button class='btn btn-danger' onclick=(modify(1,"+bid+")) type='button'>Удалить</button></div</div>";
+               //$('#bookinsert').prepend(popinsert);
         $(insert).prependTo('#bookinsert').hide().slideDown();
         allowsubmit=1;
         //window.location = 'http://m.peopleandbooks.com';
@@ -478,5 +487,50 @@ head
         request.send("author="+author+"&booktitle="+booktitle+"&star="+star+"&attention="+attention+"&uid="+uid+"&newbook="+newbook);
         }
         $('#booksubmitbutton').click(booksubmit);
+        // modify function
+        var allowmod = 1;
+        function modify(rem,bid) {
+         if (!allowmod) {
+          return;
+         }
+        allowmod = 0;
+        request = new XMLHttpRequest();
+        request.onreadystatechange = function () {
+        var DONE = this.DONE || 4;
+        if (this.readyState === DONE){
+        var index;
+        parsed = JSON.parse(request.responseText);
+        console.log(parsed);
+        if(parsed.trouble === 1)
+        {
+        console.log('TROUBLE === 1');
+        switch (parsed.mtext){
+        case('db'):
+        alert('Проблема с базой данных, повторите позднее');
+        allowmod = 1;
+        break;
+        }}
+        else {
+         if(rem) {
+           if (eval("$('#modbook"+bid+"').css('display')") === 'block' )
+         {eval("$('#modbook"+bid+"').slideToggle('400',function(){$('#modbook"+bid+"').remove();})");}
+         
+         eval("$('#book"+bid+"').fadeOut('400',function(){$('#book"+bid+"').remove();});");
+         }
+         else {
+          if (eval("$('#modbook"+bid+"').css('display')") === 'block' )
+         {eval("$('#modbook"+bid+"').slideToggle();");}
+           eval("$('#readbutton"+bid+"').remove();");
+           eval("$('#heading"+bid+"').removeClass('yet').addClass('alreadyb');");
+         }
+        }
+        }
+        };
+        request.open('POST', '/modbook', true);
+        request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+        request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        //Most libraries like jQuery/Prototype/Dojo do this
+        request.send("rem="+rem+"&uid=#{uid}&bid="+bid);
+        }
         
       
