@@ -323,7 +323,7 @@ head
                {
                 popbookclass='alreadyb';
                }
-               var popinsert = "<div class='row' onclick='openmodpanel("+element.bid+")' id='book"+element.bid+"'><div class='col-xs-12'><h4 class='"+popbookclass+"'>"+element.booktitle;
+               var popinsert = "<div class='row' onclick='openmodpanel("+element.bid+")' id='book"+element.bid+"'><div class='col-xs-12'><h4 class='"+popbookclass+"' style='margin-left:40px;'>"+element.booktitle;
                if(element.star===1&&element.newbook===0){
                  popinsert+="<span style='color:#F2D45C;margin-left:10px;' class='glyphicon glyphicon-star'></span>";
                }
@@ -445,7 +445,7 @@ head
         {
          bookclass='alreadyb'
         }
-        var insert = "<h4 class='"+bookclass+"'' style='color:white;'>"+booktitle;
+        var insert = "<h4 class='"+bookclass+"' style='margin-left:40px;'>"+booktitle;
         if(star!='on'&&newbook!='on'){
           insert+="<span style='color:#F2D45C;margin-left:10px;' class='glyphicon glyphicon-star'></span>";
         }
@@ -476,7 +476,7 @@ head
         request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
         request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         //Most libraries like jQuery/Prototype/Dojo do this
-        console.log("author="+author+"&booktitle="+booktitle+"&star="+star+"&attention="+attention);
+        console.log("author="+author+"&booktitle="+booktitle+"&star="+star+"&attention="+attention+"&uid="+uid+"&newbook="+newbook);
         request.send("author="+author+"&booktitle="+booktitle+"&star="+star+"&attention="+attention+"&uid="+uid+"&newbook="+newbook);
         }
         $('#booksubmitbutton').click(booksubmit);

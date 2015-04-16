@@ -492,7 +492,7 @@ app.get('/admax',function(req,res){
    users.count({},function(err,c){
     if (err)
     {
-      res.send('DB ERR')
+      res.send('DB ERR');
     }
   else {
     if(messagescount)
