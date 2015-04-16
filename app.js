@@ -173,7 +173,7 @@ app.post('/modbook',function(req,res){
   var vuid = parseInt(req.body.uid);
   var vbid = parseInt(req.body.bid);
   console.log('rem: '+rem+',vuid: '+vuid+', vbid: '+vbid);
-  if(!rem||!vuid||!vbid) {
+  if(!vuid||!vbid) {
     console.log('missing data for book modification');
     ms.mtext='inconsistent';
     res.send(ms);
