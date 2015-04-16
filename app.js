@@ -173,6 +173,12 @@ app.post('/modbook',function(req,res){
   var vuid = parseInt(req.body.uid);
   var vbid = parseInt(req.body.bid);
   console.log('rem: '+rem+',vuid: '+vuid+', vbid: '+vbid);
+  if(!rem||!vuid||!vbid) {
+    console.log('missing data for book modification');
+    ms.mtext('inconsistent');
+    res.send(ms);
+    return;
+  }
   users.findOne({uid:vuid},function(err,doc){
     if(err){
        ms.mtext='db';
@@ -266,9 +272,6 @@ app.post('/newuser',function(req,res){
           });
      } // generateId declaration end
 
-     function blanktest () {
-      return 1;
-     }
 
     if (validateEmail(vmail) === true) {
     users.find({mail:vmail},function(err,doc){
@@ -296,6 +299,7 @@ app.post('/newuser',function(req,res){
           generateId(insert);
           function insert(vuid) {
             //lgn:vu
+          console.log('----------VUID NEW USER-----------');
           users.insert({mail:vmail,uid:vuid,phr:vp,totalbooks:0,totalmoviews:0,newbooks:0,readbooks:0,newmovies:0,seenmovies:0,regdateint:fulldate,regdate:{year:vyear,month:vmonth,day:vday}});
           users.findOne({mail:vmail},function(err,docdoc){
             console.log('FOUND AFTER INSERTING NEW USER :'+JSON.stringify(docdoc));
@@ -344,7 +348,9 @@ app.post('/check',function(req,res){
     if (err)
       {res.send(ms);}
     else 
-    {
+    { console.log('-----CONFORMED FROM CHECK()------');
+      console.log(confirmed);
+      console.log('----------------------------------');
       if (confirmed)
       {console.log('we have found :'+JSON.stringify(confirmed));
          
