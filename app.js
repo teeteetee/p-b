@@ -104,9 +104,7 @@ app.get('*', function(req,res,next) {
 
 app.get('/logout',function(req,res){
   console.log('trying to logout');
-  req.session_state.reset();
-  console.log('--------REQ SESSION-------');
-  console.log(JSON.stringify(req.session));
+  req.session.reset();
   res.redirect('/');
 });
 
@@ -393,12 +391,13 @@ app.get('/',function(req,res) {
   var userAgent=req.headers['user-agent'];
   var uacheck = userAgent.indexOf("iPhone") != -1 ;
   console.log(uacheck);
-   if (req.session.mail != undefined && req.session.mail != undefined)
+   if (req.session.mail)
         //{res.render('indexreg',{'prfname':"Привет, "+req.session.lgn+"!"});}
         { console.log(req.session);
           users.findOne({mail:req.session.mail},function(err,done){
             console.log('-----found-----');
             console.log(done);
+            console.log('---------------')
             if(err){
               res.render('indexreg');
             }
