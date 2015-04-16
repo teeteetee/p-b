@@ -102,9 +102,9 @@ app.get('*', function(req,res,next) {
 
 
 app.get('/logout',function(req,res){
-  req.session.reset();
-  //var cookies = new Cookies(req, res);
-  //cookies.set('session');
+  //req.session.reset();
+  var cookies = new Cookies(req, res);
+  cookies.set('session');
   res.redirect('http://peopleandbooks.com');
 });
 
@@ -188,7 +188,7 @@ app.get('/',function(req,res) {
                      }
                 }
                 else {
-                  res.send('index');
+                  res.render('index');
                 }
              // if(done.books||done.movies){
              //    
