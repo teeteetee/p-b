@@ -432,7 +432,7 @@ res.render('settings');
 
 app.get('/m',function(req,res){
         console.log('---------going to render midexes----------');
-        if (req.session.mail != undefined && req.session.lgn != undefined)
+        if (req.session.mail != undefined )
         //{res.render('indexreg',{'prfname':"Привет, "+req.session.lgn+"!"});}
         {
            console.log('going to query');
