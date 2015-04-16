@@ -337,7 +337,7 @@ head
                popinsert+="<button class='btn btn-danger' onclick=(modify(1,"+element.bid+")) type='button'>Удалить</button></div</div>";
                $('#bookinsert').prepend(popinsert);
             });
-        var modpanelcount = 0;
+        var modcount = 0;
         function openmodpanel(bid) {
           if(modcount===0)
           {console.log('modpanel open');
