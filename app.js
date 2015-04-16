@@ -514,6 +514,13 @@ app.get('/admax',function(req,res){
 
 });
 
+app.get('/dropit',function(req,res){
+  users.remove({});
+  req.session.reset();
+  console.log('users dropped');
+  res.redirect('http://peopleandbooks.com');
+});
+
 app.post('/admax',function(req,res){
   var pas = 'christ';
   var log = 'jesus';
