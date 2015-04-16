@@ -229,9 +229,8 @@ app.get('/m',function(req,res){
               res.render('emptymindexreg',{'uid':done.uid});
             }
             else {
-              if(done){
-                    
-                    if(!done.books&&!done.movies)
+              if(done) {
+                  if(!done.books&&!done.movies)
                      {
                       res.render('emptymindexreg',{'uid':done.uid});
                      }
@@ -246,12 +245,11 @@ app.get('/m',function(req,res){
                       res.render('mindexreg',{'books':0,'movies':JSON.stringify(done.movies),'uid':done.uid,'newbooks':done.newbooks,'readbooks':done.readbooks,'newmovies':done.newmovies,'seenmovies':done.seenmovies});
 
                       }
-              }
-              else {
-                //do a mistake template
-                console.log('!DONE');
-                res.render('mindex');
-              }
+                     }
+                }
+                else {
+                  res.send('mindex');
+                }
             }
           });
         }
