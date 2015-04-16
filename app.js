@@ -310,7 +310,7 @@ app.post('/newuser',function(req,res){
           }
         }
         else {
-           ms.mtext='email exists'
+           ms.mtext='email exists';
            res.send(ms);
         }
       }// end of err's else

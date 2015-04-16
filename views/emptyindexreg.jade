@@ -464,15 +464,15 @@ head
               console.log(readbooks);
               $('#readbooks').text(readbooks);
         }
-        if(element.attention===1&&element.newbook===1){
-                 insert+="<span style='color:rgba(255, 255, 255, 0.65);margin-left:10px;' class='glyphicon glyphicon-exclamation-sign'></span>";
-               }
-               insert+="</h4></div></div><div class='row modpanel' id='modbook"+bid+"' style='text-align:center;display:none;background-color:#333;'><div class='col-xs-12'>";
-               if(newbook){
-                insert+="<button id='readbutton"+bid+"' class='btn btn-primary' onclick=(modify(0,"+bid+")) type='button'>Прочитана</button>";
-               }
-               insert+="<button class='btn btn-danger' onclick=(modify(1,"+bid+")) type='button'>Удалить</button></div</div>";
-               //$('#bookinsert').prepend(popinsert);
+        if(attention===1&&newbook===1){
+          insert+="<span style='color:rgba(255, 255, 255, 0.65);margin-left:10px;' class='glyphicon glyphicon-exclamation-sign'></span>";
+        }
+        insert+="</h4></div></div><div class='row modpanel' id='modbook"+bid+"' style='text-align:center;display:none;background-color:#333;'><div class='col-xs-12'>";
+        if(newbook){
+         insert+="<button id='readbutton"+bid+"' class='btn btn-primary' onclick=(modify(0,"+bid+")) type='button'>Прочитана</button>";
+        }
+        insert+="<button class='btn btn-danger' onclick=(modify(1,"+bid+")) type='button'>Удалить</button></div</div>";
+        //$('#bookinsert').prepend(popinsert);
         $(insert).prependTo('#bookinsert').hide().slideDown();
         allowsubmit=1;
         //window.location = 'http://m.peopleandbooks.com';
