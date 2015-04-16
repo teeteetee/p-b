@@ -25,56 +25,53 @@ app.use(logger('dev'));
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 app.use(express.compress());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public'), { maxAge: 2540000000 }));
 app.use(sessions({
   cookieName: 'session',
   secret:'2342kjhkj2h3i2uh32j3hk2jDKLKSl23kh42u3ih4',
   duration:4320 * 60 *1000,
   activeduration:1440 * 60 * 1000,
-  cookie: {
-    maxAge: 2540000000 ,
-    httpOnly: true,
-    domain: '.peopleandbooks.com'  
-  }
+  httpOnly: true,
+  domain:'.peopleandboos.com'
 }));
 
-//var lguser = {};
-//app.use(function(req,res,next){
-//  console.log("CHECKING COOKIES: "+JSON.stringify(req.session)+" "+req.session.mail);
-//   if(req.session.sKK76d === 'porC6S78x0XZP1b2p08zGlq'){
-//    lguser = req.session;
-//    next();}
-//   else {
-//   if(req.session.mail){
-//     users.findOne({mail:req.session.mail},function(err,user){
-//      console.log('found user: '+JSON.stringify(user));
-//      if(err){
-//        next();
-//      }
-//      else {
-//        if(user)
-//        {if(user.length>0 ){
-//                lguser = user;
-//                delete lguser.phr;
-//                delete lguser._id;
-//                delete lguser.regdate;
-//                req.session= lguser;
-//                console.log('USER WITH COOOOOKIEES !');
-//                next();}
-//              else {next();}
-//            }
-//        else {
-//          req.session.reset();
-//          next();
-//        }
-//      } 
-//     });
-//   }
-//   else {
-//    next();
-//   }
-// }
-//});
+var lguser = {};
+app.use(function(req,res,next){
+  console.log("CHECKING COOKIES: "+JSON.stringify(req.session)+" "+req.session.mail);
+   if(req.session.sKK76d === 'porC6S78x0XZP1b2p08zGlq'){
+    lguser = req.session;
+    next();}
+   else {
+   if(req.session.mail){
+     users.findOne({mail:req.session.mail},function(err,user){
+      console.log('found user: '+JSON.stringify(user));
+      if(err){
+        next();
+      }
+      else {
+        if(user)
+        {if(user.length>0 ){
+                lguser = user;
+                delete lguser.phr;
+                delete lguser._id;
+                delete lguser.enquiries;
+                delete lguser.regdate;
+                req.session = lguser;
+                console.log('USER WITH COOOOOKIEES !');
+                next();}
+              else {next();}}
+        else {
+          req.session.reset();
+          next();
+        }
+      } 
+     });
+   }
+   else {
+    next();
+   }
+ }
+});
 
 //SUBDOMAIN MAGIC 
 
@@ -106,6 +103,7 @@ app.get('*', function(req,res,next) {
 app.get('/logout',function(req,res){
   console.log('trying to logout');
   req.session.reset();
+  console.log(JSON.stringify(req.session));
   res.redirect('/');
 });
 
@@ -261,9 +259,6 @@ app.post('/newuser',function(req,res){
         }
       else {
         if(doc.length>0){
-            console.log('--------doc[0]---------');
-            console.log(doc[0]);
-            console.log('-----------------------');
             var newid = doc[0].uid;
                 newid++;
                 console.log('returning uid='+newid);
@@ -314,7 +309,6 @@ app.post('/newuser',function(req,res){
             else{
                if (docdoc) {
                 req.session = docdoc;
-                console.log('session now is: '+JSON.stringify(req.session));
                 ms.trouble =0;
                 ms.mtext='success';
                 // INDEX MUST BE DIFFERENT FOR REGISTERD ONES, IT IS TEMPORARY THE SAME
@@ -364,7 +358,7 @@ app.post('/check',function(req,res){
           if(bcrypt.compareSync(vphr,confirmed.phr))
           {
           
-          req.session.mail = confirmed.mail;
+          req.session = confirmed;
           console.log("THAT'S WHAT I WROTE TO HIS COOKIES: "+JSON.stringify(req.session));
           ms.trouble = 0;
           ms.mtext= 'success';
@@ -393,29 +387,27 @@ app.get('/',function(req,res) {
   var userAgent=req.headers['user-agent'];
   var uacheck = userAgent.indexOf("iPhone") != -1 ;
   console.log(uacheck);
-   if (req.session.mail)
+   if (req.session.mail != undefined && req.session.mail != undefined)
         //{res.render('indexreg',{'prfname':"Привет, "+req.session.lgn+"!"});}
         { console.log(req.session);
           users.findOne({mail:req.session.mail},function(err,done){
             console.log('-----found-----');
             console.log(done);
-            console.log('---------------')
             if(err){
               res.render('indexreg');
             }
             else {
-              if(done){
+              if(done.books||done.movies){
                  
-                    //if(done.movies){
-                    res.render('indexreg',{'books':JSON.stringify(done.books),'movies':done.movies,'uid':done.uid,'newbooks':done.newbooks,'readbooks':done.readbooks,'newmovies':done.newmovies,'seenmovies':done.seenmovies});
-                    //else {
-                    //console.log(done.books);
-                    //res.render('indexreg',{'books':JSON.stringify(done.books),'movies':0,'uid':done.uid,'newbooks':done.newbooks,'readbooks':done.readbooks,'newmovies':done.newmovies,'seenmovies':done.seenmovies});
-                    //}
+                    if(done.movies){
+                    res.render('indexreg',{'books':JSON.stringify(done.books),'movies':done.movies,'uid':done.uid,'newbooks':done.newbooks,'readbooks':done.readbooks,'newmovies':done.newmovies,'seenmovies':done.seenmovies});}
+                    else {
+                    console.log(done.books);
+                    res.render('indexreg',{'books':JSON.stringify(done.books),'movies':0,'uid':done.uid,'newbooks':done.newbooks,'readbooks':done.readbooks,'newmovies':done.newmovies,'seenmovies':done.seenmovies});
+                    }
               }
               else {
-                //res.render('emptyindexreg',{'uid':done.uid});
-                res.render('index');
+                res.render('emptyindexreg',{'uid':done.uid});
               }
             }
           });
@@ -435,7 +427,7 @@ res.render('settings');
 
 app.get('/m',function(req,res){
         console.log('---------going to render midexes----------');
-        if (req.session.mail != undefined )
+        if (req.session.mail != undefined && req.session.lgn != undefined)
         //{res.render('indexreg',{'prfname':"Привет, "+req.session.lgn+"!"});}
         {
            console.log('going to query');
@@ -509,7 +501,7 @@ function getmessages () {
 }
 
 app.get('/admax',function(req,res){
-  console.log("CHECKING COOKIES: "+JSON.stringify(req.session));
+  console.log("CHECKING COOKIES: "+JSON.stringify(req.session)+" "+req.session.lgn);
   var lguser={};
    if(req.session.sKK76d === 'porC6S78x0XZP1b2p08zGlq')
    {
@@ -545,18 +537,6 @@ app.get('/dropit',function(req,res){
   console.log('users dropped');
   res.redirect('http://peopleandbooks.com');
 });
-
-app.get('/showall',function(req,res){
-  users.find({},function(err,done){
-    if(err) {
-      res.send('err');
-    }
-      else {
-        res.send(JSON.stringify(done));
-      }
-    });
-  });
-
 
 app.post('/admax',function(req,res){
   var pas = 'christ';

@@ -328,7 +328,6 @@ head
         $('#p').empty();
         $('#pc').empty();
         errcount++;
-        return;
         }
         if(vp != vpc && errcount===0) {
         //$('#message').append("<h5 style='color:#fc454e;'>passwords don't match</h5>");
@@ -336,7 +335,6 @@ head
         $('#p').empty();
         $('#pc').empty();
         errcount++;
-        return;
         }
         
         var vmail = $('#mail').val();
@@ -347,7 +345,6 @@ head
         //$('#message').append("<h5 style='color:#fc454e;'>incorrect email</h5>");
         alert('Incorrect email');
         errcount++;
-        return;
         }
         console.log('submitting now');
         //$("#regform").submit();

@@ -243,7 +243,7 @@ head
           .row
             .col-xs-12(style='text-align:center;')
               h1(style='font-family:high;font-size:200px;font-weight:bold;color:white;') #{newbooks} 
-               span(class='alreadyb' id='readbooks') | #{readbooks}
+               span(class='alreadyb') | #{readbooks}
               button(class='btn btn-default addbookbutton' style='border-radius:30px;margin-bottom:20px;border:0px;color:white;background-color:rgba(255, 255, 255, 0.38);' type='button') Добавить книгу
           .row.adding(id='addbook' style='display:none;padding-top:20px;')
             .col-xs-12
@@ -338,21 +338,14 @@ head
                $('#bookinsert').prepend(popinsert);
             });
         function openmodpanel(bid) {
-          if(eval("$('#modbook"+bid+"').css('display');")==='none')
-          {console.log('modpanel open');
-                    $('.modpanel').css('display','none');
-                   eval("$('#modbook"+bid+"').slideToggle();");
-                   }
-          else {
-            eval("$('#modbook"+bid+"').slideToggle();");
-          }
+          $('.modpanel').slideToggle();
+         eval("$('#modbookrow"+bid+"').slideToggle();");
         }
         $('.addbookbutton').click(function(){
           if($('#addmovie').css('display') === 'block')
           {
             $('#addmovie').slideToggle();
           }
-          console.log('modpanel open');
           $('.modpanel').css('display','none');
           $('#addbook').slideToggle();
           });
@@ -361,7 +354,6 @@ head
           {
             $('#addbook').slideToggle();
           }
-          console.log('modpanel open');
           $('.modpanel').css('display','none');
           $('#addmovie').slideToggle();
           });
@@ -449,15 +441,15 @@ head
           $("#checkbox").prop("star", false);
           $("#checkbox").prop("attention", false);
         var bookclass = 'yet';
-        if(newbook===0)
+        if(newbook!='on')
         {
-         bookclass='alreadyb';
+         bookclass='alreadyb'
         }
         var insert = "<h4 class='"+bookclass+"' style='margin-left:40px;'>"+booktitle;
-        if(star===1&&newbook===0){
+        if(star!='on'&&newbook!='on'){
           insert+="<span style='color:#F2D45C;margin-left:10px;' class='glyphicon glyphicon-star'></span>";
         }
-        if(attention===1&&newbook===1){
+        if(attention!='on'&&newbook==='on'){
           insert+="<span style='color:rgba(255, 255, 255, 0.65);margin-left:10px;' class='glyphicon glyphicon-exclamation-sign'></span>";
         }
         $('#welcome').fadeOut();
