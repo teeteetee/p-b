@@ -175,7 +175,7 @@ app.post('/modbook',function(req,res){
   console.log('rem: '+rem+',vuid: '+vuid+', vbid: '+vbid);
   if(!rem||!vuid||!vbid) {
     console.log('missing data for book modification');
-    ms.mtext('inconsistent');
+    ms.mtext='inconsistent';
     res.send(ms);
     return;
   }
@@ -265,7 +265,7 @@ app.post('/newuser',function(req,res){
                 callback(newid);
           }
         else {
-              console.log('returning uid=');
+              console.log('returning uid=1');
                 callback(1);
           }
             }
