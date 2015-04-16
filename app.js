@@ -101,11 +101,9 @@ app.get('*', function(req,res,next) {
 
 
 app.get('/logout',function(req,res){
-  console.log('trying to logout');
   req.session.reset();
-  console.log(JSON.stringify(req.session));
-  res.redirect('/');
 });
+
 
 app.post('/addbook',function(req,res){
   console.log('adding a book');
