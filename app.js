@@ -395,9 +395,6 @@ app.post('/newuser',function(req,res){
     //if (vu.length === 0 )
     //  {vu = 0;}
     var vp = bcrypt.hashSync(req.body.p,bcrypt.genSaltSync(10));
-    var ms = {};
-    ms.trouble=1;
-    ms.mtext='email incorrect';
     // MUST INCLUDE enquiries - all  - accepted WHEN WRITING TO THE DB
     // CHECK MAIL BEFOR WRTING
     function validateEmail(email) { 
@@ -463,30 +460,30 @@ app.post('/newuser',function(req,res){
             else{
                if (docdoc) {
                 req.session = docdoc;
-                ms.trouble =0;
-                ms.mtext='success';
-                // INDEX MUST BE DIFFERENT FOR REGISTERD ONES, IT IS TEMPORARY THE SAME
-                console.log('SOMEBODY REGISTERED');
-                res.send(ms);
+               // ms.trouble =0;
+               // ms.mtext='success';
+               // // INDEX MUST BE DIFFERENT FOR REGISTERD ONES, IT IS TEMPORARY THE SAME
+               console.log('SOMEBODY REGISTERED');
+               // res.send(ms);
+               res.redirect('/');
                }
                else {
-                  ms.mtext ='fail';
-                  res.send(ms);
+                  res.redirect('/');
                }
             }
           });
           }
         }
         else {
-           ms.mtext='email exists';
-           res.send(ms);
+           //ms.mtext='email exists';
+           res.redirect('/');
         }
       }// end of err's else
     });
     }   
     else {
       // INCORRECT EMAIL, SO WE SEND A NOTIFICATION
-      res.send(ms);
+      res.redirect('/');
     }
 
     });
