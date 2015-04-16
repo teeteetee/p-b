@@ -101,7 +101,9 @@ app.get('*', function(req,res,next) {
 
 
 app.get('/logout',function(req,res){
-  req.session.reset();
+  //req.session.reset();
+  var cookies = new Cookies(req, res);
+  cookies.set(session);
   res.redirect('http://peopleandbooks.com');
 });
 
