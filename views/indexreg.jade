@@ -337,10 +337,17 @@ head
                popinsert+="<button class='btn btn-danger' onclick=(modify(1,"+element.bid+")) type='button'>Удалить</button></div</div>";
                $('#bookinsert').prepend(popinsert);
             });
+        var modpanelcount = 0;
         function openmodpanel(bid) {
-          console.log('modpanel open');
-          $('.modpanel').css('display','none');
-         eval("$('#modbook"+bid+"').slideToggle();");
+          if(modcount===0)
+          {console.log('modpanel open');
+                    $('.modpanel').css('display','none');
+                   eval("$('#modbook"+bid+"').slideToggle();");}
+                   modcount++;
+          else {
+            $('.modpanel').css('display','none');
+            modcount--;
+          }
         }
         $('.addbookbutton').click(function(){
           if($('#addmovie').css('display') === 'block')
