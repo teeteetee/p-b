@@ -102,11 +102,10 @@ app.get('*', function(req,res,next) {
 
 
 app.get('/logout',function(req,res){
-  req.session.reset();
+  delete req.session ;
   // Need to access underlying cookie store to clear authentication cookie since client-session
   // doesn't get invoked on res.redirects
-  res.writeHead(302);
-  res.location('/').end();
+  res.send(req.session);
 });
 
 app.post('/addbook',function(req,res){
