@@ -117,6 +117,10 @@ app.get('/getcookie',function(req,res){
   res.send('got it',200);
 });
 
+app.get('/checkcookies',function(req,res){
+  res.send(req.session);
+});
+
 app.post('/addbook',function(req,res){
   console.log('adding a book');
   var ms = {};
