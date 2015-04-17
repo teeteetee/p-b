@@ -35,43 +35,43 @@ app.use(sessions({
   domain:'.peopleandbooks.com'
 }));
 
-var lguser = {};
-app.use(function(req,res,next){
-  console.log("CHECKING COOKIES: "+JSON.stringify(req.session)+" "+req.session.mail);
-   if(req.session.sKK76d === 'porC6S78x0XZP1b2p08zGlq'){
-    lguser = req.session;
-    next();}
-   else {
-   if(req.session.mail){
-     users.findOne({mail:req.session.mail},function(err,user){
-      console.log('found user: '+JSON.stringify(user));
-      if(err){
-        next();
-      }
-      else {
-        if(user)
-        {if(user.length>0 ){
-                lguser = user;
-                delete lguser.phr;
-                delete lguser._id;
-                delete lguser.enquiries;
-                delete lguser.regdate;
-                req.session = lguser;
-                console.log('USER WITH COOOOOKIEES !');
-                next();}
-              else {next();}}
-        else {
-          req.session.reset();
-          next();
-        }
-      } 
-     });
-   }
-   else {
-    next();
-   }
- }
-});
+//var lguser = {};
+//app.use(function(req,res,next){
+//  console.log("CHECKING COOKIES: "+JSON.stringify(req.session)+" "+req.session.mail);
+//   if(req.session.sKK76d === 'porC6S78x0XZP1b2p08zGlq'){
+//    lguser = req.session;
+//    next();}
+//   else {
+//   if(req.session.mail){
+//     users.findOne({mail:req.session.mail},function(err,user){
+//      console.log('found user: '+JSON.stringify(user));
+//      if(err){
+//        next();
+//      }
+//      else {
+//        if(user)
+//        {if(user.length>0 ){
+//                lguser = user;
+//                delete lguser.phr;
+//                delete lguser._id;
+//                delete lguser.enquiries;
+//                delete lguser.regdate;
+//                req.session = lguser;
+//                console.log('USER WITH COOOOOKIEES !');
+//                next();}
+//              else {next();}}
+//        else {
+//          req.session.reset();
+//          next();
+//        }
+//      } 
+//     });
+//   }
+//   else {
+//    next();
+//   }
+// }
+//});
 
 //SUBDOMAIN MAGIC 
 
@@ -166,7 +166,7 @@ app.post('/addbook',function(req,res){
 });
 
 app.post('/addmovie',function(req,res){
-  if (req.session.mail != undefined && req.session.lgn != undefined){
+  if (req.session.mail != undefined ){
     var vuid = parseInt(req.params.uid);
     var vmovietitle = req.params.movietitle;
     var vyear = req.params.year;
@@ -257,7 +257,7 @@ app.post('/newuser',function(req,res){
             }
             else{
                if (docdoc) {
-                req.session = docdoc;
+                req.session.mail = docdoc.mail;
                 ms.trouble =0;
                 ms.mtext='success';
                 // INDEX MUST BE DIFFERENT FOR REGISTERD ONES, IT IS TEMPORARY THE SAME
@@ -305,7 +305,7 @@ app.post('/check',function(req,res){
           if(bcrypt.compareSync(vphr,confirmed.phr))
           {
           
-          req.session = confirmed;
+          req.session.mail = confirmed.mail;
           console.log("THAT'S WHAT I WROTE TO HIS COOKIES: "+JSON.stringify(req.session));
           ms.trouble = 0;
           ms.mtext= 'success';
@@ -374,7 +374,7 @@ res.render('settings');
 
 app.get('/m',function(req,res){
         console.log('---------going to render midexes----------');
-        if (req.session.mail != undefined && req.session.lgn != undefined)
+        if (req.session.mail != undefined )
         //{res.render('indexreg',{'prfname':"Привет, "+req.session.lgn+"!"});}
         {
            console.log('going to query');
@@ -448,7 +448,7 @@ function getmessages () {
 }
 
 app.get('/admax',function(req,res){
-  console.log("CHECKING COOKIES: "+JSON.stringify(req.session)+" "+req.session.lgn);
+  console.log("CHECKING COOKIES: "+JSON.stringify(req.session));
   var lguser={};
    if(req.session.sKK76d === 'porC6S78x0XZP1b2p08zGlq')
    {
