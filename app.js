@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var sessions = require('client-sessions');
+var Cookies = require('cookies');
 var bcrypt = require('bcrypt');
 
 var mongo = require('mongodb');
