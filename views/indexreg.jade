@@ -374,6 +374,27 @@ head
                popinsert+="<button class='btn btn-danger' onclick='modify(1,"+element.bid+")' type='button'>Удалить</button></div</div>";
                $('#bookinsert').prepend(popinsert);
             });
+        movies.forEach(function(element,index,array){
+               //$('#movieinsert').append("<h4 style='color:white;'>"+element.movietitle+"</h4>");
+               var popmovieclass = 'yet';
+               if(element.newmovie!=1)
+               {
+                popmovieclass='alreadym';
+               }
+               var popinsert = "<div class='row flick' onclick='openmodmoviepanel("+element.mid+")' id='movie"+element.mid+"'><div class='col-xs-12'><h4 style='margin-left:40px;' class='"+popmovieclass+"'>"+element.movietitle+" <small> "+element.author+" </small>";
+               if(element.star===1&&element.newmovie===0){
+                 popinsert+="<span style='color:#F2D45C;margin-left:10px;' class='glyphicon glyphicon-star'></span>";
+               }
+               if(element.attention===1&&element.newmovie===1){
+                 popinsert+="<span style='color:rgba(255, 255, 255, 0.65);margin-left:10px;' class='glyphicon glyphicon-exclamation-sign'></span>";
+               }
+               popinsert+="</h4></div></div><div class='row modpanel' id='modmovie"+element.mid+"' style='text-align:center;display:none;background-color:#333;'><div class='col-xs-12'>";
+               if(element.newmovie){
+                popinsert+="<button class='btn btn-primary' onclick='modifymovie(0,"+element.mid+")' type='button'>Просмотрен</button>";
+               }
+               popinsert+="<button class='btn btn-danger' onclick='modifymovie(1,"+element.mid+")' type='button'>Удалить</button></div</div>";
+               $('#movieinsert').prepend(popinsert);
+            });
         //end of populating the columns
         // Function for opening panel with remove/modify buttons
         function openmodpanel(bid) {
@@ -382,6 +403,13 @@ head
          eval("$('#modbook"+bid+"').slideToggle();");
         }
         //end of openmodpanel funciton
+        // Function for opening panel with remove/modify buttons in movies column
+        function openmodmoviepanel(mid) {
+          //$('.modpanel').css('display','none');
+          // other opened panels should close when opening new one
+         eval("$('#modmovie"+mid+"').slideToggle();");
+        }
+        //end of openmodpanel funciton for movies column
         // Buttons which open forms for inserting new books/movies
         $('.addbookbutton').click(function(){
           if($('#addmovie').css('display') === 'block')
