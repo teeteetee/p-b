@@ -307,29 +307,28 @@ head
         .col-xs-6(id='movies' style='background-color:#FAB142;height:100%;overflow:auto;')
           .row
             .col-xs-12(style='text-align:center;')
-              h1(id='moviesfigures' style='font-family:high;font-size:200px;font-weight:bold;color:white;') #{newmovies} 
-               span(class='alreadym') | #{seenmovies}
+              h1(id='moviesfigures' style='font-family:high;font-size:200px;font-weight:bold;color:white;')
               button(class='btn btn-default addmoviebutton' style='border-radius:30px;margin-bottom:20px;border:0px;background-color:rgba(255, 255, 255, 0.38);color:white;' type='button') Добавить фильм
            .row.adding(id='addmovie' style='display:none;padding-top:20px;')
             .col-xs-12
               .form-group
                 label(for="exampleInputEmail1") Название
-                input(type="email" class="form-control" id="exampleInputEmail1" placeholder="No country for old men")
+                input(type="email" class="form-control" id="movietitle" placeholder="No country for old men")
               .form-group
                 label(for="exampleInputEmail1") Год
-                input(type="email" class="form-control" id="exampleInputEmail1" placeholder="2007")
+                input(type="email" class="form-control" id="year" placeholder="2007")
               .checkbox
                 label
                   input(type="checkbox" id='newmovie') 
                   | Уже посмотрел
               .checkbox
                 label
-                  input(type="checkbox") 
+                  input(type="checkbox" id='moviestar') 
                   span(class='glyphicon glyphicon-star' style='color:#F2D45C;margin-right:10px;')
                   | Фильм понравился
               .checkbox
                 label
-                  input(type="checkbox") 
+                  input(type="checkbox" id='movieattention') 
                   span(class='glyphicon glyphicon-exclamation-sign' style='color:rgba(255, 255, 255, 0.65);margin-right:10px;')
                   | Посмотреть скорее
               nav
@@ -339,13 +338,19 @@ head
                   li(class="next")
                     a( class='addmoviebutton' style='background-color:#999;') Close
           .row
-            #moviesinsert.col-xs-12
+            #movieinsert.col-xs-12
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
       script.
-       var readbooks = #{readbooks};
+        // Setting user books/movies counters
+        var seenmovies = #{seenmovies};
+        var newmovies = #{newmovies};
+        $('#moviesfigures').append(" "+newbooks+" <span class='alreadyb'> | "+readbooks+"</span>");
+        var readbooks = #{readbooks};
         var newbooks = #{newbooks};
         $('#booksfigures').append(" "+newbooks+" <span class='alreadyb'> | "+readbooks+"</span>");
+        //End of setting counters
+        // Populating the columns
         var books = !{books};
         var movies = !{movies};
         books.forEach(function(element,index,array){
@@ -369,11 +374,15 @@ head
                popinsert+="<button class='btn btn-danger' onclick='modify(1,"+element.bid+")' type='button'>Удалить</button></div</div>";
                $('#bookinsert').prepend(popinsert);
             });
+        //end of populating the columns
+        // Function for opening panel with remove/modify buttons
         function openmodpanel(bid) {
           //$('.modpanel').css('display','none');
           // other opened panels should close when opening new one
          eval("$('#modbook"+bid+"').slideToggle();");
         }
+        //end of openmodpanel funciton
+        // Buttons which open forms for inserting new books/movies
         $('.addbookbutton').click(function(){
           if($('#addmovie').css('display') === 'block')
           {
@@ -388,6 +397,8 @@ head
           }
           $('#addmovie').slideToggle();
           });
+        //end of addforms open buttons
+        // Sliding menu mechanics
         var counter =0;
         var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
             menuRight = document.getElementById( 'cbp-spmenu-s2' ),
@@ -413,9 +424,12 @@ head
                         break;
                       }
         };
+        //end of sliding menu mechanics
+        // Book submit mechanics
         var allowsubmit = 1;
         function booksubmit() {
         if(!allowsubmit) {
+          alert('Submit is in progress');
           return
         }
         var author = $('#author').val();
@@ -513,8 +527,9 @@ head
         console.log("author="+author+"&booktitle="+booktitle+"&star="+star+"&attention="+attention+"&uid="+uid+"&newbook="+newbook);
         request.send("author="+author+"&booktitle="+booktitle+"&star="+star+"&attention="+attention+"&uid="+uid+"&newbook="+newbook);
         }
+        //End of book submit mechanics
         $('#booksubmitbutton').click(booksubmit);
-        // modify function
+        // Function for removing or changing the status of the book
         var allowmod = 1;
         function modify(rem,bid) {
          if (!allowmod) {
@@ -572,6 +587,108 @@ head
         //Most libraries like jQuery/Prototype/Dojo do this
         request.send("rem="+rem+"&uid=#{uid}&bid="+bid);
         }
-      
+        //End of remove/change status function
+        // Function for movie submition 
+        function moviesubmit() {
+        if(!allowsubmit) {
+          return
+        }
+        var year = $('#year').val();
+        if(!year){
+          year='--';
+        }
+        var movietitle = $('#movietitle').val();
+        if(!movietitle) {
+          alert('Specify movie title');
+          allowsubmit=1;
+          return
+        }
+        var uid = #{uid};
+        var moviestar;
+        var attention;
+        var newmovie;
+        if($('#moviestar').is(':checked')){
+          moviestar = 1;
+        }
+        else {
+          moviestar=0;
+        }
+        if($('#movieattention').is(':checked')){
+          movieattention = 1;
+        }
+        else {
+          movieattention=0;
+        }
+        if($('#newmovie').is(':checked')){
+          newmovie = 0;
+        }
+        else {
+          newmovie=1;
+        }
+        allowsubmit = 0;
+        request = new XMLHttpRequest();
+        request.onreadystatechange = function () {
+        var DONE = this.DONE || 4;
+        if (this.readyState === DONE){
+        var index;
+        parsed = JSON.parse(request.responseText);
+        console.log(parsed);
+        if(parsed.trouble === 1)
+        {
+        console.log('TROUBLE === 1');
+        alert('Server is down, try again later.')
+        allowsubmit=1;
+        }
+        else {
+          var bid = parsed.bid;
+          $('#addmovie').slideToggle();
+         $('#year').val('');
+          $('#movietitle').val('');
+          $("#checkbox").prop("newmovie", false);
+          $("#checkbox").prop("moviestar", false);
+          $("#checkbox").prop("movieattention", false);
+        var movieclass = 'yet';
+        if(newmovie===0)
+        {
+         movieclass='alreadym';
+        }
+        var insert = "<div class='row' onclick='openmodpanel("+bid+")' id='movie"+bid+"'><div class='col-xs-12'><h4 style='margin-left:40px;' class='"+movieclass+"'>"+movietitle+" <small> "+year+" </small>";
+               if(moviestar===1&&newmovie===0){
+                 insert+="<span style='color:#F2D45C;margin-left:10px;' class='glyphicon glyphicon-moviestar'></span>";
+               }
+               if(movieattention===1&&newmovie===1){
+                 insert+="<span style='color:rgba(255, 255, 255, 0.65);margin-left:10px;' class='glyphicon glyphicon-exclamation-sign'></span>";
+               }
+               insert+="</h4></div></div><div class='row modpanel' id='modmovie"+bid+"' style='text-align:center;display:none;background-color:#333;'><div class='col-xs-12'>";
+               if(newmovie){
+                insert+="<button class='btn btn-primary' type='button'>Прочитана</button>";
+               }
+               insert+="<button class='btn btn-danger' type='button'>Удалить</button></div</div>";
+               //$('#movieinsert').prepend(insert);
+        //$('#welcome').fadeOut();
+        //$('#moviesrow').slideToggle();
+        if(newmovie===1)
+        {newmovies++;
+        $('#moviesfigures').empty().append(" "+newmovies+" <span class='alreadym'> | "+readmovies+"</span>");
+        }
+        else {
+          readmovies++;
+          $('#moviesfigures').empty().append(" "+newmovies+" <span class='alreadym'> | "+readmovies+"</span>");
+        }
+        $(insert).prependTo('#movieinsert').hide().slideDown();
+        allowsubmit=1;
+        //window.location = 'http://m.peopleandmovies.com';
+        }
+        }
+        };
+        request.open('POST', '/addmovie', true);
+        request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+        request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        //Most libraries like jQuery/Prototype/Dojo do this
+        console.log("year="+year+"&movietitle="+movietitle+"&moviestar="+moviestar+"&movieattention="+movieattention+"&uid="+uid+"&newmovie="+newmovie);
+        request.send("year="+year+"&movietitle="+movietitle+"&moviestar="+moviestar+"&movieattention="+movieattention+"&uid="+uid+"&newmovie="+newmovie);
+        }
+        //End of movie submit mechanics
+        $('#moviesubmitbutton').click(moviesubmit);
         
       

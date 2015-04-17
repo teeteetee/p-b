@@ -162,7 +162,7 @@ app.post('/modbook',function(req,res){
            ms.trouble=0;
            ms.bookstatus=1;
            res.send(ms); 
-           console.log('chanhed books property');
+           console.log('changed books property');
           }
         }
       });
@@ -231,15 +231,109 @@ app.post('/addbook',function(req,res){
 });
 
 app.post('/addmovie',function(req,res){
-  if (req.session.mail != undefined ){
-    var vuid = parseInt(req.params.uid);
-    var vmovietitle = req.params.movietitle;
-    var vyear = req.params.year;
-    
-  }
-  else {
+ console.log('adding a movie');
+  var ms = {};
+  ms.trouble =1;
+  if (req.session.mail ){
+    var vuid = parseInt(req.body.uid);
+    var vmovietitle = req.body.movietitle;
+    var vnewmovie = parseInt(req.body.newmovie);
+    console.log('breakpoint one');
+    var vmovieyear = req.body.year;
+    var vstar = parseInt(req.body.star);
+    var vattention = parseInt(req.body.attention);
+    console.log('ADDING A movie: vuid'+vuid+' ,movietitle:'+vmovietitle+' ,year: '+vmovieyear+' ,star: '+vstar+' ,attention '+vattention+', newmovie'+vnewmovie);
+    var dd= new Date();
+    var vday = dd.getDate().toString();
+    if (vday.length===1){
+      vday='0'+vday;
+    }
+    var vmonth = dd.getMonth()+1;
+    console.log('breakpoint two');
+    vmonth = vmonth.toString();
+    if (vmonth.length===1){
+      vmonth='0'+vmonth;
+    }
+    var vyear = dd.getUTCFullYear().toString();
+    var fulldate = vyear+vmonth+vday;
+    fulldate = parseInt(fulldate);
 
+    if(!vmovietitle){
+      vmovietitle = '--';
+      //SEND ERROR
+    }
+    console.log('breakpoint three');
+    if(!vmovieyear){
+      vvmovieyear = '--';
+    }
+    users.findOne({uid:vuid},function(err,doc){
+      if(err) {
+        res.send(ms);
+      }
+      else {
+        var vbid = doc.totalmovies+1;
+            users.update({uid:vuid},{$push:{movies:{bid:vbid,year:vmovieyear,movietitle:vmovietitle,newmovie:vnewmovie,star:vstar,attention:vattention,regdateint:fulldate}}});
+            if(vnewmovie)
+            {users.update({uid:vuid},{$inc:{newmovies:1,totalmovies:1}});}
+            else {
+              users.update({uid:vuid},{$inc:{seenmovies:1,totalmovies:1}});
+            }
+            ms.trouble=0;
+            ms.bid = vbid;
+            res.send(ms);
+           }
+    });
   }
+    else {
+      res.send(ms);
+    }    
+});
+
+app.post('/modmovie',function(req,res){
+  var ms={};
+  ms.trouble=1;
+  var rem = parseInt(req.body.rem);
+  var vuid = parseInt(req.body.uid);
+  var vmid = parseInt(req.body.mid);
+  console.log('rem: '+rem+',vuid: '+vuid+', vmid: '+vmid);
+  users.findOne({uid:vuid},function(err,doc){
+    if(err){
+       ms.mtext='db';
+       res.send(ms);
+    }
+    else {
+      doc.movies.forEach(function(element,index,array){
+        if(element.mid===vmid) {
+          var moviestatus;
+          if(rem){
+            moviestatus = element.newmovie;
+           doc.movies.splice(index, 1);
+           users.update({uid:vuid},{$set:{movies:doc.movies}});
+           users.update({uid:vuid},{$inc:{totalmovies:-1}});
+           if(element.newmovie===1){
+            users.update({uid:vuid},{$inc:{newmovies:-1}});
+           }
+           else {
+            users.update({uid:vuid},{$inc:{seenmovies:-1}});
+           }
+           ms.trouble=0;
+           ms.moviestatus=moviestatus;
+           res.send(ms);
+           console.log('removed a movie;');
+          }
+          else {
+           element.newmovie=0;
+           users.update({uid:vuid},{$set:{movies:doc.movies}});
+           users.update({uid:vuid},{$inc:{newmovies:-1,seenmovies:1}});
+           ms.trouble=0;
+           ms.moviestatus=1;
+           res.send(ms); 
+           console.log('changed movies property');
+          }
+        }
+      });
+    }
+  });
 });
 
 app.get('/register',function(req,res){
