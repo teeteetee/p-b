@@ -246,8 +246,7 @@ head
         .col-xs-6(id='books' style='background-color:#52CA8F;height:100%;overflow:auto;')
           .row
             .col-xs-12(style='text-align:center;')
-              h1(style='font-family:high;font-size:200px;font-weight:bold;color:white;') #{newbooks} 
-               span(class='alreadyb') | #{readbooks}
+              h1(id='bookfigures' style='font-family:high;font-size:200px;font-weight:bold;color:white;')
               button(class='btn btn-default addbookbutton' style='border-radius:30px;margin-bottom:20px;border:0px;color:white;background-color:rgba(255, 255, 255, 0.38);' type='button') Добавить книгу
           .row.adding(id='addbook' style='display:none;padding-top:20px;')
             .col-xs-12
@@ -282,7 +281,7 @@ head
         .col-xs-6(id='movies' style='background-color:#FAB142;height:100%;overflow:auto;')
           .row
             .col-xs-12(style='text-align:center;')
-              h1(style='font-family:high;font-size:200px;font-weight:bold;color:white;') #{newmovies} 
+              h1(id='moviefigures' style='font-family:high;font-size:200px;font-weight:bold;color:white;') #{newmovies} 
                span(class='alreadym') | #{seenmovies}
               button(class='btn btn-default addmoviebutton' style='border-radius:30px;margin-bottom:20px;border:0px;background-color:rgba(255, 255, 255, 0.38);color:white;' type='button') Добавить фильм
            .row.adding(id='addmovie' style='display:none;padding-top:20px;')
@@ -318,6 +317,9 @@ head
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
       script.
+       var readbooks = #{readbooks};
+        var newbooks = #{newbooks};
+        $('#booksfigures').text(" "+newbooks+" <span class='alreadyb'> | "+readbooks+"</span>");
         var books = !{books};
         var movies = !{movies};
         books.forEach(function(element,index,array){
@@ -443,29 +445,32 @@ head
           $("#checkbox").prop("star", false);
           $("#checkbox").prop("attention", false);
         var bookclass = 'yet';
-        if(newbook!='on')
-        {
-         bookclass='alreadyb'
-        }
-        var insert = "<h4 class='"+bookclass+"'' style='color:white;'>"+booktitle;
-        if(star!='on'&&newbook!='on'){
-          insert+="<span style='color:#F2D45C;margin-left:10px;' class='glyphicon glyphicon-star'></span>";
-        }
-        if(attention!='on'&&newbook==='on'){
-          insert+="<span style='color:rgba(255, 255, 255, 0.65);margin-left:10px;' class='glyphicon glyphicon-exclamation-sign'></span>";
-        }
-        $('#welcome').fadeOut();
-        $('#booksrow').slideToggle();
         if(newbook===1)
-        {var newbooks = parseInt($('#newbooks').text());
-              newbooks++;
-              $('#newbooks').text(newbooks);}
+        {
+         bookclass='alreadyb';
+        }
+        var insert = "<class='row' onclick='openmodpanel("+bid+")' id='book"+bid+"'><div class='col-xs-12'><h4 class='"+bookclass+"'>"+booktitle;
+               if(star===1&&newbook===0){
+                 insert+="<span style='color:#F2D45C;margin-left:10px;' class='glyphicon glyphicon-star'></span>";
+               }
+               if(attention===1&&newbook===1){
+                 insert+="<span style='color:rgba(255, 255, 255, 0.65);margin-left:10px;' class='glyphicon glyphicon-exclamation-sign'></span>";
+               }
+               insert+="</h4></div></div><div class='row modpanel' id='modbook"+bid+"' style='text-alig:center;display:none;background-color:#333;'><div class='col-xs-12'>";
+               if(newbook){
+                insert+="<button class='btn btn-primary' type='button'>Прочитана</button>";
+               }
+               insert+="<button class='btn btn-danger' type='button'>Удалить</button></div</div>";
+               $('#bookinsert').prepend(insert);
+        //$('#welcome').fadeOut();
+        //$('#booksrow').slideToggle();
+        if(newbook===1)
+        {newbooks++;
+        $('#booksfigures').empty().text(" "+newbooks+" <span class='alreadyb'> | "+readbooks+"</span>");
+        }
         else {
-          var readbooks = parseInt($('#readbooks').text());
-              console.log(readbooks);
-              readbooks++;
-              console.log(readbooks);
-              $('#readbooks').text(readbooks);
+          readbooks++;
+          $('#booksfigures').text(" "+newbooks+" <span class='alreadyb'> | "+readbooks+"</span>");
         }
         insert+="</h4>";
         $(insert).prependTo('#bookinsert').hide().slideDown();
