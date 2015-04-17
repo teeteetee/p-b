@@ -519,7 +519,7 @@ head
            if (eval("$('#modbook"+bid+"').css('display')") === 'block' )
          {eval("$('#modbook"+bid+"').slideToggle('400',function(){$('#modbook"+bid+"').remove();})");} 
           eval("$('#book"+bid+"').fadeOut('400',function(){$('#book"+bid+"').remove();});");
-          if(bookststus===1)
+          if(bookstatus===1)
         {newbooks--;
         $('#booksfigures').empty().append(" "+newbooks+" <span class='alreadyb'> | "+readbooks+"</span>");
         }
