@@ -32,8 +32,11 @@ app.use(sessions({
   secret:'2342kjhkj2h3i2uh32j3hk2jDKLKSl23kh42u3ih4',
   duration:4320 * 60 *1000,
   activeduration:1440 * 60 * 1000,
-  httpOnly: true,
+  cookie: {
+    path:'/',
+  httpOnly: false,
   domain:'.peopleandbooks.com'
+  }
 }));
 
 //var lguser = {};
