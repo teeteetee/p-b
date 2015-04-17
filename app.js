@@ -273,7 +273,7 @@ app.post('/newuser',function(req,res){
             }
             else{
                if (docdoc) {
-                req.session.user = docdoc;
+                req.session = docdoc;
                 delete req.session.phr;
                 ms.trouble =0;
                 ms.mtext='success';
@@ -352,10 +352,10 @@ app.get('/',function(req,res) {
   var userAgent=req.headers['user-agent'];
   var uacheck = userAgent.indexOf("iPhone") != -1 ;
   console.log(uacheck);
-   if (req.session.user.mail != undefined )
+   if (req.session.mail != undefined )
         //{res.render('indexreg',{'prfname':"Привет, "+req.session.lgn+"!"});}
         { console.log(req.session);
-          users.findOne({mail:req.session.user.mail},function(err,done){
+          users.findOne({mail:req.session.mail},function(err,done){
             console.log('-----found-----');
             console.log(done);
             if(err){
