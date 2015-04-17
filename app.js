@@ -138,7 +138,9 @@ app.post('/modbook',function(req,res){
     else {
       doc.books.forEach(function(element,index,array){
         if(element.bid===vbid) {
+          var bookstatus;
           if(rem){
+            bookstatus = element.newbook;
            doc.books.splice(index, 1);
            users.update({uid:vuid},{$set:{books:doc.books}});
            users.update({uid:vuid},{$inc:{totalbooks:-1}});
@@ -149,6 +151,7 @@ app.post('/modbook',function(req,res){
             users.update({uid:vuid},{$inc:{readbooks:-1}});
            }
            ms.trouble=0;
+           ms.bookstatus=bookstatus;
            res.send(ms);
            console.log('removed a book;');
           }
@@ -157,6 +160,7 @@ app.post('/modbook',function(req,res){
            users.update({uid:vuid},{$set:{books:doc.books}});
            users.update({uid:vuid},{$inc:{newbooks:-1,readbooks:1}});
            ms.trouble=0;
+           ms.bookstatus=1;
            res.send(ms); 
            console.log('chanhed books property');
           }

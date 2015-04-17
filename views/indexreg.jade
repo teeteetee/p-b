@@ -513,17 +513,28 @@ head
         break;
         }}
         else {
+          var bookstatus = parseInt(parsed.bookstatus);
          if(rem) {
            if (eval("$('#modbook"+bid+"').css('display')") === 'block' )
-         {eval("$('#modbook"+bid+"').slideToggle('400',function(){$('#modbook"+bid+"').remove();})");}
-         
-         eval("$('#book"+bid+"').fadeOut('400',function(){$('#book"+bid+"').remove();});");
+         {eval("$('#modbook"+bid+"').slideToggle('400',function(){$('#modbook"+bid+"').remove();})");} 
+          eval("$('#book"+bid+"').fadeOut('400',function(){$('#book"+bid+"').remove();});");
+          if(bookststus===1)
+        {newbooks--;
+        $('#booksfigures').empty().append(" "+newbooks+" <span class='alreadyb'> | "+readbooks+"</span>");
+        }
+        else {
+          readbooks--;
+          $('#booksfigures').empty().append(" "+newbooks+" <span class='alreadyb'> | "+readbooks+"</span>");
+        }
          }
          else {
           if (eval("$('#modbook"+bid+"').css('display')") === 'block' )
          {eval("$('#modbook"+bid+"').slideToggle();");}
            eval("$('#readbutton"+bid+"').remove();");
            eval("$('#heading"+bid+"').removeClass('yet').addClass('alreadyb');");
+           newbooks--;
+           readbooks++;
+         $('#booksfigures').empty().append(" "+newbooks+" <span class='alreadyb'> | "+readbooks+"</span>");
          }
         }
         }
