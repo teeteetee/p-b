@@ -360,21 +360,30 @@ head
           else
             {$('#addmovie').slideToggle();}
           });
+        $('.addmoviebutton').click(function(){
+          $('#addmovie').slideToggle();
+          });
       $('#shownav').click(function(){
           $('#shownav').fadeOut();
           $('#nav').fadeIn();
           });
       $('#showmovies').click(function(){
-         $('#booksrow').fadeOut();
+         if($('#addbook').css('display') === 'block')
+         {
+          $('#addbook').slideToggle();
+         }
+         $('#booksrow').fadeOut('400',function(){$('#moviesrow').fadeIn();});
          $('#maincont').css('background-color','#CA5B52');
-         $('#moviesrow').fadeIn();
          $('.activebutton').removeClass('activebutton');
          $('#showmovies').addClass('activebutton');
         });
       $('#showbooks').click(function(){
-         $('#moviesrow').fadeOut();
+        if($('#addmovie').css('display') === 'block')
+         {
+          $('#addmovie').slideToggle();
+         }
+         $('#moviesrow').fadeOut('400',function(){$('#booksrow').fadeIn();});
          $('#maincont').css('background-color','#52CA8F');
-         $('#booksrow').fadeIn();
          $('.activebutton').removeClass('activebutton');
          $('#showbooks').addClass('activebutton');
         });
