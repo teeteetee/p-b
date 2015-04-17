@@ -101,9 +101,11 @@ app.get('*', function(req,res,next) {
 
 
 app.get('/logout',function(req,res){
-  console.log('trying to logout');
   req.session.reset();
-  console.log(JSON.stringify(req.session));
+  // Need to access underlying cookie store to clear authentication cookie since client-session
+  // doesn't get invoked on res.redirects
+  var cookies = new Cookies(req, res);
+  cookies.set('session');
   res.redirect('/');
 });
 
