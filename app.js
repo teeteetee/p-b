@@ -112,6 +112,11 @@ app.get('/logout',function(req,res){
   res.send(req.session);
 });
 
+app.get('/getcookie',function(req,res){
+  req.session = {mail:'test@test.test',uid:1,phr:'qiufqieflevflqe',totalbooks:0,totalmoviews:0,newbooks:0,readbooks:0,newmovies:0,seenmovies:0,regdateint:05102015,regdate:{year:2015,month:04,day:17}};
+  res.send('got it',200);
+});
+
 app.post('/addbook',function(req,res){
   console.log('adding a book');
   var ms = {};
