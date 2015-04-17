@@ -344,7 +344,8 @@ head
                $('#bookinsert').prepend(popinsert);
             });
         function openmodpanel(bid) {
-          $('.modpanel').slideToggle();
+          //$('.modpanel').css('display','none');
+          // other opened panels should close when opening new one
          eval("$('#modbookrow"+bid+"').slideToggle();");
         }
         $('.addbookbutton').click(function(){
