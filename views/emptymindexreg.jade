@@ -492,6 +492,8 @@ head
           readbooks++;
           $('#booksfigures').empty().append(" "+newbooks+" <span class='alreadyb'> | "+readbooks+"</span>");
         }
+        if($('#addbook').css('display')==='block')
+          {$('#addbook').slideToggle();}
         $(hiddeninsert).prependTo('#bookinsert');
         $(visibleinsert).prependTo('#bookinsert').hide().slideDown();
         allowsubmit=1;
@@ -597,6 +599,8 @@ head
           seenmovies++;
           $('#moviesfigures').empty().append(" "+newmovies+" <span class='alreadym'> | "+seenmovies+"</span>");
         }
+        if($('#addmovie').css('display')==='block')
+          {$('#addmovie').slideToggle();}
         $(hiddeninsert).prependTo('#movieinsert');
         $(visibleinsert).prependTo('#movieinsert').hide().slideDown();
         allowsubmit=1;
