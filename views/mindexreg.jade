@@ -337,14 +337,14 @@ head
                        {
                         popbookclass='alreadyb';
                        }
-                       var popinsert = "<div class='row flick' onclick='openmodpanel("+element.bid+")' id='book"+element.bid+"'><div class='col-xs-12'><h4 class='"+popbookclass+"'>"+element.booktitle+" <small> "+element.author+" </small>";
+                       var popinsert = "<div class='row flick' onclick='openmodpanel("+element.bid+")' id='book"+element.bid+"'><div class='col-xs-12'><h3 class='"+popbookclass+"'>"+element.booktitle+" <small> "+element.author+" </small>";
                        if(element.star===1&&element.newbook===0){
                          popinsert+="<span style='color:#F2D45C;margin-left:10px;' class='glyphicon glyphicon-star'></span>";
                        }
                        if(element.attention===1&&element.newbook===1){
                          popinsert+="<span style='color:rgba(255, 255, 255, 0.65);margin-left:10px;' class='glyphicon glyphicon-exclamation-sign'></span>";
                        }
-                       popinsert+="</h4></div></div><div class='row modpanel' id='modbook"+element.bid+"' style='text-align:center;display:none;background-color:#333;'><div class='col-xs-12'>";
+                       popinsert+="</h3></div></div><div class='row modpanel' id='modbook"+element.bid+"' style='text-align:center;display:none;background-color:#333;'><div class='col-xs-12'>";
                        if(element.newbook){
                         popinsert+="<button class='btn btn-primary' onclick='modify(0,"+element.bid+")' type='button'>Прочитана</button>";
                        }
@@ -353,20 +353,20 @@ head
                     });}
         if(movies!=0)
         {movies.forEach(function(element,index,array){
-                       //$('#movieinsert').append("<h4 style='color:white;'>"+element.movietitle+"</h4>");
+                       //$('#movieinsert').append("<h3 style='color:white;'>"+element.movietitle+"</h3>");
                        var popmovieclass = 'yet';
                        if(element.newmovie!=1)
                        {
                         popmovieclass='alreadym';
                        }
-                       var popinsert = "<div class='row flick' onclick='openmodmoviepanel("+element.mid+")' id='movie"+element.mid+"'><div class='col-xs-12'><h4 class='"+popmovieclass+"'>"+element.movietitle+" <small> "+element.year+" </small>";
+                       var popinsert = "<div class='row flick' onclick='openmodmoviepanel("+element.mid+")' id='movie"+element.mid+"'><div class='col-xs-12'><h3 class='"+popmovieclass+"'>"+element.movietitle+" <small> "+element.year+" </small>";
                        if(element.star===1&&element.newmovie===0){
                          popinsert+="<span style='color:#F2D45C;margin-left:10px;' class='glyphicon glyphicon-star'></span>";
                        }
                        if(element.attention===1&&element.newmovie===1){
                          popinsert+="<span style='color:rgba(255, 255, 255, 0.65);margin-left:10px;' class='glyphicon glyphicon-exclamation-sign'></span>";
                        }
-                       popinsert+="</h4></div></div><div class='row modpanel' id='modmovie"+element.mid+"' style='text-align:center;display:none;background-color:#333;'><div class='col-xs-12'>";
+                       popinsert+="</h3></div></div><div class='row modpanel' id='modmovie"+element.mid+"' style='text-align:center;display:none;background-color:#333;'><div class='col-xs-12'>";
                        if(element.newmovie){
                         popinsert+="<button class='btn btn-primary' onclick='modifymovie(0,"+element.mid+")' type='button'>Просмотрен</button>";
                        }
