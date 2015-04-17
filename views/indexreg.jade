@@ -514,6 +514,7 @@ head
         }}
         else {
           var bookstatus = parseInt(parsed.bookstatus);
+          console.log('bookstatus:'+bookstatus);
          if(rem) {
            if (eval("$('#modbook"+bid+"').css('display')") === 'block' )
          {eval("$('#modbook"+bid+"').slideToggle('400',function(){$('#modbook"+bid+"').remove();})");} 
