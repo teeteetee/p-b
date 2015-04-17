@@ -20,42 +20,74 @@ head
       font-family:roboto-thin;
       src:url('/bootstrap/fonts/Roboto-Thin.ttf');
       }
-      @font-face {
-      font-family:high;
-      src: url('/bootstrap/fonts/Attentica.ttf');
-      }
       body {
-      min-width:768px;
-      font-family:roboto-thin;
+        font-family:roboto-thin;
       }
-      .navbar-nav {
-       float: right;
-      }
-      h1{
+      h1 {
         font-family:roboto-thin;
         color:white;
       }
-      h2{
-        font-family:roboto-thin;
-      }
-      h3{
+      h2 {
         font-family:roboto-thin;
         color:white;
       }
-      h4{
+      h3 {
         font-family:roboto-thin;
+        color:white;
       }
-      h5{
+      h4 {
         font-family:roboto-thin;
+        color:white;
       }
-      h6{
+      h5 {
         font-family:roboto-thin;
+        color:white;
       }
-      btn {
+      h6 {
         font-family:roboto-thin;
+        color:white;
       }
-      #showLeft:hover {
-       color:white !important;
+      textarea:hover, 
+      input:hover, 
+      textarea:active, 
+      input:active, 
+      textarea:focus, 
+      input:focus,
+      button:focus,
+      button:active,
+      button:hover
+      {
+          outline:0px !important;
+          -webkit-appearance:none;
+      }
+      .bckgrnd {
+      width:100%;
+      height:100%;
+      background-image:url('/bootstrap/images/books.jpg');
+      position:fixed;
+      background-color:#A1D0C0;
+      background-position:center;
+      background-size: cover;
+      background-repeat:no-repeat;
+      filter: brightness(0.6);
+      -webkit-filter: brightness(0.6);
+      -moz-filter: brightness(0.6);
+      -o-filter: brightness(0.6);
+      }
+      nav ul li a {
+        border:0px !important;
+        background-color:rgba(255, 255, 255, 0.26) !important;
+        color:white !important;
+      }
+      .navbar-inverse {
+      background-color: rgba(34, 34, 34, 0.34);
+      border:none;
+      }
+      .navbar-form{
+        margin-left:0px;
+        margin-right:0px;
+        bottom:30px;
+        position:absolute;
       }
       .cbp-spmenu {
         background: #1d1d1d;
@@ -100,10 +132,10 @@ head
         padding: 1em;
       }
       .cbp-spmenu-left {
-        left: -240px;
+        left: -315px;
       }
       .cbp-spmenu-left.cbp-spmenu-open {
-        left: 0px;
+        left: -74px;
       }
       .cbp-spmenu-push {
         overflow-x: hidden;
@@ -130,81 +162,13 @@ head
       .navbar-right {
         float: none !important; 
       }
-      .navbar-form {
-        padding-top: 6 !important;
-      }
-      input[type="text"], textarea {
-      outline: none;
-      box-shadow:none !important;
-      }
-      .datecl {
-        color:#333;
-      }
-      .yet{
-       color:white;
-      }
-      .alreadyb{
-      color:rgba(0, 0, 0, 0.27);
-      }
-      .alreadym{
-      color:rgba(255, 255, 255, 0.21);
-      }
-      .leftPaddingExtended{
-        padding-left:30px;
-      }
-      textarea:hover, 
-      input:hover, 
-      textarea:active, 
-      input:active, 
-      textarea:focus, 
-      input:focus,
-      button:focus,
-      button:active,
-      button:hover
-      {
-          outline:0px !important;
-          -webkit-appearance:none;
-      }
-      .bckgrnd {
-      width:100%;
-      height:100%;
-      background-image:url('/bootstrap/images/books.jpg');
-      position:fixed;
-      background-color:#A1D0C0;
-      background-position:center;
-      background-size: cover;
-      background-repeat:no-repeat;
-      filter: brightness(0.6);
-      -webkit-filter: brightness(0.6);
-      -moz-filter: brightness(0.6);
-      -o-filter: brightness(0.6);
-      }
-      nav ul li a {
-        border:0px !important;
-        background-color:rgba(255, 255, 255, 0.26) !important;
-        color:white !important;
-      }
   body
-    script.
-      if(screen.width < 414){
-      window.location='http://m.peopleandbooks.com/';
-      }
     nav(class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1")
       h3(style='text-align:center;color:orange;') People & Books
-      form(class="navbar-form navbar-right" method='post' action='/srch' id='srch' role="search")
-        .input-group
-           input(type="text" class="form-control" name='searchfield' id='searchfield' style='background-color:#333;color:white;border-color:#333;border-top-left-radius:30px;border-bottom-left-radius:30px;') 
-           span(class='input-group-btn')
-             button(class="btn btn-default" type="submit" id='searchbutton' style='padding-top:9px;padding-bottom:9px;background-color:#333;color:gray;border-color:#333;border-top-right-radius:30px;border-bottom-right-radius:30px;')
-               span(class='glyphicon glyphicon-search') 
       a(href="#") Настройки
-      a(href='#') О проекте
-      a(href="#") Выйти
-    .sidebar(style='width:74px;position:fixed;height:100%;background-color:#1d1d1d;text-align:center;z-index:2000;')
-      //img(class="media-object img-circle" src="/bootstrap/images/books.jpg" style='margin-left:5px;margin-top:30px;width:64px;height:64px;' alt="...")
-      span(class='glyphicon glyphicon-align-justify' id='showLeft' style='color:#333;font-size:30px;margin-top:20px;')
+      a(href='http://m.peopleandbooks.com/about') О проекте
     .bckgrnd
-    .container(style='padding-left:84px;width:100% !important;padding-right:none;z-index:2;')  
+    .container
       .row(style='text-align:center;margin-top:15%;margin-bottom:20px;')
         .col-xs-12
           h1(style='font-size:50px;') Organise your reading. 
@@ -212,35 +176,33 @@ head
       .row
         #message.col-xs-12
       .row(style='text-align:center;')
-        .col-xs-4.col-xs-offset-4
+        .col-xs-12
           input(class='form-control' type='email' style='margin-bottom:5px;' id='mail' name='mail' placeholder='email')
           input(class='form-control' type='password' style='margin-bottom:5px;' id='p' name='p' placeholder='password')
-          input(class='form-control' type='password' style='margin-bottom:20px;display:none;' id='pc' name='p' placeholder='password confirmation')
-          #wrap(style='width:100%;margin-top:15px;')
+          input(class='form-control' type='password' style='margin-bottom:20px;' id='pc' name='pc' placeholder='password')
+          #wrap(style='width:100%;')
             button(class='btn btn-primary' type='button' id='shownav' style='position:absolute;margin-left:-60;left:50%;z-index:2;border-radius:30px;background-color:rgba(255, 255, 255, 0.26);border:0px;') Log in / Register
             nav(id='nav' style='z-index:1;display:none;')
               ul(class="pager")
                 li(class='previous')
-                  a( id='login' style='cursor:pointer;') Войти
+                  a( id='login' href="#") Войти
                 li(class='next')
-                  a(id='regbutton' style='cursor:pointer;') Регистрация
-
-      
-      script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
-      script(async src='/js/bootstrap.min.js')
-      script.
-        $('#shownav').click(function(){
+                  a(href="/register") Регистрация
+    button(type='button' id='showLeft' style='color:white;font-size:30px;position:absolute;bottom:15px;right:15px;border:0px;background-color:transparent;') 
+      span(class='glyphicon glyphicon-align-justify ')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
+    script(src='/js/bootstrap.min.js')
+    script.
+      $('#shownav').click(function(){
           $('#shownav').fadeOut();
           $('#nav').fadeIn();
           });
         $('#login').click(authsubmit);
-        var counter =0;
+      var counter =0;
         var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
             menuRight = document.getElementById( 'cbp-spmenu-s2' ),
             showLeft = document.getElementById( 'showLeft' ),
             showRight = document.getElementById( 'showRight' ),
-            showLeftPush = document.getElementById( 'showLeftPush' ),
-            showRightPush = document.getElementById( 'showRightPush' ),
             body = document.body;
         
         showLeft.onclick = function() {
@@ -259,58 +221,53 @@ head
                         break;
                       }
         };
-        //-------REGISTER--------
-          function validateEmail(email) { 
-        console.log('checking email');
-        var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        return re.test(email);} 
-        // AUTHSUBMIT FUNCTION
-        var allowauth = 1;
-        function authsubmit() {
-        allowauth = 0;
-        var vlgn = $('#mail').val();
-        var vphr = $('#p').val();
-        console.log(vlgn +" , "+vphr);
-        request = new XMLHttpRequest();
-        request.onreadystatechange = function () {
-        var DONE = this.DONE || 4;
-        if (this.readyState === DONE){
-        var index;
-        parsed = JSON.parse(request.responseText);
-        console.log(parsed);
-        if(parsed.trouble === 1)
-        {
-        console.log('TROUBLE === 1');
-        switch (parsed.mtext){
-        case('db'):
-        $('#message').empty();
-        $('#message').append("<h5 style='color:#fc454e;'>Sorry, omething is slightly off with the DB, try again in a couple of minutes or contact support</h5>");
-        allowauth = 1;
-        break;
-        case('wrong pas'):
-        $('#message').empty();
-        $('#message').append("<h5 style='color:#fc454e;'>Wrong password</h5>");
-        allowauth = 1;
-        break;
-        case('wronguser'):
-        $('#message').empty();
-        $('#message').append("<h5 style='color:#fc454e;'>Wrong email</h5>");
-        allowauth =1;
-        break;
-        }}
-        else {
-        window.location = 'http://peopleandbooks.com';
-        }
-        }
-        };
-        request.open('POST', '/check', true);
-        request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
-        request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        //Most libraries like jQuery/Prototype/Dojo do this
-        request.send("phr="+vphr+"&lgn="+vlgn);
-        }
-        //END OF AUTHSUBMIT FUNCTION
-        // RUNREGISTER FUNCTION
+      // AUTHSUBMIT FUNCTION
+      var allowauth = 1;
+      function authsubmit() {
+      allowauth = 0;
+      var vlgn = $('#vlgn').val();
+      var vphr = $('#vphr').val();
+      console.log(vlgn +" , "+vphr);
+      request = new XMLHttpRequest();
+      request.onreadystatechange = function () {
+      var DONE = this.DONE || 4;
+      if (this.readyState === DONE){
+      var index;
+      parsed = JSON.parse(request.responseText);
+      console.log(parsed);
+      if(parsed.trouble === 1)
+      {
+      console.log('TROUBLE === 1');
+      switch (parsed.mtext){
+      case('db'):
+      $('#message').empty();
+      $('#message').append("<h5 style='color:#fc454e;'>Sorry, omething is slightly off with the DB, try again in a couple of minutes or contact support</h5>");
+      allowauth = 1;
+      break;
+      case('wrong pas'):
+      $('#message').empty();
+      $('#message').append("<h5 style='color:#fc454e;'>Wrong password</h5>");
+      allowauth = 1;
+      break;
+      case('wronguser'):
+      $('#message').empty();
+      $('#message').append("<h5 style='color:#fc454e;'>Wrong email</h5>");
+      allowauth =1;
+      break;
+      }}
+      else {
+      window.location = 'http://peopleandbooks.com';
+      }
+      }
+      };
+      request.open('POST', '/check', true);
+      request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+      request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      //Most libraries like jQuery/Prototype/Dojo do this
+      request.send("phr="+vphr+"&lgn="+vlgn);
+      }
+      // REGISTER BUTTON MECHANICS
+      // RUNREGISTER FUNCTION
         function runregister() {
          var errcount =0;
         var vp = $('#p').val();
@@ -375,7 +332,7 @@ head
         request.send("mail="+vmail+"&p="+vp);
           }
           //END OF RUNREGISTER FUNCTION
-          var regbuttoncount=0;
+      var regbuttoncount=0;
           $('#regbutton').click(function(){
             if(regbuttoncount===0){
              $('#pc').slideToggle();
@@ -386,6 +343,4 @@ head
               runregister();
             }
             });
-
-        
-      
+           

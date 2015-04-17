@@ -580,7 +580,7 @@ app.get('/m',function(req,res){
           });
         }
    else {
-  res.render('mindex');}
+  res.render('newmindex');}
   });
 
 
