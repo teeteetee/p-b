@@ -512,7 +512,9 @@ app.get('/',function(req,res) {
               if(done){
                  
                     if(!done.books&&!done.movies)
-                      {res.render('emptyindexreg',{'uid':done.uid});
+                      {//res.render('emptyindexreg',{'uid':done.uid});
+                       res.render('newemptyindexreg',{'uid':done.uid,'newbooks':0,'readbooks':0,'newmovies':0,'seenmovies':0});
+
                       }
                     else{
                       var booksvar = JSON.stringify(done.books);
