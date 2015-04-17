@@ -470,7 +470,7 @@ head
         }
         else {
           readbooks++;
-          $('#booksfigures').text(" "+newbooks+" <span class='alreadyb'> | "+readbooks+"</span>");
+          $('#booksfigures').append(" "+newbooks+" <span class='alreadyb'> | "+readbooks+"</span>");
         }
         insert+="</h4>";
         $(insert).prependTo('#bookinsert').hide().slideDown();
