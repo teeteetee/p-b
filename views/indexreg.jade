@@ -467,11 +467,11 @@ head
         //$('#booksrow').slideToggle();
         if(newbook===1)
         {newbooks++;
-        $('#booksfigures').empty().text(" "+newbooks+" <span class='alreadyb'> | "+readbooks+"</span>");
+        $('#booksfigures').empty().append(" "+newbooks+" <span class='alreadyb'> | "+readbooks+"</span>");
         }
         else {
           readbooks++;
-          $('#booksfigures').append(" "+newbooks+" <span class='alreadyb'> | "+readbooks+"</span>");
+          $('#booksfigures')empty().append(" "+newbooks+" <span class='alreadyb'> | "+readbooks+"</span>");
         }
         insert+="</h4>";
         $(insert).prependTo('#bookinsert').hide().slideDown();
