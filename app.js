@@ -105,8 +105,8 @@ app.get('/logout',function(req,res){
   req.session.reset();
   // Need to access underlying cookie store to clear authentication cookie since client-session
   // doesn't get invoked on res.redirects
-  response.writeHead(302);
-  response.location('/').end();
+  res.writeHead(302);
+  res.location('/').end();
 });
 
 app.post('/addbook',function(req,res){
