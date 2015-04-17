@@ -34,7 +34,7 @@ app.use(sessions({
   activeduration:1440 * 60 * 1000,
   cookie: {
     path:'/',
-  httpOnly: false,
+  httpOnly: true,
   domain:'.peopleandbooks.com'
   }
 }));
