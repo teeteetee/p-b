@@ -544,7 +544,7 @@ head
           $('#booksfigures').empty().append(" "+newbooks+" <span class='alreadyb'> | "+readbooks+"</span>");
         }
         $(hiddeninsert).prependTo('#bookinsert');
-        $(insert).prependTo('#bookinsert').hide().slideDown();
+        $(visibleinsert).prependTo('#bookinsert').hide().slideDown();
         allowsubmit=1;
         //window.location = 'http://m.peopleandbooks.com';
         }
@@ -706,7 +706,8 @@ head
           seenmovies++;
           $('#moviesfigures').empty().append(" "+newmovies+" <span class='alreadym'> | "+seenmovies+"</span>");
         }
-        $(insert).prependTo('#movieinsert').hide().slideDown();
+        $(hiddeninsert).prependTo('#movieinsert');
+        $(visibleinsert).prependTo('#movieinsert').hide().slideDown();
         allowsubmit=1;
         //window.location = 'http://m.peopleandmovies.com';
         }
