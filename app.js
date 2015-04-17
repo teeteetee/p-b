@@ -563,18 +563,30 @@ app.get('/m',function(req,res){
             }
             else {
               if(done){
+                     if(!done.books&&!done.movies)
+                      {//res.render('emptyindexreg',{'uid':done.uid});
+                       res.render('emptymindexreg',{'uid':done.uid,'newbooks':0,'readbooks':0,'newmovies':0,'seenmovies':0});
+
+                      }
+                    else{
+                      var booksvar = JSON.stringify(done.books);
+                      if(!booksvar) {
+                        booksvar =0;
+                      }
+                      var moviesvar = JSON.stringify(done.movies);
+                      if(!moviesvar) {
+                        moviesvar =0;
+                      }
+
+                    res.render('mindexreg',{'books':booksvar,'movies':moviesvar,'uid':done.uid,'newbooks':done.newbooks,'readbooks':done.readbooks,'newmovies':done.newmovies,'seenmovies':done.seenmovies});
+                  }  
                     
-                    if(done.movies){
-                    res.render('mindexreg',{'books':JSON.stringify(done.books),'movies':done.movies,'uid':done.uid,'newbooks':done.newbooks,'readbooks':done.readbooks,'newmovies':done.newmovies,'seenmovies':done.seenmovies});}
-                    else {
-                    res.render('mindexreg',{'books':JSON.stringify(done.books),'movies':0,'uid':done.uid,'newbooks':done.newbooks,'readbooks':done.readbooks,'newmovies':done.newmovies,'seenmovies':done.seenmovies});
-                    }
                  
               }
               else {
                 //do a mistake template
                 console.log('!DONE');
-                res.render('emptymindexreg',{'uid':done.uid});
+                res.render('newmindex');
               }
             }
           });

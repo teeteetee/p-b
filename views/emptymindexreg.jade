@@ -197,6 +197,36 @@ head
       .activebutton {
         background-color:#252525;
       }
+      .h1 .small,
+       .h1 small,
+       .h2 .small,
+       .h2 small,
+       .h3 .small,
+       .h3 small,
+       .h4 .small,
+       .h4 small,
+       .h5 .small,
+       .h5 small,
+       .h6 .small,
+       .h6 small,
+       h1 .small,
+       h1 small,
+       h2 .small,
+       h2 small,
+       h3 .small,
+       h3 small,
+       h4 .small,
+       h4 small,
+       h5 .small,
+       h5 small,
+       h6 .small,
+       h6 small {
+      color: rgba(245, 245, 245, 0.68);
+      }
+      .modpanel .btn{
+        margin:10px;
+        border-radius:30px;
+      }
   body
     nav(class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1")
       h3(style='text-align:center;') People & Books
@@ -215,46 +245,50 @@ head
         #bookinsert.col-xs-12
           .row
             .col-xs-12(style='text-align:center;')
-              h1(id='newbooks' style='font-family:high;font-size:100px;font-weight:bold;color:white;padding-right:20px;') #{newbooks} 
-                span(id='readbooks' class='alreadyb') | #{readbooks}
+              h1(id='booksfigures' style='font-family:high;font-size:100px;font-weight:bold;color:white;padding-right:20px;')
           #welcomeb.row(style='text-align:center;padding-right:20px;')
             .col-xs-12
               h2 Welcome !
               h3 Add a book by touching + at the bottom of the screen
+          .row
+            #bookinsert.col-xs-12
               //add a smile here or something
       #moviesrow.row(style='display:none;')
-        #bookinsert.col-xs-12
+        .col-xs-12
           .row
             .col-xs-12(style='text-align:center;')
-              h1(id='newbooks' style='font-family:high;font-size:100px;font-weight:bold;color:white;padding-right:20px;') #{newmovies} 
-                span(id='readbooks' class='alreadym') | #{seenmovies}
+              h1(id='moviesfigures' style='font-family:high;font-size:100px;font-weight:bold;color:white;padding-right:20px;')
           #welcomem.row(style='text-align:center;padding-right:20px;')
             .col-xs-12
               h2 Welcome !
               h3 Add a book by touching + at the bottom of the screen
+          .row
+            #movieinsert.col-xs-12
           //add a smile here or something
     footer(class='footer')
       .container
         .row(id='addbook' style='display:none;padding-top:20px;background-color:#378961;')
           .col-xs-12
             .form-group
-              label(for="exampleInputEmail1" style='color:white;') Название
-              input(type="email" class="form-control" id="booktitle" placeholder="Crime and punishment")
+                label(for="exampleInputEmail1") Название
+                input(type="email" class="form-control" id="booktitle" placeholder="Crime and punishment")
             .form-group
-              label(for="exampleInputEmail1" style='color:white;') Автор
+              label(for="exampleInputEmail1") Автор
               input(type="email" class="form-control" id="author" placeholder="Dostoevsky F.M.")
             .checkbox
               label
-                input(type="checkbox" id='newbook' name='newbook') 
+                input(type="checkbox" id='newbook') 
                 | Уже прочитал
             .checkbox
               label
                 input(type="checkbox" id='star') 
-                span(class='glyphicon glyphicon-star' style='color:#F2D45C;margin-left:10px;')
+                span(class='glyphicon glyphicon-star' style='color:#F2D45C;margin-right:10px;')
+                | Книга понравилась
             .checkbox
               label
                 input(type="checkbox" id='attention') 
-                span(class='glyphicon glyphicon-exclamation-sign' style='color:rgba(255, 255, 255, 0.65);margin-left:10px;')
+                span(class='glyphicon glyphicon-exclamation-sign' style='color:rgba(255, 255, 255, 0.65);margin-right:10px;')
+                | Прочитать скорее
             nav
               ul(class="pager")
                 li(class="previous")
@@ -264,27 +298,29 @@ head
         .row(id='addmovie' style='display:none;padding-top:20px;background-color:#A03F39;')
           .col-xs-12
             .form-group
-              label(for="exampleInputEmail1" style='color:white;font-size:15px;') Название
-              input(type="email" class="form-control" id="exampleInputEmail1" placeholder="Crime and punishment")
+              label(for="exampleInputEmail1") Название
+              input(type="email" class="form-control" id="movietitle" placeholder="No country for old men")
             .form-group
-              label(for="exampleInputEmail1" style='color:white;font-size:15px;') Автор
-              input(type="email" class="form-control" id="exampleInputEmail1" placeholder="Dostoevsky F.M.")
+              label(for="exampleInputEmail1") Год
+              input(type="email" class="form-control" id="year" placeholder="2007")
             .checkbox
               label
-                input(type="checkbox" id='newmovie' name='newmovie') 
+                input(type="checkbox" id='newmovie') 
                 | Уже посмотрел
             .checkbox
               label
-                input(type="checkbox") 
-                span(class='glyphicon glyphicon-star' style='color:#F2D45C;margin-left:10px;')
+                input(type="checkbox" id='moviestar') 
+                span(class='glyphicon glyphicon-star' style='color:#F2D45C;margin-right:10px;')
+                | Фильм понравился
             .checkbox
               label
-                input(type="checkbox") 
-                span(class='glyphicon glyphicon-exclamation-sign' style='color:rgba(255, 255, 255, 0.65);margin-left:10px;')
+                input(type="checkbox" id='movieattention') 
+                span(class='glyphicon glyphicon-exclamation-sign' style='color:rgba(255, 255, 255, 0.65);margin-right:10px;')
+                | Посмотреть скорее
             nav
               ul(class="pager")
                 li(class="previous")
-                  a(style='background-color:#EFAF4F;') Add
+                  a(style='background-color:#EFAF4F;' id='moviesubmitbutton') Add
                 li(class="next")
                   a( class='addbookbutton' style='background-color:#999;') Close
         .row(style='text-align:center;')
@@ -299,6 +335,24 @@ head
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
     script(src='/js/bootstrap.min.js')
     script.
+      // Setting user books/movies counters
+        var seenmovies = #{seenmovies};
+        var newmovies = #{newmovies};
+        $('#moviesfigures').append(" "+newmovies+" <span class='alreadym'> | "+seenmovies+"</span>");
+        var readbooks = #{readbooks};
+        var newbooks = #{newbooks};
+        $('#booksfigures').append(" "+newbooks+" <span class='alreadyb'> | "+readbooks+"</span>");
+        //End of setting counters
+      // Function for opening panel with remove/modify buttons
+        function openmodpanel(bid) {
+         eval("$('#modbook"+bid+"').slideToggle();");
+        }
+        //end of openmodpanel funciton
+        // Function for opening panel with remove/modify buttons in movies column
+        function openmodmoviepanel(mid) {
+         eval("$('#modmovie"+mid+"').slideToggle();");
+        }
+        //end of openmodpanel funciton for movies column
       // CA5B52 for movies 99362F
       $('.addbookbutton').click(function(){
           if($('#showbooks').hasClass('activebutton'))
@@ -348,148 +402,333 @@ head
                         break;
                       }
         };
-      // BOOK SUBMIT FUNCTION
-      var allowsubmit = 1;
-      function booksubmit() {
-      if(!allowsubmit) {
-        return
-      }
-      var author = $('#author').val();
-      if(!author){
-        author='--';
-      }
-      var booktitle = $('#booktitle').val();
-      if(!booktitle) {
-        alert('Specify book title');
+      // Book submit mechanics
+        var allowsubmit = 1;
+        function booksubmit() {
+        if(!allowsubmit) {
+          alert('Submit is in progress');
+          return
+        }
+        var author = $('#author').val();
+        if(!author){
+          author='--';
+        }
+        var booktitle = $('#booktitle').val();
+        if(!booktitle) {
+          alert('Specify book title');
+          allowsubmit=1;
+          return
+        }
+        var uid = #{uid};
+        var star;
+        var attention;
+        var newbook;
+        if($('#star').is(':checked')){
+          star = 1;
+        }
+        else {
+          star=0;
+        }
+        if($('#attention').is(':checked')){
+          attention = 1;
+        }
+        else {
+          attention=0;
+        }
+        if($('#newbook').is(':checked')){
+          newbook = 0;
+        }
+        else {
+          newbook=1;
+        }
+        allowsubmit = 0;
+        request = new XMLHttpRequest();
+        request.onreadystatechange = function () {
+        var DONE = this.DONE || 4;
+        if (this.readyState === DONE){
+        var index;
+        parsed = JSON.parse(request.responseText);
+        console.log(parsed);
+        if(parsed.trouble === 1)
+        {
+        console.log('TROUBLE === 1');
+        alert('Server is down, try again later.')
         allowsubmit=1;
-        return
-      }
-      var uid = #{uid};
-      var star;
-      var attention;
-      var newbook;
-      if($('#star').is(':checked')){
-        star = 1;
-      }
-      else {
-        star=0;
-      }
-      if($('#attention').is(':checked')){
-        attention = 1;
-      }
-      else {
-        attention=0;
-      }
-      if($('#newbook').is(':checked')){
-        newbook = 0;
-      }
-      else {
-        newbook=1;
-      }
-      allowsubmit = 0;
-      request = new XMLHttpRequest();
-      request.onreadystatechange = function () {
-      var DONE = this.DONE || 4;
-      if (this.readyState === DONE){
-      var index;
-      parsed = JSON.parse(request.responseText);
-      console.log(parsed);
-      if(parsed.trouble === 1)
-      {
-      console.log('TROUBLE === 1');
-      alert('Server is down, try again later.')
-      allowsubmit=1;
-      }
-      else {
-      $('#addbook').slideToggle();
-       $('#author').val('');
-        $('#booktitle').val('');
-        $("#newbook").prop("newbook", false);
-        $("#star").prop("star", false);
-        $("#attention").prop("attention", false);
-      var bookclass = 'yet';
-      if(newbook===0)
-      {
-       bookclass='alreadyb';
-      }
-      var insert = "<h4 class='"+bookclass+"'' style='color:white;'>"+booktitle;
-      if(star===1&&newbook===0){
-        insert+="<span style='color:#F2D45C;margin-left:10px;' class='glyphicon glyphicon-star'></span>";
-      }
-      if(attention===1&&newbook===1){
-        insert+="<span style='color:rgba(255, 255, 255, 0.65);margin-left:10px;' class='glyphicon glyphicon-exclamation-sign'></span>";
-      }
-      $('#welcomeb').fadeOut();
-      $('#booksrow').slideToggle();
-      if(newbook==='on')
-      {var newbooks = parseInt($('#newbooks').text());
-            newbooks++;
-            $('#newbooks').text(newbooks);}
-      else {
-        var readbooks = parseInt($('#readbooks').text());
-            console.log(readbooks);
-            readbooks++;
-            console.log(readbooks);
-            $('#readbooks').text(readbooks);
-      }
-      insert+="</h4>";
-      $(insert).prependTo('#bookinsert').hide().slideDown();
-      allowsubmit=1;
-      }
-      }
-      };
-      request.open('POST', '/addbook', true);
-      request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
-      request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-      //Most libraries like jQuery/Prototype/Dojo do this
-      console.log("author="+author+"&booktitle="+booktitle+"&star="+star+"&attention="+attention+"&newbook="+newbook);
-      request.send("author="+author+"&booktitle="+booktitle+"&star="+star+"&attention="+attention+"&uid="+uid+"&newbook="+newbook);
-      }
+        }
+        else {
+          var bid = parsed.bid;
+          $('#addbook').slideToggle();
+         $('#author').val('');
+          $('#booktitle').val('');
+          $("#checkbox").prop("newbook", false);
+          $("#checkbox").prop("star", false);
+          $("#checkbox").prop("attention", false);
+        var bookclass = 'yet';
+        if(newbook===0)
+        {
+         bookclass='alreadyb';
+        }
+        var visibleinsert = "<div class='row' onclick='openmodpanel("+bid+")' id='book"+bid+"'><div class='col-xs-12'><h4 style='margin-left:40px;' class='"+bookclass+"'>"+booktitle+" <small> "+author+" </small>";
+               if(star===1&&newbook===0){
+                 visibleinsert+="<span style='color:#F2D45C;margin-left:10px;' class='glyphicon glyphicon-star'></span>";
+               }
+               if(attention===1&&newbook===1){
+                 visibleinsert+="<span style='color:rgba(255, 255, 255, 0.65);margin-left:10px;' class='glyphicon glyphicon-exclamation-sign'></span>";
+               }
+               visibleinsert+="</h4></div></div>";
+               var hiddeninsert="<div class='row modpanel' id='modbook"+bid+"' style='text-align:center;display:none;background-color:#333;'><div class='col-xs-12'>";
+               if(newbook){
+                hiddeninsert+="<button class='btn btn-primary' id='readbutton"+mid+"' onclick='modify(0,"+bid+")' type='button'>Прочитана</button>";
+               }
+               hiddeninsert+="<button class='btn btn-danger' onclick='modify(1,"+bid+")' type='button'>Удалить</button></div</div>";
+               //$('#bookinsert').prepend(insert);
+        //$('#welcome').fadeOut();
+        //$('#booksrow').slideToggle();
+        if(newbook===1)
+        {newbooks++;
+        $('#booksfigures').empty().append(" "+newbooks+" <span class='alreadyb'> | "+readbooks+"</span>");
+        }
+        else {
+          readbooks++;
+          $('#booksfigures').empty().append(" "+newbooks+" <span class='alreadyb'> | "+readbooks+"</span>");
+        }
+        $(hiddeninsert).prependTo('#bookinsert');
+        $(visibleinsert).prependTo('#bookinsert').hide().slideDown();
+        allowsubmit=1;
+        //window.location = 'http://m.peopleandbooks.com';
+        }
+        }
+        };
+        request.open('POST', '/addbook', true);
+        request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+        request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        //Most libraries like jQuery/Prototype/Dojo do this
+        console.log("author="+author+"&booktitle="+booktitle+"&star="+star+"&attention="+attention+"&uid="+uid+"&newbook="+newbook);
+        request.send("author="+author+"&booktitle="+booktitle+"&star="+star+"&attention="+attention+"&uid="+uid+"&newbook="+newbook);
+        }
+        //End of book submit mechanics
       
-      // AUTHSUBMIT FUNCTION
-      var allowauth = 1;
-      function authsubmit() {
-      allowauth = 0;
-      var vlgn = $('#vlgn').val();
-      var vphr = $('#vphr').val();
-      console.log(vlgn +" , "+vphr);
-      request = new XMLHttpRequest();
-      request.onreadystatechange = function () {
-      var DONE = this.DONE || 4;
-      if (this.readyState === DONE){
-      var index;
-      parsed = JSON.parse(request.responseText);
-      console.log(parsed);
-      if(parsed.trouble === 1)
-      {
-      console.log('TROUBLE === 1');
-      switch (parsed.mtext){
-      case('db'):
-      $('#message').empty();
-      $('#message').append("<h5 style='color:#fc454e;'>Sorry, omething is slightly off with the DB, try again in a couple of minutes or contact support</h5>");
-      allowauth = 1;
-      break;
-      case('wrong pas'):
-      $('#message').empty();
-      $('#message').append("<h5 style='color:#fc454e;'>Wrong password</h5>");
-      allowauth = 1;
-      break;
-      case('wronguser'):
-      $('#message').empty();
-      $('#message').append("<h5 style='color:#fc454e;'>Wrong email</h5>");
-      allowauth =1;
-      break;
-      }}
-      else {
-      window.location = 'http://peopleandbooks.com';
-      }
-      }
-      };
-      request.open('POST', '/check', true);
-      request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
-      request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-      //Most libraries like jQuery/Prototype/Dojo do this
-      request.send("phr="+vphr+"&lgn="+vlgn);
-      }
       $('#booksubmitbutton').click(booksubmit);
+      // Function for movie submition 
+        function moviesubmit() {
+        if(!allowsubmit) {
+          return
+        }
+        var year = $('#year').val();
+        if(!year){
+          year='--';
+        }
+        var movietitle = $('#movietitle').val();
+        if(!movietitle) {
+          alert('Specify movie title');
+          allowsubmit=1;
+          return
+        }
+        var uid = #{uid};
+        var moviestar;
+        var attention;
+        var newmovie;
+        if($('#moviestar').is(':checked')){
+          moviestar = 1;
+        }
+        else {
+          moviestar=0;
+        }
+        if($('#movieattention').is(':checked')){
+          movieattention = 1;
+        }
+        else {
+          movieattention=0;
+        }
+        if($('#newmovie').is(':checked')){
+          newmovie = 0;
+        }
+        else {
+          newmovie=1;
+        }
+        allowsubmit = 0;
+        request = new XMLHttpRequest();
+        request.onreadystatechange = function () {
+        var DONE = this.DONE || 4;
+        if (this.readyState === DONE){
+        var index;
+        parsed = JSON.parse(request.responseText);
+        console.log(parsed);
+        if(parsed.trouble === 1)
+        {
+        console.log('TROUBLE === 1');
+        alert('Server is down, try again later.')
+        allowsubmit=1;
+        }
+        else {
+          var mid = parsed.mid;
+          $('#addmovie').slideToggle();
+         $('#year').val('');
+          $('#movietitle').val('');
+          $("#checkbox").prop("newmovie", false);
+          $("#checkbox").prop("moviestar", false);
+          $("#checkbox").prop("movieattention", false);
+        var movieclass = 'yet';
+        if(newmovie===0)
+        {
+         movieclass='alreadym';
+        }
+        var visibleinsert = "<div class='row' onclick='openmodpanel("+mid+")' id='movie"+mid+"'><div class='col-xs-12'><h4 style='margin-left:40px;' class='"+movieclass+"'>"+movietitle+" <small> "+year+" </small>";
+               if(moviestar===1&&newmovie===0){
+                 visibleinsert+="<span style='color:#F2D45C;margin-left:10px;' class='glyphicon glyphicon-moviestar'></span>";
+               }
+               if(movieattention===1&&newmovie===1){
+                 visibleinsert+="<span style='color:rgba(255, 255, 255, 0.65);margin-left:10px;' class='glyphicon glyphicon-exclamation-sign'></span>";
+               }
+                visibleinsert+="</h4></div></div>";
+                var hiddeninsert =" <div class='row modpanel' id='modmovie"+mid+"' style='text-align:center;display:none;background-color:#333;'><div class='col-xs-12'>";
+               if(newmovie){
+                hiddeninsert+="<button class='btn btn-primary' id='watchbutton"+mid+"' onclick='modifymovie(0,"+mid+")' type='button'>Просмотрен</button>";
+               }
+               hiddeninsert+="<button class='btn btn-danger' onclick='modifymovie(1,"+mid+")' type='button'>Удалить</button></div</div>";
+               //$('#movieinsert').prepend(insert);
+        //$('#welcome').fadeOut();
+        //$('#moviesrow').slideToggle();
+        if(newmovie===1)
+        {newmovies++;
+        $('#moviesfigures').empty().append(" "+newmovies+" <span class='alreadym'> | "+seenmovies+"</span>");
+        }
+        else {
+          seenmovies++;
+          $('#moviesfigures').empty().append(" "+newmovies+" <span class='alreadym'> | "+seenmovies+"</span>");
+        }
+        $(hiddeninsert).prependTo('#movieinsert');
+        $(visibleinsert).prependTo('#movieinsert').hide().slideDown();
+        allowsubmit=1;
+        //window.location = 'http://m.peopleandmovies.com';
+        }
+        }
+        };
+        request.open('POST', '/addmovie', true);
+        request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+        request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        //Most libraries like jQuery/Prototype/Dojo do this
+        console.log("year="+year+"&movietitle="+movietitle+"&moviestar="+moviestar+"&movieattention="+movieattention+"&uid="+uid+"&newmovie="+newmovie);
+        request.send("year="+year+"&movietitle="+movietitle+"&moviestar="+moviestar+"&movieattention="+movieattention+"&uid="+uid+"&newmovie="+newmovie);
+        }
+        //End of movie submit mechanics
+        $('#moviesubmitbutton').click(moviesubmit);
+        // Function for removing or changing the status of the movie
+        var allowmod = 1;
+        function modifymovie(rem,mid) {
+         if (!allowmod) {
+          return;
+         }
+        allowmod = 0;
+        request = new XMLHttpRequest();
+        request.onreadystatechange = function () {
+        var DONE = this.DONE || 4;
+        if (this.readyState === DONE){
+        var index;
+        parsed = JSON.parse(request.responseText);
+        console.log(parsed);
+        if(parsed.trouble === 1)
+        {
+        console.log('TROUBLE === 1');
+        switch (parsed.mtext){
+        case('db'):
+        alert('Проблема с базой данных, повторите позднее');
+        allowmod = 1;
+        break;
+        }}
+        else {
+          var moviestatus = parseInt(parsed.moviestatus);
+          console.log('moviestatus:'+moviestatus);
+         if(rem) {
+           if (eval("$('#modmovie"+mid+"').css('display')") === 'block' )
+         {eval("$('#modmovie"+mid+"').slideToggle('400',function(){$('#modmovie"+mid+"').remove();})");} 
+          eval("$('#movie"+mid+"').fadeOut('400',function(){$('#movie"+mid+"').remove();});");
+          if(moviestatus===1)
+        {newmovies--;
+        $('#moviesfigures').empty().append(" "+newmovies+" <span class='alreadym'> | "+seenmovies+"</span>");
+        }
+        else {
+          seenmovies--;
+          $('#moviesfigures').empty().append(" "+newmovies+" <span class='alreadym'> | "+seenmovies+"</span>");
+        }
+         }
+         else {
+          if (eval("$('#modmovie"+mid+"').css('display')") === 'block' )
+         {eval("$('#modmovie"+mid+"').slideToggle();");}
+           eval("$('#watchbutton"+mid+"').remove();");
+           eval("$('#heading"+mid+"').removeClass('yet').addClass('alreadym');");
+           newmovies--;
+           seenmovies++;
+         $('#moviesfigures').empty().append(" "+newmovies+" <span class='alreadym'> | "+seenmovies+"</span>");
+         }
+         allowmod=1;
+        }
+        }
+        };
+        request.open('POST', '/modmovie', true);
+        request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+        request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        //Most libraries like jQuery/Prototype/Dojo do this
+        request.send("rem="+rem+"&uid=#{uid}&mid="+mid);
+        }
+        //End of remove/change status of the movie function
+        // Function for removing or changing the status of the book
+        var allowmod = 1;
+        function modify(rem,bid) {
+         if (!allowmod) {
+          return;
+         }
+        allowmod = 0;
+        request = new XMLHttpRequest();
+        request.onreadystatechange = function () {
+        var DONE = this.DONE || 4;
+        if (this.readyState === DONE){
+        var index;
+        parsed = JSON.parse(request.responseText);
+        console.log(parsed);
+        if(parsed.trouble === 1)
+        {
+        console.log('TROUBLE === 1');
+        switch (parsed.mtext){
+        case('db'):
+        alert('Проблема с базой данных, повторите позднее');
+        allowmod = 1;
+        break;
+        }}
+        else {
+          var bookstatus = parseInt(parsed.bookstatus);
+          console.log('bookstatus:'+bookstatus);
+         if(rem) {
+           if (eval("$('#modbook"+bid+"').css('display')") === 'block' )
+         {eval("$('#modbook"+bid+"').slideToggle('400',function(){$('#modbook"+bid+"').remove();})");} 
+          eval("$('#book"+bid+"').fadeOut('400',function(){$('#book"+bid+"').remove();});");
+          if(bookstatus===1)
+        {newbooks--;
+        $('#booksfigures').empty().append(" "+newbooks+" <span class='alreadyb'> | "+readbooks+"</span>");
+        }
+        else {
+          readbooks--;
+          $('#booksfigures').empty().append(" "+newbooks+" <span class='alreadyb'> | "+readbooks+"</span>");
+        }
+         }
+         else {
+          if (eval("$('#modbook"+bid+"').css('display')") === 'block' )
+         {eval("$('#modbook"+bid+"').slideToggle();");}
+           eval("$('#readbutton"+bid+"').remove();");
+           eval("$('#heading"+bid+"').removeClass('yet').addClass('alreadyb');");
+           newbooks--;
+           readbooks++;
+         $('#booksfigures').empty().append(" "+newbooks+" <span class='alreadyb'> | "+readbooks+"</span>");
+         }
+         allowmod=1;
+        }
+        }
+        };
+        request.open('POST', '/modbook', true);
+        request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+        request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        //Most libraries like jQuery/Prototype/Dojo do this
+        request.send("rem="+rem+"&uid=#{uid}&bid="+bid);
+        }
+        //End of remove/change status function
            
