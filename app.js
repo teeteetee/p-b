@@ -33,7 +33,7 @@ app.use(sessions({
   duration:4320 * 60 *1000,
   activeduration:1440 * 60 * 1000,
   httpOnly: true,
-  domain:'peopleandbooks.com'
+  domain:'.peopleandbooks.com'
 }));
 
 //var lguser = {};
@@ -105,9 +105,8 @@ app.get('/logout',function(req,res){
   req.session.reset();
   // Need to access underlying cookie store to clear authentication cookie since client-session
   // doesn't get invoked on res.redirects
-  var cookies = new Cookies(req, res);
-  cookies.set('session');
-  res.redirect('/');
+  response.writeHead(302);
+  response.location('/').end();
 });
 
 app.post('/addbook',function(req,res){
