@@ -417,7 +417,16 @@ app.get('/',function(req,res) {
                       {res.render('emptyindexreg',{'uid':done.uid});
                       }
                     else{
-                    res.render('indexreg',{'books':JSON.stringify(done.books),'movies':JSON.stringify(done.movies),'uid':done.uid,'newbooks':done.newbooks,'readbooks':done.readbooks,'newmovies':done.newmovies,'seenmovies':done.seenmovies});
+                      var booksvar = JSON.stringify(done.books);
+                      if(!booksvar) {
+                        booksvar =0;
+                      }
+                      var moviesvar = JSON.stringify(done.movies);
+                      if(!moviesvar) {
+                        moviesvar =0;
+                      }
+
+                    res.render('indexreg',{'books':booksvar,'movies':moviesvar,'uid':done.uid,'newbooks':done.newbooks,'readbooks':done.readbooks,'newmovies':done.newmovies,'seenmovies':done.seenmovies});
                   }  
               }
               else {
