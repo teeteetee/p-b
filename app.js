@@ -266,28 +266,32 @@ app.post('/newuser',function(req,res){
           function insert(vuid) {
             //lgn:vu
           users.insert({mail:vmail,uid:vuid,phr:vp,totalbooks:0,totalmoviews:0,newbooks:0,readbooks:0,newmovies:0,seenmovies:0,regdateint:fulldate,regdate:{year:vyear,month:vmonth,day:vday}});
-          users.findOne({mail:vmail},function(err,docdoc){
-            console.log('FOUND AFTER INSERTING NEW USER :'+JSON.stringify(docdoc));
-            if (err){
-              //DO SMTH
-            }
-            else{
-               if (docdoc) {
-                req.session = docdoc;
-                delete req.session.phr;
-                ms.trouble =0;
-                ms.mtext='success';
-                // INDEX MUST BE DIFFERENT FOR REGISTERD ONES, IT IS TEMPORARY THE SAME
-                console.log('SOMEBODY REGISTERED');
-                res.send(ms);
-               }
-               else {
-                  ms.mtext ='fail';
-                  res.send(ms);
-               }
-            }
-          });
-          }
+          req.session.mail = vmail;
+          ms.trouble =0;
+          ms.mtext='success';
+          res.send(ms);
+          //users.findOne({mail:vmail},function(err,docdoc){
+          //  console.log('FOUND AFTER INSERTING NEW USER :'+JSON.stringify(docdoc));
+          //  if (err){
+          //    //DO SMTH
+          //  }
+          //  else{
+          //     if (docdoc) {
+          //      req.session = docdoc;
+          //      delete req.session.phr;
+          //      ms.trouble =0;
+          //      ms.mtext='success';
+          //      // INDEX MUST BE DIFFERENT FOR REGISTERD ONES, IT IS TEMPORARY THE SAME
+          //      console.log('SOMEBODY REGISTERED');
+          //      res.send(ms);
+          //     }
+          //     else {
+          //        ms.mtext ='fail';
+          //        res.send(ms);
+          //     }
+          //  }
+          //});
+           }
         }
         else {
            ms.mtext='email exists'
