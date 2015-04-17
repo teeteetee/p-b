@@ -105,11 +105,13 @@ app.get('*', function(req,res,next) {
 
 
 app.get('/logout',function(req,res){
-  delete req.session.regdate;
-  res.clearCookie('connect.sid', { path: '/' });
-  // Need to access underlying cookie store to clear authentication cookie since client-session
-  // doesn't get invoked on res.redirects
-  res.send(req.session);
+  req.session.reset();
+  res.redirect('http://peopleandbooks.com/checkcookies');
+  //delete req.session.regdate;
+  //res.clearCookie('connect.sid', { path: '/' });
+  //// Need to access underlying cookie store to clear authentication cookie since client-session
+  //// doesn't get invoked on res.redirects
+  //res.send(req.session);
 });
 
 app.get('/getcookie',function(req,res){
