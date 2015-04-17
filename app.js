@@ -143,10 +143,10 @@ app.post('/modbook',function(req,res){
            users.update({uid:vuid},{$set:{books:doc.books}});
            users.update({uid:vuid},{$inc:{totalbooks:-1}});
            if(element.newbook===1){
-            users.update({uid:vuid},{$inc{newbooks:-1}});
+            users.update({uid:vuid},{$inc:{newbooks:-1}});
            }
            else {
-            users.update({uid:vuid},{$inc{readbooks:-1}});
+            users.update({uid:vuid},{$inc:{readbooks:-1}});
            }
            ms.trouble=0;
            res.send(ms);
@@ -154,7 +154,7 @@ app.post('/modbook',function(req,res){
           }
           else {
            element.newbook=0;
-           users.update({uid:vuid},{$set{books:doc.books}});
+           users.update({uid:vuid},{$set:{books:doc.books}});
            users.update({uid:vuid},{$inc:{newbooks:-1,readbooks:1}});
            ms.trouble=0;
            res.send(ms); 
