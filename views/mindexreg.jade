@@ -211,16 +211,14 @@ head
         .col-xs-12
           .row
             .col-xs-12(style='text-align:center;')
-              h1(id='newbooks' style='font-family:high;font-size:100px;font-weight:bold;color:white;padding-right:20px;') #{newbooks} 
-                span(id='readbooks' class='alreadyb') | #{readbooks}
+              h1(id='newbooks' style='font-family:high;font-size:100px;font-weight:bold;color:white;padding-right:20px;')
           .row
             #bookinsert.col-xs-12
       #moviesrow.row(style='display:none;')
         .col-xs-12
           .row
             .col-xs-12(style='text-align:center;')
-              h1(id='newbooks' style='font-family:high;font-size:100px;font-weight:bold;color:white;padding-right:20px;') #{newmovies} 
-                span(id='readbooks' class='alreadym') | #{seenmovies}
+              h1(id='newmovies' style='font-family:high;font-size:100px;font-weight:bold;color:white;padding-right:20px;')
           .row
             #movieinsert.col-xs-12
     footer(class='footer')
@@ -228,23 +226,23 @@ head
         .row(id='addbook' style='display:none;padding-top:20px;background-color:#378961;')
           .col-xs-12
             .form-group
-              label(for="exampleInputEmail1" style='color:white;') Название
+              label(for="exampleInputEmail1") Название
               input(type="email" class="form-control" id="booktitle" placeholder="Crime and punishment")
             .form-group
-              label(for="exampleInputEmail1" style='color:white;') Автор
+              label(for="exampleInputEmail1") Автор
               input(type="email" class="form-control" id="author" placeholder="Dostoevsky F.M.")
             .checkbox
               label
-                input(type="checkbox" id='newbook' checked='' name='newbook' value='0') 
+                input(type="checkbox" id='newbook') 
                 | Уже прочитал
             .checkbox
               label
-                input(type="checkbox" checked='' id='star' value='0') 
+                input(type="checkbox" id='star') 
                 span(class='glyphicon glyphicon-star' style='color:#F2D45C;margin-right:10px;')
                 | Книга понравилась
             .checkbox
               label
-                input(type="checkbox" checked='' id='attention' value='0') 
+                input(type="checkbox" id='attention') 
                 span(class='glyphicon glyphicon-exclamation-sign' style='color:rgba(255, 255, 255, 0.65);margin-right:10px;')
                 | Прочитать скорее
             nav
@@ -256,23 +254,23 @@ head
         .row(id='addmovie' style='display:none;padding-top:20px;background-color:#99362F;')
           .col-xs-12
             .form-group
-              label(for="exampleInputEmail1" style='color:white;font-size:15px;') Название
-              input(type="email" class="form-control" id="exampleInputEmail1" placeholder="Crime and punishment")
+                label(for="exampleInputEmail1") Название
+                input(type="email" class="form-control" id="movietitle" placeholder="No country for old men")
             .form-group
-              label(for="exampleInputEmail1" style='color:white;font-size:15px;') Автор
-              input(type="email" class="form-control" id="exampleInputEmail1" placeholder="Dostoevsky F.M.")
+              label(for="exampleInputEmail1") Год
+              input(type="email" class="form-control" id="year" placeholder="2007")
             .checkbox
               label
-                input(type="checkbox" id='newmovie' name='newmovie' value='1') 
+                input(type="checkbox" id='newmovie') 
                 | Уже посмотрел
             .checkbox
               label
-                input(type="checkbox" value='1') 
+                input(type="checkbox" id='moviestar') 
                 span(class='glyphicon glyphicon-star' style='color:#F2D45C;margin-right:10px;')
                 | Фильм понравился
             .checkbox
               label
-                input(type="checkbox" value='1') 
+                input(type="checkbox" id='movieattention') 
                 span(class='glyphicon glyphicon-exclamation-sign' style='color:rgba(255, 255, 255, 0.65);margin-right:10px;')
                 | Посмотреть скорее
             nav
@@ -294,27 +292,62 @@ head
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
     script(src='/js/bootstrap.min.js')
     script.
-      var newbookscount = #{newbooks};
-      var readbookscount = #{readbooks};
-      var books = !{books};
-      //var movies = !{movies};
-      books.forEach(function(element,index,array){
-       // $('#bookinsert').append("<h4 style='color:white;'>"+element.booktitle+"</h4>");
-        var popbookclass = 'yet';
-        if(element.newbook!=1)
-        {
-         popbookclass='alreadyb';
-        }
-        var popinsert = "<h4 class='"+popbookclass+"'>"+element.booktitle;
-        if(element.star===1&&element.newbook===0){
-          popinsert+="<span style='color:#F2D45C;margin-left:10px;' class='glyphicon glyphicon-star'></span>";
-        }
-        if(element.attention===1&&element.newbook===1){
-          popinsert+="<span style='color:rgba(255, 255, 255, 0.65);margin-left:10px;' class='glyphicon glyphicon-exclamation-sign'></span>";
-        }
-        popinsert+="</h4>";
-        $('#bookinsert').prepend(popinsert);
-      });
+      // Setting user books/movies counters
+        var seenmovies = #{seenmovies};
+        var newmovies = #{newmovies};
+        $('#moviesfigures').append(" "+newmovies+" <span class='alreadym'> | "+seenmovies+"</span>");
+        var readbooks = #{readbooks};
+        var newbooks = #{newbooks};
+        $('#booksfigures').append(" "+newbooks+" <span class='alreadyb'> | "+readbooks+"</span>");
+        //End of setting counters
+        // Populating the columns
+        var books = !{books};
+        var movies = !{movies};
+        if ( books!=0)
+        {books.forEach(function(element,index,array){
+                       //$('#bookinsert').append("<h4 style='color:white;'>"+element.booktitle+"</h4>");
+                       var popbookclass = 'yet';
+                       if(element.newbook!=1)
+                       {
+                        popbookclass='alreadyb';
+                       }
+                       var popinsert = "<div class='row flick' onclick='openmodpanel("+element.bid+")' id='book"+element.bid+"'><div class='col-xs-12'><h4 style='margin-left:40px;' class='"+popbookclass+"'>"+element.booktitle+" <small> "+element.author+" </small>";
+                       if(element.star===1&&element.newbook===0){
+                         popinsert+="<span style='color:#F2D45C;margin-left:10px;' class='glyphicon glyphicon-star'></span>";
+                       }
+                       if(element.attention===1&&element.newbook===1){
+                         popinsert+="<span style='color:rgba(255, 255, 255, 0.65);margin-left:10px;' class='glyphicon glyphicon-exclamation-sign'></span>";
+                       }
+                       popinsert+="</h4></div></div><div class='row modpanel' id='modbook"+element.bid+"' style='text-align:center;display:none;background-color:#333;'><div class='col-xs-12'>";
+                       if(element.newbook){
+                        popinsert+="<button class='btn btn-primary' onclick='modify(0,"+element.bid+")' type='button'>Прочитана</button>";
+                       }
+                       popinsert+="<button class='btn btn-danger' onclick='modify(1,"+element.bid+")' type='button'>Удалить</button></div</div>";
+                       $('#bookinsert').prepend(popinsert);
+                    });}
+        if(movies!=0)
+        {movies.forEach(function(element,index,array){
+                       //$('#movieinsert').append("<h4 style='color:white;'>"+element.movietitle+"</h4>");
+                       var popmovieclass = 'yet';
+                       if(element.newmovie!=1)
+                       {
+                        popmovieclass='alreadym';
+                       }
+                       var popinsert = "<div class='row flick' onclick='openmodmoviepanel("+element.mid+")' id='movie"+element.mid+"'><div class='col-xs-12'><h4 style='margin-left:40px;' class='"+popmovieclass+"'>"+element.movietitle+" <small> "+element.year+" </small>";
+                       if(element.star===1&&element.newmovie===0){
+                         popinsert+="<span style='color:#F2D45C;margin-left:10px;' class='glyphicon glyphicon-star'></span>";
+                       }
+                       if(element.attention===1&&element.newmovie===1){
+                         popinsert+="<span style='color:rgba(255, 255, 255, 0.65);margin-left:10px;' class='glyphicon glyphicon-exclamation-sign'></span>";
+                       }
+                       popinsert+="</h4></div></div><div class='row modpanel' id='modmovie"+element.mid+"' style='text-align:center;display:none;background-color:#333;'><div class='col-xs-12'>";
+                       if(element.newmovie){
+                        popinsert+="<button class='btn btn-primary' onclick='modifymovie(0,"+element.mid+")' type='button'>Просмотрен</button>";
+                       }
+                       popinsert+="<button class='btn btn-danger' onclick='modifymovie(1,"+element.mid+")' type='button'>Удалить</button></div</div>";
+                       $('#movieinsert').prepend(popinsert);
+                    });}
+        //end of populating the columns
       // CA5B52 for movies 99362F
       $('.addbookbutton').click(function(){
           if($('#showbooks').hasClass('activebutton'))
