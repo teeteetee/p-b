@@ -337,7 +337,7 @@ app.post('/check',function(req,res){
  
 
 app.get('/',function(req,res) {
-  console.log('----- ON / ROUTE:'+req.session);
+  console.log('----- ON / ROUTE:'+JSON.stringify(req.session));
   var userAgent=req.headers['user-agent'];
   var uacheck = userAgent.indexOf("iPhone") != -1 ;
   console.log(uacheck);
