@@ -103,6 +103,7 @@ app.get('*', function(req,res,next) {
 
 app.get('/logout',function(req,res){
   delete req.session ;
+  res.clearCookie('connect.sid', { path: '/' });
   // Need to access underlying cookie store to clear authentication cookie since client-session
   // doesn't get invoked on res.redirects
   res.send(req.session);
