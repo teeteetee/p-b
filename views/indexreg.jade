@@ -447,7 +447,7 @@ head
           $("#checkbox").prop("star", false);
           $("#checkbox").prop("attention", false);
         var bookclass = 'yet';
-        if(newbook===1)
+        if(newbook===0)
         {
          bookclass='alreadyb';
         }
@@ -463,7 +463,7 @@ head
                 insert+="<button class='btn btn-primary' type='button'>Прочитана</button>";
                }
                insert+="<button class='btn btn-danger' type='button'>Удалить</button></div</div>";
-               $('#bookinsert').prepend(insert);
+               //$('#bookinsert').prepend(insert);
         //$('#welcome').fadeOut();
         //$('#booksrow').slideToggle();
         if(newbook===1)
@@ -474,7 +474,6 @@ head
           readbooks++;
           $('#booksfigures').empty().append(" "+newbooks+" <span class='alreadyb'> | "+readbooks+"</span>");
         }
-        insert+="</h4>";
         $(insert).prependTo('#bookinsert').hide().slideDown();
         allowsubmit=1;
         //window.location = 'http://m.peopleandbooks.com';
