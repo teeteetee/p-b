@@ -106,7 +106,7 @@ app.get('*', function(req,res,next) {
 
 app.get('/logout',function(req,res){
   req.session.reset();
-  res.redirect('http://peopleandbooks.com/checkcookies');
+  res.redirect('http://peopleandbooks.com/');
   //delete req.session.regdate;
   //res.clearCookie('connect.sid', { path: '/' });
   //// Need to access underlying cookie store to clear authentication cookie since client-session
@@ -114,14 +114,58 @@ app.get('/logout',function(req,res){
   //res.send(req.session);
 });
 
-app.get('/getcookie',function(req,res){
-  req.session = {mail:'test@test.test',uid:1,phr:'qiufqieflevflqe',totalbooks:0,totalmoviews:0,newbooks:0,readbooks:0,newmovies:0,seenmovies:0,regdateint:05102015,regdate:{year:2015,month:04,day:17}};
-  res.send('got it',200);
+//app.get('/getcookie',function(req,res){
+//  req.session = {mail:'test@test.test',uid:1,phr:'qiufqieflevflqe',totalbooks:0,totalmoviews:0,newbooks:0,readbooks:0,newmovies:0,seenmovies:0,regdateint:05102015,regdate:{year:2015,month:04,day:17}};
+//  res.send('got it',200);
+//});
+//
+//app.get('/checkcookies',function(req,res){
+//  res.send(req.session);
+//});
+
+app.post('/modbook',function(req,res){
+  var ms={};
+  ms.trouble=1;
+  var rem = parseInt(req.body.rem);
+  var vuid = parseInt(req.body.uid);
+  var vbid = parseInt(req.body.bid);
+  console.log('rem: '+rem+',vuid: '+vuid+', vbid: '+vbid);
+  users.findOne({uid:vuid},function(err,doc){
+    if(err){
+       ms.mtext='db';
+       res.send(ms);
+    }
+    else {
+      doc.books.forEach(function(element,index,array){
+        if(element.bid===vbid) {
+          if(rem){
+           doc.books.splice(index, 1);
+           users.update({uid:vuid},{$set:{books:doc.books}});
+           users.update({uid:vuid},{$inc:{totalbooks:-1}});
+           if(element.newbook===1){
+            users.update({uid:vuid},{$inc{newbooks:-1}});
+           }
+           else {
+            users.update({uid:vuid},{$inc{readbooks:-1}});
+           }
+           ms.trouble=0;
+           res.send(ms);
+           console.log('removed a book;');
+          }
+          else {
+           element.newbook=0;
+           users.update({uid:vuid},{$set{books:doc.books}});
+           users.update({uid:vuid},{$inc:{newbooks:-1,readbooks:1}});
+           ms.trouble=0;
+           res.send(ms); 
+           console.log('chanhed books property');
+          }
+        }
+      });
+    }
+  });
 });
 
-app.get('/checkcookies',function(req,res){
-  res.send(req.session);
-});
 
 app.post('/addbook',function(req,res){
   console.log('adding a book');
@@ -172,6 +216,7 @@ app.post('/addbook',function(req,res){
               users.update({uid:vuid},{$inc:{readbooks:1,totalbooks:1}});
             }
             ms.trouble=0;
+            ms.bid = vbid;
             res.send(ms);
            }
     });
