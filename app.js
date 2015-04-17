@@ -273,7 +273,7 @@ app.post('/newuser',function(req,res){
             }
             else{
                if (docdoc) {
-                req.session = JSON.stringify(docdoc);
+                req.session.user = docdoc;
                 delete req.session.phr;
                 ms.trouble =0;
                 ms.mtext='success';
