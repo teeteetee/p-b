@@ -476,14 +476,14 @@ head
         {
          bookclass='alreadyb';
         }
-        var visibleinsert = "<div class='row' onclick='openmodpanel("+bid+")' id='book"+bid+"'><div class='col-xs-12'><h4 style='margin-left:40px;' class='"+bookclass+"'>"+booktitle+" <small> "+author+" </small>";
+        var visibleinsert = "<div class='row' onclick='openmodpanel("+bid+")' id='book"+bid+"'><div class='col-xs-12'><h3 style='margin-left:40px;' class='"+bookclass+"'>"+booktitle+" <small> "+author+" </small>";
                if(star===1&&newbook===0){
                  visibleinsert+="<span style='color:#F2D45C;margin-left:10px;' class='glyphicon glyphicon-star'></span>";
                }
                if(attention===1&&newbook===1){
                  visibleinsert+="<span style='color:rgba(255, 255, 255, 0.65);margin-left:10px;' class='glyphicon glyphicon-exclamation-sign'></span>";
                }
-               visibleinsert+="</h4></div></div>";
+               visibleinsert+="</h3></div></div>";
                var hiddeninsert="<div class='row modpanel' id='modbook"+bid+"' style='text-align:center;display:none;background-color:#333;'><div class='col-xs-12'>";
                if(newbook){
                 hiddeninsert+="<button class='btn btn-primary' id='readbutton"+mid+"' onclick='modify(0,"+bid+")' type='button'>Прочитана</button>";
@@ -583,14 +583,14 @@ head
         {
          movieclass='alreadym';
         }
-        var visibleinsert = "<div class='row' onclick='openmodpanel("+mid+")' id='movie"+mid+"'><div class='col-xs-12'><h4 style='margin-left:40px;' class='"+movieclass+"'>"+movietitle+" <small> "+year+" </small>";
+        var visibleinsert = "<div class='row' onclick='openmodpanel("+mid+")' id='movie"+mid+"'><div class='col-xs-12'><h3 style='margin-left:40px;' class='"+movieclass+"'>"+movietitle+" <small> "+year+" </small>";
                if(moviestar===1&&newmovie===0){
                  visibleinsert+="<span style='color:#F2D45C;margin-left:10px;' class='glyphicon glyphicon-moviestar'></span>";
                }
                if(movieattention===1&&newmovie===1){
                  visibleinsert+="<span style='color:rgba(255, 255, 255, 0.65);margin-left:10px;' class='glyphicon glyphicon-exclamation-sign'></span>";
                }
-                visibleinsert+="</h4></div></div>";
+                visibleinsert+="</h3></div></div>";
                 var hiddeninsert =" <div class='row modpanel' id='modmovie"+mid+"' style='text-align:center;display:none;background-color:#333;'><div class='col-xs-12'>";
                if(newmovie){
                 hiddeninsert+="<button class='btn btn-primary' id='watchbutton"+mid+"' onclick='modifymovie(0,"+mid+")' type='button'>Просмотрен</button>";
