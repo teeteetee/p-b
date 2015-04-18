@@ -408,20 +408,20 @@ head
       $('.addbookbutton').click(function(){
           if($('#showbooks').hasClass('activebutton'))
           {$('#addbook').slideToggle();
-          if($('#booksrow').css('-webkit-filter')==='blur(4px)'){
-            $('#booksrow').css('-webkit-filter','blur(0px)');
+          if($('#booksrow').css('-webkit-filter')==='brightness(1)'){
+            $('#booksrow').css('-webkit-filter','brightness(0.1)');
            }
            else {
-            $('#booksrow').css('-webkit-filter','blur(4px)');
+            $('#booksrow').css('-webkit-filter','brightness(1)');
            }
           }
           else
             {$('#addmovie').slideToggle();
-          if($('#moviesrow').css('-webkit-filter')==='blur(4px)'){
-            $('#moviesrow').css('-webkit-filter','blur(0px)');
+          if($('#moviesrow').css('-webkit-filter')==='brightness(1)'){
+            $('#moviesrow').css('-webkit-filter','brightness(0.1)');
            }
            else {
-            $('#moviesrow').css('-webkit-filter','blur(4px)');
+            $('#moviesrow').css('-webkit-filter','brightness(1)');
            }
           }
           });
