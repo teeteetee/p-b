@@ -24,44 +24,28 @@ head
       font-family:high;
       src: url('/bootstrap/fonts/Attentica.ttf');
       }
-      @font-face {
-      font-family:br;
-      src: url('/bootstrap/fonts/bebasneue_regular.ttf');
+      h1{
+        font-family:roboto-thin;
       }
-      @font-face {
-      font-family:bt;
-      src: url('/bootstrap/fonts/bebasneue_thin.ttf');
+      h2{
+        font-family:roboto-thin;
       }
-      h1 {
-      font-family:high;
-      font-size:3vw;
-      display:inline;
-      color:white;
+      h3{
+        font-family:roboto-thin;
+      }
+      h4{
+        font-family:roboto-thin;
+      }
+      h5{
+        font-family:roboto-thin;
+      }
+      h6{
+        font-family:roboto-thin;
       }
       body {
       min-width:768px;
       background-color:#fff;
       background-image:url('/bootstrap/images/stripe4.png');
-      }
-      h2 {
-      font-size:6vw;
-      font-family:br;
-      letter-spacing:7px;
-      }
-      h3 {
-      font-size:3vw;
-      }
-      h4 {
-      font-size:1vw;
-      font-family:arial;
-      letter-spacing:0.3vw;
-      text-transform:uppercase;
-      }
-      h5 {
-      letter-spacing:2px;
-      text-transform:uppercase;
-      font-family:roboto-thin;
-      font-size:3vw;
       }  
       .btn {
         border-radius:30px;
@@ -83,7 +67,8 @@ head
     nav(class="navbar navbar-inverse navbar-static-top",style='margin-bottom:0px;')
           .container
             .navbar-header
-              a(class="navbar-brand" href="/") People & Books
+              a(class="navbar-brand" style='padding:5px;' href="/")
+                img(alt="Logo",src="/images/pblogov4.png",height='40',width='40')
             .collapse.navbar-collapse#navbar-collapse-9
               ul(class='nav navbar-nav')
                 li(class='active')
