@@ -722,17 +722,17 @@ app.post('/drop/users',function(req,res){
   }
 });
 
-app.post('/admin/1/:id',function(req,res){
+app.post('/admin/1/:uid',function(req,res){
   var pas = req.body.uu;
   if (pas != 'withoutthesecurity') {
     res.redirect('http://recentones.com');
   }
   else 
-  {var vpid = parseInt(req.params.id);
+  {var vuid = parseInt(req.params.uid);
     var ms={};
     ms.trouble=1;
     ms.mtext = 'db';
-    places.remove({pid:vpid},function(err,done){
+    users.remove({uid:vuid},function(err,done){
       if(err){
         res.send(ms);
       }
