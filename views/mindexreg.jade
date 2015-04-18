@@ -541,7 +541,7 @@ head
                visibleinsert+="</h3></div></div>";
                var hiddeninsert="<div class='row modpanel' id='modbook"+bid+"' style='text-align:center;display:none;background-color:#333;'><div class='col-xs-12'>";
                if(newbook){
-                hiddeninsert+="<button class='btn btn-primary' id='readbutton"+mid+"' onclick='modify(0,"+bid+")' type='button'>Прочитана</button>";
+                hiddeninsert+="<button class='btn btn-primary' id='readbutton"+bid+"' onclick='modify(0,"+bid+")' type='button'>Прочитана</button>";
                }
                hiddeninsert+="<button class='btn btn-danger' onclick='modify(1,"+bid+")' type='button'>Удалить</button></div</div>";
                //$('#bookinsert').prepend(insert);
@@ -707,9 +707,11 @@ head
           var moviestatus = parseInt(parsed.moviestatus);
           console.log('moviestatus:'+moviestatus);
          if(rem) {
+            // removing row with the heading and the button
            if (eval("$('#modmovie"+mid+"').css('display')") === 'block' )
          {eval("$('#modmovie"+mid+"').slideToggle('400',function(){$('#modmovie"+mid+"').remove();})");} 
           eval("$('#movie"+mid+"').fadeOut('400',function(){$('#movie"+mid+"').remove();});");
+          // decrementing counters at the top of the screen
           if(moviestatus===1)
         {newmovies--;
         $('#moviesfigures').empty().append(" "+newmovies+" <span class='alreadym'> | "+seenmovies+"</span>");
@@ -720,6 +722,7 @@ head
         }
          }
          else {
+          // removing read/seen button, changing heading color
           if (eval("$('#modmovie"+mid+"').css('display')") === 'block' )
          {eval("$('#modmovie"+mid+"').slideToggle();");}
            eval("$('#watchbutton"+mid+"').remove();");
