@@ -227,6 +227,12 @@ head
         margin:10px;
         border-radius:30px;
       }
+      #booksrow {
+       transition: 0.5s -webkit-filter linear;
+      }
+      #moviesrow {
+       transition: 0.5s -webkit-filter linear;
+      }
   body
     nav(class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1")
       h3(style='text-align:center;') People & Books
@@ -356,9 +362,23 @@ head
       // CA5B52 for movies 99362F
       $('.addbookbutton').click(function(){
           if($('#showbooks').hasClass('activebutton'))
-          {$('#addbook').slideToggle();}
+          {$('#addbook').slideToggle();
+          if($('#booksrow').css('-webkit-filter')==='brightness(0.6)'){
+            $('#booksrow').css('-webkit-filter','brightness(1)');
+           }
+           else {
+            $('#booksrow').css('-webkit-filter','brightness(0.6)');
+           }
+          }
           else
-            {$('#addmovie').slideToggle();}
+            {$('#addmovie').slideToggle();
+          if($('#moviesrow').css('-webkit-filter')==='brightness(0.6)'){
+            $('#moviesrow').css('-webkit-filter','brightness(1)');
+           }
+           else {
+            $('#moviesrow').css('-webkit-filter','brightness(0.6)');
+           }
+          }
           });
         $('.addmoviebutton').click(function(){
           $('#addmovie').slideToggle();
