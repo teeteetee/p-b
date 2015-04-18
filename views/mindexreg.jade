@@ -411,7 +411,11 @@ head
          $('#maincont').css('background-color','#FAB142');
          $('.activebutton').removeClass('activebutton');
          $('#showmovies').addClass('activebutton');
-         $('.modpanel').css('display','none');
+         $('.modpanel').each(function(){
+          if($(this).css('display')==='block'){
+            $(this).slideToggle();
+          }
+          });
         });
       $('#showbooks').click(function(){
         if($('#addmovie').css('display') === 'block')
@@ -422,7 +426,11 @@ head
          $('#maincont').css('background-color','#52CA8F');
          $('.activebutton').removeClass('activebutton');
          $('#showbooks').addClass('activebutton');
-         $('.modpanel').css('display','none');
+         $('.modpanel').each(function(){
+          if($(this).css('display')==='block'){
+            $(this).slideToggle();
+          }
+          });
         });
       var counter =0;
         var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
