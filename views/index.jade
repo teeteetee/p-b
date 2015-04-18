@@ -342,11 +342,11 @@ head
         alert('Incorrect email');
         errcount++;
         }
-        console.log('submitting now');
-        //$("#regform").submit();
         if(errcount!=0) {
           return;
         }
+        console.log('submitting now');
+        //$("#regform").submit();
         request = new XMLHttpRequest();
         request.onreadystatechange = function () {
         var DONE = this.DONE || 4;
