@@ -409,19 +409,19 @@ head
           if($('#showbooks').hasClass('activebutton'))
           {$('#addbook').slideToggle();
           if($('#booksrow').css('-webkit-filter')==='brightness(1)'){
-            $('#booksrow').css('-webkit-filter','brightness(0.1)');
+            $('#booksrow').css({'-webkit-filter':'brightness(0.4)','background-color':'#52CA8F'});
            }
            else {
-            $('#booksrow').css('-webkit-filter','brightness(1)');
+            $('#booksrow').css({'-webkit-filter':'brightness(1)','background-color':'none'});
            }
           }
           else
             {$('#addmovie').slideToggle();
           if($('#moviesrow').css('-webkit-filter')==='brightness(1)'){
-            $('#moviesrow').css('-webkit-filter','brightness(0.1)');
+            $('#moviesrow').css({'-webkit-filter':'brightness(0.4)','background-color':'#FAB142'});
            }
            else {
-            $('#moviesrow').css('-webkit-filter','brightness(1)');
+            $('#moviesrow').css({'-webkit-filter':'brightness(1)','background-color':'none'});
            }
           }
           });
