@@ -380,11 +380,21 @@ head
         //end of populating the columns
         // Function for opening panel with remove/modify buttons
         function openmodpanel(bid) {
+          $('.modpanel').each(function(){
+          if($(this).css('display')==='block'){
+            $(this).slideToggle();
+          }
+          });
          eval("$('#modbook"+bid+"').slideToggle();");
         }
         //end of openmodpanel funciton
         // Function for opening panel with remove/modify buttons in movies column
         function openmodmoviepanel(mid) {
+          $('.modpanel').each(function(){
+          if($(this).css('display')==='block'){
+            $(this).slideToggle();
+          }
+          });
          eval("$('#modmovie"+mid+"').slideToggle();");
         }
         //end of openmodpanel funciton for movies column
