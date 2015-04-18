@@ -97,13 +97,10 @@ head
             li(class="active") Список пользователей  
       .row(style='padding-top:20px;padding-bottom:20px;text-align:center;')
         .col-xs-12
-          form(method='post' action='/drop/users' role='form' )
-            .row
-              .col-xs-4.col-xs-offset-4
-                input(type='text' class='form-control' style='margin:5px;' name='p')
-            .row
-              .col-xs-12
-                button( class='btn btn-danger' type='submit') Drop 
+          form(class="form-inline" method='post' action='/drop/users' role='form')
+            .form-group
+              input(type="text" class="form-control" name='p' placeholder="Password")
+          button(type="submit" class="btn btn-danger") Drop
       .row
         .col-xs-12
           .panel.panel-default
