@@ -166,7 +166,7 @@ head
       color:rgba(0, 0, 0, 0.27);
       }
       .alreadym{
-      color:rgba(255, 255, 255, 0.21);
+      color:rgba(0, 0, 0, 0.21)
       }
       {
         padding-left:30px;
@@ -374,6 +374,16 @@ head
                        $('#movieinsert').prepend(popinsert);
                     });}
         //end of populating the columns
+        // Function for opening panel with remove/modify buttons
+        function openmodpanel(bid) {
+         eval("$('#modbook"+bid+"').slideToggle();");
+        }
+        //end of openmodpanel funciton
+        // Function for opening panel with remove/modify buttons in movies column
+        function openmodmoviepanel(mid) {
+         eval("$('#modmovie"+mid+"').slideToggle();");
+        }
+        //end of openmodpanel funciton for movies column
       // CA5B52 for movies 99362F
       $('.addbookbutton').click(function(){
           if($('#showbooks').hasClass('activebutton'))
@@ -408,7 +418,6 @@ head
          $('.activebutton').removeClass('activebutton');
          $('#showbooks').addClass('activebutton');
         });
-        $('#login').click(authsubmit);
       var counter =0;
         var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
             menuRight = document.getElementById( 'cbp-spmenu-s2' ),
