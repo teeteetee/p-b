@@ -215,7 +215,7 @@ head
         .col-xs-4.col-xs-offset-4
           input(class='form-control' type='email' style='margin-bottom:5px;' id='mail' name='mail' placeholder='email')
           input(class='form-control' type='password' style='margin-bottom:5px;' id='p' name='p' placeholder='password')
-          input(class='form-control' type='password' style='margin-bottom:20px;display:none;' id='pc' name='p' placeholder='password confirmation')
+          input(class='form-control' type='password' style='margin-bottom:20px;display:none;' id='pc' name='pc' placeholder='password confirmation')
           #wrap(style='width:100%;margin-top:15px;')
             button(class='btn btn-primary' type='button' id='shownav' style='position:absolute;margin-left:-60;left:50%;z-index:2;border-radius:30px;background-color:rgba(255, 255, 255, 0.26);border:0px;') Log in / Register
             nav(id='nav' style='z-index:1;display:none;')
@@ -344,6 +344,9 @@ head
         }
         console.log('submitting now');
         //$("#regform").submit();
+        if(errcount!=0) {
+          return;
+        }
         request = new XMLHttpRequest();
         request.onreadystatechange = function () {
         var DONE = this.DONE || 4;
