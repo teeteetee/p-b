@@ -595,6 +595,7 @@ app.get('/',function(req,res) {
                       if(done.style===3){
                         style=style3;
                       }
+                    console.log("res.render('indexreg',{"+style+"'mail':done.mail,'books':booksvar,'movies':moviesvar,'uid':done.uid,'newbooks':done.newbooks,'readbooks':done.readbooks,'newmovies':done.newmovies,'seenmovies':done.seenmovies});");
                     eval("res.render('indexreg',{"+style+"'mail':done.mail,'books':booksvar,'movies':moviesvar,'uid':done.uid,'newbooks':done.newbooks,'readbooks':done.readbooks,'newmovies':done.newmovies,'seenmovies':done.seenmovies});");
                   }  
               }
