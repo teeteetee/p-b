@@ -141,16 +141,16 @@ app.get('/lists/:lid',function(req,res){
       if(done) {
         if(req.session.mail) {
           if(done.pub===1)
-           {res.render('listin')}
+           {res.send('listin')}
            else {
-            res.render('restricted');
+            res.send('restricted');
            }
         }
         else {
           if(done.pub===1)
-           {res.render('listout')}
+           {res.send('listout')}
            else {
-            res.render('restricted');
+            res.send('restricted');
            }
         }
       }
@@ -675,6 +675,24 @@ app.post('/settings/cc',function(req,res){
   }
 
 });
+
+app.post('/settings/pc',function(req,res){
+  if(req.session.mail)
+   {console.log('going to change public avaliability');
+    var vuid = parseInt(req.body.uid);
+    var vpub = parseInt(req.body.pub);
+    console.log(vuid+" "+vstyle);
+     users.update({uid:vuid},{$set:{pub:vpub}});
+     var ms = {};
+     ms.trouble = 0;
+     res.send(ms);
+    }
+  else {
+    res.redirect('/')
+  }
+
+});
+
 
 
 app.get('/people',function(req,res){
