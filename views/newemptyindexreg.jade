@@ -542,7 +542,7 @@ head
         {
          bookclass='alreadyb';
         }
-        var visibleinsert = "<div class='row' onclick='openmodpanel("+bid+")' id='book"+bid+"'><div class='col-xs-12'><h4 style='margin-left:40px;' class='"+bookclass+"'>"+booktitle+" <small> "+author+" </small>";
+        var visibleinsert = "<div class='row' onclick='openmodpanel("+bid+")' id='book"+bid+"'><div class='col-xs-12'><h4 id='heading"+bid+"' style='margin-left:40px;' class='"+bookclass+"'>"+booktitle+" <small> "+author+" </small>";
                if(star===1&&newbook===0){
                  visibleinsert+="<span style='color:#F2D45C;margin-left:10px;' class='glyphicon glyphicon-star'></span>";
                }
@@ -705,7 +705,7 @@ head
         {
          movieclass='alreadym';
         }
-        var visibleinsert = "<div class='row' onclick='openmodpanel("+mid+")' id='movie"+mid+"'><div class='col-xs-12'><h4 style='margin-left:40px;' class='"+movieclass+"'>"+movietitle+" <small> "+year+" </small>";
+        var visibleinsert = "<div class='row' onclick='openmodpanel("+mid+")' id='movie"+mid+"'><div class='col-xs-12'><h4 id='movieheading"+mid+"' style='margin-left:40px;' class='"+movieclass+"'>"+movietitle+" <small> "+year+" </small>";
                if(moviestar===1&&newmovie===0){
                  visibleinsert+="<span style='color:#F2D45C;margin-left:10px;' class='glyphicon glyphicon-moviestar'></span>";
                }

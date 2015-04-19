@@ -363,7 +363,7 @@ head
                        {
                         popbookclass='alreadyb';
                        }
-                       var popinsert = "<div class='row flick' onclick='openmodpanel("+element.bid+")' id='book"+element.bid+"'><div class='col-xs-12'><h4 style='margin-left:40px;' class='"+popbookclass+"'>"+element.booktitle+" <small> "+element.author+" </small>";
+                       var popinsert = "<div class='row flick' onclick='openmodpanel("+element.bid+")' id='book"+element.bid+"'><div class='col-xs-12'><h4 id='heading"+element.bid+"' style='margin-left:40px;' class='"+popbookclass+"'>"+element.booktitle+" <small> "+element.author+" </small>";
                        if(element.star===1&&element.newbook===0){
                          popinsert+="<span style='color:#F2D45C;margin-left:10px;' class='glyphicon glyphicon-star'></span>";
                        }
@@ -385,7 +385,7 @@ head
                        {
                         popmovieclass='alreadym';
                        }
-                       var popinsert = "<div class='row flick' onclick='openmodmoviepanel("+element.mid+")' id='movie"+element.mid+"'><div class='col-xs-12'><h4 style='margin-left:40px;' class='"+popmovieclass+"'>"+element.movietitle+" <small> "+element.year+" </small>";
+                       var popinsert = "<div class='row flick' onclick='openmodmoviepanel("+element.mid+")' id='movie"+element.mid+"'><div class='col-xs-12'><h4 id='movieheading"+element.mid+"' style='margin-left:40px;' class='"+popmovieclass+"'>"+element.movietitle+" <small> "+element.year+" </small>";
                        if(element.star===1&&element.newmovie===0){
                          popinsert+="<span style='color:#F2D45C;margin-left:10px;' class='glyphicon glyphicon-star'></span>";
                        }
@@ -565,7 +565,7 @@ head
         {
          bookclass='alreadyb';
         }
-        var visibleinsert = "<div class='row' onclick='openmodpanel("+bid+")' id='book"+bid+"'><div class='col-xs-12'><h4 style='margin-left:40px;' class='"+bookclass+"'>"+booktitle+" <small> "+author+" </small>";
+        var visibleinsert = "<div class='row' onclick='openmodpanel("+bid+")' id='book"+bid+"'><div class='col-xs-12'><h4 id='heading"+bid+"' style='margin-left:40px;' class='"+bookclass+"'>"+booktitle+" <small> "+author+" </small>";
                if(star===1&&newbook===0){
                  visibleinsert+="<span style='color:#F2D45C;margin-left:10px;' class='glyphicon glyphicon-star'></span>";
                }
@@ -728,7 +728,7 @@ head
         {
          movieclass='alreadym';
         }
-        var visibleinsert = "<div class='row' onclick='openmodpanel("+mid+")' id='movie"+mid+"'><div class='col-xs-12'><h4 style='margin-left:40px;' class='"+movieclass+"'>"+movietitle+" <small> "+year+" </small>";
+        var visibleinsert = "<div class='row' onclick='openmodpanel("+mid+")' id='movie"+mid+"'><div class='col-xs-12'><h4 id='movieheading"+mid+"' style='margin-left:40px;' class='"+movieclass+"'>"+movietitle+" <small> "+year+" </small>";
                if(moviestar===1&&newmovie===0){
                  visibleinsert+="<span style='color:#F2D45C;margin-left:10px;' class='glyphicon glyphicon-moviestar'></span>";
                }
@@ -811,7 +811,7 @@ head
           if (eval("$('#modmovie"+mid+"').css('display')") === 'block' )
          {eval("$('#modmovie"+mid+"').slideToggle();");}
            eval("$('#watchbutton"+mid+"').remove();");
-           eval("$('#heading"+mid+"').removeClass('yet').addClass('alreadym');");
+           eval("$('#movieheading"+mid+"').removeClass('yet').addClass('alreadym');");
            newmovies--;
            seenmovies++;
          $('#moviesfigures').empty().append(" "+newmovies+" <span class='alreadym'> | "+seenmovies+"</span>");
