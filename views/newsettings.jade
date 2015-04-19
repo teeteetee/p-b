@@ -252,34 +252,19 @@ head
         };
         //end of sliding menu mechanics
         $('#first').click(function() {
-         if ($(this).is(':checked')) {
-           $(this).attr('checked',false); 
-         } 
-         else {
            $(this).attr('checked',true);
            $('#third').attr('checked', false);
            $('#second').attr('checked', false);
-         }
          });
         $('#second').click(function() {
-         if ($(this).is(':checked')) {
-           $(this).attr('checked',false); 
-         } 
-         else {
            $(this).attr('checked',true);
            $('#first').attr('checked', false);
            $('#third').attr('checked', false);
-         }
          });
         $('#third').click(function() {
-         if ($(this).is(':checked')) {
-           $(this).attr('checked',false); 
-         } 
-         else {
            $(this).attr('checked',true);
            $('#first').attr('checked', false);
            $('#second').attr('checked', false);
-         }
          });
         // RUNREGISTER FUNCTION
         var allowstylechange =1;
@@ -298,6 +283,7 @@ head
         if($('#third').is(':checked')){
           style = 3;
         }
+        console.log('style: '+style);
         request = new XMLHttpRequest();
         request.onreadystatechange = function () {
         var DONE = this.DONE || 4;

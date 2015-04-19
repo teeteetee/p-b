@@ -649,8 +649,10 @@ app.get('/settings',function(req,res){
 
 app.post('/settings/cc',function(req,res){
   if(req.session.mail)
-   {var vuid = parseInt(req.body.uid);
-      var vstyle = parseInt(req.body.stylenum);
+   {console.log('going to change a color');
+    var vuid = parseInt(req.body.uid);
+    var vstyle = parseInt(req.body.stylenum);
+    console.log(vuid+" "+vstyle);
      users.update({uid:vuid},{$set:{style:vstyle}});
      var ms = {};
      ms.trouble = 0;
