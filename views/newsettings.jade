@@ -158,6 +158,9 @@ head
       a:hover {
         color:ornage !important;
       }
+      .cont {
+        margin-left:20px;
+      }
   body
     script.
       if(screen.width < 414){
@@ -185,15 +188,21 @@ head
       .row(style='color:white;')
         .col-xs-12
           h2 Private
+      .row.cont
+        .col-xs-12
           .btn-group(role="group" aria-label="...")
             button(type="button" class="btn btn-warning active") Yes
             button(type="button" class="btn btn-warning") No
       .row(style='color:white;')
         .col-xs-12
           h2 Color themes
+      .row.cont
+        .col-xs-12
       .row(style='color:white;')
-        .col-xs-6
+        .col-xs-12
           h2 Share your page
+      .row.cont
+        .col-xs-6
           .highlight
             pre
               code(class='language-bash') http://peopleandbooks.com/lists/#{uid}
