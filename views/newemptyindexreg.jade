@@ -218,9 +218,13 @@ head
         margin:10px;
         border-radius:30px;
       }
-      .flick:hover {
+      .flickb:hover {
         cursor:pointer;
-        background-color:rgba(0,0,0,0.2);
+        background-color:#{bhl};
+      }
+      .flickm:hover {
+        cursor:pointer;
+        background-color:#{mhl};
       }
       .h1 .small,
        .h1 small,
@@ -246,7 +250,8 @@ head
        h5 small,
        h6 .small,
        h6 small {
-      color: rgba(245, 245, 245, 0.68);
+      color: white;
+      opacity:0.68;
       }
       #welcome{
         padding-right:74px;
@@ -291,7 +296,7 @@ head
           button(class='btn' id='welcomebutton' style='border-radius:30px;border:0px;color:white;background-color:rgba(255, 255, 255, 0.38);') Enter
       .container(style='padding-left:84px;width:100% !important;padding-right:none;')  
         #heightcheck.row
-          .col-xs-6(id='books' style='background-color:#52CA8F;height:100%;overflow:auto;')
+          .col-xs-6(id='books' style='background-color:#{bh};height:100%;overflow:auto;')
             .row
               .col-xs-12(style='text-align:center;')
                 h1(id='booksfigures' style='font-family:high;font-size:200px;font-weight:bold;color:white;')
@@ -326,7 +331,7 @@ head
                       a( class='addbookbutton' style='background-color:#999;') Close
             .row
               #bookinsert.col-xs-12
-          .col-xs-6(id='movies' style='background-color:#FAB142;height:100%;overflow:auto;')
+          .col-xs-6(id='movies' style='background-color:#{mh};height:100%;overflow:auto;')
             .row
               .col-xs-12(style='text-align:center;')
                 h1(id='moviesfigures' style='font-family:high;font-size:200px;font-weight:bold;color:white;')
@@ -372,10 +377,10 @@ head
         // Setting user books/movies counters
         var seenmovies = #{seenmovies};
         var newmovies = #{newmovies};
-        $('#moviesfigures').append(" "+newmovies+" <span class='alreadym'> | "+seenmovies+"</span>");
+        $('#moviesfigures').append(" "+newmovies+" <span style='color:rgb(0,0,0);opacity:0.3'> | "+seenmovies+"</span>");
         var readbooks = #{readbooks};
         var newbooks = #{newbooks};
-        $('#booksfigures').append(" "+newbooks+" <span class='alreadyb'> | "+readbooks+"</span>");
+        $('#booksfigures').append(" "+newbooks+" <span style='color:rgb(0,0,0);opacity:0.3'> | "+readbooks+"</span>");
         //End of setting counters
         // Function for opening panel with remove/modify buttons
         function openmodpanel(bid) {
@@ -542,7 +547,7 @@ head
         {
          bookclass='alreadyb';
         }
-        var visibleinsert = "<div class='row' onclick='openmodpanel("+bid+")' id='book"+bid+"'><div class='col-xs-12'><h4 id='heading"+bid+"' style='margin-left:40px;' class='"+bookclass+"'>"+booktitle+" <small> "+author+" </small>";
+        var visibleinsert = "<div class='row flickb' onclick='openmodpanel("+bid+")' id='book"+bid+"'><div class='col-xs-12'><h4 id='heading"+bid+"' style='margin-left:40px;' class='"+bookclass+"'>"+booktitle+" <small> "+author+" </small>";
                if(star===1&&newbook===0){
                  visibleinsert+="<span style='color:#F2D45C;margin-left:10px;' class='glyphicon glyphicon-star'></span>";
                }
@@ -706,7 +711,7 @@ head
         {
          movieclass='alreadym';
         }
-        var visibleinsert = "<div class='row' onclick='openmodmoviepanel("+mid+")' id='movie"+mid+"'><div class='col-xs-12'><h4 id='movieheading"+mid+"' style='margin-left:40px;' class='"+movieclass+"'>"+movietitle+" <small> "+year+" </small>";
+        var visibleinsert = "<div class='row flickm' onclick='openmodmoviepanel("+mid+")' id='movie"+mid+"'><div class='col-xs-12'><h4 id='movieheading"+mid+"' style='margin-left:40px;' class='"+movieclass+"'>"+movietitle+" <small> "+year+" </small>";
                if(moviestar===1&&newmovie===0){
                  visibleinsert+="<span style='color:#F2D45C;margin-left:10px;' class='glyphicon glyphicon-moviestar'></span>";
                }
