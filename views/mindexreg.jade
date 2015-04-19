@@ -523,7 +523,7 @@ head
           author='--';
         }
         else {
-          if(author.length()>50){
+          if(author.length>50){
             alert('Author name is too long');
             allowsubmit=1;
             return;
@@ -536,7 +536,7 @@ head
           return
         }
         else {
-          if(booktitle.length()>50){
+          if(booktitle.length>50){
             alert('Title is too long');
             allowsubmit=1;
             return;
