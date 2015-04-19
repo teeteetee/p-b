@@ -327,6 +327,7 @@ app.post('/addmovie',function(req,res){
             }
             ms.trouble=0;
             ms.mid = vmid;
+            console.log('sending mid: '+vmid);
             res.send(ms);
            }
     });
