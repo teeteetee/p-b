@@ -570,8 +570,21 @@ app.get('/',function(req,res) {
                  
                     if(!done.books&&!done.movies)
                       {//res.render('emptyindexreg',{'uid':done.uid});
-                       res.render('newemptyindexreg',{'uid':done.uid,'newbooks':0,'readbooks':0,'newmovies':0,'seenmovies':0});
-
+                       var style='';
+                      var style1 = "'mh':'#FAB142','bh':'#52CA8F','mhl':'rgb(123, 226, 175)','bhl':'#FAC26C',";
+                      var style2 = "'mh':'#00657C','bh':'rgb(0, 182, 205);','mhl':'#00A7CD','bhl':'rgb(82, 214, 231)',";
+                      var style3 = "'mh':'#FAB142','bh':'#52CA8F','mhl':'rgb(123, 226, 175)','bhl':'#FAC26C',";
+                      if(done.styleint===1){
+                        style=style1;
+                      }
+                      if(done.styleint===2){
+                        style=style2;
+                      }
+                      if(done.styleint===3){
+                        style=style3;
+                      }
+                       //res.render('newemptyindexreg',{'uid':done.uid,'newbooks':0,'readbooks':0,'newmovies':0,'seenmovies':0});
+                       eval("res.render('newemptyindexreg',{"+style+"'uid':done.uid,'newbooks':0,'readbooks':0,'newmovies':0,'seenmovies':0});");
                       }
                     else{
                       var booksvar = JSON.stringify(done.books);
@@ -595,7 +608,6 @@ app.get('/',function(req,res) {
                       if(done.styleint===3){
                         style=style3;
                       }
-                    console.log("res.render('indexreg',{"+style+"'mail':done.mail,'books':booksvar,'movies':moviesvar,'uid':done.uid,'newbooks':done.newbooks,'readbooks':done.readbooks,'newmovies':done.newmovies,'seenmovies':done.seenmovies});");
                     eval("res.render('indexreg',{"+style+"'mail':done.mail,'books':booksvar,'movies':moviesvar,'uid':done.uid,'newbooks':done.newbooks,'readbooks':done.readbooks,'newmovies':done.newmovies,'seenmovies':done.seenmovies});");
                   }  
               }
