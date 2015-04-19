@@ -190,8 +190,8 @@ head
       .row.cont
         .col-xs-12
           .btn-group(role="group" aria-label="...")
-            button(type="button" class="btn btn-warning active") Yes
-            button(type="button" class="btn btn-warning") No
+            button(type="button" onclick='pubchange(0)' class="btn btn-warning active") Yes
+            button(type="button" onclick='pubchange(1)'class="btn btn-warning") No
       .row(style='color:white;')
         .col-xs-12
           h2 Color themes:
@@ -224,6 +224,7 @@ head
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
       script.
+        var currentstatus = #{pub};
         $('##{checkbox}').attr('checked',true);
         // Sliding menu mechanics
         var counter =0;
@@ -311,8 +312,8 @@ head
         $('#changecolor').click(changecolor);
         //pub change function
         var allowpubchange =1;
-        function pubchenge(to) {
-          if(!allowpubchange){
+        function pubchange(to) {
+          if(!allowpubchange || currentstatus===to){
             return;
           }
          allowpubchange =0;
@@ -329,9 +330,11 @@ head
         }
         else { 
           if(to)
-          {alert('Your list is publicly avaliable');}
+          {alert('Your list is publicly avaliable');
+          currnetstatus++}
          else 
-          {alert('Your list is private');}
+          {alert('Your list is private');
+          currnetstatus--}
         allowpubchange=1;
         }
         }
