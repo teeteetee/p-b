@@ -343,11 +343,11 @@ app.post('/modmovie',function(req,res){
   var rem = parseInt(req.body.rem);
   var vuid = parseInt(req.body.uid);
   var vmid = parseInt(req.body.mid);
-  if(!rem||!vuid||!vmid) {
-    ms.mtext='db';
-    res.send(ms);
-    return;
-  }
+  //if(!rem||!vuid||!vmid) {
+  //  ms.mtext='db';
+  //  res.send(ms);
+  //  return;
+  //}
   console.log('rem: '+rem+',vuid: '+vuid+', vmid: '+vmid);
   users.findOne({uid:vuid},function(err,doc){
     if(err){
