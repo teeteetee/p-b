@@ -549,7 +549,27 @@ res.render('books');
 });
 
 app.get('/settings',function(req,res){
-res.render('settings');
+  if(req.session.mail)
+  {users.findOne({mail:req.session.mail},function(err,done){
+              console.log('-----found-----');
+              console.log(done);
+              if(err){
+                res.render('indexreg');
+              }
+              else {
+                if(done){
+                  res.render('newsettings',{'mail':done.mail,'uid':done.uid});
+                }
+                else{
+                  res.redirect('/');
+                }
+              }
+
+      });
+}
+      else {
+        res.redirect('/');
+      }
 });
 
 
