@@ -633,21 +633,19 @@ app.get('/settings',function(req,res){
               }
               else {
                 if(done){
-                  var style1='';
-                  var style2='';
-                  var style3='';
+                  var checkbox ='';
                   switch(done.styleint) {
                     case(1):
-                     style1='checked';
+                     checkbox='first';
                     break
                     case(2):
-                     style2='checked';
+                     checkbox='second';
                     break
                     case(3):
-                     style3='checked';
+                     checkbox='third';
                     break
                   }
-                  res.render('newsettings',{'mail':done.mail,'uid':done.uid,'style1':style1,'style2':style2,'style3':style3});
+                  res.render('newsettings',{'mail':done.mail,'uid':done.uid,'checkbox':checkbox});
                 }
                 else{
                   res.redirect('/');
