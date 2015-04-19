@@ -212,6 +212,7 @@ head
             input(type="checkbox" id='third' ) 
             span(class='glyphicon glyphicon-stop' style='font-size:30px;color:#00657C;')
             span(class='glyphicon glyphicon-stop' style='font-size:30px;color:rgb(0, 182, 205);')
+        button(class='btn btn-default' id='changecolor' type='button') Change color
       .row(style='color:white;')
         .col-xs-12
           h2 Share your page:
@@ -282,7 +283,7 @@ head
          });
         // RUNREGISTER FUNCTION
         var allowstylechange =1;
-        function runregister() {
+        function changecolor() {
           if(!allowstylechange){
             return;
           }
@@ -317,4 +318,6 @@ head
         // Most libraries like jQuery/Prototype/Dojo do this
         request.send("uid=#{uid}&stylenum="+style);
           }
+        //end of changecolor
+        $('#changecolor').click(changecolor);
       
