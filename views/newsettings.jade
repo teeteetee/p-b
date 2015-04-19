@@ -199,17 +199,17 @@ head
         .col-xs-12
         .checkbox
           label
-            input(type="checkbox" id='first' checked) 
+            input(type="checkbox" id='first' #{style1}) 
             span(class='glyphicon glyphicon-stop' style='font-size:30px;color:#52CA8F;')
             span(class='glyphicon glyphicon-stop' style='font-size:30px;color:#FAB142;')
         .checkbox
           label
-            input(type="checkbox" id='second' ) 
+            input(type="checkbox" id='second' #{style2}) 
             span(class='glyphicon glyphicon-stop' style='font-size:30px;color:rgb(213, 74, 95);')
             span(class='glyphicon glyphicon-stop' style='font-size:30px;color:#00788E;')
         .checkbox
           label
-            input(type="checkbox" id='third' ) 
+            input(type="checkbox" id='third' #{style3}) 
             span(class='glyphicon glyphicon-stop' style='font-size:30px;color:#00657C;')
             span(class='glyphicon glyphicon-stop' style='font-size:30px;color:rgb(0, 182, 205);')
         button(class='btn btn-default' id='changecolor' type='button') Change color

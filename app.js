@@ -572,7 +572,7 @@ app.get('/',function(req,res) {
                       {//res.render('emptyindexreg',{'uid':done.uid});
                        var style='';
                       var style1 = "'mh':'#FAB142','bh':'#52CA8F','mhl':'#FAC26C','bhl':'rgb(123, 226, 175)',";
-                      var style2 = "'mh':'#00657C','bh':'rgb(0, 182, 205);','mhl':'#00A7CD','bhl':'rgb(82, 214, 231)',";
+                      var style2 = "'mh':'#00657C','bh':'rgb(0, 182, 205);','mhl':'#003945','bhl':'rgb(82, 214, 231)',";
                       var style3 = "'mh':'#FAB142','bh':'#52CA8F','mhl':'rgb(123, 226, 175)','bhl':'#FAC26C',";
                       if(done.styleint===1){
                         style=style1;
@@ -597,7 +597,7 @@ app.get('/',function(req,res) {
                       }
                       var style='';
                       var style1 = "'mh':'#FAB142','bh':'#52CA8F','mhl':'#FAC26C','bhl':'rgb(123, 226, 175)',";
-                      var style2 = "'mh':'#00657C','bh':'rgb(0, 182, 205);','mhl':'#00A7CD','bhl':'rgb(82, 214, 231)',";
+                      var style2 = "'mh':'#00657C','bh':'rgb(0, 182, 205);','mhl':'#003945','bhl':'rgb(82, 214, 231)',";
                       var style3 = "'mh':'#FAB142','bh':'#52CA8F','mhl':'rgb(123, 226, 175)','bhl':'#FAC26C',";
                       if(done.styleint===1){
                         style=style1;
@@ -633,7 +633,21 @@ app.get('/settings',function(req,res){
               }
               else {
                 if(done){
-                  res.render('newsettings',{'mail':done.mail,'uid':done.uid});
+                  var style1='';
+                  var style2='';
+                  var style3='';
+                  switch(done.styleint) {
+                    case(1):
+                     style1='checked';
+                    break
+                    case(2):
+                     style2='checked';
+                    break
+                    case(3):
+                     style3='checked';
+                    break
+                  }
+                  res.render('newsettings',{'mail':done.mail,'uid':done.uid,'style1':style1,'style2':style2,'style3':style3});
                 }
                 else{
                   res.redirect('/');
