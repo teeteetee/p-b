@@ -531,7 +531,7 @@ app.get('/',function(req,res) {
                         moviesvar =0;
                       }
 
-                    res.render('indexreg',{'books':booksvar,'movies':moviesvar,'uid':done.uid,'newbooks':done.newbooks,'readbooks':done.readbooks,'newmovies':done.newmovies,'seenmovies':done.seenmovies});
+                    res.render('indexreg',{'mail':done.mail,'books':booksvar,'movies':moviesvar,'uid':done.uid,'newbooks':done.newbooks,'readbooks':done.readbooks,'newmovies':done.newmovies,'seenmovies':done.seenmovies});
                   }  
               }
               else {

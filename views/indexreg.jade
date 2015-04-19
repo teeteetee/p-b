@@ -256,6 +256,7 @@ head
       }
     nav(class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1")
       img(class="media-object img-circle" src="/images/pblogov4.png" style='margin-top:20px;margin-bottom:20px;margin-left:auto;margin-right:auto;width:64px;height:64px;' alt="...")
+      a(style='color:white;') #{mail}
       form(class="navbar-form navbar-right" method='post' action='/srch' id='srch' role="search")
         .input-group
            input(type="text" class="form-control" name='searchfield' id='searchfield' style='background-color:#333;color:white;border-color:#333;border-top-left-radius:30px;border-bottom-left-radius:30px;') 
@@ -498,6 +499,7 @@ head
         else {
           if(author.length()>50){
             alert('Author name is too long');
+            allowsubmit=1;
             return;
           }
         }
@@ -510,6 +512,7 @@ head
         else {
           if(booktitle.length()>50){
             alert('Title is too long');
+            allowsubmit=1;
             return;
           }
         }
