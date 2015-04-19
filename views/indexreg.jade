@@ -415,16 +415,20 @@ head
         // diable/allow cheking checkboxes
         $('#newbook').click(function() {
          if ($(this).is(':checked')) {
-           $('#star').removeAttr('disabled');
+           $('#star').attr('disabled', false);
+           $('#attention').attr('disabled', true);
          } else {
-           $('#attention').attr('disabled');
+           $('#attention').attr('disabled', false);
+           $('#star').attr('disabled', true);
          }
          });
         $('#newmovie').click(function() {
          if ($(this).is(':checked')) {
            $('#moviestar').attr('disabled', false);
-         } else {
            $('#movieattention').attr('disabled', true);
+         } else {
+           $('#movieattention').attr('disabled', false);
+           $('#moviestar').attr('disabled', true);
          }
          });
         // Buttons which open forms for inserting new books/movies
