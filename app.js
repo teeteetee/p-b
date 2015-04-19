@@ -567,7 +567,7 @@ app.get('/',function(req,res) {
             }
             else {
               if(done){
-                 
+                  console.log('----------'+done.styleint+'-----------');
                     if(!done.books&&!done.movies)
                       {//res.render('emptyindexreg',{'uid':done.uid});
                        var style='';
