@@ -318,7 +318,7 @@ app.post('/addmovie',function(req,res){
         res.send(ms);
       }
       else {
-        var vmid = doc.totalmovies+1;
+        var vmid = parseInt(doc.totalmovies)+1;
             users.update({uid:vuid},{$push:{movies:{mid:vmid,year:vmovieyear,movietitle:vmovietitle,newmovie:vnewmovie,star:vmoviestar,attention:vmovieattention,regdateint:fulldate}}});
             if(vnewmovie)
             {users.update({uid:vuid},{$inc:{newmovies:1,totalmovies:1}});}
