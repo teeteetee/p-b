@@ -146,6 +146,15 @@ head
           outline:0px !important;
           -webkit-appearance:none;
       }
+      a:focus {
+        color:ornage !important;
+      }
+      a:active {
+        color:ornage !important;
+      }
+      a:hover {
+        color:ornage !important;
+      }
   body
     script.
       if(screen.width < 414){
@@ -165,7 +174,7 @@ head
     .sidebar(style='width:74px;position:fixed;height:100%;background-color:#1d1d1d;text-align:center;z-index:2000;')
       //img(class="media-object img-circle" src="/bootstrap/images/seo.jpg" style='margin-left:5px;margin-top:30px;width:64px;height:64px;' alt="...")
       span(class='glyphicon glyphicon-align-justify' id='showLeft' style='color:#333;font-size:30px;margin-top:20px;')
-    .container(style='padding-left:84px;')  
+    .container(style='padding-left:94px;')  
       .row
         .col-xs-12
            img(class="media-object img-circle" src="/images/pblogov4.png" style='margin-top:20px;margin-bottom:20px;margin-left:auto;margin-right:auto;width:100px;height:100px;' alt="...")
@@ -182,7 +191,8 @@ head
           h4 Or keep it private
       .row(style='color:gray;')
         .col-xs-12
-          h5(style='text-align:center;margin-top:20%;') Top&Views Design
+          a(href='http://topandviews.com')
+            h5(style='text-align:center;margin-top:20%;') Top&Views Design
           h5(style='text-align:center;') 2015 
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
