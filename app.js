@@ -653,7 +653,7 @@ app.post('/settings/cc',function(req,res){
     var vuid = parseInt(req.body.uid);
     var vstyle = parseInt(req.body.stylenum);
     console.log(vuid+" "+vstyle);
-     users.update({uid:vuid},{$set:{style:vstyle}});
+     users.update({uid:vuid},{$set:{styleint:vstyle}});
      var ms = {};
      ms.trouble = 0;
      res.send(ms);
