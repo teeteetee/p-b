@@ -463,7 +463,7 @@ app.post('/newuser',function(req,res){
           generateId(insert);
           function insert(vuid) {
             //lgn:vu
-          users.insert({pub:0,mail:vmail,uid:vuid,phr:vp,totalbooks:0,totalmoviews:0,newbooks:0,readbooks:0,newmovies:0,seenmovies:0,regdateint:fulldate,regdate:{year:vyear,month:vmonth,day:vday}});
+          users.insert({pub:0,mail:vmail,uid:vuid,phr:vp,totalbooks:0,totalmovies:0,newbooks:0,readbooks:0,newmovies:0,seenmovies:0,regdateint:fulldate,regdate:{year:vyear,month:vmonth,day:vday}});
           friends.insert({uid:vuid,accepted:0,waiting:0,});
           req.session.mail = vmail;
           ms.trouble =0;
