@@ -348,10 +348,10 @@ head
         // Setting user books/movies counters
         var seenmovies = #{seenmovies};
         var newmovies = #{newmovies};
-        $('#moviesfigures').append(" "+newmovies+" <span class='alreadym'> | "+seenmovies+"</span>");
+        $('#moviesfigures').append(" "+newmovies+" <span style='color:rgb(0,0,0);opacity:0.3'> | "+seenmovies+"</span>");
         var readbooks = #{readbooks};
         var newbooks = #{newbooks};
-        $('#booksfigures').append(" "+newbooks+" <span class='alreadyb'> | "+readbooks+"</span>");
+        $('#booksfigures').append(" "+newbooks+" <span style='color:rgb(0,0,0);opacity:0.3'> | "+readbooks+"</span>");
         //End of setting counters
         // Populating the columns
         var books = !{books};
