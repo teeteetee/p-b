@@ -125,7 +125,42 @@ app.get('/logout',function(req,res){
 
 app.get('/about',function(req,res){
   res.render('about');
-})
+});
+
+app.get('/lists/:lid',function(req,res){
+  if(req.params.lid.length>10) {
+    res.redirect('http://yandex.ru');
+    return;
+  }
+  var vuid = req.params.lid;
+  users.findOne({uid:vuid},function(err,done){
+    if(err) {
+        res.redirect('/');
+    }
+    else {
+      if(done) {
+        if(req.session.mail) {
+          if(done.pub===1)
+           {res.render('listin')}
+           else {
+            res.render('restricted');
+           }
+        }
+        else {
+          if(done.pub===1)
+           {res.render('listout')}
+           else {
+            res.render('restricted');
+           }
+        }
+      }
+      else {
+        res.redirect('/');
+      }
+    }
+  });
+});
+
 
 app.post('/modbook',function(req,res){
   var ms={};
@@ -426,7 +461,7 @@ app.post('/newuser',function(req,res){
           generateId(insert);
           function insert(vuid) {
             //lgn:vu
-          users.insert({mail:vmail,uid:vuid,phr:vp,totalbooks:0,totalmoviews:0,newbooks:0,readbooks:0,newmovies:0,seenmovies:0,regdateint:fulldate,regdate:{year:vyear,month:vmonth,day:vday}});
+          users.insert({pub:0,mail:vmail,uid:vuid,phr:vp,totalbooks:0,totalmoviews:0,newbooks:0,readbooks:0,newmovies:0,seenmovies:0,regdateint:fulldate,regdate:{year:vyear,month:vmonth,day:vday}});
           friends.insert({uid:vuid,accepted:0,waiting:0,});
           req.session.mail = vmail;
           ms.trouble =0;
@@ -565,14 +600,34 @@ res.render('books');
 app.get('/settings',function(req,res){
   if(req.session.mail)
   {users.findOne({mail:req.session.mail},function(err,done){
-              console.log('-----found-----');
-              console.log(done);
               if(err){
-                res.render('indexreg');
+                res.redirect('/');
               }
               else {
                 if(done){
                   res.render('newsettings',{'mail':done.mail,'uid':done.uid});
+                }
+                else{
+                  res.redirect('/');
+                }
+              }
+
+      });
+}
+      else {
+        res.redirect('/');
+      }
+});
+
+app.get('/people',function(req,res){
+  if(req.session.mail)
+  {users.findOne({mail:req.session.mail},function(err,done){
+              if(err){
+                res.redirect('/');
+              }
+              else {
+                if(done){
+                  res.render('people',{'mail':done.mail,'uid':done.uid});
                 }
                 else{
                   res.redirect('/');
