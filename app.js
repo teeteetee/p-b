@@ -179,6 +179,10 @@ app.post('/addbook',function(req,res){
   console.log('adding a book');
   var ms = {};
   ms.trouble =1;
+  if(req.body.uid.length >30 || req.body.booktitle.length >30 ||req.body.newbook.length >30 || req.body.author.length >30 || req.body.star.length >30 || req.body.attention.length >30) {
+    res.send(ms);
+    return;
+  }
   if (req.session.mail ){
     var vuid = parseInt(req.body.uid);
     var vbooktitle = req.body.booktitle;
@@ -238,6 +242,10 @@ app.post('/addmovie',function(req,res){
  console.log('adding a movie');
   var ms = {};
   ms.trouble =1;
+  if(req.body.uid.length >30 || req.body.movietitle.length >30 ||req.body.newmovie.length >30 || req.body.year.length >30 || req.body.star.length >30 || req.body.attention.length >30) {
+    res.send(ms);
+    return;
+  }
   if (req.session.mail ){
     var vuid = parseInt(req.body.uid);
     var vmovietitle = req.body.movietitle;
@@ -299,6 +307,11 @@ app.post('/modmovie',function(req,res){
   var rem = parseInt(req.body.rem);
   var vuid = parseInt(req.body.uid);
   var vmid = parseInt(req.body.mid);
+  if(!rem||!vuid||!vmid) {
+    ms.mtext='db';
+    res.send(ms);
+    return;
+  }
   console.log('rem: '+rem+',vuid: '+vuid+', vmid: '+vmid);
   users.findOne({uid:vuid},function(err,doc){
     if(err){
@@ -345,15 +358,16 @@ app.get('/register',function(req,res){
 });
 
 app.post('/newuser',function(req,res){
-    //THOSE USERS ARE NORMAL PEOPLE, HOSTEL STUF WILL BE REGISTERED THROUGH ADMIN
-    var vmail = req.body.mail; 
-    //var vu = req.body.u; //NEEDED TO WRITE COMMENTS, DONT ASK AT REGISTRATION
-    //if (vu.length === 0 )
-    //  {vu = 0;}
-    var vp = bcrypt.hashSync(req.body.p,bcrypt.genSaltSync(10));
-    var ms = {};
     ms.trouble=1;
     ms.mtext='email incorrect';
+    var vmail = req.body.mail; 
+    if(req.body.p.length >30 || req.body.mail.length>30) {
+      ms.mtext('fail');
+      res.send(ms);
+      return;
+    }
+    var vp = bcrypt.hashSync(req.body.p,bcrypt.genSaltSync(10));
+    var ms = {};
     // MUST INCLUDE enquiries - all  - accepted WHEN WRITING TO THE DB
     // CHECK MAIL BEFOR WRTING
     function validateEmail(email) { 
