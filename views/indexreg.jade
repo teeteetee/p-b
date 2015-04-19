@@ -415,18 +415,26 @@ head
         // diable/allow cheking checkboxes
         $('#newbook').click(function() {
          if ($(this).is(':checked')) {
+           $('#star').attr('checked',false);
+           $('#attention').attr('checked',false);
            $('#star').attr('disabled', false);
            $('#attention').attr('disabled', true);
          } else {
+           $('#star').attr('checked',false);
+           $('#attention').attr('checked',false);
            $('#attention').attr('disabled', false);
            $('#star').attr('disabled', true);
          }
          });
         $('#newmovie').click(function() {
          if ($(this).is(':checked')) {
+           $('#moviestar').attr('checked',false);
+           $('#movieattention').attr('checked',false);
            $('#moviestar').attr('disabled', false);
            $('#movieattention').attr('disabled', true);
          } else {
+           $('#moviestar').attr('checked',false);
+           $('#movieattention').attr('checked',false);
            $('#movieattention').attr('disabled', false);
            $('#moviestar').attr('disabled', true);
          }
