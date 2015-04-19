@@ -681,7 +681,7 @@ app.post('/settings/pc',function(req,res){
    {console.log('going to change public avaliability');
     var vuid = parseInt(req.body.uid);
     var vpub = parseInt(req.body.pub);
-    console.log(vuid+" "+vstyle);
+    console.log(vuid+" "+vpub);
      users.update({uid:vuid},{$set:{pub:vpub}});
      var ms = {};
      ms.trouble = 0;
