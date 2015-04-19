@@ -288,7 +288,7 @@ head
                   | Уже прочитал
               .checkbox
                 label
-                  input(type="checkbox" id='star') 
+                  input(type="checkbox" id='star' disabled) 
                   span(class='glyphicon glyphicon-star' style='color:#F2D45C;margin-right:10px;')
                   | Книга понравилась
               .checkbox
@@ -323,7 +323,7 @@ head
                   | Уже посмотрел
               .checkbox
                 label
-                  input(type="checkbox" id='moviestar') 
+                  input(type="checkbox" id='moviestar' disabled) 
                   span(class='glyphicon glyphicon-star' style='color:#F2D45C;margin-right:10px;')
                   | Фильм понравился
               .checkbox
@@ -412,6 +412,21 @@ head
          eval("$('#modmovie"+mid+"').slideToggle();");
         }
         //end of openmodpanel funciton for movies column
+        // diable/allow cheking checkboxes
+        $('#newbook').click(function() {
+         if ($(this).is(':checked')) {
+           $('#star').attr('disabled', false);
+         } else {
+           $('#attention').attr('disabled', true);
+         }
+       });
+        $('#newmovie').click(function() {
+         if ($(this).is(':checked')) {
+           $('#moviestar').attr('disabled', false);
+         } else {
+           $('#movieattention').attr('disabled', true);
+         }
+       });
         // Buttons which open forms for inserting new books/movies
         $('.addbookbutton').click(function(){
           if($('#addmovie').css('display') === 'block')

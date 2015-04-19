@@ -10,7 +10,7 @@ var bcrypt = require('bcrypt');
 
 var mongo = require('mongodb');
 var db = require('monk')('localhost/tav')
-  , users = db.get('users'),insidemsg = db.get('insidemsg');
+  , users = db.get('users'),insidemsg = db.get('insidemsg'),friends = db.get('friends');
 // POSTS and OBJECTS BELONGS TO MALESHIN PROJECT DELETE WHEN PUSHING TOPANDVIEWS TO PRODUCTION
 var fs = require('fs-extra');
 
@@ -340,6 +340,10 @@ app.get('/register',function(req,res){
  res.render('register');
 });
 
+app.post('/addfriend',function(req,res){
+
+});
+
 app.post('/newuser',function(req,res){
     //THOSE USERS ARE NORMAL PEOPLE, HOSTEL STUF WILL BE REGISTERED THROUGH ADMIN
     var vmail = req.body.mail; 
@@ -409,6 +413,7 @@ app.post('/newuser',function(req,res){
           function insert(vuid) {
             //lgn:vu
           users.insert({mail:vmail,uid:vuid,phr:vp,totalbooks:0,totalmoviews:0,newbooks:0,readbooks:0,newmovies:0,seenmovies:0,regdateint:fulldate,regdate:{year:vyear,month:vmonth,day:vday}});
+          friends.insert({uid:vuid,accepted:0,waiting:0,});
           req.session.mail = vmail;
           ms.trouble =0;
           ms.mtext='success';
