@@ -572,8 +572,8 @@ app.get('/',function(req,res) {
                       {//res.render('emptyindexreg',{'uid':done.uid});
                        var style='';
                       var style1 = "'mh':'#FAB142','bh':'#52CA8F','mhl':'#FAC26C','bhl':'rgb(123, 226, 175)',";
-                      var style2 = "'mh':'#00657C','bh':'rgb(0, 182, 205);','mhl':'#003945','bhl':'rgb(82, 214, 231)',";
-                      var style3 = "'mh':'#FAB142','bh':'#52CA8F','mhl':'rgb(123, 226, 175)','bhl':'#FAC26C',";
+                      var style2 = "'mh':'#FAB142','bh':'#52CA8F','mhl':'rgb(123, 226, 175)','bhl':'#FAC26C',";
+                      var style3 = "'mh':'#00657C','bh':'rgb(0, 182, 205);','mhl':'#003945','bhl':'rgb(82, 214, 231)',";
                       if(done.styleint===1){
                         style=style1;
                       }
@@ -597,8 +597,8 @@ app.get('/',function(req,res) {
                       }
                       var style='';
                       var style1 = "'mh':'#FAB142','bh':'#52CA8F','mhl':'#FAC26C','bhl':'rgb(123, 226, 175)',";
-                      var style2 = "'mh':'#00657C','bh':'rgb(0, 182, 205);','mhl':'#003945','bhl':'rgb(82, 214, 231)',";
-                      var style3 = "'mh':'#FAB142','bh':'#52CA8F','mhl':'rgb(123, 226, 175)','bhl':'#FAC26C',";
+                      var style2 = "'mh':'#FAB142','bh':'#52CA8F','mhl':'rgb(123, 226, 175)','bhl':'#FAC26C',";
+                      var style3 = "'mh':'#00657C','bh':'rgb(0, 182, 205);','mhl':'#003945','bhl':'rgb(82, 214, 231)',";
                       if(done.styleint===1){
                         style=style1;
                       }
