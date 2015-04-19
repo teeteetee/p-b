@@ -463,7 +463,7 @@ app.post('/newuser',function(req,res){
           generateId(insert);
           function insert(vuid) {
             //lgn:vu
-          users.insert({pub:0,mail:vmail,uid:vuid,phr:vp,totalbooks:0,totalmovies:0,newbooks:0,readbooks:0,newmovies:0,seenmovies:0,regdateint:fulldate,regdate:{year:vyear,month:vmonth,day:vday}});
+          users.insert({pub:0,style:1,mail:vmail,uid:vuid,phr:vp,totalbooks:0,totalmovies:0,newbooks:0,readbooks:0,newmovies:0,seenmovies:0,regdateint:fulldate,regdate:{year:vyear,month:vmonth,day:vday}});
           friends.insert({uid:vuid,accepted:0,waiting:0,});
           req.session.mail = vmail;
           ms.trouble =0;
@@ -562,7 +562,8 @@ app.get('/',function(req,res) {
             console.log('-----found-----');
             console.log(done);
             if(err){
-              res.render('indexreg');
+              //err page ?
+              res.redirect('/');
             }
             else {
               if(done){
@@ -581,12 +582,24 @@ app.get('/',function(req,res) {
                       if(!moviesvar) {
                         moviesvar =0;
                       }
-
-                    res.render('indexreg',{'mail':done.mail,'books':booksvar,'movies':moviesvar,'uid':done.uid,'newbooks':done.newbooks,'readbooks':done.readbooks,'newmovies':done.newmovies,'seenmovies':done.seenmovies});
+                      var style;
+                      var style1 = "'mh':'#FAB142','bh':'#52CA8F','mhl':'rgb(123, 226, 175)','bhl':'#FAC26C',";
+                      var style2 = "'mh':'#00657C','bh':'rgb(0, 182, 205);','mhl':'#00A7CD','bhl':'rgb(82, 214, 231)',";
+                      var style3 = "'mh':'#FAB142','bh':'#52CA8F','mhl':'rgb(123, 226, 175)','bhl':'#FAC26C',";
+                      if(done.style===1){
+                        style=style1;
+                      }
+                      if(done.style===2){
+                        style=style2;
+                      }
+                      if(done.style===3){
+                        style=style3;
+                      }
+                    eval("res.render('indexreg',{"+style+"'mail':done.mail,'books':booksvar,'movies':moviesvar,'uid':done.uid,'newbooks':done.newbooks,'readbooks':done.readbooks,'newmovies':done.newmovies,'seenmovies':done.seenmovies});");
                   }  
               }
               else {
-                res.render('index');
+                res.redirect('/');
               }
             }
           });
@@ -620,6 +633,22 @@ app.get('/settings',function(req,res){
         res.redirect('/');
       }
 });
+
+app.post('/settings/cc',function(req,res){
+  if(req.session.mail)
+   {var vuid = parseInt(req.body.uid);
+      var vstyle = parseInt(req.body.stylenum);
+     users.update({uid:vuid},{$set:{style:vstyle}});
+     var ms = {};
+     ms.trouble = 0;
+     res.send(ms);
+    }
+  else {
+    res.redirect('/')
+  }
+
+});
+
 
 app.get('/people',function(req,res){
   if(req.session.mail)

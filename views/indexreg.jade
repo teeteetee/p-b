@@ -221,11 +221,11 @@ head
       }
       .flickb:hover {
         cursor:pointer;
-        background-color:rgb(123, 226, 175);
+        background-color:#{bhl};
       }
       .flickm:hover {
         cursor:pointer;
-        background-color:#FAC26C;
+        background-color:#{mhl};
       }
       .h1 .small,
        .h1 small,
@@ -275,7 +275,7 @@ head
       span(class='glyphicon glyphicon-align-justify' id='showLeft' style='color:#333;font-size:30px;margin-top:20px;')
     .container(style='padding-left:84px;width:100% !important;padding-right:none;')  
       #heightcheck.row
-        .col-xs-6(id='books' style='background-color:#52CA8F;height:100%;overflow:auto;')
+        .col-xs-6(id='books' style='background-color:#{bh};height:100%;overflow:auto;')
           .row
             .col-xs-12(style='text-align:center;')
               h1(id='booksfigures' style='font-family:high;font-size:200px;font-weight:bold;color:white;')
@@ -310,7 +310,7 @@ head
                     a( class='addbookbutton' style='background-color:#999;') Close
           .row
             #bookinsert.col-xs-12
-        .col-xs-6(id='movies' style='background-color:#FAB142;height:100%;overflow:auto;')
+        .col-xs-6(id='movies' style='background-color:#{mh};height:100%;overflow:auto;')
           .row
             .col-xs-12(style='text-align:center;')
               h1(id='moviesfigures' style='font-family:high;font-size:200px;font-weight:bold;color:white;')

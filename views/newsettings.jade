@@ -199,17 +199,17 @@ head
         .col-xs-12
         .checkbox
           label
-            input(type="checkbox" id='star' checked) 
+            input(type="checkbox" id='first' checked) 
             span(class='glyphicon glyphicon-stop' style='font-size:30px;color:#52CA8F;')
             span(class='glyphicon glyphicon-stop' style='font-size:30px;color:#FAB142;')
         .checkbox
           label
-            input(type="checkbox" id='star' ) 
+            input(type="checkbox" id='ssecond' ) 
             span(class='glyphicon glyphicon-stop' style='font-size:30px;color:rgb(213, 74, 95);')
             span(class='glyphicon glyphicon-stop' style='font-size:30px;color:#00788E;')
         .checkbox
           label
-            input(type="checkbox" id='star' ) 
+            input(type="checkbox" id='third' ) 
             span(class='glyphicon glyphicon-stop' style='font-size:30px;color:#00657C;')
             span(class='glyphicon glyphicon-stop' style='font-size:30px;color:rgb(0, 182, 205);')
       .row(style='color:white;')
@@ -250,4 +250,71 @@ head
                       }
         };
         //end of sliding menu mechanics
+        $('#first').click(function() {
+         if ($(this).is(':checked')) {
+           $(this).attr('checked',false); 
+         } 
+         else {
+           $(this).attr('checked',true);
+           $('#third').attr('checked', false);
+           $('#second').attr('checked', false);
+         }
+         });
+        $('#second').click(function() {
+         if ($(this).is(':checked')) {
+           $(this).attr('checked',false); 
+         } 
+         else {
+           $(this).attr('checked',true);
+           $('#first').attr('checked', false);
+           $('#third').attr('checked', false);
+         }
+         });
+        $('#third').click(function() {
+         if ($(this).is(':checked')) {
+           $(this).attr('checked',false); 
+         } 
+         else {
+           $(this).attr('checked',true);
+           $('#first').attr('checked', false);
+           $('#second').attr('checked', false);
+         }
+         });
+        // RUNREGISTER FUNCTION
+        var allowstylechange =1;
+        function runregister() {
+          if(!allowstylechange){
+            return;
+          }
+         allowstylechange =0;
+         var style;
+         if($('#first').is(':checked')){
+          style = 1;
+        }
+        if($('#second').is(':checked')){
+          style = 2;
+        }
+        if($('#third').is(':checked')){
+          style = 3;
+        }
+        request = new XMLHttpRequest();
+        request.onreadystatechange = function () {
+        var DONE = this.DONE || 4;
+        if (this.readyState === DONE){
+        parsed = JSON.parse(request.responseText);
+        console.log(parsed);
+        // do your job here
+        if (parsed.trouble === 1)
+        {
+         
+        }
+        else { alert('Colors changed!');}
+        }
+        };
+        request.open('POST', '/settings/cc', true);
+        request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+        request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        // Most libraries like jQuery/Prototype/Dojo do this
+        request.send("uid=#{uid}&stylenum="+style);
+          }
       
