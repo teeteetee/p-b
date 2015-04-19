@@ -199,17 +199,17 @@ head
         .col-xs-12
         .checkbox
           label
-            input(type="checkbox" id='first' #{style1}) 
+            input(type="checkbox" id='first' ) 
             span(class='glyphicon glyphicon-stop' style='font-size:30px;color:#52CA8F;')
             span(class='glyphicon glyphicon-stop' style='font-size:30px;color:#FAB142;')
         .checkbox
           label
-            input(type="checkbox" id='second' #{style2}) 
+            input(type="checkbox" id='second' ) 
             span(class='glyphicon glyphicon-stop' style='font-size:30px;color:rgb(213, 74, 95);')
             span(class='glyphicon glyphicon-stop' style='font-size:30px;color:#00788E;')
         .checkbox
           label
-            input(type="checkbox" id='third' #{style3}) 
+            input(type="checkbox" id='third' ) 
             span(class='glyphicon glyphicon-stop' style='font-size:30px;color:#00657C;')
             span(class='glyphicon glyphicon-stop' style='font-size:30px;color:rgb(0, 182, 205);')
         button(class='btn btn-default' id='changecolor' type='button') Change color
@@ -224,6 +224,7 @@ head
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
       script.
+        $('##{checkbox}').attr('checked',true);
         // Sliding menu mechanics
         var counter =0;
         var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
