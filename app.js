@@ -393,6 +393,7 @@ app.get('/register',function(req,res){
 });
 
 app.post('/newuser',function(req,res){
+    var ms = {};
     ms.trouble=1;
     ms.mtext='email incorrect';
     var vmail = req.body.mail; 
