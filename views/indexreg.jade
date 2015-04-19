@@ -415,9 +415,9 @@ head
         // diable/allow cheking checkboxes
         $('#newbook').click(function() {
          if ($(this).is(':checked')) {
-           $('#star').attr('disabled', false);
+           $('#star').removeAttr('disabled');
          } else {
-           $('#attention').attr('disabled', true);
+           $('#attention').attr('disabled');
          }
          });
         $('#newmovie').click(function() {
