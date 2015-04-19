@@ -123,6 +123,10 @@ app.get('/logout',function(req,res){
 //  res.send(req.session);
 //});
 
+app.get('/about',function(req,res){
+  res.render('about');
+})
+
 app.post('/modbook',function(req,res){
   var ms={};
   ms.trouble=1;
@@ -338,10 +342,6 @@ app.post('/modmovie',function(req,res){
 
 app.get('/register',function(req,res){
  res.render('register');
-});
-
-app.post('/addfriend',function(req,res){
-
 });
 
 app.post('/newuser',function(req,res){
@@ -600,6 +600,9 @@ app.get('/m',function(req,res){
   res.render('newmindex');}
   });
 
+app.get('/m/about',function(req,res){
+  res.render('mabout');
+})
 
 app.get('/dropplaces',function(req,res){
   if(req.ip === '188.226.189.180' || req.session.sKK76d === 'porC6S78x0XZP1b2p08zGlq')

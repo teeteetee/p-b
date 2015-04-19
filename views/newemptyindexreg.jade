@@ -300,10 +300,10 @@ head
               .col-xs-12
                 .form-group
                   label(for="exampleInputEmail1") Название
-                  input(type="email" class="form-control" id="booktitle" placeholder="Crime and punishment")
+                  input(type="email" class="form-control" id="booktitle" maxlength='50' placeholder="Crime and punishment")
                 .form-group
                   label(for="exampleInputEmail1") Автор
-                  input(type="email" class="form-control" id="author" placeholder="Dostoevsky F.M.")
+                  input(type="email" class="form-control" id="author" maxlength='40' placeholder="Dostoevsky F.M.")
                 .checkbox
                   label
                     input(type="checkbox" id='newbook') 
@@ -335,10 +335,10 @@ head
               .col-xs-12
                 .form-group
                   label(for="exampleInputEmail1") Название
-                  input(type="email" class="form-control" id="movietitle" placeholder="No country for old men")
+                  input(type="email" class="form-control" id="movietitle" maxlength='50' placeholder="No country for old men")
                 .form-group
                   label(for="exampleInputEmail1") Год
-                  input(type="email" class="form-control" id="year" placeholder="2007")
+                  input(type="email" class="form-control" id="year" maxlength='4' placeholder="2007")
                 .checkbox
                   label
                     input(type="checkbox" id='newmovie') 
@@ -407,6 +407,34 @@ head
           $('#addmovie').slideToggle();
           });
         //end of addforms open buttons
+        // diable/allow cheking checkboxes
+        $('#newbook').click(function() {
+         if ($(this).is(':checked')) {
+           $('#star').attr('checked',false);
+           $('#attention').attr('checked',false);
+           $('#star').attr('disabled', false);
+           $('#attention').attr('disabled', true);
+         } else {
+           $('#star').attr('checked',false);
+           $('#attention').attr('checked',false);
+           $('#attention').attr('disabled', false);
+           $('#star').attr('disabled', true);
+         }
+         });
+        $('#newmovie').click(function() {
+         if ($(this).is(':checked')) {
+           $('#moviestar').attr('checked',false);
+           $('#movieattention').attr('checked',false);
+           $('#moviestar').attr('disabled', false);
+           $('#movieattention').attr('disabled', true);
+         } else {
+           $('#moviestar').attr('checked',false);
+           $('#movieattention').attr('checked',false);
+           $('#movieattention').attr('disabled', false);
+           $('#moviestar').attr('disabled', true);
+         }
+         });
+        // end of disable/allowchecking checkboxes
         // Sliding menu mechanics
         var counter =0;
         var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
@@ -445,11 +473,25 @@ head
         if(!author){
           author='--';
         }
+        else {
+          if(author.length()>50){
+            alert('Author name is too long');
+            allowsubmit=1;
+            return;
+          }
+        }
         var booktitle = $('#booktitle').val();
         if(!booktitle) {
           alert('Specify book title');
           allowsubmit=1;
           return
+        }
+        else {
+          if(booktitle.length()>50){
+            alert('Title is too long');
+            allowsubmit=1;
+            return;
+          }
         }
         var uid = #{uid};
         var star;

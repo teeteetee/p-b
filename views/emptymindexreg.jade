@@ -277,10 +277,10 @@ head
           .col-xs-12
             .form-group
                 label(for="exampleInputEmail1") Название
-                input(type="email" class="form-control" id="booktitle" placeholder="Crime and punishment")
+                input(type="email" class="form-control" id="booktitle" maxlength='50' placeholder="Crime and punishment")
             .form-group
               label(for="exampleInputEmail1") Автор
-              input(type="email" class="form-control" id="author" placeholder="Dostoevsky F.M.")
+              input(type="email" class="form-control" id="author" maxlength='40' placeholder="Dostoevsky F.M.")
             .checkbox
               label
                 input(type="checkbox" id='newbook') 
@@ -305,10 +305,10 @@ head
           .col-xs-12
             .form-group
               label(for="exampleInputEmail1") Название
-              input(type="email" class="form-control" id="movietitle" placeholder="No country for old men")
+              input(type="email" class="form-control" id="movietitle" maxlength='50' placeholder="No country for old men")
             .form-group
               label(for="exampleInputEmail1") Год
-              input(type="email" class="form-control" id="year" placeholder="2007")
+              input(type="email" class="form-control" id="year" maxlength='4' placeholder="2007")
             .checkbox
               label
                 input(type="checkbox" id='newmovie') 
@@ -443,11 +443,25 @@ head
         if(!author){
           author='--';
         }
+        else {
+          if(author.length()>50){
+            alert('Author name is too long');
+            allowsubmit=1;
+            return;
+          }
+        }
         var booktitle = $('#booktitle').val();
         if(!booktitle) {
           alert('Specify book title');
           allowsubmit=1;
           return
+        }
+        else {
+          if(booktitle.length()>50){
+            alert('Title is too long');
+            allowsubmit=1;
+            return;
+          }
         }
         var uid = #{uid};
         var star;
