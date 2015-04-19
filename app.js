@@ -287,9 +287,9 @@ app.post('/addmovie',function(req,res){
     var vnewmovie = parseInt(req.body.newmovie);
     console.log('breakpoint one');
     var vmovieyear = req.body.year;
-    var vstar = parseInt(req.body.star);
-    var vattention = parseInt(req.body.attention);
-    console.log('ADDING A movie: vuid'+vuid+' ,movietitle:'+vmovietitle+' ,year: '+vmovieyear+' ,star: '+vstar+' ,attention '+vattention+', newmovie'+vnewmovie);
+    var vmoviestar = parseInt(req.body.moviestar);
+    var vmovieattention = parseInt(req.body.movieattention);
+    console.log('ADDING A movie: vuid'+vuid+' ,movietitle:'+vmovietitle+' ,year: '+vmovieyear+' ,star: '+vmoviestar+' ,attention '+vmovieattention+', newmovie'+vnewmovie);
     var dd= new Date();
     var vday = dd.getDate().toString();
     if (vday.length===1){
@@ -319,7 +319,7 @@ app.post('/addmovie',function(req,res){
       }
       else {
         var vmid = doc.totalmovies+1;
-            users.update({uid:vuid},{$push:{movies:{mid:vmid,year:vmovieyear,movietitle:vmovietitle,newmovie:vnewmovie,star:vstar,attention:vattention,regdateint:fulldate}}});
+            users.update({uid:vuid},{$push:{movies:{mid:vmid,year:vmovieyear,movietitle:vmovietitle,newmovie:vnewmovie,star:vmoviestar,attention:vmovieattention,regdateint:fulldate}}});
             if(vnewmovie)
             {users.update({uid:vuid},{$inc:{newmovies:1,totalmovies:1}});}
             else {
