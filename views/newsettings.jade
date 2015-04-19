@@ -190,8 +190,8 @@ head
       .row.cont
         .col-xs-12
           .btn-group(role="group" aria-label="...")
-            button(type="button" onclick='pubchange(0)' class="btn btn-warning active") Yes
-            button(type="button" onclick='pubchange(1)' class="btn btn-warning") No
+            button(type="button" id='private' onclick='pubchange(0)' class="btn btn-warning active") Yes
+            button(type="button" id='public' onclick='pubchange(1)' class="btn btn-warning") No
       .row(style='color:white;')
         .col-xs-12
           h2 Color themes:
@@ -331,9 +331,13 @@ head
         else { 
           if(to)
           {alert('Your list is publicly avaliable');
+          $('#private').removeClass('active');
+          $('#public').addClass('active');
           currnetstatus++}
          else 
           {alert('Your list is private');
+        $('#public').removeClass('active');
+          $('#private').addClass('active');
           currnetstatus--}
         allowpubchange=1;
         }
