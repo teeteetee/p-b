@@ -219,9 +219,13 @@ head
         margin:10px;
         border-radius:30px;
       }
-      .flick:hover {
+      .flickb:hover {
         cursor:pointer;
         background-color:rgb(123, 226, 175);
+      }
+      .flickm:hover {
+        cursor:pointer;
+        background-color:#FAC26C;
       }
       .h1 .small,
        .h1 small,
@@ -363,7 +367,7 @@ head
                        {
                         popbookclass='alreadyb';
                        }
-                       var popinsert = "<div class='row flick' onclick='openmodpanel("+element.bid+")' id='book"+element.bid+"'><div class='col-xs-12'><h4 id='heading"+element.bid+"' style='margin-left:40px;' class='"+popbookclass+"'>"+element.booktitle+" <small> "+element.author+" </small>";
+                       var popinsert = "<div class='row flickb' onclick='openmodpanel("+element.bid+")' id='book"+element.bid+"'><div class='col-xs-12'><h4 id='heading"+element.bid+"' style='margin-left:40px;' class='"+popbookclass+"'>"+element.booktitle+" <small> "+element.author+" </small>";
                        if(element.star===1&&element.newbook===0){
                          popinsert+="<span style='color:#F2D45C;margin-left:10px;' class='glyphicon glyphicon-star'></span>";
                        }
@@ -385,7 +389,7 @@ head
                        {
                         popmovieclass='alreadym';
                        }
-                       var popinsert = "<div class='row flick' onclick='openmodmoviepanel("+element.mid+")' id='movie"+element.mid+"'><div class='col-xs-12'><h4 id='movieheading"+element.mid+"' style='margin-left:40px;' class='"+popmovieclass+"'>"+element.movietitle+" <small> "+element.year+" </small>";
+                       var popinsert = "<div class='row flickm' onclick='openmodmoviepanel("+element.mid+")' id='movie"+element.mid+"'><div class='col-xs-12'><h4 id='movieheading"+element.mid+"' style='margin-left:40px;' class='"+popmovieclass+"'>"+element.movietitle+" <small> "+element.year+" </small>";
                        if(element.star===1&&element.newmovie===0){
                          popinsert+="<span style='color:#F2D45C;margin-left:10px;' class='glyphicon glyphicon-star'></span>";
                        }
