@@ -277,10 +277,10 @@ app.post('/addmovie',function(req,res){
  console.log('adding a movie');
   var ms = {};
   ms.trouble =1;
-  if(req.body.uid.length >30 || req.body.movietitle.length >30 ||req.body.newmovie.length >30 || req.body.year.length >30 || req.body.star.length >30 || req.body.attention.length >30) {
-    res.send(ms);
-    return;
-  }
+  //if(req.body.uid.length >30 || req.body.movietitle.length >30 ||req.body.newmovie.length >30 || req.body.year.length >30 || req.body.star.length >30 || req.body.attention.length >30) {
+  //  res.send(ms);
+  //  return;
+  //}
   if (req.session.mail ){
     var vuid = parseInt(req.body.uid);
     var vmovietitle = req.body.movietitle;
