@@ -132,7 +132,7 @@ app.get('/lists/:lid',function(req,res){
     res.redirect('http://yandex.ru');
     return;
   }
-  var vuid = req.params.lid;
+  var vuid = parseInt(req.params.lid);
   users.findOne({uid:vuid},function(err,done){
     if(err) {
         res.redirect('/');
@@ -645,7 +645,7 @@ app.get('/settings',function(req,res){
                      checkbox='third';
                     break
                   }
-                  res.render('newsettings',{'mail':done.mail,'uid':done.uid,'checkbox':checkbox});
+                  res.render('newsettings',{'mail':done.mail,'uid':done.uid,'checkbox':checkbox,'pub':done.pub});
                 }
                 else{
                   res.redirect('/');
