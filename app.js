@@ -163,6 +163,8 @@ app.get('/lists/:lid',function(req,res){
                             element.newm=0;
                             friends.update({mail:req.session.mail},{$set:{people:peoplearr}});
                            var xx = "'mh':'white','bh':'white','mhl':'#F56979','bhl':'rgb(103, 186, 255)','yet':'0:0','small':'0:0','spanop':'0.1',";
+                           var addbutton ="<button class='btn btn-success btn-xs' onclick='addfriend()' id='addfriendbutton' style='border-radius:30px;margin-top:10px;margin-bottom:10px;' type='button'> Add to friends</button>";
+                           var rembutton ="<button class='btn btn-warning btn-xs' onclick='remfriend()' id='remfriendbutton' style='border-radius:30px;margin-top:10px;margin-bottom:10px;' type='button'> Remove from friends</button>";
                            eval("res.render('listin',{"+xx+"'mail':done.mail,'books':booksvar,'movies':moviesvar,'uid':done.uid,'newbooks':done.newbooks,'readbooks':done.readbooks,'newmovies':done.newmovies,'seenmovies':done.seenmovies});");
 
                           }
@@ -751,6 +753,43 @@ app.post('/addfriend',function(req,res){
                  friends.update({mail:req.session.mail},{$push:{people:person}});
                  ms.trouble=0;
                  res.send(ms);
+        }
+      else 
+      {
+        //away
+      }
+      }
+    });
+  }
+  else {
+
+  }
+});
+
+app.post('/remfriend',function(req,res){
+  var friendid = parseInt(req.body.uid);
+  if(req.session.mail){
+    var ms={};
+    ms.trouble=1;
+    ms.mtext='db';
+    friends.findOne({mail:req.session.mail},function(err,done){
+      if(err)
+      {
+      res.send(ms);
+      }
+      else {
+        if(done.uid)
+        {
+          var peoplearr  = done.people;
+          var remindex;
+             peoplearr.forEach(function(element,index,array){
+               if(element.uid===friendid){
+                remindex=index;
+               });
+             peoplearr=peoplearr.splice(remindex, 1);
+             friends.update({mail:req.session.mail},{$set:{people:peoplearr}});
+              ms.trouble=0;
+              res.send(ms);
         }
       else 
       {
