@@ -171,11 +171,11 @@ app.get('/lists/:lid',function(req,res){
                               }
                             });
                           }
-                        else {
+                        
                            else {
                           var addbutton ="<button class='btn btn-success btn-xs' onclick='addfriend()' id='addfriendbutton' style='border-radius:30px;margin-top:10px;margin-bottom:10px;' type='button'> Add to friends</button>";
                            eval("res.render('listin',{"+addbutton+"'mail':done.mail,'books':booksvar,'movies':moviesvar,'uid':done.uid,'newbooks':done.newbooks,'readbooks':done.readbooks,'newmovies':done.newmovies,'seenmovies':done.seenmovies});");
-                          }
+                          
                         }
                       }
                     });
