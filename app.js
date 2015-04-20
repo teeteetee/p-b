@@ -158,23 +158,33 @@ app.get('/lists/:lid',function(req,res){
                       else {
                         if(doc.people)
                         {var peoplearr  = doc.people;
+                          var addbutton=1;
                           peoplearr.forEach(function(element,index,array){
                           if(element.uid===done.uid){
                             element.newb=0;
                             element.newm=0;
+                            addbutton=0;
                             friends.update({mail:req.session.mail},{$set:{people:peoplearr}});
-                           var xx = "'mh':'white','bh':'white','mhl':'#F56979','bhl':'rgb(103, 186, 255)','yet':'0:0','small':'0:0','spanop':'0.1',";
+                              }
+                              var xx = "'mh':'white','bh':'white','mhl':'#F56979','bhl':'rgb(103, 186, 255)','yet':'0:0','small':'0:0','spanop':'0.1',";
                            var addbutton ="<button class='btn btn-success btn-xs' onclick='addfriend()' id='addfriendbutton' style='border-radius:30px;margin-top:10px;margin-bottom:10px;' type='button'> Add to friends</button>";
                            var rembutton ="<button class='btn btn-warning btn-xs' onclick='remfriend()' id='remfriendbutton' style='border-radius:30px;margin-top:10px;margin-bottom:10px;' type='button'> Remove from friends</button>";
-                           eval("res.render('listin',{"+xx+"'mail':done.mail,'books':booksvar,'movies':moviesvar,'uid':done.uid,'newbooks':done.newbooks,'readbooks':done.readbooks,'newmovies':done.newmovies,'seenmovies':done.seenmovies});");
+                           var finalbutton;
+                           if(addbutton){
+                            finalbutton=addbutton;
+                           }
+                           else {
+                            finalbutton=rembutton;
+                           }
+                           eval("res.render('listin',{'button':'"+finalbutton+"',"+xx+"'mail':done.mail,'books':booksvar,'movies':moviesvar,'uid':done.uid,'newbooks':done.newbooks,'readbooks':done.readbooks,'newmovies':done.newmovies,'seenmovies':done.seenmovies});");
                         
-                              }
                             });
                           }
                         
                            else {
+                           var xx = "'mh':'white','bh':'white','mhl':'#F56979','bhl':'rgb(103, 186, 255)','yet':'0:0','small':'0:0','spanop':'0.1',";
                           var addbutton ="<button class='btn btn-success btn-xs' onclick='addfriend()' id='addfriendbutton' style='border-radius:30px;margin-top:10px;margin-bottom:10px;' type='button'> Add to friends</button>";
-                           eval("res.render('listin',{"+addbutton+"'mail':done.mail,'books':booksvar,'movies':moviesvar,'uid':done.uid,'newbooks':done.newbooks,'readbooks':done.readbooks,'newmovies':done.newmovies,'seenmovies':done.seenmovies});");
+                           eval("res.render('listin',{'button':'"+addbutton+"',"+xx+",'mail':done.mail,'books':booksvar,'movies':moviesvar,'uid':done.uid,'newbooks':done.newbooks,'readbooks':done.readbooks,'newmovies':done.newmovies,'seenmovies':done.seenmovies});");
                           
                         }
                       }
