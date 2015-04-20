@@ -296,10 +296,10 @@ head
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
       script.
-        var=#{button};
+        var buttonval=!{button};
         var addbutton ="<button class='btn btn-success btn-xs' onclick='addfriend()' id='addfriendbutton' style='border-radius:30px;margin-top:10px;margin-bottom:10px;' type='button'> Add to friends</button>";
         var rembutton ="<button class='btn btn-warning btn-xs' onclick='remfriend()' id='remfriendbutton' style='border-radius:30px;margin-top:10px;margin-bottom:10px;' type='button'> Remove from friends</button>";
-        if(button){
+        if(buttonval){
           $('#buttoninsert').append(addbutton);
         }
         else {
