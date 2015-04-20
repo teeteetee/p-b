@@ -717,15 +717,7 @@ app.post('/addfriend',function(req,res){
       else {
         if(done.uid)
         {
-          users.findOne({mail:req.session.mail},function(err,donetwo){
-            if(err)
-            {
-
-            }
-            else {
-              if(donetwo.uid)
-              {
-                var firstperson ={};
+          var firstperson ={};
                 person.uid=donetwo.uid;
                 person.totalbooks= done.totlbooks;
                 person.totalmovies= done.totalmovies;
@@ -740,27 +732,6 @@ app.post('/addfriend',function(req,res){
                   person.newm =0;
                 }
                  friends.update({mail:vmail},{$push:{people:person}});
-                var secondperson ={};
-                person.uid=friendid;
-                person.totalbooks= donetwo.totlbooks;
-                person.totalmovies= donetwo.totalmovies;
-                if(person.totalbooks!=0)
-                 {person.newb =1;}
-                else {
-                  person.newb =0;
-                }
-                if(person.totalmovies!=0)
-                 {person.newm =1;}
-                else {
-                  person.newm =0;
-                }
-                 friends.update({uid:done.uid},{$push:{people:person}});
-              }
-              else {
-                //away
-              }
-            }
-          });
         }
       else 
       {

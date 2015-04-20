@@ -280,7 +280,7 @@ head
       .row(style='background-color:darkgray;')
         .col-xs-12
           h4(style='margin-bottom:0px;') #{mail}
-          button(class='btn btn-success btn-xs' onclick='addfriend(#{uid})' style='border-radius:30px;margin-top:10px;margin-bottom:10px;' type='button') Add to friends
+          button(class='btn btn-success btn-xs' onclick='addfriend()' id='addfriendbutton' style='border-radius:30px;margin-top:10px;margin-bottom:10px;' type='button') Add to friends
       #heightcheck.row
         .col-xs-6(id='books' style='background-color:#{bh};height:100%;overflow:auto;')
           .row
@@ -372,11 +372,12 @@ head
                       }
         };
         //end of sliding menu mechanics
-        function addfriend(to) {
-          if(!allowpubchange || currentstatus===to){
+        var allowadd = 1;
+        function addfriend() {
+          if(!allowadd ){
             return;
           }
-         allowpubchange =0;
+         allowadd =0;
         request = new XMLHttpRequest();
         request.onreadystatechange = function () {
         var DONE = this.DONE || 4;
@@ -389,17 +390,9 @@ head
          
         }
         else { 
-          if(to)
-          {alert('Your list is publicly avaliable');
-          $('#private').removeClass('active');
-          $('#public').addClass('active');
-          currnetstatus++}
-         else 
-          {alert('Your list is private');
-        $('#public').removeClass('active');
-          $('#private').addClass('active');
-          currnetstatus--}
-        allowpubchange=1;
+          $('#addfriendbutton').attr('disabled','true');
+          $('#addfriendbutton').text('в вашем списке')ж
+        allowadd=1;
         }
         }
         };
@@ -407,7 +400,7 @@ head
         request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
         request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         // Most libraries like jQuery/Prototype/Dojo do this
-        request.send("uid=#{uid}&fid=#{fid}");
+        request.send("uid=#{uid}");
           }
         
       
