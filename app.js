@@ -318,11 +318,28 @@ app.post('/addbook',function(req,res){
                 {var updatearray=done.updatelist;
                                 updatearray.forEach(function(element,index,array){
                                   console.log(element);
-                                  friends.update({uid:parseInt(element)},{$set:{newb:1}});
+                                  frindes.findOne({uid:element},function(err,fin){
+                                    if(err){
+
+                                    }
+                                    else {
+                                      var peoplearr = fin.people;
+                                      peoplearr.forEach(function(element2,index,array){
+                                        if(element2.uid===vuid) {
+                                          element.newb=1;
+                                          friends.update({uid:element},{$set:{people:peoplearr}});
+                                          ms.trouble=0;
+                                          ms.bid = vbid;
+                                          res.send(ms);
+                                        }
+                                      });
+                                    }
+                                  })
                                 });}
-                ms.trouble=0;
-                ms.bid = vbid;
-                res.send(ms);
+                else
+                {ms.trouble=0;
+                  ms.bid = vbid;
+                  res.send(ms);}
               }
             });
            }
@@ -399,11 +416,28 @@ app.post('/addmovie',function(req,res){
                 {var updatearray=done.updatelist;
                                 updatearray.forEach(function(element,index,array){
                                   console.log(element);
-                                  friends.update({uid:parseInt(element)},{$set:{newm:1}});
+                                  frindes.findOne({uid:element},function(err,fin){
+                                    if(err){
+
+                                    }
+                                    else {
+                                      var peoplearr = fin.people;
+                                      peoplearr.forEach(function(element2,index,array){
+                                        if(element2.uid===vuid) {
+                                          element.newm=1;
+                                          friends.update({uid:element},{$set:{people:peoplearr}});
+                                          ms.trouble=0;
+                                          ms.mid = vmid;
+                                          res.send(ms);
+                                        }
+                                      });
+                                    }
+                                  })
                                 });}
-                ms.trouble=0;
-                ms.bid = vmid;
-                res.send(ms);
+                else
+                {ms.trouble=0;
+                 ms.bid = vmid;
+                 res.send(ms);}
               }
             });
            }
