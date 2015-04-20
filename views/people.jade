@@ -199,7 +199,7 @@ head
             var badgefont = 'font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;';
             var insert= "<div class='row'><div class='col-xs-12'><a href='http://peopleandbooks.com/lists/#{uid}'><h4 style='color:white;'><small style='margin-right:10px;'>"+rnum+"</small>"+element.mail;
              if(element.newb||element.newm){
-              insert+="<span style='margin-right:10px;"+badgefont+"' class='label label-default'>New items</span>";
+              insert+="<span style='margin-left:10px;"+badgefont+"' class='label label-danger'>New items</span>";
              }
              insert+="</h4></a></div></div>";
             $('#inserts').append(insert);
