@@ -199,16 +199,16 @@ head
             var badgefont = 'font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;';
             var insert= "<div class='row'><div class='col-xs-12'><a href='http://peopleandbooks.com/lists/#{uid}'><h4 style='color:white;'><small style='margin-right:10px;'>"+rnum+"</small>"+element.mail;
              if(element.newb){
-              insert+="<span style='margin-left:20px;margin-right:5px;background-color:#ff4242;"+badgefont+"' class='badge'>"+element.totalbooks+"</span>/";
+              insert+="<span style='"+badgefont+"' class='label label-default'>new books</span>/";
              }
              else {
-              insert+="<span style='margin-left:20px;margin-right:5px;"+badgefont+"' class='badge'>"+element.totalbooks+"</span>/";
+              insert+="<span style='"+badgefont+"' class='label label-default'>new books</span>/";
              }
              if(element.newm){
-              insert+="<span style='margin-left:5px;background-color:#ff4242;"+badgefont+"' class='badge'>"+element.totalmovies+"</span>";
+              insert+="<span style='"+badgefont+"' class='label label-default'>new movies</span>";
              }
              else {
-              insert+="<span style='margin-left:5px;"+badgefont+"' class='badge'>"+element.totalmovies+"</span>";
+              insert+="<span style='"+badgefont+"' class='label label-default'>new movies</span>";
              }
              insert+="</h4></a></div></div>";
             $('#inserts').append(insert);
