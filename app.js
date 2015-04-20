@@ -900,21 +900,29 @@ app.get('/admax',function(req,res){
   var lguser={};
    if(req.session.sKK76d === 'porC6S78x0XZP1b2p08zGlq')
    {
-    var vratingnum;
    users.count({},function(err,c){
     if (err)
     {
       res.send('DB ERR')
     }
   else {
-    if(messagescount)
+    friends.count({},function(err,d){
+      if(err)
+      {
+         res.send('DB ERR');
+      }
+      else {
+        if(messagescount)
     {
        var messages = getmessages;
-      res.render('admin',{'users':c,'doc':messages});
+      res.render('admin',{'users':c,'friends':d,'doc':messages});
      }
      else {
-      res.render('adminzeromsg',{'users':c});
+      res.render('adminzeromsg',{'users':c,'friends':d});
      }
+      }
+
+    });
 
   }
   });
