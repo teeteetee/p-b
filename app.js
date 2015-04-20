@@ -671,7 +671,7 @@ app.get('/settings',function(req,res){
                     case(3):
                      checkbox='third';
                     break
-                    case(3):
+                    case(4):
                      checkbox='fourth';
                     break
                   }
