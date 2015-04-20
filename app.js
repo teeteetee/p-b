@@ -392,7 +392,7 @@ app.post('/addmovie',function(req,res){
                                   friends.update({vuid:element},{$set:{newm:1}});
                                 });}
                 ms.trouble=0;
-                ms.bid = vbid;
+                ms.bid = vmid;
                 res.send(ms);
               }
             });
