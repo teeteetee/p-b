@@ -252,6 +252,9 @@ head
        h6 small {
       #{small}
       }
+      a {
+        color:white !important;
+      }
   body
     script.
       if(screen.width < 414){
@@ -264,19 +267,20 @@ head
            span(class='input-group-btn')
              button(class="btn btn-default" type="submit" id='searchbutton' style='padding-top:9px;padding-bottom:9px;background-color:#333;color:gray;border-color:#333;border-top-right-radius:30px;border-bottom-right-radius:30px;')
                span(class='glyphicon glyphicon-search') 
-      a(href='http://peopleandbooks.com/') Мои списки
-      a(href="http://peopleandbooks.com/settings") Настройки
-      a(href='http://peopleandbooks.com/about') О проекте
-      a(href="http://peopleandbooks.com/logout") Выйти
+      a(href='/') Мои списки
+      a(href='/people') Списки друзей
+      a(href="/settings") Настройки
+      a(href='/about') О проекте
+      a(href="/logout") Выйти
       img(class="media-object img-circle" src="/images/pblogov4.png" style='position:absolute;opacity:0.2;left:88px;bottom:20px;width:64px;height:64px;' alt="...")
     .sidebar(style='width:74px;position:fixed;height:100%;background-color:#1d1d1d;text-align:center;z-index:2000;')
       //img(class="media-object img-circle" src="/bootstrap/images/seo.jpg" style='margin-left:5px;margin-top:30px;width:64px;height:64px;' alt="...")
       span(class='glyphicon glyphicon-align-justify' id='showLeft' style='color:#333;font-size:30px;margin-top:20px;')
     .container(style='padding-left:84px;width:100% !important;padding-right:none;')  
-      .row(style='background-color:white;')
+      .row(style='background-color:darkgray;')
         .col-xs-12
-          h3(style='display:inline;') #{mail}
-          button(class='btn btn-success' onclick='addfriend(#{uid})' style='border-radius:30px;margin-top:10px;margin-bottom:10px;' type='button') Add to friends
+          h4(style='margin-top:0px;margin-bottom:0px;') #{mail}
+          button(class='btn btn-success btn-xs' onclick='addfriend(#{uid})' style='border-radius:30px;margin-top:10px;margin-bottom:10px;' type='button') Add to friends
       #heightcheck.row
         .col-xs-6(id='books' style='background-color:#{bh};height:100%;overflow:auto;')
           .row
