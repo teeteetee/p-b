@@ -273,6 +273,7 @@ head
     .sidebar(style='width:74px;position:fixed;height:100%;background-color:#1d1d1d;text-align:center;z-index:2000;')
       //img(class="media-object img-circle" src="/bootstrap/images/seo.jpg" style='margin-left:5px;margin-top:30px;width:64px;height:64px;' alt="...")
       span(class='glyphicon glyphicon-align-justify' id='showLeft' style='color:#333;font-size:30px;margin-top:20px;')
+      span(class='glyphicon glyphicon-user' id='people' style='color:#333;font-size:30px;margin-top:10px;')
     .container(style='padding-left:84px;width:100% !important;padding-right:none;')  
       #heightcheck.row
         .col-xs-6(id='books' style='background-color:#{bh};height:100%;overflow:auto;')
@@ -349,6 +350,9 @@ head
       script(async src='/js/bootstrap.min.js')
       script.
         // Setting user books/movies counters
+        $('#people').click(function(){
+          window.location='http://peopleandbooks.com/people';
+          });
         var seenmovies = #{seenmovies};
         var newmovies = #{newmovies};
         $('#moviesfigures').append(" "+newmovies+" <span style='color:rgb(0,0,0);opacity:0.3'> | "+seenmovies+"</span>");
