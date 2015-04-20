@@ -796,14 +796,14 @@ app.post('/addfriend',function(req,res){
                   else {
                     if(doc){
                       friends.update({uid:friendid},{$push:{updatelist:doc.uid}});
+                      ms.trouble=0;
+                     res.send(ms);
                     }
                     else {
 
                     }
                   }
                  });
-                 ms.trouble=0;
-                 res.send(ms);
         }
       else 
       {
@@ -840,8 +840,30 @@ app.post('/remfriend',function(req,res){
                });
              peoplearr=peoplearr.splice(remindex, 1);
              friends.update({mail:req.session.mail},{$set:{people:peoplearr}});
-              ms.trouble=0;
+             friends.findOne({uid:friendid},function(err,doc){
+              if(err){
+
+              }
+              else {
+                if(doc.updatelist)
+                 { updatelistarr = doc.updatelist;
+                   var remindex;
+                  updatelist.forEach(function(element,index,array){
+                    if(element===friendid){
+                      remindex=index;
+                    }
+                  });
+                    updatelistarr = updatelistarray.splice(remindex,1);
+                    friends.update({uid:friendid},{$set:{updatelist:updatelistarr}});}
+                    ms.trouble=0;
               res.send(ms);
+              }
+              else {
+                ms.trouble=0;
+              res.send(ms);
+              }
+             });
+            
         }
       else 
       {
@@ -854,6 +876,14 @@ app.post('/remfriend',function(req,res){
 
   }
 });
+
+app.get('/friends/:uid',function(req,res){
+  var vuid = parseInt(req.params.uid);
+  friends.findOne({uid:vuid},function(err,done){
+    console.log(JSON.stringify(done));
+  });
+});
+
 
 app.post('/settings/pc',function(req,res){
   if(req.session.mail)
