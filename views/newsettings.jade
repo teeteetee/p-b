@@ -216,6 +216,11 @@ head
             input(type="checkbox" id='third' ) 
             span(class='glyphicon glyphicon-stop' style='font-size:30px;color:#00657C;')
             span(class='glyphicon glyphicon-stop' style='font-size:30px;color:rgb(0, 182, 205);')
+        .checkbox
+          label
+            input(type="checkbox" id='fourth' ) 
+            span(class='glyphicon glyphicon-stop' style='font-size:30px;color:white;')
+            span(class='glyphicon glyphicon-stop' style='font-size:30px;color:#ddd;')
         button(class='btn btn-default' id='changecolor' type='button') Change color
       .row(style='color:white;')
         .col-xs-12
@@ -267,6 +272,7 @@ head
            $(this).attr('checked',true);
            $('#third').attr('checked', false);
            $('#second').attr('checked', false);
+           $('#fourth').attr('checked', false);
          });
         $('#second').click(function() {
            $(this).attr('checked',true);
@@ -277,6 +283,12 @@ head
            $(this).attr('checked',true);
            $('#first').attr('checked', false);
            $('#second').attr('checked', false);
+         });
+        $('#fourth').click(function() {
+           $(this).attr('checked',true);
+           $('#third').attr('checked', false);
+           $('#second').attr('checked', false);
+           $('#first').attr('checked', false);
          });
         // RUNREGISTER FUNCTION
         var allowstylechange =1;
@@ -294,6 +306,9 @@ head
         }
         if($('#third').is(':checked')){
           style = 3;
+        }
+        if($('#fourth').is(':checked')){
+          style = 4;
         }
         console.log('style: '+style);
         request = new XMLHttpRequest();

@@ -585,9 +585,14 @@ app.get('/',function(req,res) {
                     if(!done.books&&!done.movies)
                       {//res.render('emptyindexreg',{'uid':done.uid});
                       var style='';
-                      var style1 = "'mh':'#FAB142','bh':'#52CA8F','mhl':'#FAC26C','bhl':'rgb(123, 226, 175)',";
-                      var style2 = "'mh':'rgb(213, 74, 95)','bh':'#00788E','mhl':'#F56B80','bhl':'rgb(0, 176, 208)',";
-                      var style3 = "'mh':'#00657C','bh':'rgb(0, 182, 205);','mhl':'#003945','bhl':'rgb(82, 214, 231)',";
+                      //var style1 = "'mh':'#FAB142','bh':'#52CA8F','mhl':'#FAC26C','bhl':'rgb(123, 226, 175)',";
+                      //var style2 = "'mh':'rgb(213, 74, 95)','bh':'#00788E','mhl':'#F56B80','bhl':'rgb(0, 176, 208)',";
+                      //var style3 = "'mh':'#00657C','bh':'rgb(0, 182, 205);','mhl':'#003945','bhl':'rgb(82, 214, 231)',";
+                      var style1 = "'mh':'#FAB142','bh':'#52CA8F','mhl':'#FAC26C','bhl':'rgb(123, 226, 175)','yet':'color:white','small':'color:white;opacity: 0.68;','spanop':'0.3',";
+                      var style2 = "'mh':'rgb(213, 74, 95)','bh':'#00788E','mhl':'#F56B80','bhl':'rgb(0, 176, 208)','yet':'color:white','small':'color:white;opacity: 0.68;','spanop':'0.3',";
+                      var style3 = "'mh':'#00657C','bh':'rgb(0, 182, 205);','mhl':'#003945','bhl':'rgb(82, 214, 231)','yet':'color:white','small':'color:white;opacity: 0.68;','spanop':'0.3',";
+                      var style4= = "'mh':'white','bh':'white','mhl':'#F56979','bhl':'rgb(103, 186, 255)','yet':'0:0','small':'0:0','spanop':'0.1',";
+
                       if(done.styleint===1){
                         style=style1;
                       }
@@ -596,6 +601,9 @@ app.get('/',function(req,res) {
                       }
                       if(done.styleint===3){
                         style=style3;
+                      }
+                      if(done.styleint===4){
+                        style=style4;
                       }
                        //res.render('newemptyindexreg',{'uid':done.uid,'newbooks':0,'readbooks':0,'newmovies':0,'seenmovies':0});
                        eval("res.render('newemptyindexreg',{"+style+"'uid':done.uid,'newbooks':0,'readbooks':0,'newmovies':0,'seenmovies':0});");
