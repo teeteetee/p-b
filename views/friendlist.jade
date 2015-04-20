@@ -96,23 +96,15 @@ head
                 th
                   | Id
                 th
-                  | Books
-                th
-                  | Movies
-                th
-                  | Friends
+                  | Mail
               tbody
                 each user, i in doc
                   tr(id='row#{user.uid}')
                     td
                       | #{user.uid}
                     td 
-                      | #{user.totalbooks}
+                      | #{user.mail}
                     td 
-                      | #{user.totalmovies}
-                    td 
-                      | #{user.people.length}
-                    td
                       button(onclick='removeuser(#{user.uid})',class='btn btn-danger btn-xs',type='button') Удалить 
      
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')

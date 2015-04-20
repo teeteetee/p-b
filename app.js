@@ -479,7 +479,6 @@ app.post('/newuser',function(req,res){
             //lgn:vu
           users.insert({pub:0,styleint:1,mail:vmail,uid:vuid,phr:vp,totalbooks:0,totalmovies:0,newbooks:0,readbooks:0,newmovies:0,seenmovies:0,regdateint:fulldate,regdate:{year:vyear,month:vmonth,day:vday}});
           friends.insert({uid:vuid,mail:vmail});
-          req.session.mail = vmail;
           ms.trouble =0;
           ms.mtext='success';
           res.send(ms);
