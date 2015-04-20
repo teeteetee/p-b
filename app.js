@@ -709,10 +709,13 @@ app.post('/settings/cc',function(req,res){
 app.post('/addfriend',function(req,res){
   var friendid = parseInt(req.body.uid);
   if(req.session.mail){
+    var ms={};
+                 ms.trouble=1;
+                 ms.mtext='db';
     users.findOne({uid:friendid},function(err,done){
       if(err)
       {
-
+      res.send(ms);
       }
       else {
         if(done.uid)
@@ -732,6 +735,8 @@ app.post('/addfriend',function(req,res){
                   person.newm =0;
                 }
                  friends.update({mail:req.session.mail},{$push:{people:person}});
+                 ms.trouble=0;
+                 res.send(ms);
         }
       else 
       {
