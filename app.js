@@ -151,10 +151,24 @@ app.get('/lists/:lid',function(req,res){
                         moviesvar =0;
                       }
                     
-                      var xx = "'mh':'white','bh':'white','mhl':'#F56979','bhl':'rgb(103, 186, 255)','yet':'0:0','small':'0:0','spanop':'0.1',";
-                      console.log(xx);
-                    console.log("res.render('listin',{"+xx+"'mail':done.mail,'books':booksvar,'movies':moviesvar,'uid':done.uid,'newbooks':done.newbooks,'readbooks':done.readbooks,'newmovies':done.newmovies,'seenmovies':done.seenmovies});");
-                    eval("res.render('listin',{"+xx+"'mail':done.mail,'books':booksvar,'movies':moviesvar,'uid':done.uid,'newbooks':done.newbooks,'readbooks':done.readbooks,'newmovies':done.newmovies,'seenmovies':done.seenmovies});");
+                    friends.findOne({mail:req.session.mail},function(err,doc){
+                      if (err){
+
+                      }
+                      else {
+                        var peoplearr  = doc.people;
+                        people.forEach(function(element,index,array){
+                          if(element.uid===done.uid){
+                            element.newb=0;
+                            element.newm=0;
+                            friends.update({mail:req.session.mail},{$set:{people:peoplearr}});
+                           var xx = "'mh':'white','bh':'white','mhl':'#F56979','bhl':'rgb(103, 186, 255)','yet':'0:0','small':'0:0','spanop':'0.1',";
+                           eval("res.render('listin',{"+xx+"'mail':done.mail,'books':booksvar,'movies':moviesvar,'uid':done.uid,'newbooks':done.newbooks,'readbooks':done.readbooks,'newmovies':done.newmovies,'seenmovies':done.seenmovies});");
+
+                          }
+                        });
+                      }
+                    });
            }
            else {
             res.render('restricted');
