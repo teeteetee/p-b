@@ -157,7 +157,7 @@ app.get('/lists/:lid',function(req,res){
                       }
                       else {
                         var peoplearr  = doc.people;
-                        people.forEach(function(element,index,array){
+                        peoplearr.forEach(function(element,index,array){
                           if(element.uid===done.uid){
                             element.newb=0;
                             element.newm=0;
