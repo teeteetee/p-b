@@ -103,6 +103,8 @@ head
                   | Movies
                 th 
                   | Regdate
+                th 
+                  | Public?
               tbody
                 each user, i in doc
                   tr(id='row#{user.uid}')
@@ -114,6 +116,8 @@ head
                       | #{user.totalbooks}
                     td 
                       | #{user.totalmovies}
+                    td 
+                      | #{user.pub}
                     td
                       | #{user.regdate.day}.#{user.regdate.month}.#{user.regdate.year}
                     td
