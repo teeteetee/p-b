@@ -270,6 +270,9 @@ head
         -moz-filter:blur(4px) brightness(0.8);
         transition:filter 1s;
       }
+      a {
+        color:white !important;
+      }
   body
     script.
       if(screen.width < 414){
@@ -282,6 +285,7 @@ head
            span(class='input-group-btn')
              button(class="btn btn-default" type="submit" id='searchbutton' style='padding-top:9px;padding-bottom:9px;background-color:#333;color:gray;border-color:#333;border-top-right-radius:30px;border-bottom-right-radius:30px;')
                span(class='glyphicon glyphicon-search') 
+      a(href='/people') Списки друзей
       a(href="/settings") Настройки
       a(href='/about') О проекте
       a(href="/logout") Выйти
