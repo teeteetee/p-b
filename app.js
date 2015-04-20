@@ -158,7 +158,7 @@ app.get('/lists/:lid',function(req,res){
                       else {
                         if(doc.people)
                         {var peoplearr  = doc.people;
-                        peoplearr.forEach(function(element,index,array){
+                          peoplearr.forEach(function(element,index,array){
                           if(element.uid===done.uid){
                             element.newb=0;
                             element.newm=0;
@@ -167,13 +167,16 @@ app.get('/lists/:lid',function(req,res){
                            var addbutton ="<button class='btn btn-success btn-xs' onclick='addfriend()' id='addfriendbutton' style='border-radius:30px;margin-top:10px;margin-bottom:10px;' type='button'> Add to friends</button>";
                            var rembutton ="<button class='btn btn-warning btn-xs' onclick='remfriend()' id='remfriendbutton' style='border-radius:30px;margin-top:10px;margin-bottom:10px;' type='button'> Remove from friends</button>";
                            eval("res.render('listin',{"+xx+"'mail':done.mail,'books':booksvar,'movies':moviesvar,'uid':done.uid,'newbooks':done.newbooks,'readbooks':done.readbooks,'newmovies':done.newmovies,'seenmovies':done.seenmovies});");
-                        }
+                        
+                              }
+                            });
+                          }
                         else {
+                           else {
                           var addbutton ="<button class='btn btn-success btn-xs' onclick='addfriend()' id='addfriendbutton' style='border-radius:30px;margin-top:10px;margin-bottom:10px;' type='button'> Add to friends</button>";
                            eval("res.render('listin',{"+addbutton+"'mail':done.mail,'books':booksvar,'movies':moviesvar,'uid':done.uid,'newbooks':done.newbooks,'readbooks':done.readbooks,'newmovies':done.newmovies,'seenmovies':done.seenmovies});");
                           }
                         }
-                        });
                       }
                     });
            }
