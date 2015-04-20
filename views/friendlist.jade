@@ -92,6 +92,15 @@ head
             .panel-heading 
               | Пользователи
             table(class='table')
+              thead
+                th
+                  | Id
+                th
+                  | Books
+                th
+                  | Movies
+                th
+                  | Friends
               tbody
                 each user, i in doc
                   tr(id='row#{user.uid}')
@@ -101,8 +110,10 @@ head
                       | #{user.totalbooks}
                     td 
                       | #{user.totalmovies}
+                    td 
+                      | #{user.people.length}
                     td
-                      button(onclick='removeuser(#{user.uid})',class='btn btn-danger',type='button') Удалить 
+                      button(onclick='removeuser(#{user.uid})',class='btn btn-danger btn-xs',type='button') Удалить 
      
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script.
