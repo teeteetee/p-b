@@ -300,9 +300,21 @@ app.post('/addbook',function(req,res){
             else {
               users.update({uid:vuid},{$inc:{readbooks:1,totalbooks:1}});
             }
-            ms.trouble=0;
-            ms.bid = vbid;
-            res.send(ms);
+            friends.findOne({uid:vuid},function(err,done){
+              if(err)
+              {
+
+              }
+              else{
+                var updatearray=done.updatelist;
+                updatearray.forEach(function(element,index,array){
+                  friends.update({vuid:element},{$set:{newb:1}});
+                });
+                ms.trouble=0;
+                ms.bid = vbid;
+                res.send(ms);
+              }
+            });
            }
     });
   }
@@ -363,10 +375,21 @@ app.post('/addmovie',function(req,res){
             else {
               users.update({uid:vuid},{$inc:{seenmovies:1,totalmovies:1}});
             }
-            ms.trouble=0;
-            ms.mid = vmid;
-            console.log('sending mid: '+vmid);
-            res.send(ms);
+            friends.findOne({uid:vuid},function(err,done){
+              if(err)
+              {
+
+              }
+              else{
+                var updatearray=done.updatelist;
+                updatearray.forEach(function(element,index,array){
+                  friends.update({vuid:element},{$set:{newm:1}});
+                });
+                ms.trouble=0;
+                ms.bid = vbid;
+                res.send(ms);
+              }
+            });
            }
     });
   }
@@ -760,6 +783,19 @@ app.post('/addfriend',function(req,res){
                   person.newm =0;
                 }
                  friends.update({mail:req.session.mail},{$push:{people:person}});
+                 users.findOne({mail:req.session.mail},function(err,doc){
+                  if(err){
+
+                  }
+                  else {
+                    if(doc){
+                      friends.update({uid:friendid},{$push:{updatelist:doc.uid}});
+                    }
+                    else {
+
+                    }
+                  }
+                 });
                  ms.trouble=0;
                  res.send(ms);
         }
