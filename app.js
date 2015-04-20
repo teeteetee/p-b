@@ -671,6 +671,9 @@ app.get('/settings',function(req,res){
                     case(3):
                      checkbox='third';
                     break
+                    case(3):
+                     checkbox='fourth';
+                    break
                   }
                   res.render('newsettings',{'mail':done.mail,'uid':done.uid,'checkbox':checkbox,'pub':done.pub});
                 }
