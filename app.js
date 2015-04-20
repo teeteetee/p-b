@@ -298,6 +298,7 @@ app.post('/addbook',function(req,res){
       }
       else {
         var vbid = doc.totalbooks+1;
+        console.log(vbid);
             users.update({uid:vuid},{$push:{books:{bid:vbid,author:vauthor,booktitle:vbooktitle,newbook:vnewbook,star:vstar,attention:vattention,regdateint:fulldate}}});
             if(vnewbook)
             {users.update({uid:vuid},{$inc:{newbooks:1,totalbooks:1}});}
@@ -379,6 +380,7 @@ app.post('/addmovie',function(req,res){
       }
       else {
         var vmid = parseInt(doc.totalmovies)+1;
+            console.log(vmid);
             users.update({uid:vuid},{$push:{movies:{mid:vmid,year:vmovieyear,movietitle:vmovietitle,newmovie:vnewmovie,star:vmoviestar,attention:vmovieattention,regdateint:fulldate}}});
             if(vnewmovie)
             {users.update({uid:vuid},{$inc:{newmovies:1,totalmovies:1}});}
