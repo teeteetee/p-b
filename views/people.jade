@@ -161,6 +161,9 @@ head
       .cont {
         margin-left:20px;
       }
+      #inserts {
+        padding-left:20px;
+      }
   body
     script.
       if(screen.width < 414){
@@ -185,7 +188,6 @@ head
       .row(style='color:#ccc;')
         .col-xs-12
           h1 People
-          h3 #{mail}
       .row
         .col-xs-12(id='inserts')
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
@@ -194,7 +196,8 @@ head
         var people = !{people};
         if(people){
           people.forEach(function(element,index,array){
-            var insert= "<div class='row'><div class='col-xs-12'><h4 style='color:white;'><small>"+element.uid+"</small>"+element.mail+"</h4></div></div>";
+            var rnum = index+1;
+            var insert= "<div class='row'><div class='col-xs-12'><h4 style='color:white;'><small style='margin-right:10px;'>"+rnum+"</small>"+element.mail+"</h4></div></div>";
             $('#inserts').append(insert);
           });
         }
