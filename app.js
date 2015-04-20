@@ -386,10 +386,11 @@ app.post('/addmovie',function(req,res){
 
               }
               else{
-                var updatearray=done.updatelist;
-                updatearray.forEach(function(element,index,array){
-                  friends.update({vuid:element},{$set:{newm:1}});
-                });
+                if(done.updatelist)
+                {var updatearray=done.updatelist;
+                                updatearray.forEach(function(element,index,array){
+                                  friends.update({vuid:element},{$set:{newm:1}});
+                                });}
                 ms.trouble=0;
                 ms.bid = vbid;
                 res.send(ms);
