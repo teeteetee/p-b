@@ -468,6 +468,15 @@ head
                         break;
                       }
         };
+        $('.counter').click(function() {
+         if(counter)
+          {
+            counter=0;
+            $('#showLeft').removeClass('active' );
+            $('#cbp-spmenu-s1').removeClass('cbp-spmenu-open' );
+            $('.container').css('-webkit-filter','brightness(1)');
+          }
+        });
         //end of sliding menu mechanics
         // Book submit mechanics
         var allowsubmit = 1;
