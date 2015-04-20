@@ -199,16 +199,16 @@ head
             var rnum = index+1;
             var insert= "<div class='row'><div class='col-xs-12'><h4 style='color:white;'><small style='margin-right:10px;'>"+rnum+"</small>"+element.mail;
              if(element.newb){
-              insert+=+"<span style='pading-right:20px;background-color:#ff4242;' class='badge'>"+element.totalbooks+"</span>/";
+              insert+="<span style='pading-right:20px;background-color:#ff4242;' class='badge'>"+element.totalbooks+"</span>/";
              }
              else {
-              insert+=+"<span style='pading-right:20px;' class='badge'>"+element.totalbooks+"</span>/";
+              insert+="<span style='pading-right:20px;' class='badge'>"+element.totalbooks+"</span>/";
              }
              if(element.newm){
-              insert+=+"<span style='pading-right:20px;background-color:#ff4242;' class='badge'>"+element.totalmovies+"</span>";
+              insert+="<span style='pading-right:20px;background-color:#ff4242;' class='badge'>"+element.totalmovies+"</span>";
              }
              else {
-              insert+=+"<span style='pading-right:20px;' class='badge'>"+element.totalmovies+"</span>";
+              insert+="<span style='pading-right:20px;' class='badge'>"+element.totalmovies+"</span>";
              }
              insert+="</h4></div></div>";
             $('#inserts').append(insert);
