@@ -785,6 +785,7 @@ app.post('/remfriend',function(req,res){
              peoplearr.forEach(function(element,index,array){
                if(element.uid===friendid){
                 remindex=index;
+              }
                });
              peoplearr=peoplearr.splice(remindex, 1);
              friends.update({mail:req.session.mail},{$set:{people:peoplearr}});
