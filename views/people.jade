@@ -197,7 +197,7 @@ head
           people.forEach(function(element,index,array){
             var rnum = index+1;
             var badgefont = 'font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;';
-            var insert= "<div class='row'><div class='col-xs-12'><a href='http://peopleandbooks.com/lists/#{uid}'><h4 style='color:white;'><small style='margin-right:10px;'>"+rnum+"</small>"+element.mail;
+            var insert= "<div class='row'><div class='col-xs-12'><a href='http://peopleandbooks.com/lists/"+element.uid+"'><h4 style='color:white;'><small style='margin-right:10px;'>"+rnum+"</small>"+element.mail;
              if(element.newb||element.newm){
               insert+="<span style='margin-left:10px;"+badgefont+"' class='label label-danger'>New items</span>";
              }
