@@ -304,23 +304,27 @@ app.post('/addbook',function(req,res){
             else {
               users.update({uid:vuid},{$inc:{readbooks:1,totalbooks:1}});
             }
-            friends.findOne({uid:vuid},function(err,done){
-              if(err)
-              {
+            friends.update({uid:vuid},{$set:{newb:1}});
+            ms.trouble=0;
+            ms.bid = vbid;
+            res.send(ms);
+            //friends.findOne({uid:vuid},function(err,done){
+            //  if(err)
+            //  {
 
-              }
-              else{
-                if(done.updatelist)
-                {var updatearray=done.updatelist;
-                                updatearray.forEach(function(element,index,array){
-                                  console.log(element);
-                                  friends.update({uid:element},{$set:{newb:1}});
-                                });}
-                ms.trouble=0;
-                ms.bid = vbid;
-                res.send(ms);
-              }
-            });
+            //  }
+            //  else{
+            //    if(done.updatelist)
+            //    {var updatearray=done.updatelist;
+            //                    updatearray.forEach(function(element,index,array){
+            //                      console.log(element);
+            //                      friends.update({uid:element},{$set:{newb:1}});
+            //                    });}
+            //    ms.trouble=0;
+            //    ms.bid = vbid;
+            //    res.send(ms);
+            //  }
+            //});
            }
     });
   }
@@ -381,23 +385,27 @@ app.post('/addmovie',function(req,res){
             else {
               users.update({uid:vuid},{$inc:{seenmovies:1,totalmovies:1}});
             }
-            friends.findOne({uid:vuid},function(err,done){
-              if(err)
-              {
+            friends.update({uid:vuid},{$set:{newm:1}});
+            ms.trouble=0;
+            ms.bid = vmid;
+            res.send(ms);
+            //friends.findOne({uid:vuid},function(err,done){
+            //  if(err)
+            //  {
 
-              }
-              else{
-                if(done.updatelist)
-                {var updatearray=done.updatelist;
-                                updatearray.forEach(function(element,index,array){
-                                  console.log(element);
-                                  friends.update({uid:element},{$set:{newm:1}});
-                                });}
-                ms.trouble=0;
-                ms.bid = vmid;
-                res.send(ms);
-              }
-            });
+            //  }
+            //  else{
+            //    if(done.updatelist)
+            //    {var updatearray=done.updatelist;
+            //                    updatearray.forEach(function(element,index,array){
+            //                      console.log(element);
+            //                      friends.update({uid:element},{$set:{newm:1}});
+            //                    });}
+            //    ms.trouble=0;
+            //    ms.bid = vmid;
+            //    res.send(ms);
+            //  }
+            //});
            }
     });
   }
