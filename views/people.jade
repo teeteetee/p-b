@@ -194,7 +194,7 @@ head
         var people = !{people};
         if(people){
           people.forEach(function(element,index,array){
-            var insert= "<div class='row'><div class='col-xs-12'><h4 style='color:white;'>"+element.uid+"</h4></div></div>";
+            var insert= "<div class='row'><div class='col-xs-12'><h4 style='color:white;'><small>"+element.uid+"</small>"+element.mail+"</h4></div></div>";
             $('#inserts').append(insert);
           }
         }

@@ -722,7 +722,8 @@ app.post('/addfriend',function(req,res){
         {
           var person ={};
                 person.uid=friendid;
-                person.totalbooks= done.totlbooks;
+                person.mail=done.mail;
+                person.totalbooks= done.totalbooks;
                 person.totalmovies= done.totalmovies;
                 if(person.totalbooks!=0)
                  {person.newb =1;}
