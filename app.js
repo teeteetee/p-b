@@ -964,6 +964,30 @@ app.get('/admin/userlist',function(req,res){
   }
 });
 
+app.get('/admin/friendlist',function(req,res){
+  if(req.ip === '188.226.189.180'  || req.session.sKK76d === 'porC6S78x0XZP1b2p08zGlq')
+  {
+    friends.find({},function(err,doc){
+    if(err)
+    {
+      res.send('DB ERR')
+    }
+    else {
+      if(doc.length>0)
+      {
+         res.render('friendlist',{'doc':doc});
+      }
+      else{
+         res.send('NO friends - EMPTY DB');
+      }
+    }
+  });
+  }
+  else{
+    res.redirect('http://ya.ru');
+  }
+});
+
 app.post('/drop/users',function(req,res){
   if(req.ip === '188.226.189.180' || req.session.sKK76d === 'porC6S78x0XZP1b2p08zGlq')
   {

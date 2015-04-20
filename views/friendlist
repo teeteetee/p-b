@@ -1,0 +1,130 @@
+doctype html(lang='en')
+head
+    meta(charset='utf-8')
+    |     
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    |     
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    |     
+    title P&B
+    // Bootstrap
+    link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    // HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+    // WARNING: Respond.js doesn't work if you view the page via file://
+    //if lt IE 9
+      script(src='https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js')
+      |       
+      script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')     
+    style.
+      @font-face {
+      font-family:roboto-thin;
+      src:url('/bootstrap/fonts/Roboto-Thin.ttf');
+      }
+      @font-face {
+      font-family:high;
+      src: url('/bootstrap/fonts/Attentica.ttf');
+      }
+      h1{
+        font-family:roboto-thin;
+      }
+      h2{
+        font-family:roboto-thin;
+      }
+      h3{
+        font-family:roboto-thin;
+      }
+      h4{
+        font-family:roboto-thin;
+      }
+      h5{
+        font-family:roboto-thin;
+      }
+      h6{
+        font-family:roboto-thin;
+      }
+      body {
+      min-width:768px;
+      background-color:#fff;
+      background-image:url('/bootstrap/images/stripe4.png');
+      }  
+      .btn {
+        border-radius:30px;
+      }
+      textarea:hover, 
+      input:hover, 
+      textarea:active, 
+      input:active, 
+      textarea:focus, 
+      input:focus,
+      button:focus,
+      button:active,
+      button:hover
+      {
+          outline:0px !important;
+          -webkit-appearance:none;
+      }
+  body
+    nav(class="navbar navbar-inverse navbar-static-top",style='margin-bottom:0px;')
+          .container
+            .navbar-header
+              a(class="navbar-brand" style='padding:5px;' href="/")
+                img(alt="Logo",src="/images/pblogov4.png",height='40',width='40')
+            .collapse.navbar-collapse#navbar-collapse-9
+              ul(class='nav navbar-nav')
+                li(class='active')
+                  a(href='/admax',style='font-family:high;font-size:20px;letter-spacing:2px;') Админка
+    .container(style='min-height:100vh;background-color:white;')
+      .row
+        .col-xs-12
+          ol(class="breadcrumb",style='margin-top:10px;margin-bottom:10px;')
+            li
+              a(href="/admax") Главная
+            li(class="active") Друзья пользователей
+      .row(style='padding-top:20px;padding-bottom:20px;text-align:center;')
+        .col-xs-12
+          form(class="form-inline" method='post' action='/drop/users' role='form')
+            .form-group
+              input(type="text" class="form-control" name='p' placeholder="Password")
+            button(type="submit" style='margin-left:20px;border-radius:4px;' class="btn btn-danger") Drop
+      .row
+        .col-xs-12
+          .panel.panel-default
+            .panel-heading 
+              | Пользователи
+            table(class='table')
+              tbody
+                each user, i in doc
+                  tr(id='row#{user.uid}')
+                    td
+                      | #{user.uid}
+                    td 
+                      | #{user.totalbooks}
+                    td 
+                      | #{user.totalmovies}
+                    td
+                      button(onclick='removeuser(#{user.uid})',class='btn btn-danger',type='button') Удалить 
+     
+      script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
+      script.
+        function removeuser(id) {
+        request = new XMLHttpRequest();
+        request.onreadystatechange = function () {
+        var DONE = this.DONE || 4;
+        if (this.readyState === DONE){
+        var parsed = JSON.parse(request.responseText);
+        if (parsed.trouble === 1)
+        {alert('DB ERROR');}
+        else {
+          alert('user deleted !');
+         eval("$('#row"+id+"').remove();");
+        }}
+        };
+        var dest = '/admin/1/'+id;
+        request.open('POST', dest, true);
+        request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+        request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        // THAT NEEDS TO BE CORRECTED. IT SUPPOSED TO CHECK FOR ALL THE OFFERS BUT SERVER SIDE DOESNT SUPPORT IT YET. AT LEAST CHANGE TO 'CALENDAR'
+        request.send("uu=withoutthesecurity");  
+        }  
+
+      
