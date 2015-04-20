@@ -318,7 +318,7 @@ app.post('/addbook',function(req,res){
                 {var updatearray=done.updatelist;
                                 updatearray.forEach(function(element,index,array){
                                   console.log(element);
-                                  frindes.findOne({uid:element},function(err,fin){
+                                  friends.findOne({uid:element},function(err,fin){
                                     if(err){
 
                                     }
@@ -416,7 +416,7 @@ app.post('/addmovie',function(req,res){
                 {var updatearray=done.updatelist;
                                 updatearray.forEach(function(element,index,array){
                                   console.log(element);
-                                  frindes.findOne({uid:element},function(err,fin){
+                                  friends.findOne({uid:element},function(err,fin){
                                     if(err){
 
                                     }
