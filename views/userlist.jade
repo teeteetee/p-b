@@ -91,7 +91,7 @@ head
           .panel.panel-default
             .panel-heading 
               | Пользователи
-            table(class='table')
+            table(class='table table-hover')
               thead
                 th
                   | Id
@@ -102,9 +102,9 @@ head
                 th 
                   | Movies
                 th 
-                  | Regdate
-                th 
                   | Public?
+                th 
+                  | Regdate
               tbody
                 each user, i in doc
                   tr(id='row#{user.uid}')
