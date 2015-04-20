@@ -198,16 +198,16 @@ head
             var rnum = index+1;
             var insert= "<div class='row'><div class='col-xs-12'><a href='http://peopleandbooks.com/lists/#{uid}'><h4 style='color:white;'><small style='margin-right:10px;'>"+rnum+"</small>"+element.mail;
              if(element.newb){
-              insert+="<span style='margin-left:20px;margin-right:5px;background-color:#ff4242;' class='badge'>"+element.totalbooks+"</span>/";
+              insert+="<span style='margin-left:20px;margin-right:5px;background-color:#ff4242;font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif !important;' class='badge'>"+element.totalbooks+"</span>/";
              }
              else {
-              insert+="<span style='margin-left:20px;margin-right:5px;' class='badge'>"+element.totalbooks+"</span>/";
+              insert+="<span style='margin-left:20px;margin-right:5px;font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif !important;' class='badge'>"+element.totalbooks+"</span>/";
              }
              if(element.newm){
-              insert+="<span style='margin-left:5px;background-color:#ff4242;' class='badge'>"+element.totalmovies+"</span>";
+              insert+="<span style='margin-left:5px;background-color:#ff4242;font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif !important;' class='badge'>"+element.totalmovies+"</span>";
              }
              else {
-              insert+="<span style='margin-left:5px;' class='badge'>"+element.totalmovies+"</span>";
+              insert+="<span style='margin-left:5px;font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif !important;' class='badge'>"+element.totalmovies+"</span>";
              }
              insert+="</h4></a></div></div>";
             $('#inserts').append(insert);
