@@ -278,9 +278,8 @@ head
       span(class='glyphicon glyphicon-align-justify' id='showLeft' style='color:#333;font-size:30px;margin-top:20px;')
     .container(style='padding-left:84px;width:100% !important;padding-right:none;')  
       .row(style='background-color:darkgray;')
-        .col-xs-12
+        .col-xs-12(id='buttoninsert')
           h4(style='margin-bottom:0px;') #{mail}
-          #{button}
       #heightcheck.row
         .col-xs-6(id='books' style='background-color:#{bh};height:100%;overflow:auto;')
           .row
@@ -297,6 +296,15 @@ head
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
       script.
+        var=#{button};
+        var addbutton ="<button class='btn btn-success btn-xs' onclick='addfriend()' id='addfriendbutton' style='border-radius:30px;margin-top:10px;margin-bottom:10px;' type='button'> Add to friends</button>";
+        var rembutton ="<button class='btn btn-warning btn-xs' onclick='remfriend()' id='remfriendbutton' style='border-radius:30px;margin-top:10px;margin-bottom:10px;' type='button'> Remove from friends</button>";
+        if(button){
+          $('#buttoninsert').append(addbutton);
+        }
+        else {
+          $('#buttoninsert').append(rembutton);
+        }
         // Setting user books/movies counters
         var seenmovies = #{seenmovies};
         var newmovies = #{newmovies};
