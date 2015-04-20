@@ -143,14 +143,14 @@ app.get('/lists/:lid',function(req,res){
           if(done.pub===1)
            {res.send('listin')}
            else {
-            res.send('restricted');
+            res.render('restricted');
            }
         }
         else {
           if(done.pub===1)
            {res.send('listout')}
            else {
-            res.send('restricted');
+            res.render('restricted');
            }
         }
       }
