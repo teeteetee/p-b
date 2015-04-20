@@ -983,7 +983,8 @@ app.get('/admin/friendlist',function(req,res){
     }
     else {
       if(doc.length>0)
-      {
+      {  
+         console.log(doc);
          res.render('friendlist',{'doc':doc});
       }
       else{
