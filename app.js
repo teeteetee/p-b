@@ -141,7 +141,31 @@ app.get('/lists/:lid',function(req,res){
       if(done) {
         if(req.session.mail) {
           if(done.pub===1)
-           {res.send('listin')}
+           {
+            var booksvar = JSON.stringify(done.books);
+                      if(!booksvar) {
+                        booksvar =0;
+                      }
+                      var moviesvar = JSON.stringify(done.movies);
+                      if(!moviesvar) {
+                        moviesvar =0;
+                      }
+                      var style='';
+                      var style1 = "'mh':'#FAB142','bh':'#52CA8F','mhl':'#FAC26C','bhl':'rgb(123, 226, 175)',";
+                      var style2 = "'mh':'rgb(213, 74, 95)','bh':'#00788E','mhl':'#F56B80','bhl':'rgb(0, 176, 208)',";
+                      var style3 = "'mh':'#00657C','bh':'rgb(0, 182, 205);','mhl':'#003945','bhl':'rgb(82, 214, 231)',";
+                      if(done.styleint===1){
+                        style=style1;
+                      }
+                      if(done.styleint===2){
+                        style=style2;
+                      }
+                      if(done.styleint===3){
+                        style=style3;
+                      }
+                    eval("res.render('listin',{"+style+"'mail':done.mail,'books':booksvar,'movies':moviesvar,'uid':done.uid,'newbooks':done.newbooks,'readbooks':done.readbooks,'newmovies':done.newmovies,'seenmovies':done.seenmovies});");
+           
+           }
            else {
             res.render('restricted');
            }

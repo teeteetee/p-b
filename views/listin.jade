@@ -1,0 +1,374 @@
+doctype html(lang='en')
+head
+    meta(charset='utf-8')
+    |     
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    |     
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    |     
+    title P&B
+    // Bootstrap
+    link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    // HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+    // WARNING: Respond.js doesn't work if you view the page via file://
+    //if lt IE 9
+      script(src='https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js')
+      |       
+      script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')     
+    style.
+      @font-face {
+      font-family:roboto-thin;
+      src:url('/bootstrap/fonts/Roboto-Thin.ttf');
+      }
+      @font-face {
+      font-family:high;
+      src: url('/bootstrap/fonts/Attentica.ttf');
+      }
+      body {
+      min-width:768px;
+      font-family:roboto-thin;
+      background-color:#333;
+      }
+      .navbar-nav {
+       float: right;
+      }
+      h1{
+        font-family:roboto-thin;
+      }
+      h2{
+        font-family:roboto-thin;
+      }
+      h3{
+        font-family:roboto-thin;
+      }
+      h4{
+        font-family:roboto-thin;
+      }
+      h5{
+        font-family:roboto-thin;
+      }
+      h6{
+        font-family:roboto-thin;
+      }
+      btn {
+        font-family:roboto-thin;
+      }
+      #showLeft:hover {
+       color:white !important;
+      }
+      .cbp-spmenu {
+        background: #1d1d1d;
+        position: fixed;
+      }
+      
+      .cbp-spmenu h3 {
+        text-align:center;
+        color: springgreen;
+        font-size: 1.9em;
+        padding: 20px;
+        padding-top:27px;
+        margin: 0;
+        font-weight: 300;
+      }
+      
+      .cbp-spmenu a {
+        display: block;
+        color: #999;
+        font-size: 1.1em;
+        font-weight: 300;
+      }
+      
+      .cbp-spmenu a:hover {
+        background: #333;
+        text-decoration:none !important;
+      }
+      
+      .cbp-spmenu a:active {
+        background: #afdefa;
+        color: #47a3da;
+      }
+      .cbp-spmenu-vertical {
+        width: 240px;
+        margin-left:74px;
+        border-left:1px solid #333;
+        height: 100%;
+        top: 0;
+        z-index: 1000;
+      }
+      
+      .cbp-spmenu-vertical a {
+        padding: 1em;
+      }
+      .cbp-spmenu-left {
+        left: -240px;
+      }
+      .cbp-spmenu-left.cbp-spmenu-open {
+        left: 0px;
+      }
+      .cbp-spmenu-push {
+        overflow-x: hidden;
+        position: relative;
+        left: 0;
+      }
+      
+      .cbp-spmenu-push-toright {
+        left: 240px;
+      }
+      
+      .cbp-spmenu-push-toleft {
+        left: -240px;
+      }
+      .cbp-spmenu,
+      .cbp-spmenu-push {
+        -webkit-transition: all 0.3s ease;
+        -moz-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+      }
+      .adding{
+        box-shadow: inset 0px 0px 10px 1px #181818;
+        background-color:#333;
+        color:#999;
+      }
+      .adding input {
+        background-color:#333;
+        color:white;
+      }
+      .previous {
+        background-color:#EFAF4F !important;
+        border:0px;
+        border-radius:30px;
+      }
+      .previous a {
+        color:#623B00 !important;
+      }
+      .next {
+        background-color:#565555 !important;
+      }
+      .next:hover{
+        cursor:pointer
+      }
+      .previous:hover {
+        background-color:#DA8403;
+        color:white;
+        cursor:pointer;
+      }
+      .previous:active {
+        background-color:#DA8403;
+        color:white;
+      }
+      .previous:focus {
+        background-color:#DA8403;
+        color:white;
+      }
+      .pager li>a, .pager li>span {
+      display: inline-block;
+      padding: 5px 14px;
+      border: 0px;
+      border-radius: 30px;
+      }
+      a {
+        color:white !important;
+      }
+      .container {
+        transition: 0.5s -webkit-filter linear;
+      }
+      .navbar-right {
+        float: none !important; 
+      }
+      .navbar-form {
+        padding-top: 6 !important;
+      }
+      input[type="text"], textarea {
+      outline: none;
+      box-shadow:none !important;
+      }
+      .datecl {
+        color:#333;
+      }
+      .yet{
+       color:white;
+      }
+      .alreadyb{
+      color:rgb(0, 0, 0);
+      opacity:0.5;
+      }
+      .alreadym{
+      color:rgb(0,0,0);
+      opacity:0.5;
+      }
+      .leftPaddingExtended{
+        padding-left:30px;
+      }
+      textarea:hover, 
+      input:hover, 
+      textarea:active, 
+      input:active, 
+      textarea:focus, 
+      input:focus,
+      button:focus,
+      button:active,
+      button:hover
+      {
+          outline:0px !important;
+          -webkit-appearance:none;
+      }
+      label {
+        color:white;
+      }
+      .modpanel .btn{
+        margin:10px;
+        border-radius:30px;
+      }
+      .flickb:hover {
+        cursor:pointer;
+        background-color:#{bhl};
+      }
+      .flickm:hover {
+        cursor:pointer;
+        background-color:#{mhl};
+      }
+      .h1 .small,
+       .h1 small,
+       .h2 .small,
+       .h2 small,
+       .h3 .small,
+       .h3 small,
+       .h4 .small,
+       .h4 small,
+       .h5 .small,
+       .h5 small,
+       .h6 .small,
+       .h6 small,
+       h1 .small,
+       h1 small,
+       h2 .small,
+       h2 small,
+       h3 .small,
+       h3 small,
+       h4 .small,
+       h4 small,
+       h5 .small,
+       h5 small,
+       h6 .small,
+       h6 small {
+      color: white;
+      opacity: 0.68;
+      }
+  body
+    script.
+      if(screen.width < 414){
+      window.location='http://m.peopleandbooks.com/';
+      }
+    nav(class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1")
+      form(class="navbar-form navbar-right" method='post' action='/srch' id='srch' style='margin-top: 15px;' role="search")
+        .input-group
+           input(type="text" class="form-control" name='searchfield' id='searchfield' style='background-color:#333;color:white;border-color:#333;border-top-left-radius:30px;border-bottom-left-radius:30px;') 
+           span(class='input-group-btn')
+             button(class="btn btn-default" type="submit" id='searchbutton' style='padding-top:9px;padding-bottom:9px;background-color:#333;color:gray;border-color:#333;border-top-right-radius:30px;border-bottom-right-radius:30px;')
+               span(class='glyphicon glyphicon-search') 
+      a(href='http://peopleandbooks.com/') Мои списки
+      a(href="http://peopleandbooks.com/settings") Настройки
+      a(href='http://peopleandbooks.com/about') О проекте
+      a(href="http://peopleandbooks.com/logout") Выйти
+      img(class="media-object img-circle" src="/images/pblogov4.png" style='position:absolute;opacity:0.2;left:88px;bottom:20px;width:64px;height:64px;' alt="...")
+    .sidebar(style='width:74px;position:fixed;height:100%;background-color:#1d1d1d;text-align:center;z-index:2000;')
+      //img(class="media-object img-circle" src="/bootstrap/images/seo.jpg" style='margin-left:5px;margin-top:30px;width:64px;height:64px;' alt="...")
+      span(class='glyphicon glyphicon-align-justify' id='showLeft' style='color:#333;font-size:30px;margin-top:20px;')
+    .container(style='padding-left:84px;width:100% !important;padding-right:none;')  
+      .row(style='background-color:white;')
+        .col-xs-12
+          h3(style='display:inline;') #{mail}
+          button(class='btn btn-success' onclick='addfriend(#{uid})' style='border-radius:30px;margin-top:10px;margin-bottom:10px;' type='button') Add to friends
+      #heightcheck.row
+        .col-xs-6(id='books' style='background-color:#{bh};height:100%;overflow:auto;')
+          .row
+            .col-xs-12(style='text-align:center;')
+              h1(id='booksfigures' style='font-family:high;font-size:200px;font-weight:bold;color:white;')
+          .row
+            #bookinsert.col-xs-12
+        .col-xs-6(id='movies' style='background-color:#{mh};height:100%;overflow:auto;')
+          .row
+            .col-xs-12(style='text-align:center;')
+              h1(id='moviesfigures' style='font-family:high;font-size:200px;font-weight:bold;color:white;')
+          .row
+            #movieinsert.col-xs-12
+      script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
+      script(async src='/js/bootstrap.min.js')
+      script.
+        // Setting user books/movies counters
+        var seenmovies = #{seenmovies};
+        var newmovies = #{newmovies};
+        $('#moviesfigures').append(" "+newmovies+" <span style='color:rgb(0,0,0);opacity:0.3'> | "+seenmovies+"</span>");
+        var readbooks = #{readbooks};
+        var newbooks = #{newbooks};
+        $('#booksfigures').append(" "+newbooks+" <span style='color:rgb(0,0,0);opacity:0.3'> | "+readbooks+"</span>");
+        //End of setting counters
+        // Populating the columns
+        var books = !{books};
+        var movies = !{movies};
+        if ( books!=0)
+        {books.forEach(function(element,index,array){
+                       //$('#bookinsert').append("<h4 style='color:white;'>"+element.booktitle+"</h4>");
+                       var popbookclass = 'yet';
+                       if(element.newbook!=1)
+                       {
+                        popbookclass='alreadyb';
+                       }
+                       var popinsert = "<div class='row flickb' id='book"+element.bid+"'><div class='col-xs-12'><h4 style='margin-left:40px;' class='"+popbookclass+"'>"+element.booktitle+" <small> "+element.author+" </small>";
+                       if(element.star===1&&element.newbook===0){
+                         popinsert+="<span style='color:#F2D45C;margin-left:10px;' class='glyphicon glyphicon-star'></span>";
+                       }
+                       if(element.attention===1&&element.newbook===1){
+                         popinsert+="<span style='color:rgba(255, 255, 255, 0.65);margin-left:10px;' class='glyphicon glyphicon-exclamation-sign'></span>";
+                       }
+                       popinsert+="</h4></div></div>";
+                       $('#bookinsert').prepend(popinsert);
+                    });}
+        if(movies!=0)
+        {movies.forEach(function(element,index,array){
+                       //$('#movieinsert').append("<h4 style='color:white;'>"+element.movietitle+"</h4>");
+                       var popmovieclass = 'yet';
+                       if(element.newmovie!=1)
+                       {
+                        popmovieclass='alreadym';
+                       }
+                       var popinsert = "<div class='row flickm' id='movie"+element.mid+"'><div class='col-xs-12'><h4 style='margin-left:40px;' class='"+popmovieclass+"'>"+element.movietitle+" <small> "+element.year+" </small>";
+                       if(element.star===1&&element.newmovie===0){
+                         popinsert+="<span style='color:#F2D45C;margin-left:10px;' class='glyphicon glyphicon-star'></span>";
+                       }
+                       if(element.attention===1&&element.newmovie===1){
+                         popinsert+="<span style='color:rgba(255, 255, 255, 0.65);margin-left:10px;' class='glyphicon glyphicon-exclamation-sign'></span>";
+                       }
+                       popinsert+="</h4></div></div>";
+                       $('#movieinsert').prepend(popinsert);
+                    });}
+        //end of populating the columns
+        // Sliding menu mechanics
+        var counter =0;
+        var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
+            menuRight = document.getElementById( 'cbp-spmenu-s2' ),
+            showLeft = document.getElementById( 'showLeft' ),
+            showRight = document.getElementById( 'showRight' ),
+            showLeftPush = document.getElementById( 'showLeftPush' ),
+            showRightPush = document.getElementById( 'showRightPush' ),
+            body = document.body;
+        
+        showLeft.onclick = function() {
+          switch(counter)
+            {case(1):
+                         counter=0;
+                         $('#showLeft').removeClass('active' );
+                         $('#cbp-spmenu-s1').removeClass('cbp-spmenu-open' );
+                         $('.container').css('-webkit-filter','brightness(1)');
+                        break;
+                        case(0):
+                          counter=1;
+                          $('#showLeft').addClass('active' );
+                          $('#cbp-spmenu-s1').addClass('cbp-spmenu-open' );
+                          $('.container').css('-webkit-filter','brightness(0.6)');
+                        break;
+                      }
+        };
+        //end of sliding menu mechanics
+        
+      
