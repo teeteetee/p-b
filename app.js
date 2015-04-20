@@ -318,7 +318,7 @@ app.post('/addbook',function(req,res){
                 {var updatearray=done.updatelist;
                                 updatearray.forEach(function(element,index,array){
                                   console.log(element);
-                                  friends.update({uid:element},{$set:{newb:1}});
+                                  friends.update({uid:parseInt(element)},{$set:{newb:1}});
                                 });}
                 ms.trouble=0;
                 ms.bid = vbid;
@@ -399,7 +399,7 @@ app.post('/addmovie',function(req,res){
                 {var updatearray=done.updatelist;
                                 updatearray.forEach(function(element,index,array){
                                   console.log(element);
-                                  friends.update({uid:element},{$set:{newm:1}});
+                                  friends.update({uid:parseInt(element)},{$set:{newm:1}});
                                 });}
                 ms.trouble=0;
                 ms.bid = vmid;
