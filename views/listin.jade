@@ -251,8 +251,7 @@ head
        h5 small,
        h6 .small,
        h6 small {
-      color: white;
-      opacity: 0.68;
+      #{small}
       }
   body
     script.
@@ -283,13 +282,13 @@ head
         .col-xs-6(id='books' style='background-color:#{bh};height:100%;overflow:auto;')
           .row
             .col-xs-12(style='text-align:center;')
-              h1(id='booksfigures' style='font-family:high;font-size:200px;font-weight:bold;color:white;')
+              h1(id='booksfigures' style='font-family:high;font-size:200px;font-weight:bold;color:#{bhl};')
           .row
             #bookinsert.col-xs-12
         .col-xs-6(id='movies' style='background-color:#{mh};height:100%;overflow:auto;')
           .row
             .col-xs-12(style='text-align:center;')
-              h1(id='moviesfigures' style='font-family:high;font-size:200px;font-weight:bold;color:white;')
+              h1(id='moviesfigures' style='font-family:high;font-size:200px;font-weight:bold;color:#{mhl};')
           .row
             #movieinsert.col-xs-12
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
@@ -298,10 +297,10 @@ head
         // Setting user books/movies counters
         var seenmovies = #{seenmovies};
         var newmovies = #{newmovies};
-        $('#moviesfigures').append(" "+newmovies+" <span style='color:rgb(0,0,0);opacity:0.3'> | "+seenmovies+"</span>");
+        $('#moviesfigures').append(" "+newmovies+" <span style='color:rgb(0,0,0);opacity:#{spanop}'> | "+seenmovies+"</span>");
         var readbooks = #{readbooks};
         var newbooks = #{newbooks};
-        $('#booksfigures').append(" "+newbooks+" <span style='color:rgb(0,0,0);opacity:0.3'> | "+readbooks+"</span>");
+        $('#booksfigures').append(" "+newbooks+" <span style='color:rgb(0,0,0);opacity:#{spanop}'> | "+readbooks+"</span>");
         //End of setting counters
         // Populating the columns
         var books = !{books};
