@@ -379,6 +379,26 @@ head
                         break;
                       }
         };
+        $('#movies').click(function() {
+          console.log('container touch');
+         if(counter)
+          {
+            counter=0;
+            $('#showLeft').removeClass('active' );
+            $('#cbp-spmenu-s1').removeClass('cbp-spmenu-open' );
+            $('.container').css('-webkit-filter','brightness(1)');
+          }
+        });
+        $('#books').click(function() {
+          console.log('container touch');
+         if(counter)
+          {
+            counter=0;
+            $('#showLeft').removeClass('active' );
+            $('#cbp-spmenu-s1').removeClass('cbp-spmenu-open' );
+            $('.container').css('-webkit-filter','brightness(1)');
+          }
+        });
         //end of sliding menu mechanics
         var allowadd = 1;
         function addfriend() {
