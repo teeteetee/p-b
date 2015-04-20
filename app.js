@@ -140,6 +140,10 @@ app.get('/lists/:lid',function(req,res){
     else {
       if(done) {
         if(req.session.mail) {
+          if(done.mail===req.session.mail){
+            res.redirect('/');
+            return;
+          }
           if(done.pub===1)
            {
             var booksvar = JSON.stringify(done.books);
