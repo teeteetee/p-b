@@ -731,7 +731,7 @@ app.post('/addfriend',function(req,res){
                 else {
                   person.newm =0;
                 }
-                 friends.update({mail:vmail},{$push:{people:person}});
+                 friends.update({mail:req.session.mail},{$push:{people:person}});
         }
       else 
       {
