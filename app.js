@@ -151,7 +151,7 @@ app.get('/lists/:lid',function(req,res){
                         moviesvar =0;
                       }
                     
-                      var xx = "'mh':'white','bh':'white','mhl':'#F56979','bhl':'rgb(103, 186, 255),'small':'0:0','spanop':'0.1',";
+                      var xx = "'mh':'white','bh':'white','mhl':'#F56979','bhl':'rgb(103, 186, 255)','small':'0:0','spanop':'0.1',";
                       console.log(xx);
                     console.log("res.render('listin',{"+xx+"'mail':done.mail,'books':booksvar,'movies':moviesvar,'uid':done.uid,'newbooks':done.newbooks,'readbooks':done.readbooks,'newmovies':done.newmovies,'seenmovies':done.seenmovies});");
                     eval("res.render('listin',{"+xx+"'mail':done.mail,'books':booksvar,'movies':moviesvar,'uid':done.uid,'newbooks':done.newbooks,'readbooks':done.readbooks,'newmovies':done.newmovies,'seenmovies':done.seenmovies});");
