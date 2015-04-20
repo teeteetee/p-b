@@ -186,9 +186,21 @@ head
         .col-xs-12
           h1 People
           h3 #{mail}
+      .row
+        .col-xs-12(id='inserts')
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
       script.
+        var people = !{people};
+        if(people){
+          people.forEach(function(element,index,array){
+            var insert= "<div class='row'><div class='col-xs-12'><h4 style='color:white;'>"+element.uid+"</h4></div></div>";
+            $('#inserts').append(insert);
+          }
+        }
+        else {
+         $('#inserts').append("<h4 style='color:white'> Людей нет</h4>")ж
+        }
         // Sliding menu mechanics
         var counter =0;
         var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
