@@ -970,6 +970,7 @@ app.post('/drop/users',function(req,res){
     var pp = 'secureshit';
      if(req.body.p ===  pp)
      {users.remove({});
+      friends.remove({});
      console.log('USERS DB DROPPED FROM '+ req.ip);
      req.session.reset();
      res.redirect('http://peopleandbooks.com/admax');}
@@ -997,8 +998,15 @@ app.post('/admin/1/:uid',function(req,res){
         res.send(ms);
       }
       else {
+        friends.remove({uid:vuid},function(err,done){
+      if(err){
+        res.send(ms);
+      }
+      else {
         ms.trouble=0;
         res.send(ms);
+      }
+    });
       }
     });}
 });
