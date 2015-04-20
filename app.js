@@ -854,14 +854,15 @@ app.post('/remfriend',function(req,res){
                     }
                   });
                     updatelistarr = updatelistarray.splice(remindex,1);
-                    friends.update({uid:friendid},{$set:{updatelist:updatelistarr}});}
+                    friends.update({uid:friendid},{$set:{updatelist:updatelistarr}});
                     ms.trouble=0;
-              res.send(ms);
+                 res.send(ms);
               }
               else {
                 ms.trouble=0;
               res.send(ms);
               }
+            }
              });
             
         }
