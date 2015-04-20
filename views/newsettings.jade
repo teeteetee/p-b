@@ -190,7 +190,7 @@ head
       .row.cont
         .col-xs-12
           .btn-group(role="group" aria-label="...")
-            button(type="button" id='private' onclick='pubchange(0)' class="btn btn-warning active") Yes
+            button(type="button" id='private' onclick='pubchange(0)' class="btn btn-warning") Yes
             button(type="button" id='public' onclick='pubchange(1)' class="btn btn-warning") No
       .row(style='color:white;')
         .col-xs-12
@@ -225,6 +225,12 @@ head
       script(async src='/js/bootstrap.min.js')
       script.
         var currentstatus = #{pub};
+        if(currentstatus){
+          $('#public').addClass('active');
+        }
+        else {
+          $('#private').addClass('active');
+        }
         $('##{checkbox}').attr('checked',true);
         // Sliding menu mechanics
         var counter =0;
