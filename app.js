@@ -329,7 +329,7 @@ app.post('/addbook',function(req,res){
                                           element.newb=1;
                                            console.log('uid: '+element+',people:  '+peoplearr);
                                            peoplearr.forEach(function(element3,index3,array3){
-                                            console.log('array element: '+element3);
+                                            console.log('array element: '+JSON.stringify(element3));
                                            });
                                           friends.update({uid:element},{$set:{people:peoplearr}});
                                         }
@@ -431,7 +431,7 @@ app.post('/addmovie',function(req,res){
                                           element.newm=1;
                                           console.log('uid: '+element+',people:  '+peoplearr);
                                           peoplearr.forEach(function(element3,index3,array3){
-                                            console.log('array element: '+element3);
+                                            console.log('array element: '+JSON.stringify(element3));
                                            });
                                           friends.update({uid:element},{$set:{people:peoplearr}});
                                         }
