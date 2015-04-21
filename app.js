@@ -324,10 +324,13 @@ app.post('/addbook',function(req,res){
                                     }
                                     else {
                                       var peoplearr = fin.people;
-                                      peoplearr.forEach(function(element2,index,array){
+                                      peoplearr.forEach(function(element2,index2,array2){
                                         if(element2.uid===vuid) {
                                           element.newb=1;
                                            console.log('uid: '+element+',people:  '+peoplearr);
+                                           peoplearr.forEach(function(element3,index3,array3){
+                                            console.log('array element: '+element3);
+                                           });
                                           friends.update({uid:element},{$set:{people:peoplearr}});
                                         }
                                       });
@@ -427,6 +430,9 @@ app.post('/addmovie',function(req,res){
                                         if(element2.uid===vuid) {
                                           element.newm=1;
                                           console.log('uid: '+element+',people:  '+peoplearr);
+                                          peoplearr.forEach(function(element3,index3,array3){
+                                            console.log('array element: '+element3);
+                                           });
                                           friends.update({uid:element},{$set:{people:peoplearr}});
                                         }
                                       });
