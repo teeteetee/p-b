@@ -152,6 +152,9 @@ head
       a {
         color:white !important;
       }
+      .activemenuitem {
+        background-color:#333;
+      }
   body
     script.
       if(screen.width < 414){
@@ -166,6 +169,7 @@ head
                span(class='glyphicon glyphicon-search') 
       a(href="/") Мои списки
       a(href="/people") Списки друзей
+      a(class='activemenuitem') Настройки
       a(href='/about') О проекте
       a(href="/logout") Выйти
       img(class="media-object img-circle" src="/images/pblogov4.png" style='position:absolute;opacity:0.2;left:88px;bottom:20px;width:64px;height:64px;' alt="...")

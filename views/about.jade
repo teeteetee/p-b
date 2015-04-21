@@ -161,6 +161,9 @@ head
       #stlink:active {
         text-decoration:none !important;
       }
+      .activemenuitem {
+        background-color:#333;
+      }
   body
     script.
       if(screen.width < 414){
@@ -176,7 +179,7 @@ head
       a(href='/') Мои списки
       a(href='/people') Списки друзей
       a(href="/settings") Настройки
-      a(href='/about') О проекте
+      a(class='activemenuitem') О проекте
       a(href="/logout") Выйти
       img(class="media-object img-circle" src="/images/pblogov4.png" style='position:absolute;opacity:0.2;left:88px;bottom:20px;width:64px;height:64px;' alt="...")
     .sidebar(style='width:74px;position:fixed;height:100%;background-color:#1d1d1d;text-align:center;z-index:2000;')
