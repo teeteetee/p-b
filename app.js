@@ -329,6 +329,7 @@ app.post('/addbook',function(req,res){
                                       console.log('5. People array in what have returned: '+JSON.stringify(peoplearr));
                                       peoplearr.forEach(function(element2,index2,array2){
                                         console.log('5.5 Iterating through peoplearr');
+                                        console.log('vuid: '+vuid+', element2.uid: '+element2.uid);
                                         if(element2.uid===vuid) {
                                           console.log('6. Found an element in array with our id: '+JSON.stringify(element2));
                                           var newelem = element2;
