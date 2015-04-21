@@ -328,6 +328,7 @@ app.post('/addbook',function(req,res){
                                       var peoplearr = fin.people;
                                       console.log('5. People array in what have returned: '+JSON.stringify(peoplearr));
                                       peoplearr.forEach(function(element2,index2,array2){
+                                        console.log('5.5 Iterating through peoplearr');
                                         if(element2.uid===vuid) {
                                           console.log('6. Found an element in array with our id: '+JSON.stringify(element2));
                                           var newelem = element2;
@@ -339,14 +340,19 @@ app.post('/addbook',function(req,res){
                                           friends.update({uid:element},{$set:{people:peoplearr}});
                                         }
                                       });
-                                      ms.trouble=0;
-                                     ms.bid = vbid;
-                                     res.send(ms);
+                                     //peoplearr.foreach
                                     }
                                   })
-                                });}
+                                });
+                  console.log('success ?');
+                  ms.trouble=0;
+                   ms.bid = vbid;
+                   res.send(ms);
+                }
                 else
-                {ms.trouble=0;
+                {
+                  console.log('there was no updatelist');
+                  ms.trouble=0;
                   ms.bid = vbid;
                   res.send(ms);}
               }
