@@ -945,7 +945,7 @@ app.post('/remfriend',function(req,res){
 app.get('/friends/:uid',function(req,res){
   var vuid = parseInt(req.params.uid);
   friends.findOne({uid:vuid},function(err,done){
-    console.log(JSON.stringify(done));
+    res.send(JSON.stringify(done));
   });
 });
 
