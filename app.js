@@ -327,12 +327,13 @@ app.post('/addbook',function(req,res){
                                       peoplearr.forEach(function(element2,index,array){
                                         if(element2.uid===vuid) {
                                           element.newb=1;
+                                           console.log('uid: '+element+',people:  '+peoplearr);
                                           friends.update({uid:element},{$set:{people:peoplearr}});
-                                          ms.trouble=0;
-                                          ms.bid = vbid;
-                                          res.send(ms);
                                         }
                                       });
+                                      ms.trouble=0;
+                                     ms.bid = vbid;
+                                     res.send(ms);
                                     }
                                   })
                                 });}
@@ -425,12 +426,13 @@ app.post('/addmovie',function(req,res){
                                       peoplearr.forEach(function(element2,index,array){
                                         if(element2.uid===vuid) {
                                           element.newm=1;
+                                          console.log('uid: '+element+',people:  '+peoplearr);
                                           friends.update({uid:element},{$set:{people:peoplearr}});
-                                          ms.trouble=0;
-                                          ms.mid = vmid;
-                                          res.send(ms);
                                         }
                                       });
+                                      ms.trouble=0;
+                                      ms.mid = vmid;
+                                      res.send(ms);
                                     }
                                   })
                                 });}
