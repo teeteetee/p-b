@@ -1,0 +1,395 @@
+doctype html(lang='en')
+head
+    meta(charset='utf-8')
+    |     
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    |     
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    |     
+    title P&B
+    // Bootstrap
+    link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    // HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+    // WARNING: Respond.js doesn't work if you view the page via file://
+    //if lt IE 9
+      script(src='https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js')
+      |       
+      script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')     
+    style.
+      @font-face {
+      font-family:roboto-thin;
+      src:url('/bootstrap/fonts/Roboto-Thin.ttf');
+      }
+      @font-face {
+      font-family:high;
+      src: url('/bootstrap/fonts/Attentica.ttf');
+      }
+      body {
+        font-family:roboto-thin;
+      }
+      h1 {
+        font-family:roboto-thin;
+        color:white;
+      }
+      h2 {
+        font-family:roboto-thin;
+        color:white;
+      }
+      h3 {
+        font-family:roboto-thin;
+        color:white;
+      }
+      h4 {
+        font-family:roboto-thin;
+        color:white;
+      }
+      h5 {
+        font-family:roboto-thin;
+        color:white;
+      }
+      h6 {
+        font-family:roboto-thin;
+        color:white;
+      }
+      textarea:hover, 
+      input:hover, 
+      textarea:active, 
+      input:active, 
+      textarea:focus, 
+      input:focus,
+      button:focus,
+      button:active,
+      button:hover
+      {
+          outline:0px !important;
+          -webkit-appearance:none;
+      }
+      nav ul li a {
+        border:0px !important;
+        background-color:rgba(255, 255, 255, 0.26) !important;
+        color:white !important;
+      }
+      .navbar-inverse {
+      background-color: rgba(34, 34, 34, 0.34);
+      border:none;
+      }
+      .navbar-form{
+        margin-left:0px;
+        margin-right:0px;
+        bottom:30px;
+        position:absolute;
+      }
+      .cbp-spmenu {
+        background: #1d1d1d;
+        position: fixed;
+      }
+      .cbp-spmenu h3 {
+        color: indianred;
+        font-size: 1.9em;
+        padding: 20px;
+        padding-top:27px;
+        margin: 0;
+        font-weight: 300;
+      }
+      .cbp-spmenu a {
+        display: block;
+        color: #ddd;
+        font-size: 20px;
+        font-weight: 300;
+      }
+      .cbp-spmenu a:hover {
+        background: #333;
+        text-decoration:none !important;
+      }
+      .cbp-spmenu a:active {
+        background: #afdefa;
+        color: #47a3da;
+      }
+      .cbp-spmenu-vertical {
+        width: 240px;
+        margin-left:74px;
+        border-left:1px solid #333;
+        height: 100%;
+        top: 0;
+        z-index: 1000;
+      }
+      .cbp-spmenu-vertical a {
+        padding: 1em;
+      }
+      .cbp-spmenu-left {
+        left: -315px;
+      }
+      .cbp-spmenu-left.cbp-spmenu-open {
+        left: -74px;
+      }
+      .cbp-spmenu-push {
+        overflow-x: hidden;
+        position: relative;
+        left: 0;
+      }
+      .cbp-spmenu-push-toright {
+        left: 240px;
+      }
+      .cbp-spmenu-push-toleft {
+        left: -240px;
+      }
+      .cbp-spmenu,
+      .cbp-spmenu-push {
+        -webkit-transition: all 0.3s ease;
+        -moz-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+      }
+      .container {
+        transition: 0.5s -webkit-filter linear;
+        transition: background-color 0.5s linear;
+      }
+      #maincont {
+        transition: 0.5s -webkit-filter linear;
+      }
+      .navbar-right {
+        float: none !important; 
+      }
+      footer {
+          position: fixed;
+          bottom: 0;
+          width: 100%;
+          background-color:#333;
+      }
+      input[type="text"], textarea {
+      outline: none;
+      box-shadow:none !important;
+      }
+      .datecl {
+        color:#333;
+      }
+      .yet{
+       #{yet};
+      }
+      .alreadyb{
+      color:rgba(0, 0, 0, 0.27);
+      }
+      .alreadym{
+      color:rgba(0, 0, 0, 0.21)
+      }
+      {
+        padding-left:30px;
+      }
+      textarea:hover, 
+      input:hover, 
+      textarea:active, 
+      input:active, 
+      textarea:focus, 
+      input:focus,
+      button:focus,
+      button:active,
+      button:hover
+      {
+          outline:0px !important;
+          -webkit-appearance:none;
+      }
+      #addbook{
+        background-color: #A9A9A9;
+      }
+      .activebutton {
+        background-color:#252525;
+      }
+      label {
+        color:white;
+      }
+      .h1 .small,
+       .h1 small,
+       .h2 .small,
+       .h2 small,
+       .h3 .small,
+       .h3 small,
+       .h4 .small,
+       .h4 small,
+       .h5 .small,
+       .h5 small,
+       .h6 .small,
+       .h6 small,
+       h1 .small,
+       h1 small,
+       h2 .small,
+       h2 small,
+       h3 .small,
+       h3 small,
+       h4 .small,
+       h4 small,
+       h5 .small,
+       h5 small,
+       h6 .small,
+       h6 small {
+      #{small}
+      }
+      .modpanel .btn{
+        margin:10px;
+        border-radius:30px;
+      }
+      #booksrow {
+       transition: 0.5s -webkit-filter linear;
+       -webkit-filter:brightness(1);
+      }
+      #moviesrow {
+        -webkit-filter:brightness(1);
+       transition: 0.5s -webkit-filter linear;
+      }
+  body
+    nav(class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1")
+      img(class="media-object img-circle" src="/images/pblogov4.png" style='margin-top:20px;margin-bottom:20px;margin-left:auto;margin-right:auto;width:64px;height:64px;' alt="...")
+      // 
+        form(class="navbar-form navbar-right" method='post' action='/srch' id='srch' role="search")
+          .input-group
+             input(type="text" class="form-control" name='searchfield' id='searchfield' style='background-color:#333;color:white;border-color:#333;border-top-left-radius:30px;border-bottom-left-radius:30px;') 
+             span(class='input-group-btn')
+               button(class="btn btn-default" type="submit" id='searchbutton' style='padding-top:9px;padding-bottom:9px;background-color:#333;color:gray;border-color:#333;border-top-right-radius:30px;border-bottom-right-radius:30px;')
+                 span(class='glyphicon glyphicon-search') 
+      a(href="http://m.peopleandbooks.com/settings") Настройки
+      a(href='http://m.peopleandbooks.com/about') О проекте
+      a(href="http://peopleandbooks.com/logout") Выйти
+    .container( id='maincont' style='-webkit-filter:brightness(1);background-color:#333;overflow:auto;height:100%;padding-right:0px;padding-bottom:74px;')
+      .row
+        .col-xs-12
+           img(class="media-object img-circle" src="/images/pblogov4.png" style='margin-top:7vh;margin-bottom:20px;margin-left:auto;margin-right:auto;width:100px;height:100px;' alt="...")
+      .row(style='color:white;')
+        .col-xs-12
+          h1(style='margin-top:7vh;margin-bottom:15vh;text-align:center;') Tell me what you read, and I will tell you who you are.
+            small(style='margin-left:20px;') François Mauriac
+      .row(style='color:#ccc;text-align:center;')
+        .col-xs-12
+          h4 
+            span(style='color:#ff00ab;') List
+            |  your books and movies
+      .row
+        .col-xs-12
+          h4 
+            span(style='color:#ff9900;') Share
+            |  with friends and collegues
+      .row
+        .col-xs-12
+          h4 Or keep it 
+            span(style='color:#00c9ff;') private
+      .row(style='color:gray;')
+        .col-xs-12
+          a(href='http://topandviews.com' id='stlink')
+            h5(style='text-align:center;margin-top:30vh;') Top&Views Design
+          h5(style='text-align:center;') 2015 
+    footer(class='footer')
+      .container
+        .row(style='text-align:center;')
+          .col-xs-3.addbookbutton
+            h1( style='color:white;font-size:40px;padding-top:10px;padding-bottom:10px;margin-top:0px;margin-bottom:0px;') +
+          .col-xs-3.activebutton( id='showbooks')
+            h1(style='color:white;font-size:40px;padding-top:10px;padding-bottom:10px;margin-top:0px;margin-bottom:0px;') B
+          .col-xs-3(id='showmovies')
+            h1(style='color:white;font-size:40px;padding-top:10px;padding-bottom:10px;margin-top:0px;margin-bottom:0px;') M
+          .col-xs-3
+            span(class='glyphicon glyphicon-align-justify ' id='showLeft' style='color:white;font-size:30px;padding-top:13px;')
+    
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
+    script(src='/js/bootstrap.min.js')
+    script.
+      
+        // diable/allow cheking checkboxes
+        $('#newbook').click(function() {
+         if ($(this).is(':checked')) {
+           $('#star').attr('checked',false);
+           $('#attention').attr('checked',false);
+           $('#star').attr('disabled', false);
+           $('#attention').attr('disabled', true);
+         } else {
+           $('#star').attr('checked',false);
+           $('#attention').attr('checked',false);
+           $('#attention').attr('disabled', false);
+           $('#star').attr('disabled', true);
+         }
+         });
+        $('#newmovie').click(function() {
+         if ($(this).is(':checked')) {
+           $('#moviestar').attr('checked',false);
+           $('#movieattention').attr('checked',false);
+           $('#moviestar').attr('disabled', false);
+           $('#movieattention').attr('disabled', true);
+         } else {
+           $('#moviestar').attr('checked',false);
+           $('#movieattention').attr('checked',false);
+           $('#movieattention').attr('disabled', false);
+           $('#moviestar').attr('disabled', true);
+         }
+         });
+        // end of disable/allowchecking checkboxes
+      // CA5B52 for movies 99362F
+      $('.addbookbutton').click(function(){
+          if($('#showbooks').hasClass('activebutton'))
+          {$('#addbook').slideToggle();
+          if($('#maincont').css('-webkit-filter')==='brightness(1)'){
+            $('#maincont').css('-webkit-filter','brightness(0.4)');
+           }
+           else {
+            $('#maincont').css('-webkit-filter','brightness(1)');
+           }
+          }
+          else
+            {$('#addmovie').slideToggle();
+          if($('#maincont').css('-webkit-filter')==='brightness(1)'){
+            $('#maincont').css('-webkit-filter','brightness(0.4)');
+           }
+           else {
+            $('#maincont').css('-webkit-filter','brightness(1)');
+           }
+          }
+          });
+      $('#showmovies').click(function(){
+         if($('#addbook').css('display') === 'block')
+         {
+          $('#addbook').slideToggle();
+         }
+         $('#booksrow').fadeOut('400',function(){$('#moviesrow').fadeIn();});
+         $('#maincont').css('background-color','#{mh}');
+         $('.activebutton').removeClass('activebutton');
+         $('#showmovies').addClass('activebutton');
+         $('.modpanel').each(function(){
+          if($(this).css('display')==='block'){
+            $(this).slideToggle();
+          }
+          });
+        });
+      $('#showbooks').click(function(){
+        if($('#addmovie').css('display') === 'block')
+         {
+          $('#addmovie').slideToggle();
+         }
+         $('#moviesrow').fadeOut('400',function(){$('#booksrow').fadeIn();});
+         $('#maincont').css('background-color','#{bh}');
+         $('.activebutton').removeClass('activebutton');
+         $('#showbooks').addClass('activebutton');
+         $('.modpanel').each(function(){
+          if($(this).css('display')==='block'){
+            $(this).slideToggle();
+          }
+          });
+        });
+      var counter =0;
+        var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
+            menuRight = document.getElementById( 'cbp-spmenu-s2' ),
+            showLeft = document.getElementById( 'showLeft' ),
+            showRight = document.getElementById( 'showRight' ),
+            body = document.body;
+        
+        showLeft.onclick = function() {
+          switch(counter)
+            {case(1):
+                         counter=0;
+                         $('#showLeft').removeClass('active' );
+                         $('#cbp-spmenu-s1').removeClass('cbp-spmenu-open' );
+                         $('.container').css('-webkit-filter','brightness(1)');
+                        break;
+                        case(0):
+                          counter=1;
+                          $('#showLeft').addClass('active' );
+                          $('#cbp-spmenu-s1').addClass('cbp-spmenu-open' );
+                          $('.container').css('-webkit-filter','brightness(0.6)');
+                        break;
+                      }
+        };
+      
