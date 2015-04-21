@@ -21,6 +21,10 @@ head
       src:url('/bootstrap/fonts/Roboto-Thin.ttf');
       }
       @font-face {
+      font-family:roboto-light;
+      src:url('/bootstrap/fonts/Roboto-Light.ttf');
+      }
+      @font-face {
       font-family:high;
       src: url('/bootstrap/fonts/Attentica.ttf');
       }
@@ -179,16 +183,13 @@ head
     .container(style='padding-left:40px;')  
       .row(style='color:#ccc;')
         .col-xs-12
-          h1 Settings
+          h1(style='font-family:roboto-light;') Settings
             small #{mail}
-      .row(style='color:white;')
-        .col-xs-12
-          h3 Private:
       .row.cont
         .col-xs-12
           .btn-group(role="group" aria-label="...")
-            button(type="button" id='private' onclick='pubchange(0)' class="btn btn-warning") Yes
-            button(type="button" id='public' onclick='pubchange(1)' class="btn btn-warning") No
+            button(type="button" id='private' onclick='pubchange(0)' class="btn btn-warning") Private
+            button(type="button" id='public' onclick='pubchange(1)' class="btn btn-warning") Public
       .row(style='color:white;')
         .col-xs-12
           h3 Color themes:
