@@ -1027,7 +1027,25 @@ app.get('/m',function(req,res){
               if(done){
                      if(!done.books&&!done.movies)
                       {//res.render('emptyindexreg',{'uid':done.uid});
-                       res.render('emptymindexreg',{'uid':done.uid,'newbooks':0,'readbooks':0,'newmovies':0,'seenmovies':0});
+                       var style;
+                       var style1 = "'bcl':'white','mcl':'white','mh':'#FAB142','bh':'#52CA8F','mhl':'#FAC26C','bhl':'rgb(123, 226, 175)','yet':'color:white','small':'color:white;opacity: 0.68;','spanop':'0.3','addbook':'rgba(255, 255, 255, 0.38)','addmovie':'rgba(255, 255, 255, 0.38)',";
+                      var style2 = "'bcl':'white','mcl':'white','mh':'rgb(213, 74, 95)','bh':'#00788E','mhl':'#F56B80','bhl':'rgb(0, 176, 208)','yet':'color:white','small':'color:white;opacity: 0.68;','spanop':'0.3','addbook':'rgba(255, 255, 255, 0.38)','addmovie':'rgba(255, 255, 255, 0.38)',";
+                      var style3 = "'bcl':'white','mcl':'white','mh':'#00657C','bh':'rgb(0, 182, 205);','mhl':'#003945','bhl':'rgb(82, 214, 231)','yet':'color:white','small':'color:white;opacity: 0.68;','spanop':'0.3','addbook':'rgba(255, 255, 255, 0.38)','addmovie':'rgba(255, 255, 255, 0.38)',";
+                      var style4 = "'bcl':'rgb(103, 186, 255)','mcl':'#F56979','mh':'white','bh':'white','mhl':'#F56979','bhl':'rgb(103, 186, 255)','yet':'0:0','small':'0:0','spanop':'0.1','addbook':'rgba(103, 186, 255, 0.63)','addmovie':'rgba(245, 105, 121, 0.65)',";
+
+                      if(done.styleint===1){
+                        style=style1;
+                      }
+                      if(done.styleint===2){
+                        style=style2;
+                      }
+                      if(done.styleint===3){
+                        style=style3;
+                      }
+                      if(done.styleint===4){
+                        style=style4;
+                      }
+                       eval("res.render('emptymindexreg',{"+style+"'uid':done.uid,'newbooks':0,'readbooks':0,'newmovies':0,'seenmovies':0});");
 
                       }
                     else{
@@ -1039,8 +1057,25 @@ app.get('/m',function(req,res){
                       if(!moviesvar) {
                         moviesvar =0;
                       }
+                      var style;
+                       var style1 = "'bcl':'white','mcl':'white','mh':'#FAB142','bh':'#52CA8F','mhl':'#FAC26C','bhl':'rgb(123, 226, 175)','yet':'color:white','small':'color:white;opacity: 0.68;','spanop':'0.3','addbook':'rgba(255, 255, 255, 0.38)','addmovie':'rgba(255, 255, 255, 0.38)',";
+                      var style2 = "'bcl':'white','mcl':'white','mh':'rgb(213, 74, 95)','bh':'#00788E','mhl':'#F56B80','bhl':'rgb(0, 176, 208)','yet':'color:white','small':'color:white;opacity: 0.68;','spanop':'0.3','addbook':'rgba(255, 255, 255, 0.38)','addmovie':'rgba(255, 255, 255, 0.38)',";
+                      var style3 = "'bcl':'white','mcl':'white','mh':'#00657C','bh':'rgb(0, 182, 205);','mhl':'#003945','bhl':'rgb(82, 214, 231)','yet':'color:white','small':'color:white;opacity: 0.68;','spanop':'0.3','addbook':'rgba(255, 255, 255, 0.38)','addmovie':'rgba(255, 255, 255, 0.38)',";
+                      var style4 = "'bcl':'rgb(103, 186, 255)','mcl':'#F56979','mh':'white','bh':'white','mhl':'#F56979','bhl':'rgb(103, 186, 255)','yet':'0:0','small':'0:0','spanop':'0.1','addbook':'rgba(103, 186, 255, 0.63)','addmovie':'rgba(245, 105, 121, 0.65)',";
 
-                    res.render('mindexreg',{'books':booksvar,'movies':moviesvar,'uid':done.uid,'newbooks':done.newbooks,'readbooks':done.readbooks,'newmovies':done.newmovies,'seenmovies':done.seenmovies});
+                      if(done.styleint===1){
+                        style=style1;
+                      }
+                      if(done.styleint===2){
+                        style=style2;
+                      }
+                      if(done.styleint===3){
+                        style=style3;
+                      }
+                      if(done.styleint===4){
+                        style=style4;
+                      }
+                    eval("res.render('mindexreg',{"+style+"'books':booksvar,'movies':moviesvar,'uid':done.uid,'newbooks':done.newbooks,'readbooks':done.readbooks,'newmovies':done.newmovies,'seenmovies':done.seenmovies});");
                   }  
                     
                  
