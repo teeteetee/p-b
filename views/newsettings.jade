@@ -216,14 +216,15 @@ head
             span(class='glyphicon glyphicon-stop' style='font-size:30px;color:white;')
             span(class='glyphicon glyphicon-stop' style='font-size:30px;color:gray;')
         button(class='btn btn-default' id='changecolor' type='button') Change color
-      .row(style='color:white;')
-        .col-xs-12
-          h3 Share your page:
-      .row.cont(id='pageoutlink')
-        .col-xs-6
-          .highlight
-            pre
-              code(class='language-bash') http://peopleandbooks.com/lists/#{uid}
+      #pageoutlink(style='display:none;')
+        .row(style='color:white;')
+          .col-xs-12
+            h3 Share your page:
+        .row.cont
+          .col-xs-6
+            .highlight
+              pre
+                code(class='language-bash') http://peopleandbooks.com/lists/#{uid}
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
       script.

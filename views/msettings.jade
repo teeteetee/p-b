@@ -208,14 +208,15 @@ head
               span(class='glyphicon glyphicon-stop' style='font-size:30px;color:white;')
               span(class='glyphicon glyphicon-stop' style='font-size:30px;color:gray;')
           button(class='btn btn-default' id='changecolor' type='button') Change color
-      .row
-        .col-xs-12
-          h3(style='color:#004C5E;') Share your page:
-      .row(id='pageoutlink' style='display:none;')
-        .col-xs-12
-          .highlight
-            pre
-              code(class='language-bash') http://peopleandbooks.com/lists/#{uid}
+      #pageoutlink(style='display:none;')
+        .row
+          .col-xs-12
+            h3(style='color:#004C5E;') Share your page:
+        .row
+          .col-xs-12
+            .highlight
+              pre
+                code(class='language-bash') http://peopleandbooks.com/lists/#{uid}
     button(type='button' id='showLeft' style='color:white;font-size:30px;position:absolute;bottom:15px;right:15px;border:0px;background-color:transparent;') 
       span(class='glyphicon glyphicon-align-justify ')          
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
