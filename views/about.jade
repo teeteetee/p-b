@@ -149,6 +149,18 @@ head
       a {
         color:white !important;
       }
+      #stlink {
+        color:gray !important;
+      }
+      #stlink:hover {
+        text-decoration:none !important;
+      }
+      #stlink:focus {
+        text-decoration:none !important;
+      }
+      #stlink:active {
+        text-decoration:none !important;
+      }
   body
     script.
       if(screen.width < 414){
@@ -192,7 +204,7 @@ head
             span(style='color:#00c9ff;') private
       .row(style='color:gray;')
         .col-xs-12
-          a(href='http://topandviews.com')
+          a(href='http://topandviews.com' id='stlink')
             h5(style='text-align:center;margin-top:30vh;') Top&Views Design
           h5(style='text-align:center;') 2015 
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
