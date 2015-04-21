@@ -1096,6 +1096,78 @@ app.get('/m',function(req,res){
   res.render('newmindex');}
   });
 
+app.get('/m/people',function(req,res){
+  if(req.session.mail)
+  {users.findOne({mail:req.session.mail},function(err,done){
+              if(err){
+                res.redirect('/');
+              }
+              else {
+                if(done){
+                  friends.findOne({mail:req.session.mail},function(err,donetwo){
+                    if(err){
+
+                    }
+                    else {
+                      if(donetwo.people)
+                      {
+                       res.render('mpeople',{'mail':done.mail,'uid':done.uid,'people':JSON.stringify(donetwo.people)});
+                      }
+                      else {
+                         res.render('mpeople',{'mail':done.mail,'uid':done.uid,'people':0});
+                      }
+                    }
+                  });
+                }
+                else{
+                  res.redirect('/');
+                }
+              }
+
+      });
+}
+      else {
+        res.redirect('/');
+      }
+});
+
+app.get('/m/settings',function(req,res){
+  if(req.session.mail)
+  {users.findOne({mail:req.session.mail},function(err,done){
+              if(err){
+                res.redirect('/');
+              }
+              else {
+                if(done){
+                  var checkbox ='';
+                  switch(done.styleint) {
+                    case(1):
+                     checkbox='first';
+                    break
+                    case(2):
+                     checkbox='second';
+                    break
+                    case(3):
+                     checkbox='third';
+                    break
+                    case(4):
+                     checkbox='fourth';
+                    break
+                  }
+                  res.render('msettings',{'mail':done.mail,'uid':done.uid,'checkbox':checkbox,'pub':done.pub});
+                }
+                else{
+                  res.redirect('/');
+                }
+              }
+
+      });
+}
+      else {
+        res.redirect('/');
+      }
+});
+
 app.get('/m/about',function(req,res){
   if(req.session.mail){
     res.render('mabout');
