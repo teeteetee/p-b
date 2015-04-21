@@ -155,6 +155,9 @@ head
       a {
         color:white !important;
       }
+      .activemenuitem {
+        background-color:#333;
+      }
   body
     script.
       if(screen.width < 414){
@@ -168,6 +171,7 @@ head
              button(class="btn btn-default" type="submit" id='searchbutton' style='padding-top:9px;padding-bottom:9px;background-color:#333;color:gray;border-color:#333;border-top-right-radius:30px;border-bottom-right-radius:30px;')
                span(class='glyphicon glyphicon-search') 
       a(href="/") Мои списки
+      a(class='activemenuitem') Мои списки
       a(href="/settings") Настройки
       a(href='/about') О проекте
       a(href="/logout") Выйти
