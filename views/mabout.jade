@@ -278,98 +278,14 @@ head
     footer(class='footer')
       .container
         .row(style='text-align:center;')
-          .col-xs-3.addbookbutton
-            h1( style='color:white;font-size:40px;padding-top:10px;padding-bottom:10px;margin-top:0px;margin-bottom:0px;') +
-          .col-xs-3.activebutton( id='showbooks')
-            h1(style='color:white;font-size:40px;padding-top:10px;padding-bottom:10px;margin-top:0px;margin-bottom:0px;') B
-          .col-xs-3(id='showmovies')
-            h1(style='color:white;font-size:40px;padding-top:10px;padding-bottom:10px;margin-top:0px;margin-bottom:0px;') M
           .col-xs-3
+            span(class='glyphicon glyphicon-home ' id='showLeft' style='color:white;font-size:30px;padding-top:13px;')
+          .col-xs-3.col-xs-offset-6
             span(class='glyphicon glyphicon-align-justify ' id='showLeft' style='color:white;font-size:30px;padding-top:13px;')
-    
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
     script(src='/js/bootstrap.min.js')
     script.
       
-        // diable/allow cheking checkboxes
-        $('#newbook').click(function() {
-         if ($(this).is(':checked')) {
-           $('#star').attr('checked',false);
-           $('#attention').attr('checked',false);
-           $('#star').attr('disabled', false);
-           $('#attention').attr('disabled', true);
-         } else {
-           $('#star').attr('checked',false);
-           $('#attention').attr('checked',false);
-           $('#attention').attr('disabled', false);
-           $('#star').attr('disabled', true);
-         }
-         });
-        $('#newmovie').click(function() {
-         if ($(this).is(':checked')) {
-           $('#moviestar').attr('checked',false);
-           $('#movieattention').attr('checked',false);
-           $('#moviestar').attr('disabled', false);
-           $('#movieattention').attr('disabled', true);
-         } else {
-           $('#moviestar').attr('checked',false);
-           $('#movieattention').attr('checked',false);
-           $('#movieattention').attr('disabled', false);
-           $('#moviestar').attr('disabled', true);
-         }
-         });
-        // end of disable/allowchecking checkboxes
-      // CA5B52 for movies 99362F
-      $('.addbookbutton').click(function(){
-          if($('#showbooks').hasClass('activebutton'))
-          {$('#addbook').slideToggle();
-          if($('#maincont').css('-webkit-filter')==='brightness(1)'){
-            $('#maincont').css('-webkit-filter','brightness(0.4)');
-           }
-           else {
-            $('#maincont').css('-webkit-filter','brightness(1)');
-           }
-          }
-          else
-            {$('#addmovie').slideToggle();
-          if($('#maincont').css('-webkit-filter')==='brightness(1)'){
-            $('#maincont').css('-webkit-filter','brightness(0.4)');
-           }
-           else {
-            $('#maincont').css('-webkit-filter','brightness(1)');
-           }
-          }
-          });
-      $('#showmovies').click(function(){
-         if($('#addbook').css('display') === 'block')
-         {
-          $('#addbook').slideToggle();
-         }
-         $('#booksrow').fadeOut('400',function(){$('#moviesrow').fadeIn();});
-         $('#maincont').css('background-color','#{mh}');
-         $('.activebutton').removeClass('activebutton');
-         $('#showmovies').addClass('activebutton');
-         $('.modpanel').each(function(){
-          if($(this).css('display')==='block'){
-            $(this).slideToggle();
-          }
-          });
-        });
-      $('#showbooks').click(function(){
-        if($('#addmovie').css('display') === 'block')
-         {
-          $('#addmovie').slideToggle();
-         }
-         $('#moviesrow').fadeOut('400',function(){$('#booksrow').fadeIn();});
-         $('#maincont').css('background-color','#{bh}');
-         $('.activebutton').removeClass('activebutton');
-         $('#showbooks').addClass('activebutton');
-         $('.modpanel').each(function(){
-          if($(this).css('display')==='block'){
-            $(this).slideToggle();
-          }
-          });
-        });
       var counter =0;
         var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
             menuRight = document.getElementById( 'cbp-spmenu-s2' ),
