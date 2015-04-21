@@ -124,7 +124,11 @@ app.get('/logout',function(req,res){
 //});
 
 app.get('/about',function(req,res){
-  res.render('about');
+  if(req.session.mail){
+    res.render('aboutout');
+  }
+  else 
+  {res.render('about');}
 });
 
 app.get('/lists/:lid',function(req,res){
@@ -1093,7 +1097,12 @@ app.get('/m',function(req,res){
   });
 
 app.get('/m/about',function(req,res){
-  res.render('mabout');
+  if(req.session.mail){
+    res.render('mabout');
+  }
+  else
+  {res.render('maboutout');
+ }
 })
 
 app.get('/dropplaces',function(req,res){

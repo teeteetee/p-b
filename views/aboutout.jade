@@ -26,8 +26,8 @@ head
       }
       body {
       min-width:768px;
-      background-color:#333;
       font-family:roboto-thin;
+      background-color:#333;
       }
       .navbar-nav {
        float: right;
@@ -146,14 +146,20 @@ head
           outline:0px !important;
           -webkit-appearance:none;
       }
-      .cont {
-        margin-left:20px;
-      }
-      #inserts {
-        padding-left:20px;
-      }
       a {
         color:white !important;
+      }
+      #stlink {
+        color:gray !important;
+      }
+      #stlink:hover {
+        text-decoration:none !important;
+      }
+      #stlink:focus {
+        text-decoration:none !important;
+      }
+      #stlink:active {
+        text-decoration:none !important;
       }
   body
     script.
@@ -167,40 +173,39 @@ head
            span(class='input-group-btn')
              button(class="btn btn-default" type="submit" id='searchbutton' style='padding-top:9px;padding-bottom:9px;background-color:#333;color:gray;border-color:#333;border-top-right-radius:30px;border-bottom-right-radius:30px;')
                span(class='glyphicon glyphicon-search') 
-      a(href="/") Мои списки
-      a(href="/settings") Настройки
-      a(href='/about') О проекте
-      a(href="/logout") Выйти
+      a(href='/') На главную
       img(class="media-object img-circle" src="/images/pblogov4.png" style='position:absolute;opacity:0.2;left:88px;bottom:20px;width:64px;height:64px;' alt="...")
     .sidebar(style='width:74px;position:fixed;height:100%;background-color:#1d1d1d;text-align:center;z-index:2000;')
       //img(class="media-object img-circle" src="/bootstrap/images/seo.jpg" style='margin-left:5px;margin-top:30px;width:64px;height:64px;' alt="...")
       span(class='glyphicon glyphicon-align-justify' id='showLeft' style='color:#333;font-size:30px;margin-top:20px;')
-    .container(style='padding-left:40px;')  
-      .row(style='background-color:darkgray;')
-        .col-xs-12(id='buttoninsert')
-          h3 People
-          h5(style='margin-bottom:0px;') #{mail}
+    .container(style='padding-left:94px;')  
       .row
-        .col-xs-12(id='inserts')
+        .col-xs-12
+           img(class="media-object img-circle" src="/images/pblogov4.png" style='margin-top:7vh;margin-bottom:20px;margin-left:auto;margin-right:auto;width:100px;height:100px;' alt="...")
+      .row(style='color:white;')
+        .col-xs-12
+          h1(style='margin-top:7vh;margin-bottom:15vh;text-align:center;') Tell me what you read, and I will tell you who you are.
+            small(style='margin-left:20px;') François Mauriac
+      .row(style='color:#ccc;text-align:center;')
+        .col-xs-4(style='border-right:1px solid gray;')
+          h4 
+            span(style='color:#ff00ab;') List
+            |  your books and movies
+        .col-xs-4(style='border-right:1px solid gray;')
+          h4 
+            span(style='color:#ff9900;') Share
+            |  with friends and collegues
+        .col-xs-4
+          h4 Or keep it 
+            span(style='color:#00c9ff;') private
+      .row(style='color:gray;')
+        .col-xs-12
+          a(href='http://topandviews.com' id='stlink')
+            h5(style='text-align:center;margin-top:30vh;') Top&Views Design
+          h5(style='text-align:center;') 2015 
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
       script.
-        var people = !{people};
-        if(people){
-          people.forEach(function(element,index,array){
-            var rnum = index+1;
-            var badgefont = 'font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;';
-            var insert= "<div class='row'><div class='col-xs-12'><a href='http://peopleandbooks.com/lists/"+element.uid+"'><h4 style='color:white;'><small style='margin-right:10px;'>"+rnum+"</small>"+element.mail;
-             if(element.newb||element.newm){
-              insert+="<span style='margin-left:10px;"+badgefont+"' class='label label-danger'>New items</span>";
-             }
-             insert+="</h4></a></div></div>";
-            $('#inserts').append(insert);
-          });
-        }
-        else {
-         $('#inserts').append("<h4 style='color:white'> Людей нет</h4>");
-        }
         // Sliding menu mechanics
         var counter =0;
         var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
