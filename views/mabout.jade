@@ -188,52 +188,14 @@ head
           outline:0px !important;
           -webkit-appearance:none;
       }
-      #addbook{
-        background-color: #A9A9A9;
-      }
       .activebutton {
         background-color:#252525;
       }
       label {
         color:white;
       }
-      .h1 .small,
-       .h1 small,
-       .h2 .small,
-       .h2 small,
-       .h3 .small,
-       .h3 small,
-       .h4 .small,
-       .h4 small,
-       .h5 .small,
-       .h5 small,
-       .h6 .small,
-       .h6 small,
-       h1 .small,
-       h1 small,
-       h2 .small,
-       h2 small,
-       h3 .small,
-       h3 small,
-       h4 .small,
-       h4 small,
-       h5 .small,
-       h5 small,
-       h6 .small,
-       h6 small {
-      #{small}
-      }
-      .modpanel .btn{
-        margin:10px;
-        border-radius:30px;
-      }
-      #booksrow {
-       transition: 0.5s -webkit-filter linear;
-       -webkit-filter:brightness(1);
-      }
-      #moviesrow {
-        -webkit-filter:brightness(1);
-       transition: 0.5s -webkit-filter linear;
+      .activemenuitem {
+        background-color:#333;
       }
   body
     nav(class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1")
@@ -248,7 +210,7 @@ head
       a(href='/') Мои списки
       a(href='/people') Списки друзей
       a(href="http://m.peopleandbooks.com/settings") Настройки
-      a(href='http://m.peopleandbooks.com/about') О проекте
+      a(class='activemenuitem') О проекте
       a(href="http://peopleandbooks.com/logout") Выйти
     .container( id='maincont' style='-webkit-filter:brightness(1);overflow:auto;height:100%;')
       .row(style='background-color:#2F83B0;')

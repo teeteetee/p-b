@@ -233,6 +233,9 @@ head
       #moviesrow {
        transition: 0.5s -webkit-filter linear;
       }
+      .activemenuitem {
+        background-color:#333;
+      }
   body
     nav(class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1")
       img(class="media-object img-circle" src="/images/pblogov4.png" style='margin-top:20px;margin-bottom:20px;margin-left:auto;margin-right:auto;width:64px;height:64px;' alt="...")
@@ -243,6 +246,8 @@ head
              span(class='input-group-btn')
                button(class="btn btn-default" type="submit" id='searchbutton' style='padding-top:9px;padding-bottom:9px;background-color:#333;color:gray;border-color:#333;border-top-right-radius:30px;border-bottom-right-radius:30px;')
                  span(class='glyphicon glyphicon-search') 
+      a(class='activemenuitem') Мои списки
+      a(href='/people') Списки друзей
       a(href="http://m.peopleandbooks.com/settings") Настройки
       a(href='http://m.peopleandbooks.com/about') О проекте
       a(href="http://peopleandbooks.com/logout") Выйти
