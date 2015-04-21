@@ -171,9 +171,6 @@ head
       a(href='/about') О проекте
       a(href="/logout") Выйти
       img(class="media-object img-circle" src="/images/pblogov4.png" style='position:absolute;opacity:0.2;left:88px;bottom:20px;width:64px;height:64px;' alt="...")
-    .sidebar(style='width:74px;position:fixed;height:100%;background-color:#1d1d1d;text-align:center;z-index:2000;')
-      //img(class="media-object img-circle" src="/bootstrap/images/seo.jpg" style='margin-left:5px;margin-top:30px;width:64px;height:64px;' alt="...")
-      span(class='glyphicon glyphicon-align-justify' id='showLeft' style='color:#333;font-size:30px;margin-top:20px;')
     .container(style='padding-left:40px;')  
       .row(style='color:#ccc;')
         .col-xs-12
@@ -218,116 +215,118 @@ head
           .highlight
             pre
               code(class='language-bash') http://peopleandbooks.com/lists/#{uid}
-      script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
-      script(async src='/js/bootstrap.min.js')
-      script.
-        var currentstatus = #{pub};
-        if(currentstatus){
-          $('#public').addClass('active');
+    button(type='button' id='showLeft' style='color:white;font-size:30px;position:absolute;bottom:15px;right:15px;border:0px;background-color:transparent;') 
+      span(class='glyphicon glyphicon-align-justify ')          
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
+    script(async src='/js/bootstrap.min.js')
+    script.
+      var currentstatus = #{pub};
+      if(currentstatus){
+        $('#public').addClass('active');
+      }
+      else {
+        $('#private').addClass('active');
+      }
+      $('##{checkbox}').attr('checked',true);
+      // Sliding menu mechanics
+      var counter =0;
+      var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
+          menuRight = document.getElementById( 'cbp-spmenu-s2' ),
+          showLeft = document.getElementById( 'showLeft' ),
+          showRight = document.getElementById( 'showRight' ),
+          showLeftPush = document.getElementById( 'showLeftPush' ),
+          showRightPush = document.getElementById( 'showRightPush' ),
+          body = document.body;
+      
+      showLeft.onclick = function() {
+        switch(counter)
+          {case(1):
+                       counter=0;
+                       $('#showLeft').removeClass('active' );
+                       $('#cbp-spmenu-s1').removeClass('cbp-spmenu-open' );
+                       $('.container').css('-webkit-filter','brightness(1)');
+                      break;
+                      case(0):
+                        counter=1;
+                        $('#showLeft').addClass('active' );
+                        $('#cbp-spmenu-s1').addClass('cbp-spmenu-open' );
+                        $('.container').css('-webkit-filter','brightness(0.6)');
+                      break;
+                    }
+      };
+      //end of sliding menu mechanics
+      $('#first').click(function() {
+         $(this).attr('checked',true);
+         $('#third').attr('checked', false);
+         $('#second').attr('checked', false);
+         $('#fourth').attr('checked', false);
+       });
+      $('#second').click(function() {
+         $(this).attr('checked',true);
+         $('#first').attr('checked', false);
+         $('#third').attr('checked', false);
+       });
+      $('#third').click(function() {
+         $(this).attr('checked',true);
+         $('#first').attr('checked', false);
+         $('#second').attr('checked', false);
+       });
+      $('#fourth').click(function() {
+         $(this).attr('checked',true);
+         $('#third').attr('checked', false);
+         $('#second').attr('checked', false);
+         $('#first').attr('checked', false);
+       });
+      // RUNREGISTER FUNCTION
+      var allowstylechange =1;
+      function changecolor() {
+        if(!allowstylechange){
+          return;
         }
-        else {
-          $('#private').addClass('active');
+       allowstylechange =0;
+       var style;
+       if($('#first').is(':checked')){
+        style = 1;
+      }
+      if($('#second').is(':checked')){
+        style = 2;
+      }
+      if($('#third').is(':checked')){
+        style = 3;
+      }
+      if($('#fourth').is(':checked')){
+        style = 4;
+      }
+      console.log('style: '+style);
+      request = new XMLHttpRequest();
+      request.onreadystatechange = function () {
+      var DONE = this.DONE || 4;
+      if (this.readyState === DONE){
+      parsed = JSON.parse(request.responseText);
+      console.log(parsed);
+      // do your job here
+      if (parsed.trouble === 1)
+      {
+       
+      }
+      else { alert('Colors changed!');
+      allowstylechange=1;
+      }
+      }
+      };
+      request.open('POST', '/settings/cc', true);
+      request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+      request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      // Most libraries like jQuery/Prototype/Dojo do this
+      request.send("uid=#{uid}&stylenum="+style);
         }
-        $('##{checkbox}').attr('checked',true);
-        // Sliding menu mechanics
-        var counter =0;
-        var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
-            menuRight = document.getElementById( 'cbp-spmenu-s2' ),
-            showLeft = document.getElementById( 'showLeft' ),
-            showRight = document.getElementById( 'showRight' ),
-            showLeftPush = document.getElementById( 'showLeftPush' ),
-            showRightPush = document.getElementById( 'showRightPush' ),
-            body = document.body;
-        
-        showLeft.onclick = function() {
-          switch(counter)
-            {case(1):
-                         counter=0;
-                         $('#showLeft').removeClass('active' );
-                         $('#cbp-spmenu-s1').removeClass('cbp-spmenu-open' );
-                         $('.container').css('-webkit-filter','brightness(1)');
-                        break;
-                        case(0):
-                          counter=1;
-                          $('#showLeft').addClass('active' );
-                          $('#cbp-spmenu-s1').addClass('cbp-spmenu-open' );
-                          $('.container').css('-webkit-filter','brightness(0.6)');
-                        break;
-                      }
-        };
-        //end of sliding menu mechanics
-        $('#first').click(function() {
-           $(this).attr('checked',true);
-           $('#third').attr('checked', false);
-           $('#second').attr('checked', false);
-           $('#fourth').attr('checked', false);
-         });
-        $('#second').click(function() {
-           $(this).attr('checked',true);
-           $('#first').attr('checked', false);
-           $('#third').attr('checked', false);
-         });
-        $('#third').click(function() {
-           $(this).attr('checked',true);
-           $('#first').attr('checked', false);
-           $('#second').attr('checked', false);
-         });
-        $('#fourth').click(function() {
-           $(this).attr('checked',true);
-           $('#third').attr('checked', false);
-           $('#second').attr('checked', false);
-           $('#first').attr('checked', false);
-         });
-        // RUNREGISTER FUNCTION
-        var allowstylechange =1;
-        function changecolor() {
-          if(!allowstylechange){
-            return;
-          }
-         allowstylechange =0;
-         var style;
-         if($('#first').is(':checked')){
-          style = 1;
-        }
-        if($('#second').is(':checked')){
-          style = 2;
-        }
-        if($('#third').is(':checked')){
-          style = 3;
-        }
-        if($('#fourth').is(':checked')){
-          style = 4;
-        }
-        console.log('style: '+style);
-        request = new XMLHttpRequest();
-        request.onreadystatechange = function () {
-        var DONE = this.DONE || 4;
-        if (this.readyState === DONE){
-        parsed = JSON.parse(request.responseText);
-        console.log(parsed);
-        // do your job here
-        if (parsed.trouble === 1)
-        {
-         
-        }
-        else { alert('Colors changed!');
-        allowstylechange=1;
-        }
-        }
-        };
-        request.open('POST', '/settings/cc', true);
-        request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
-        request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        // Most libraries like jQuery/Prototype/Dojo do this
-        request.send("uid=#{uid}&stylenum="+style);
-          }
-        //end of changecolor
-        $('#changecolor').click(changecolor);
-        //pub change function
-        var allowpubchange =1;
-        function pubchange(to) {
-          if(!allowpubchange || currentstatus===to){
-            return;
+      //end of changecolor
+      $('#changecolor').click(changecolor);
+      //pub change function
+      var allowpubchange =1;
+      function pubchange(to) {
+        if(!allowpubchange || currentstatus===to){
+          return;
           }
          allowpubchange =0;
         request = new XMLHttpRequest();
