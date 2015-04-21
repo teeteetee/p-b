@@ -335,6 +335,7 @@ app.post('/addbook',function(req,res){
                                           var newelem = element2;
                                           newelem.newb=1;
                                           console.log('7. Changed data and produced new element: '+JSON.stringify(newelem));
+                                          console.log('7.5 index2: '+index2);
                                           peoplearr=peoplearr.splice(index2,1);
                                           peoplearr.push(newelem);
                                            console.log('8. Modified peoplearr to include changed element: '+JSON.stringify(peoplearr));
