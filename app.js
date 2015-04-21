@@ -256,10 +256,10 @@ app.post('/addbook',function(req,res){
   console.log('adding a book');
   var ms = {};
   ms.trouble =1;
-  if(req.body.uid.length >30 || req.body.booktitle.length >30 ||req.body.newbook.length >30 || req.body.author.length >30 || req.body.star.length >30 || req.body.attention.length >30) {
-    res.send(ms);
-    return;
-  }
+  //if(req.body.uid.length >30 || req.body.booktitle.length >30 ||req.body.newbook.length >30 || req.body.author.length >30 || req.body.star.length >30 || req.body.attention.length >30) {
+  //  res.send(ms);
+  //  return;
+  //}
   if (req.session.mail ){
     var vuid = parseInt(req.body.uid);
     var vbooktitle = req.body.booktitle;
@@ -330,10 +330,7 @@ app.post('/addbook',function(req,res){
                                           newelem.newb=1;
                                           peoplearr.splice(index2,1);
                                           peoplearr.push(newelem);
-                                           console.log('uid: '+element2+',people:  '+peoplearr);
-                                           peoplearr.forEach(function(element3,index3,array3){
-                                            console.log('array element: '+JSON.stringify(element3));
-                                           });
+                                           console.log(JSON.stringify(newelem));
                                           friends.update({uid:element},{$set:{people:peoplearr}});
                                         }
                                       });
@@ -435,10 +432,7 @@ app.post('/addmovie',function(req,res){
                                           newelem.newm=1;
                                           peoplearr.splice(index2,1);
                                           peoplearr.push(newelem);
-                                          console.log('uid: '+element2+',people:  '+peoplearr);
-                                          peoplearr.forEach(function(element3,index3,array3){
-                                            console.log('array element: '+JSON.stringify(element3));
-                                           });
+                                          console.log(JSON.stringify(newelem));
                                           friends.update({uid:element},{$set:{people:peoplearr}});
                                         }
                                       });
