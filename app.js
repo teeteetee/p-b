@@ -222,7 +222,7 @@ app.post('/modbook',function(req,res){
           var bookstatus;
           if(rem){
             bookstatus = element.newbook;
-           doc.books=doc.books.splice(index, 1);
+           doc.books.splice(index, 1);
            users.update({uid:vuid},{$set:{books:doc.books}});
            users.update({uid:vuid},{$inc:{totalbooks:-1}});
            if(element.newbook===1){
@@ -337,7 +337,7 @@ app.post('/addbook',function(req,res){
                                           console.log('7. Changed data and produced new element: '+JSON.stringify(newelem));
                                           console.log('7.5 index2: '+index2);
                                           if(peoplearr.length>1)
-                                          {peoplearr=peoplearr.splice(index2,1);
+                                          {peoplearr.splice(index2,1);
                                           peoplearr.push(newelem);}
                                           else {
                                             peoplearr[0]=newelem;
@@ -447,7 +447,7 @@ app.post('/addmovie',function(req,res){
                                         if(element2.uid===vuid) {
                                           var newelem = element2;
                                           newelem.newm=1;
-                                          peoplearr=peoplearr.splice(index2,1);
+                                          peoplearr.splice(index2,1);
                                           peoplearr.push(newelem);
                                           console.log(JSON.stringify(newelem));
                                           friends.update({uid:element},{$set:{people:peoplearr}});
@@ -496,7 +496,7 @@ app.post('/modmovie',function(req,res){
           var moviestatus;
           if(rem){
             moviestatus = element.newmovie;
-           doc.movies=doc.movies.splice(index, 1);
+           doc.movies.splice(index, 1);
            users.update({uid:vuid},{$set:{movies:doc.movies}});
            users.update({uid:vuid},{$inc:{totalmovies:-1}});
            if(element.newmovie===1){
@@ -907,7 +907,7 @@ app.post('/remfriend',function(req,res){
                 remindex=index;
               }
                });
-             peoplearr=peoplearr.splice(remindex, 1);
+             peoplearr.splice(remindex, 1);
              friends.update({mail:req.session.mail},{$set:{people:peoplearr}});
              friends.findOne({uid:friendid},function(err,doc){
               if(err){
@@ -922,7 +922,7 @@ app.post('/remfriend',function(req,res){
                       remindex=index;
                     }
                   });
-                    updatelistarr = updatelistarray.splice(remindex,1);
+                    updatelistarray.splice(remindex,1);
                     friends.update({uid:friendid},{$set:{updatelist:updatelistarr}});
                     ms.trouble=0;
                  res.send(ms);

@@ -163,7 +163,7 @@ head
         color:#333;
       }
       .yet{
-       color:white;
+       #{yet};
       }
       .alreadyb{
       color:rgba(0, 0, 0, 0.27);
@@ -220,7 +220,7 @@ head
        h5 small,
        h6 .small,
        h6 small {
-      color: rgba(245, 245, 245, 0.68);
+      #{small}
       }
       .modpanel .btn{
         margin:10px;
@@ -247,24 +247,24 @@ head
       a(href="http://m.peopleandbooks.com/settings") Настройки
       a(href='http://m.peopleandbooks.com/about') О проекте
       a(href="http://peopleandbooks.com/logout") Выйти
-    .container( id='maincont' style='-webkit-filter:brightness(1);background-color:#52CA8F;overflow:auto;height:100%;padding-right:0px;padding-bottom:74px;')
+    .container( id='maincont' style='-webkit-filter:brightness(1);background-color:#{bh};overflow:auto;height:100%;padding-right:0px;padding-bottom:74px;')
       #booksrow.row
         .col-xs-12
           .row
             .col-xs-12(style='text-align:center;')
-              h1(id='booksfigures' style='font-family:high;font-size:100px;font-weight:bold;color:white;padding-right:20px;')
+              h1(id='booksfigures' style='font-family:high;font-size:100px;font-weight:bold;color:#{bcl};padding-right:20px;')
           .row
             #bookinsert.col-xs-12
       #moviesrow.row(style='display:none;')
         .col-xs-12
           .row
             .col-xs-12(style='text-align:center;')
-              h1(id='moviesfigures' style='font-family:high;font-size:100px;font-weight:bold;color:white;padding-right:20px;')
+              h1(id='moviesfigures' style='font-family:high;font-size:100px;font-weight:bold;color:#{mcl};padding-right:20px;')
           .row
             #movieinsert.col-xs-12
     footer(class='footer')
       .container
-        .row(id='addbook' style='display:none;padding-top:20px;background-color:#378961;')
+        .row(id='addbook' style='display:none;padding-top:20px;background-color:#{bhl};')
           .col-xs-12
             .form-group
               label(for="exampleInputEmail1") Название
@@ -292,7 +292,7 @@ head
                   a(style='background-color:#EFAF4F;' id='booksubmitbutton') Add
                 li(class="next")
                   a( class='addbookbutton' style='background-color:#999;') Close
-        .row(id='addmovie' style='display:none;padding-top:20px;background-color:#99362F;')
+        .row(id='addmovie' style='display:none;padding-top:20px;background-color:#{mhl};')
           .col-xs-12
             .form-group
                 label(for="exampleInputEmail1") Название
@@ -464,7 +464,7 @@ head
           $('#addbook').slideToggle();
          }
          $('#booksrow').fadeOut('400',function(){$('#moviesrow').fadeIn();});
-         $('#maincont').css('background-color','#FAB142');
+         $('#maincont').css('background-color','#{mh}');
          $('.activebutton').removeClass('activebutton');
          $('#showmovies').addClass('activebutton');
          $('.modpanel').each(function(){
@@ -479,7 +479,7 @@ head
           $('#addmovie').slideToggle();
          }
          $('#moviesrow').fadeOut('400',function(){$('#booksrow').fadeIn();});
-         $('#maincont').css('background-color','#52CA8F');
+         $('#maincont').css('background-color','#{bh}');
          $('.activebutton').removeClass('activebutton');
          $('#showbooks').addClass('activebutton');
          $('.modpanel').each(function(){
