@@ -187,50 +187,51 @@ head
           h5(style='margin-bottom:0px;') #{mail}
       .row
         .col-xs-12(id='inserts')
-      script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
-      script(async src='/js/bootstrap.min.js')
-      script.
-        var people = !{people};
-        if(people){
-          people.forEach(function(element,index,array){
-            var rnum = index+1;
-            var badgefont = 'font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;';
-            var insert= "<div class='row'><div class='col-xs-12'><a href='http://peopleandbooks.com/lists/"+element.uid+"'><h4 style='color:white;'><small style='margin-right:10px;'>"+rnum+"</small>"+element.mail;
-             if(element.newb||element.newm){
-              insert+="<span style='margin-left:10px;"+badgefont+"' class='label label-danger'>New items</span>";
-             }
-             insert+="</h4></a></div></div>";
-            $('#inserts').append(insert);
-          });
-        }
-        else {
-         $('#inserts').append("<h4 style='color:white'> Людей нет</h4>");
-        }
-        // Sliding menu mechanics
-        var counter =0;
-        var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
-            menuRight = document.getElementById( 'cbp-spmenu-s2' ),
-            showLeft = document.getElementById( 'showLeft' ),
-            showRight = document.getElementById( 'showRight' ),
-            showLeftPush = document.getElementById( 'showLeftPush' ),
-            showRightPush = document.getElementById( 'showRightPush' ),
-            body = document.body;
-        
-        showLeft.onclick = function() {
-          switch(counter)
-            {case(1):
-                         counter=0;
-                         $('#showLeft').removeClass('active' );
-                         $('#cbp-spmenu-s1').removeClass('cbp-spmenu-open' );
-                         $('.container').css('-webkit-filter','brightness(1)');
-                        break;
-                        case(0):
-                          counter=1;
-                          $('#showLeft').addClass('active' );
-                          $('#cbp-spmenu-s1').addClass('cbp-spmenu-open' );
-                          $('.container').css('-webkit-filter','brightness(0.6)');
-                        break;
-                      }
-        };
-        //end of sliding menu mechanics
+    button(type='button' id='showLeft' style='color:white;font-size:30px;position:absolute;bottom:15px;right:15px;border:0px;background-color:transparent;') 
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
+    script(async src='/js/bootstrap.min.js')
+    script.
+      var people = !{people};
+      if(people){
+        people.forEach(function(element,index,array){
+          var rnum = index+1;
+          var badgefont = 'font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;';
+          var insert= "<div class='row'><div class='col-xs-12'><a href='http://peopleandbooks.com/lists/"+element.uid+"'><h4 style='color:white;'><small style='margin-right:10px;'>"+rnum+"</small>"+element.mail;
+           if(element.newb||element.newm){
+            insert+="<span style='margin-left:10px;"+badgefont+"' class='label label-danger'>New items</span>";
+           }
+           insert+="</h4></a></div></div>";
+          $('#inserts').append(insert);
+        });
+      }
+      else {
+       $('#inserts').append("<h4 style='color:white'> Людей нет</h4>");
+      }
+      // Sliding menu mechanics
+      var counter =0;
+      var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
+          menuRight = document.getElementById( 'cbp-spmenu-s2' ),
+          showLeft = document.getElementById( 'showLeft' ),
+          showRight = document.getElementById( 'showRight' ),
+          showLeftPush = document.getElementById( 'showLeftPush' ),
+          showRightPush = document.getElementById( 'showRightPush' ),
+          body = document.body;
+      
+      showLeft.onclick = function() {
+        switch(counter)
+          {case(1):
+                       counter=0;
+                       $('#showLeft').removeClass('active' );
+                       $('#cbp-spmenu-s1').removeClass('cbp-spmenu-open' );
+                       $('.container').css('-webkit-filter','brightness(1)');
+                      break;
+                      case(0):
+                        counter=1;
+                        $('#showLeft').addClass('active' );
+                        $('#cbp-spmenu-s1').addClass('cbp-spmenu-open' );
+                        $('.container').css('-webkit-filter','brightness(0.6)');
+                      break;
+                    }
+      };
+      //end of sliding menu mechanics
       
