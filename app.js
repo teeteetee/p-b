@@ -329,8 +329,8 @@ app.post('/addbook',function(req,res){
                                           var newelem = element;
                                           newelem.newb=1;
                                           peoplearr.splice(index2,1);
-                                          peoplearr.push(newelem)
-                                           console.log('uid: '+element+',people:  '+peoplearr);
+                                          peoplearr.push(newelem);
+                                           console.log('uid: '+element2+',people:  '+peoplearr);
                                            peoplearr.forEach(function(element3,index3,array3){
                                             console.log('array element: '+JSON.stringify(element3));
                                            });
@@ -429,13 +429,13 @@ app.post('/addmovie',function(req,res){
                                     }
                                     else {
                                       var peoplearr = fin.people;
-                                      peoplearr.forEach(function(element2,index,array){
+                                      peoplearr.forEach(function(element2,index2,array2){
                                         if(element2.uid===vuid) {
                                           var newelem = element;
-                                          newelem.newb=1;
+                                          newelem.newm=1;
                                           peoplearr.splice(index2,1);
-                                          peoplearr.push(newelem)
-                                          console.log('uid: '+element+',people:  '+peoplearr);
+                                          peoplearr.push(newelem);
+                                          console.log('uid: '+element2+',people:  '+peoplearr);
                                           peoplearr.forEach(function(element3,index3,array3){
                                             console.log('array element: '+JSON.stringify(element3));
                                            });
