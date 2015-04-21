@@ -171,9 +171,12 @@ head
       }
       .container {
         filter:brightness(1);
+        -moz-filter:brightness(1)
         -webkit-filter:brightness(1);
         transition: 0.5s -webkit-filter linear;
+        transition: 0.5s -moz-filter linear;
         -webkit-transition: 0.5s -webkit-filter linear;
+        -moz-transition: 0.5s -moz-filter linear;
       }
       .navbar-right {
         float: none !important; 
@@ -485,13 +488,13 @@ head
                          counter=0;
                          $('#showLeft').removeClass('active' );
                          $('#cbp-spmenu-s1').removeClass('cbp-spmenu-open' );
-                         $('.container').css('-webkit-filter','brightness(1)');
+                         $('.container').css({'-webkit-filter':'brightness(1)','-moz-filter':'brightness(1)'});
                         break;
                         case(0):
                           counter=1;
                           $('#showLeft').addClass('active' );
                           $('#cbp-spmenu-s1').addClass('cbp-spmenu-open' );
-                          $('.container').css('-webkit-filter','brightness(0.6)');
+                          $('.container').css({'-webkit-filter':'brightness(0.6)','-moz-filter':'brightness(0.6)'});
                         break;
                       }
         };
