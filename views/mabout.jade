@@ -26,6 +26,7 @@ head
       }
       body {
         font-family:roboto-thin;
+        background-body:#002A3C;
       }
       h1 {
         font-family:roboto-thin;
@@ -234,12 +235,6 @@ head
         -webkit-filter:brightness(1);
        transition: 0.5s -webkit-filter linear;
       }
-      #first{
-        background: -webkit-linear-gradient(#4CBBFF,#002A3C); /* For Safari 5.1 to 6.0 */
-       background: -o-linear-gradient(#4CBBFF,#002A3C); /* For Opera 11.1 to 12.0 */
-       background: -moz-linear-gradient(#4CBBFF,#002A3C); /* For Firefox 3.6 to 15 */
-       background: linear-gradient(#4CBBFF,#002A3C); /* Standard syntax */
-      }
   body
     nav(class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1")
       img(class="media-object img-circle" src="/images/pblogov4.png" style='margin-top:20px;margin-bottom:20px;margin-left:auto;margin-right:auto;width:64px;height:64px;' alt="...")
@@ -253,7 +248,7 @@ head
       a(href="http://m.peopleandbooks.com/settings") Настройки
       a(href='http://m.peopleandbooks.com/about') О проекте
       a(href="http://peopleandbooks.com/logout") Выйти
-    .container( id='maincont' style='-webkit-filter:brightness(1);background-color:#002A3C;overflow:auto;height:100%;padding-bottom:74px;')
+    .container( id='maincont' style='-webkit-filter:brightness(1);overflow:auto;height:100%;padding-bottom:74px;')
       .row(style='background-color:#4CBBFF;')
         .col-xs-12
            img(class="media-object img-circle" src="/images/pblogov4.png" style='margin-top:7vh;margin-bottom:20px;margin-left:auto;margin-right:auto;width:100px;height:100px;' alt="...")
@@ -275,7 +270,7 @@ head
         .col-xs-12
           h4 Or keep it 
             span(style='color:#00c9ff;') private
-      .row(style='color:gray;background-color:#1d1d1d;')
+      .row(style='color:gray;')
         .col-xs-12
           a(href='http://topandviews.com' id='stlink')
             h5(style='text-align:center;margin-top:30vh;') Top&Views Design
