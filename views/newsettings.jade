@@ -219,7 +219,7 @@ head
       .row(style='color:white;')
         .col-xs-12
           h3 Share your page:
-      .row.cont
+      .row.cont(id='pageoutlink')
         .col-xs-6
           .highlight
             pre
@@ -230,6 +230,7 @@ head
         var currentstatus = #{pub};
         if(currentstatus){
           $('#public').addClass('active');
+          $('#pageoutlink').fadeIn();
         }
         else {
           $('#private').addClass('active');
@@ -352,12 +353,14 @@ head
           {alert('Your list is publicly avaliable');
           $('#private').removeClass('active');
           $('#public').addClass('active');
-          currentstatus++;}
+          currentstatus++;
+         $('#pageoutlink').fadeIn();}
          else 
           {alert('Your list is private');
         $('#public').removeClass('active');
           $('#private').addClass('active');
-          currentstatus--;}
+          currentstatus--;
+          $('#pageoutlink').fadeOut();}
         allowpubchange=1;
         }
         }
