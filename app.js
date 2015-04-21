@@ -336,8 +336,12 @@ app.post('/addbook',function(req,res){
                                           newelem.newb=1;
                                           console.log('7. Changed data and produced new element: '+JSON.stringify(newelem));
                                           console.log('7.5 index2: '+index2);
-                                          peoplearr=peoplearr.splice(index2,1);
-                                          peoplearr.push(newelem);
+                                          if(peoplearr.length>1)
+                                          {peoplearr=peoplearr.splice(index2,1);
+                                          peoplearr.push(newelem);}
+                                          else {
+                                            peoplearr[0]=newelem;
+                                          }
                                            console.log('8. Modified peoplearr to include changed element: '+JSON.stringify(peoplearr));
                                           friends.update({uid:element},{$set:{people:peoplearr}});
                                         }
