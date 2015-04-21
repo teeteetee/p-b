@@ -188,9 +188,10 @@ head
       .row(style='color:#ccc;')
         .col-xs-12
           h1 Settings
+            small #{mail}
       .row(style='color:white;')
         .col-xs-12
-          h2 Private:
+          h3 Private:
       .row.cont
         .col-xs-12
           .btn-group(role="group" aria-label="...")
@@ -198,7 +199,7 @@ head
             button(type="button" id='public' onclick='pubchange(1)' class="btn btn-warning") No
       .row(style='color:white;')
         .col-xs-12
-          h2 Color themes:
+          h3 Color themes:
       .row.cont
         .col-xs-12
         .checkbox
@@ -224,7 +225,7 @@ head
         button(class='btn btn-default' id='changecolor' type='button') Change color
       .row(style='color:white;')
         .col-xs-12
-          h2 Share your page:
+          h3 Share your page:
       .row.cont
         .col-xs-6
           .highlight
