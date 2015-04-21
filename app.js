@@ -298,7 +298,6 @@ app.post('/addbook',function(req,res){
       }
       else {
         var vbid = doc.totalbooks+1;
-        console.log(vbid);
             users.update({uid:vuid},{$push:{books:{bid:vbid,author:vauthor,booktitle:vbooktitle,newbook:vnewbook,star:vstar,attention:vattention,regdateint:fulldate}}});
             if(vnewbook)
             {users.update({uid:vuid},{$inc:{newbooks:1,totalbooks:1}});}
@@ -310,27 +309,33 @@ app.post('/addbook',function(req,res){
             //ms.bid = vbid;
             //res.send(ms);
             friends.findOne({uid:vuid},function(err,done){
+              console.log('1. query friedns list, got: '+JSON.stringify(done));
               if(err)
               {
               }
               else{
                 if(done.updatelist)
-                {var updatearray=done.updatelist;
+                { console.log('2. query has updatelist: '+done.updatelist);
+                  var updatearray=done.updatelist;
                                 updatearray.forEach(function(element,index,array){
-                                  console.log(element);
+                                  console.log('3. Iterate through updatelist, element: '+element);
                                   friends.findOne({uid:element},function(err,fin){
+                                    console.log('4. query for that id returned: '+JSON.stringify(fin));
                                     if(err){
 
                                     }
                                     else {
                                       var peoplearr = fin.people;
+                                      console.log('5. People array in what have returned: '+JSON.stringify(peoplearr));
                                       peoplearr.forEach(function(element2,index2,array2){
                                         if(element2.uid===vuid) {
-                                          var newelem = element;
+                                          console.log('6. Found an element in array with our id: '+JSON.stringify(element2));
+                                          var newelem = element2;
                                           newelem.newb=1;
+                                          console.log('7. Changed data and produced new element: '+JSON.stringify(newelem));
                                           peoplearr.splice(index2,1);
                                           peoplearr.push(newelem);
-                                           console.log(JSON.stringify(newelem));
+                                           console.log('8. Modified peoplearr to include changed element: '+JSON.stringify(peoplearr));
                                           friends.update({uid:element},{$set:{people:peoplearr}});
                                         }
                                       });
@@ -428,7 +433,7 @@ app.post('/addmovie',function(req,res){
                                       var peoplearr = fin.people;
                                       peoplearr.forEach(function(element2,index2,array2){
                                         if(element2.uid===vuid) {
-                                          var newelem = element;
+                                          var newelem = element2;
                                           newelem.newm=1;
                                           peoplearr.splice(index2,1);
                                           peoplearr.push(newelem);
