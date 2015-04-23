@@ -159,13 +159,21 @@ head
       .yet{
        #{yet};
       }
-      .alreadyb{
+      .alreadybfigures{
       color:rgb(0,0,0);
       opacity:#{spanop};
       }
-      .alreadym{
+      .alreadymfigures{
       color:rgb(0,0,0);
       opacity:#{spanop};
+      }
+      .alreadyb{
+      color:rgb(0,0,0);
+      opacity:#{headingsspanop};
+      }
+      .alreadym{
+      color:rgb(0,0,0);
+      opacity:#{headingsspanop};
       }
       {
         padding-left:30px;
@@ -337,10 +345,10 @@ head
       // Setting user books/movies counters
         var seenmovies = #{seenmovies};
         var newmovies = #{newmovies};
-        $('#moviesfigures').append(" "+newmovies+" <span class='alreadym'> | "+seenmovies+"</span>");
+        $('#moviesfigures').append(" "+newmovies+" <span class='alreadymfigures'> | "+seenmovies+"</span>");
         var readbooks = #{readbooks};
         var newbooks = #{newbooks};
-        $('#booksfigures').append(" "+newbooks+" <span class='alreadyb'> | "+readbooks+"</span>");
+        $('#booksfigures').append(" "+newbooks+" <span class='alreadybfigures'> | "+readbooks+"</span>");
         //End of setting counters
         // Populating the columns
         var books = !{books};
@@ -602,11 +610,11 @@ head
         //$('#booksrow').slideToggle();
         if(newbook===1)
         {newbooks++;
-        $('#booksfigures').empty().append(" "+newbooks+" <span class='alreadyb'> | "+readbooks+"</span>");
+        $('#booksfigures').empty().append(" "+newbooks+" <span class='alreadybfigures'> | "+readbooks+"</span>");
         }
         else {
           readbooks++;
-          $('#booksfigures').empty().append(" "+newbooks+" <span class='alreadyb'> | "+readbooks+"</span>");
+          $('#booksfigures').empty().append(" "+newbooks+" <span class='alreadybfigures'> | "+readbooks+"</span>");
         }
         if($('#addbook').css('display')==='block')
           {$('#addbook').slideToggle();}
@@ -708,11 +716,11 @@ head
         //$('#moviesrow').slideToggle();
         if(newmovie===1)
         {newmovies++;
-        $('#moviesfigures').empty().append(" "+newmovies+"<span class='alreadym'> | "+seenmovies+"</span>");
+        $('#moviesfigures').empty().append(" "+newmovies+"<span class='alreadymfigures'> | "+seenmovies+"</span>");
         }
         else {
           seenmovies++;
-          $('#moviesfigures').empty().append(" "+newmovies+"<span class='alreadym'> | "+seenmovies+"</span>");
+          $('#moviesfigures').empty().append(" "+newmovies+"<span class='alreadymfigures'> | "+seenmovies+"</span>");
         }
         if($('#addmovie').css('display')==='block')
           {$('#addmovie').slideToggle();}
@@ -766,11 +774,11 @@ head
           // decrementing counters at the top of the screen
           if(moviestatus===1)
         {newmovies--;
-        $('#moviesfigures').empty().append(" "+newmovies+" <span class='alreadym'> | "+seenmovies+"</span>");
+        $('#moviesfigures').empty().append(" "+newmovies+" <span class='alreadymfigures'> | "+seenmovies+"</span>");
         }
         else {
           seenmovies--;
-          $('#moviesfigures').empty().append(" "+newmovies+" <span class='alreadym'> | "+seenmovies+"</span>");
+          $('#moviesfigures').empty().append(" "+newmovies+" <span class='alreadymfigures'> | "+seenmovies+"</span>");
         }
          }
          else {
@@ -781,7 +789,7 @@ head
            eval("$('#movieheading"+mid+"').removeClass('yet').addClass('alreadym');");
            newmovies--;
            seenmovies++;
-         $('#moviesfigures').empty().append(" "+newmovies+" <span class='alreadym'> | "+seenmovies+"</span>");
+         $('#moviesfigures').empty().append(" "+newmovies+" <span class='alreadymfigures'> | "+seenmovies+"</span>");
          }
          allowmod=1;
         }
@@ -826,11 +834,11 @@ head
           eval("$('#book"+bid+"').fadeOut('400',function(){$('#book"+bid+"').remove();});");
           if(bookstatus===1)
         {newbooks--;
-        $('#booksfigures').empty().append(" "+newbooks+" <span class='alreadyb'> | "+readbooks+"</span>");
+        $('#booksfigures').empty().append(" "+newbooks+" <span class='alreadybfigures'> | "+readbooks+"</span>");
         }
         else {
           readbooks--;
-          $('#booksfigures').empty().append(" "+newbooks+" <span class='alreadyb'> | "+readbooks+"</span>");
+          $('#booksfigures').empty().append(" "+newbooks+" <span class='alreadybfigures'> | "+readbooks+"</span>");
         }
          }
          else {
@@ -840,7 +848,7 @@ head
            eval("$('#heading"+bid+"').removeClass('yet').addClass('alreadyb');");
            newbooks--;
            readbooks++;
-         $('#booksfigures').empty().append(" "+newbooks+" <span class='alreadyb'> | "+readbooks+"</span>");
+         $('#booksfigures').empty().append(" "+newbooks+" <span class='alreadybfigures'> | "+readbooks+"</span>");
          }
          allowmod=1;
         }
