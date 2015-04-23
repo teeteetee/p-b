@@ -463,6 +463,7 @@ head
          if($('#addbook').css('display') === 'block')
          {
           $('#addbook').slideToggle();
+          $('#maincont').css('-webkit-filter','brightness(1)');
          }
          $('#booksrow').fadeOut('400',function(){$('#moviesrow').fadeIn();});
          $('#maincont').css('background-color','#{mh}');
@@ -478,6 +479,7 @@ head
         if($('#addmovie').css('display') === 'block')
          {
           $('#addmovie').slideToggle();
+          $('#maincont').css('-webkit-filter','brightness(1)');
          }
          $('#moviesrow').fadeOut('400',function(){$('#booksrow').fadeIn();});
          $('#maincont').css('background-color','#{bh}');
