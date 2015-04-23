@@ -416,16 +416,14 @@ head
         //end of populating the columns
         // Function for opening panel with remove/modify buttons
         function openmodpanel(bid) {
-          //$('.modpanel').css('display','none');
-          // other opened panels should close when opening new one
-         eval("$('#modbook"+bid+"').slideToggle();");
+          eval("$('#modbook"+bid+"').slideToggle();");
+          eval("$('.modpanel').each(function(){ if($(this).css('display')==='block'&& $(this).attr('id')!='modbook"+bid+"'){$(this).slideToggle(); }});");
         }
         //end of openmodpanel funciton
         // Function for opening panel with remove/modify buttons in movies column
         function openmodmoviepanel(mid) {
-          //$('.modpanel').css('display','none');
-          // other opened panels should close when opening new one
-         eval("$('#modmovie"+mid+"').slideToggle();");
+          eval("$('#modmovie"+mid+"').slideToggle();");
+          eval("$('.modpanel').each(function(){if($(this).css('display')==='block'&& $(this).attr('id')!='modmovie"+mid+"'){$(this).slideToggle();}});");
         }
         //end of openmodpanel funciton for movies column
         // diable/allow cheking checkboxes
