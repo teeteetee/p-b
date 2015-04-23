@@ -619,7 +619,8 @@ head
           $('#booksfigures').empty().append(" "+newbooks+" <span class='alreadybfigures'> | "+readbooks+"</span>");
         }
         if($('#addbook').css('display')==='block')
-          {$('#addbook').slideToggle();}
+          {$('#addbook').slideToggle();
+          $('#maincont').css('-webkit-filter','brightness(1)');}
         $(hiddeninsert).prependTo('#bookinsert');
         $(visibleinsert).prependTo('#bookinsert').hide().slideDown();
         allowsubmit=1;
@@ -725,7 +726,8 @@ head
           $('#moviesfigures').empty().append(" "+newmovies+"<span class='alreadymfigures'> | "+seenmovies+"</span>");
         }
         if($('#addmovie').css('display')==='block')
-          {$('#addmovie').slideToggle();}
+          {$('#addmovie').slideToggle();
+         $('#maincont').css('-webkit-filter','brightness(1)');}
         $(hiddeninsert).prependTo('#movieinsert');
         $(visibleinsert).prependTo('#movieinsert').hide().slideDown();
         allowsubmit=1;
