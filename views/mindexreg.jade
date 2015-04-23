@@ -717,11 +717,11 @@ head
         //$('#moviesrow').slideToggle();
         if(newmovie===1)
         {newmovies++;
-        $('#moviesfigures').empty().append(" "+newmovies+" class='alreadym'> | "+seenmovies+"</span>");
+        $('#moviesfigures').empty().append(" "+newmovies+"<span class='alreadym'> | "+seenmovies+"</span>");
         }
         else {
           seenmovies++;
-          $('#moviesfigures').empty().append(" "+newmovies+" class='alreadym'> | "+seenmovies+"</span>");
+          $('#moviesfigures').empty().append(" "+newmovies+"<span class='alreadym'> | "+seenmovies+"</span>");
         }
         if($('#addmovie').css('display')==='block')
           {$('#addmovie').slideToggle();}
