@@ -30,7 +30,7 @@ head
       }
       body {
       min-width:768px;
-      background-color:#2e83b0;
+      background-color:#ddd;
       font-family:roboto-thin;
       }
       .container{
@@ -169,7 +169,7 @@ head
       }
       .flick:hover {
         cursor:pointer;
-        background-color:rgb(103, 186, 255);
+        background-color:#ccc;
       }
   body
     script.
@@ -193,9 +193,9 @@ head
       //img(class="media-object img-circle" src="/bootstrap/images/seo.jpg" style='margin-left:5px;margin-top:30px;width:64px;height:64px;' alt="...")
       span(class='glyphicon glyphicon-align-justify' id='showLeft' style='color:#333;font-size:30px;margin-top:20px;')
     .container(style='padding-left:40px;')  
-      .row(style='color:#ccc;')
+      .row
         .col-xs-12
-          h1(style='font-family:roboto-light;') Settings
+          h1(style='font-family:roboto-light;') People
       .row
         .col-xs-12(id='inserts')
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
@@ -206,7 +206,7 @@ head
           people.forEach(function(element,index,array){
             var rnum = index+1;
             var badgefont = 'font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;';
-            var insert= "<div class='row flick' onclick='away(http://peopleandbooks.com/lists/"+element.uid+")'><div class='col-xs-12'><h4 style='color:white;'><small style='margin-right:10px;'>"+rnum+"</small>"+element.mail;
+            var insert= "<div class='row flick' onclick='away(http://peopleandbooks.com/lists/"+element.uid+")'><div class='col-xs-12'><h4 ><small style='margin-right:10px;'>"+rnum+"</small>"+element.mail;
              if(element.newb||element.newm){
               insert+="<span style='margin-left:10px;"+badgefont+"' class='label label-danger'>New items</span>";
              }
