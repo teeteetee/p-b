@@ -160,12 +160,12 @@ head
        #{yet};
       }
       .alreadyb{
-      color:rgb(0, 0, 0);
-      opacity: 0.27;
+      color:rgb(0,0,0);
+      opacity:#{spanop};
       }
       .alreadym{
-      color:rgb(0, 0, 0);
-      opacity:0.21;
+      color:rgb(0,0,0);
+      opacity:#{spanop};
       }
       {
         padding-left:30px;
@@ -337,10 +337,10 @@ head
       // Setting user books/movies counters
         var seenmovies = #{seenmovies};
         var newmovies = #{newmovies};
-        $('#moviesfigures').append(" "+newmovies+" <span style='color:rgb(0,0,0);opacity:#{spanop}'> | "+seenmovies+"</span>");
+        $('#moviesfigures').append(" "+newmovies+" <span class='alreadym'> | "+seenmovies+"</span>");
         var readbooks = #{readbooks};
         var newbooks = #{newbooks};
-        $('#booksfigures').append(" "+newbooks+" <span style='color:rgb(0,0,0);opacity:#{spanop}'> | "+readbooks+"</span>");
+        $('#booksfigures').append(" "+newbooks+" <span class='alreadyb'> | "+readbooks+"</span>");
         //End of setting counters
         // Populating the columns
         var books = !{books};
@@ -592,7 +592,7 @@ head
         {
          bookclass='alreadyb';
         }
-        var visibleinsert = "<div class='row' onclick='openmodpanel("+bid+")' id='book"+bid+"'><div class='col-xs-12'><h3 style='margin-left:40px;' class='"+bookclass+"'>"+booktitle+" <small> "+author+" </small>";
+        var visibleinsert = "<div class='row' onclick='openmodpanel("+bid+")' id='book"+bid+"'><div class='col-xs-12'><h3 class='"+bookclass+"'>"+booktitle+" <small> "+author+" </small>";
                if(star===1&&newbook===0){
                  visibleinsert+="<span style='color:#F2D45C;margin-left:10px;' class='glyphicon glyphicon-star'></span>";
                }
@@ -699,7 +699,7 @@ head
         {
          movieclass='alreadym';
         }
-        var visibleinsert = "<div class='row' onclick='openmodpanel("+mid+")' id='movie"+mid+"'><div class='col-xs-12'><h3 style='margin-left:40px;' class='"+movieclass+"'>"+movietitle+" <small> "+year+" </small>";
+        var visibleinsert = "<div class='row' onclick='openmodpanel("+mid+")' id='movie"+mid+"'><div class='col-xs-12'><h3  class='"+movieclass+"'>"+movietitle+" <small> "+year+" </small>";
                if(moviestar===1&&newmovie===0){
                  visibleinsert+="<span style='color:#F2D45C;margin-left:10px;' class='glyphicon glyphicon-moviestar'></span>";
                }
@@ -717,11 +717,11 @@ head
         //$('#moviesrow').slideToggle();
         if(newmovie===1)
         {newmovies++;
-        $('#moviesfigures').empty().append(" "+newmovies+" <span class='alreadym'> | "+seenmovies+"</span>");
+        $('#moviesfigures').empty().append(" "+newmovies+" class='alreadym'> | "+seenmovies+"</span>");
         }
         else {
           seenmovies++;
-          $('#moviesfigures').empty().append(" "+newmovies+" <span class='alreadym'> | "+seenmovies+"</span>");
+          $('#moviesfigures').empty().append(" "+newmovies+" class='alreadym'> | "+seenmovies+"</span>");
         }
         if($('#addmovie').css('display')==='block')
           {$('#addmovie').slideToggle();}
