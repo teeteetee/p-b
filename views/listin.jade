@@ -280,19 +280,19 @@ head
       .row(style='background-color:darkgray;')
         .col-xs-12(id='buttoninsert')
           h4(style='margin-bottom:0px;') #{mail}
-      #heightcheck.row
-        .col-xs-6(id='books' style='background-color:#{bh};height:100%;overflow:auto;')
+      .row
+        .col-xs-6(id='books' style='background-color:#{bh};')
           .row
             .col-xs-12(style='text-align:center;')
               h1(id='booksfigures' style='font-family:high;font-size:200px;font-weight:bold;color:#{bhl};')
           .row
-            #bookinsert.col-xs-12
-        .col-xs-6(id='movies' style='background-color:#{mh};height:100%;overflow:auto;')
+            #bookinsert.col-xs-12(style='height:100%;overflow:auto;')
+        .col-xs-6(id='movies' style='background-color:#{mh};')
           .row
             .col-xs-12(style='text-align:center;')
               h1(id='moviesfigures' style='font-family:high;font-size:200px;font-weight:bold;color:#{mhl};')
           .row
-            #movieinsert.col-xs-12
+            #movieinsert.col-xs-12(style='height:100%;overflow:auto;')
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
       script.
