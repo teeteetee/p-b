@@ -171,23 +171,23 @@ head
     .container
       .row(style='text-align:center;margin-top:15%;margin-bottom:20px;')
         .col-xs-12
-          h1(style='font-size:50px;') Organise your reading. 
-          h3 Never forget a book.
+          img(src='/images/pblogov4.png' style='margin-left:20px;margin-right:20px;') 
+          h3 Reading and watching lists.
       .row
         #message.col-xs-12
       .row(style='text-align:center;')
         .col-xs-12
-          input(class='form-control' type='email' style='margin-bottom:10px;font-size:25px;height:auto;' id='vlgn' name='mail' placeholder='email')
-          input(class='form-control' type='password' style='margin-bottom:10px;font-size:25px;height:auto;' id='vphr' name='p' placeholder='password')
-          input(class='form-control' type='password' style='display:none;font-size:25px;height:auto;' id='pc' name='pc' placeholder='password')
+          input(class='form-control' type='email' style='margin-bottom:10px;font-size:20px;height:auto;' id='vlgn' name='mail' placeholder='email')
+          input(class='form-control' type='password' style='margin-bottom:10px;font-size:20px;height:auto;' id='vphr' name='p' placeholder='password')
+          input(class='form-control' type='password' style='display:none;font-size:20px;height:auto;' id='pc' name='pc' placeholder='confirmatioin')
           #wrap(style='width:100%;margin-top:20px;')
-            button(class='btn btn-primary btn-lg' type='button' id='shownav' style='position:absolute;margin-left:-60;left:50%;z-index:2;border-radius:30px;background-color:rgba(255, 255, 255, 0.26);border:0px;') Log in / Register
+            button(class='btn btn-primary' type='button' id='shownav' style='font-size:20px;position:absolute;margin-left:-60;left:50%;z-index:2;border-radius:30px;background-color:rgba(255, 255, 255, 0.26);border:0px;') Log in / Register
             nav(id='nav' style='z-index:1;display:none;')
               ul(class="pager")
                 li(class='previous')
-                  a( id='login' ) Войти
+                  a( id='login' style='font-size:20px;border-radius:30px;') Войти
                 li(class='next')
-                  a(id='regbutton' ) Регистрация
+                  a(id='regbutton' style='font-size:20px;border-radius:30px;') Регистрация
     button(type='button' id='showLeft' style='color:white;font-size:30px;position:absolute;bottom:15px;right:15px;border:0px;background-color:transparent;') 
       span(class='glyphicon glyphicon-align-justify ')
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
