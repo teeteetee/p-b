@@ -599,11 +599,11 @@ head
         //$('#booksrow').slideToggle();
         if(newbook===1)
         {newbooks++;
-        $('#booksfigures').empty().append(" "+newbooks+" <span class='alreadyb'> | "+readbooks+"</span>");
+        $('#booksfigures').empty().append(" "+newbooks+" <span style='color:rgb(0,0,0);opacity:#{spanop}'> | "+readbooks+"</span>");
         }
         else {
           readbooks++;
-          $('#booksfigures').empty().append(" "+newbooks+" <span class='alreadyb'> | "+readbooks+"</span>");
+          $('#booksfigures').empty().append(" "+newbooks+" <span style='color:rgb(0,0,0);opacity:#{spanop}'> | "+readbooks+"</span>");
         }
         $(hiddeninsert).prependTo('#bookinsert');
         $(visibleinsert).prependTo('#bookinsert').hide().slideDown();
@@ -653,11 +653,11 @@ head
           eval("$('#book"+bid+"').fadeOut('400',function(){$('#book"+bid+"').remove();});");
           if(bookstatus===1)
         {newbooks--;
-        $('#booksfigures').empty().append(" "+newbooks+" <span class='alreadyb'> | "+readbooks+"</span>");
+        $('#booksfigures').empty().append(" "+newbooks+" <span style='color:rgb(0,0,0);opacity:#{spanop}'> | "+readbooks+"</span>");
         }
         else {
           readbooks--;
-          $('#booksfigures').empty().append(" "+newbooks+" <span class='alreadyb'> | "+readbooks+"</span>");
+          $('#booksfigures').empty().append(" "+newbooks+" <span style='color:rgb(0,0,0);opacity:#{spanop}'> | "+readbooks+"</span>");
         }
          }
          else {
@@ -667,7 +667,7 @@ head
            eval("$('#heading"+bid+"').removeClass('yet').addClass('alreadyb');");
            newbooks--;
            readbooks++;
-         $('#booksfigures').empty().append(" "+newbooks+" <span class='alreadyb'> | "+readbooks+"</span>");
+         $('#booksfigures').empty().append(" "+newbooks+" <span style='color:rgb(0,0,0);opacity:#{spanop}'> | "+readbooks+"</span>");
          }
          allowmod=1;
         }
@@ -762,11 +762,11 @@ head
         //$('#moviesrow').slideToggle();
         if(newmovie===1)
         {newmovies++;
-        $('#moviesfigures').empty().append(" "+newmovies+" <span class='alreadym'> | "+seenmovies+"</span>");
+        $('#moviesfigures').empty().append(" "+newmovies+" <span style='color:rgb(0,0,0);opacity:#{spanop}'> | "+seenmovies+"</span>");
         }
         else {
           seenmovies++;
-          $('#moviesfigures').empty().append(" "+newmovies+" <span class='alreadym'> | "+seenmovies+"</span>");
+          $('#moviesfigures').empty().append(" "+newmovies+" <span style='color:rgb(0,0,0);opacity:#{spanop}'> | "+seenmovies+"</span>");
         }
         $(hiddeninsert).prependTo('#movieinsert');
         $(visibleinsert).prependTo('#movieinsert').hide().slideDown();
@@ -816,11 +816,11 @@ head
           eval("$('#movie"+mid+"').fadeOut('400',function(){$('#movie"+mid+"').remove();});");
           if(moviestatus===1)
         {newmovies--;
-        $('#moviesfigures').empty().append(" "+newmovies+" <span class='alreadym'> | "+seenmovies+"</span>");
+        $('#moviesfigures').empty().append(" "+newmovies+" <span style='color:rgb(0,0,0);opacity:#{spanop}'> | "+seenmovies+"</span>");
         }
         else {
           seenmovies--;
-          $('#moviesfigures').empty().append(" "+newmovies+" <span class='alreadym'> | "+seenmovies+"</span>");
+          $('#moviesfigures').empty().append(" "+newmovies+" <span style='color:rgb(0,0,0);opacity:#{spanop}'> | "+seenmovies+"</span>");
         }
          }
          else {
