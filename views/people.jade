@@ -163,6 +163,10 @@ head
       .activemenuitem {
         background-color:#333;
       }
+      .flick:hover {
+        cursor:pointer;
+        background-color:#{bhl};
+      }
   body
     script.
       if(screen.width < 414){
@@ -199,16 +203,19 @@ head
           people.forEach(function(element,index,array){
             var rnum = index+1;
             var badgefont = 'font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;';
-            var insert= "<div class='row'><div class='col-xs-12'><a href='http://peopleandbooks.com/lists/"+element.uid+"'><h4 style='color:white;'><small style='margin-right:10px;'>"+rnum+"</small>"+element.mail;
+            var insert= "<div class='row flick' onclick='away(http://peopleandbooks.com/lists/"+element.uid+")'><div class='col-xs-12'><h4 style='color:white;'><small style='margin-right:10px;'>"+rnum+"</small>"+element.mail;
              if(element.newb||element.newm){
               insert+="<span style='margin-left:10px;"+badgefont+"' class='label label-danger'>New items</span>";
              }
-             insert+="</h4></a></div></div>";
+             insert+="</h4></div></div>";
             $('#inserts').append(insert);
           });
         }
         else {
          $('#inserts').append("<h4 style='color:white'> Людей нет</h4>");
+        }
+        function away(dest){
+          eval("window.location('"+dest+"');");
         }
         // Sliding menu mechanics
         var counter =0;
