@@ -31,7 +31,7 @@ head
       body {
       min-width:768px;
       font-family:roboto-thin;
-      background-color:#333;
+      background-color:#ddd;
       }
       .navbar-nav {
        float: right;
@@ -181,17 +181,17 @@ head
       //img(class="media-object img-circle" src="/bootstrap/images/seo.jpg" style='margin-left:5px;margin-top:30px;width:64px;height:64px;' alt="...")
       span(class='glyphicon glyphicon-align-justify' id='showLeft' style='color:#333;font-size:30px;margin-top:20px;')
     .container(style='padding-left:40px;')  
-      .row(style='color:#ccc;')
+      .row
         .col-xs-12
           h1(style='font-family:roboto-light;') Settings
-      .row(style='color:white;')
+      .row
         .col-xs-12
           h3 Your account:
-      .row.cont(style='color:white;')
+      .row.cont
         .col-xs-12
           h2 
             small #{mail}
-      .row(style='color:white;')
+      .row
         .col-xs-12
           h3 Your lists are:
       .row.cont
@@ -199,7 +199,7 @@ head
           .btn-group(role="group" aria-label="...")
             button(type="button" id='private' onclick='pubchange(0)' class="btn btn-warning") Private
             button(type="button" id='public' onclick='pubchange(1)' class="btn btn-warning") Public
-      .row(style='color:white;')
+      .row
         .col-xs-12
           h3 Color themes:
       .row.cont
@@ -230,7 +230,7 @@ head
               span(class='glyphicon glyphicon-stop' style='font-size:30px;color:#2e83b0;')
         button(class='btn btn-default' id='changecolor' type='button') Change color
       #pageoutlink(style='display:none;')
-        .row(style='color:white;')
+        .row
           .col-xs-12
             h3 Share your page:
         .row.cont
