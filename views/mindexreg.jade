@@ -504,7 +504,12 @@ head
                          counter=0;
                          $('#showLeft').removeClass('active' );
                          $('#cbp-spmenu-s1').removeClass('cbp-spmenu-open' );
-                         $('.container').css('-webkit-filter','brightness(1)');
+                         if($('#addmovie').css('display') === 'block'||$('#addbook').css('display') === 'block')
+                         {
+                          $('#maincont').css('-webkit-filter','brightness(0.4)');
+                         }
+                         else{
+                         $('.container').css('-webkit-filter','brightness(1)');}
                         break;
                         case(0):
                           counter=1;
