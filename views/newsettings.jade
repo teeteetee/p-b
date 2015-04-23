@@ -57,6 +57,15 @@ head
       btn {
         font-family:roboto-thin;
       }
+      .container {
+        filter:brightness(1);
+        -moz-filter:brightness(1)
+        -webkit-filter:brightness(1);
+        transition: 0.5s -webkit-filter linear;
+        transition: 0.5s -moz-filter linear;
+        -webkit-transition: 0.5s -webkit-filter linear;
+        -moz-transition: 0.5s -moz-filter linear;
+      }
       #showLeft:hover {
        color:white !important;
       }
@@ -264,15 +273,17 @@ head
           switch(counter)
             {case(1):
                          counter=0;
+                         console.log('increase brightness');
                          $('#showLeft').removeClass('active' );
                          $('#cbp-spmenu-s1').removeClass('cbp-spmenu-open' );
-                         $('.container').css('-webkit-filter','brightness(1)');
+                         $('.container').css({'-webkit-filter':'brightness(1)','-moz-filter':'brightness(1)'});
                         break;
                         case(0):
                           counter=1;
+                          console.log('decrease brightness');
                           $('#showLeft').addClass('active' );
                           $('#cbp-spmenu-s1').addClass('cbp-spmenu-open' );
-                          $('.container').css('-webkit-filter','brightness(0.6)');
+                          $('.container').css({'-webkit-filter':'brightness(0.6)','-moz-filter':'brightness(0.6)'});
                         break;
                       }
         };
