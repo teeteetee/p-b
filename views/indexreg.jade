@@ -195,12 +195,12 @@ head
        #{yet}
       }
       .alreadyb{
-      color:rgb(0, 0, 0);
-      opacity:0.5;
+      color:rgb(0,0,0);
+      opacity:#{spanop};
       }
       .alreadym{
       color:rgb(0,0,0);
-      opacity:0.5;
+      opacity:#{spanop};
       }
       .leftPaddingExtended{
         padding-left:30px;
@@ -361,10 +361,10 @@ head
         // Setting user books/movies counters
         var seenmovies = #{seenmovies};
         var newmovies = #{newmovies};
-        $('#moviesfigures').append(" "+newmovies+" <span style='color:rgb(0,0,0);opacity:#{spanop}'> | "+seenmovies+"</span>");
+        $('#moviesfigures').append(" "+newmovies+" <span class='alreadym'> | "+seenmovies+"</span>");
         var readbooks = #{readbooks};
         var newbooks = #{newbooks};
-        $('#booksfigures').append(" "+newbooks+" <span style='color:rgb(0,0,0);opacity:#{spanop}'> | "+readbooks+"</span>");
+        $('#booksfigures').append(" "+newbooks+" <span class='alreadyb'> | "+readbooks+"</span>");
         //End of setting counters
         // Populating the columns
         var books = !{books};
@@ -597,11 +597,11 @@ head
         //$('#booksrow').slideToggle();
         if(newbook===1)
         {newbooks++;
-        $('#booksfigures').empty().append(" "+newbooks+" <span style='color:rgb(0,0,0);opacity:#{spanop}'> | "+readbooks+"</span>");
+        $('#booksfigures').empty().append(" "+newbooks+" <span class='alreadyb'> | "+readbooks+"</span>");
         }
         else {
           readbooks++;
-          $('#booksfigures').empty().append(" "+newbooks+" <span style='color:rgb(0,0,0);opacity:#{spanop}'> | "+readbooks+"</span>");
+          $('#booksfigures').empty().append(" "+newbooks+" <span class='alreadyb'> | "+readbooks+"</span>");
         }
         $(hiddeninsert).prependTo('#bookinsert');
         $(visibleinsert).prependTo('#bookinsert').hide().slideDown();
@@ -651,11 +651,11 @@ head
           eval("$('#book"+bid+"').fadeOut('400',function(){$('#book"+bid+"').remove();});");
           if(bookstatus===1)
         {newbooks--;
-        $('#booksfigures').empty().append(" "+newbooks+" <span style='color:rgb(0,0,0);opacity:#{spanop}'> | "+readbooks+"</span>");
+        $('#booksfigures').empty().append(" "+newbooks+" <span class='alreadyb'> | "+readbooks+"</span>");
         }
         else {
           readbooks--;
-          $('#booksfigures').empty().append(" "+newbooks+" <span style='color:rgb(0,0,0);opacity:#{spanop}'> | "+readbooks+"</span>");
+          $('#booksfigures').empty().append(" "+newbooks+" <span class='alreadyb'> | "+readbooks+"</span>");
         }
          }
          else {
@@ -665,7 +665,7 @@ head
            eval("$('#heading"+bid+"').removeClass('yet').addClass('alreadyb');");
            newbooks--;
            readbooks++;
-         $('#booksfigures').empty().append(" "+newbooks+" <span style='color:rgb(0,0,0);opacity:#{spanop}'> | "+readbooks+"</span>");
+         $('#booksfigures').empty().append(" "+newbooks+" <span class='alreadyb'> | "+readbooks+"</span>");
          }
          allowmod=1;
         }
@@ -760,11 +760,11 @@ head
         //$('#moviesrow').slideToggle();
         if(newmovie===1)
         {newmovies++;
-        $('#moviesfigures').empty().append(" "+newmovies+" <span style='color:rgb(0,0,0);opacity:#{spanop}'> | "+seenmovies+"</span>");
+        $('#moviesfigures').empty().append(" "+newmovies+" <span class='alreadym'> | "+seenmovies+"</span>");
         }
         else {
           seenmovies++;
-          $('#moviesfigures').empty().append(" "+newmovies+" <span style='color:rgb(0,0,0);opacity:#{spanop}'> | "+seenmovies+"</span>");
+          $('#moviesfigures').empty().append(" "+newmovies+" <span class='alreadym'> | "+seenmovies+"</span>");
         }
         $(hiddeninsert).prependTo('#movieinsert');
         $(visibleinsert).prependTo('#movieinsert').hide().slideDown();
@@ -814,11 +814,11 @@ head
           eval("$('#movie"+mid+"').fadeOut('400',function(){$('#movie"+mid+"').remove();});");
           if(moviestatus===1)
         {newmovies--;
-        $('#moviesfigures').empty().append(" "+newmovies+" <span style='color:rgb(0,0,0);opacity:#{spanop}'> | "+seenmovies+"</span>");
+        $('#moviesfigures').empty().append(" "+newmovies+" <span class='alreadym'> | "+seenmovies+"</span>");
         }
         else {
           seenmovies--;
-          $('#moviesfigures').empty().append(" "+newmovies+" <span style='color:rgb(0,0,0);opacity:#{spanop}'> | "+seenmovies+"</span>");
+          $('#moviesfigures').empty().append(" "+newmovies+" <span class='alreadym'> | "+seenmovies+"</span>");
         }
          }
          else {
