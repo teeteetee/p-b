@@ -165,6 +165,24 @@ head
       .activemenuitem {
         background-color:#333;
       }
+      .bckgrnd {
+      width:100%;
+      height:100%;
+      background-color:#ddd;
+      position:fixed;
+      background-position:center;
+      background-size: cover;
+      background-repeat:no-repeat;
+      filter: brightness(0.6);
+      -webkit-filter: brightness(0.6);
+      -moz-filter: brightness(0.6);
+      -o-filter: brightness(0.6);
+      transition: 0.5s -webkit-filter linear;
+        transition: 0.5s -webkit-filter linear;
+        transition: 0.5s -moz-filter linear;
+        -webkit-transition: 0.5s -webkit-filter linear;
+        -moz-transition: 0.5s -moz-filter linear;
+      }
   body
     script.
       if(screen.width < 414){
@@ -186,6 +204,7 @@ head
     .sidebar(style='width:74px;position:fixed;height:100%;background-color:#1d1d1d;text-align:center;z-index:2000;')
       //img(class="media-object img-circle" src="/bootstrap/images/seo.jpg" style='margin-left:5px;margin-top:30px;width:64px;height:64px;' alt="...")
       span(class='glyphicon glyphicon-align-justify' id='showLeft' style='color:#333;font-size:30px;margin-top:20px;')
+    .bckgrnd
     .container(style='padding-left:40px;')  
       .row
         .col-xs-12
@@ -274,6 +293,7 @@ head
                          $('#showLeft').removeClass('active' );
                          $('#cbp-spmenu-s1').removeClass('cbp-spmenu-open' );
                          $('.container').css({'-webkit-filter':'brightness(1)','-moz-filter':'brightness(1)','filter':'brightness(1)'});
+                         $('.bckgrnd').css({'-webkit-filter':'brightness(1)','-moz-filter':'brightness(1)','filter':'brightness(1)'});
                         break;
                         case(0):
                           counter=1;
@@ -281,6 +301,7 @@ head
                           $('#showLeft').addClass('active' );
                           $('#cbp-spmenu-s1').addClass('cbp-spmenu-open' );
                           $('.container').css({'-webkit-filter':'brightness(0.6)','-moz-filter':'brightness(0.6)','filter':'brightness(0.6)'});
+                          $('.bckgrnd').css({'-webkit-filter':'brightness(0.6)','-moz-filter':'brightness(0.6)','filter':'brightness(0.6)'});
                         break;
                       }
         };
