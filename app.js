@@ -1054,7 +1054,7 @@ app.get('/m',function(req,res){
                       var style2 = "'bcl':'white','mcl':'white','mh':'rgb(213, 74, 95)','bh':'#00788E','mhl':'#F56B80','bhl':'rgb(0, 176, 208)','yet':'color:white','small':'color:white;opacity: 0.68;','spanop':'0.3','headingsspanop':'0.3','addbook':'rgba(255, 255, 255, 0.38)','addmovie':'rgba(255, 255, 255, 0.38)',";
                       var style3 = "'bcl':'white','mcl':'white','mh':'#00657C','bh':'rgb(0, 182, 205);','mhl':'#003945','bhl':'rgb(82, 214, 231)','yet':'color:white','small':'color:white;opacity: 0.68;','spanop':'0.3','headingsspanop':'0.3','addbook':'rgba(255, 255, 255, 0.38)','addmovie':'rgba(255, 255, 255, 0.38)',";
                       var style4 = "'bcl':'rgb(103, 186, 255)','mcl':'#F56979','mh':'white','bh':'white','mhl':'#F56979','bhl':'rgb(103, 186, 255)','yet':'0:0','small':'0:0','spanop':'0.1','headingsspanop':'0.3','addbook':'rgba(103, 186, 255, 0.63)','addmovie':'rgba(245, 105, 121, 0.65)',";
-                      var style5 = "'bcl':'white','mcl':'white','mh':'#2e83b0','bh':'#2e83b0','mhl':'rgb(247, 77, 96)','bhl':'rgb(0, 142, 184)','yet':'color:white','small':'color:white;opacity:0.5;','spanop':'0.1','headingsspanop':'0.3','addbook':'rgba(103, 186, 255, 0.63)','addmovie':'rgba(245, 105, 121, 0.83)',";
+                      var style5 = "'bcl':'white','mcl':'white','mh':'#2e83b0','bh':'#2e83b0','mhl':'rgb(255, 119, 95)','bhl':'rgb(0, 142, 184)','yet':'color:white','small':'color:white;opacity:0.5;','spanop':'0.1','headingsspanop':'0.3','addbook':'rgba(103, 186, 255, 0.63)','addmovie':'rgba(245, 105, 121, 0.83)',";
 
                       if(done.styleint===1){
                         style=style1;
@@ -1088,7 +1088,7 @@ app.get('/m',function(req,res){
                       var style2 = "'bcl':'white','mcl':'white','mh':'rgb(213, 74, 95)','bh':'#00788E','mhl':'#F56B80','bhl':'rgb(0, 176, 208)','yet':'color:white','small':'color:white;opacity: 0.68;','spanop':'0.3','headingsspanop':'0.3','addbook':'rgba(255, 255, 255, 0.38)','addmovie':'rgba(255, 255, 255, 0.38)',";
                       var style3 = "'bcl':'white','mcl':'white','mh':'#00657C','bh':'rgb(0, 182, 205);','mhl':'#003945','bhl':'rgb(82, 214, 231)','yet':'color:white','small':'color:white;opacity: 0.68;','spanop':'0.3','headingsspanop':'0.3','addbook':'rgba(255, 255, 255, 0.38)','addmovie':'rgba(255, 255, 255, 0.38)',";
                       var style4 = "'bcl':'rgb(103, 186, 255)','mcl':'#F56979','mh':'white','bh':'white','mhl':'#F56979','bhl':'rgb(103, 186, 255)','yet':'0:0','small':'0:0','spanop':'0.1','headingsspanop':'0.3','addbook':'rgba(103, 186, 255, 0.63)','addmovie':'rgba(245, 105, 121, 0.65)',";
-                      var style5 = "'bcl':'white','mcl':'white','mh':'#2e83b0','bh':'#2e83b0','mhl':'rgb(247, 77, 96)','bhl':'rgb(0, 142, 184)','yet':'color:white','small':'color:white;opacity:0.5;','spanop':'0.1','headingsspanop':'0.3','addbook':'rgba(103, 186, 255, 0.63)','addmovie':'rgba(245, 105, 121, 0.83)',";
+                      var style5 = "'bcl':'white','mcl':'white','mh':'#2e83b0','bh':'#2e83b0','mhl':'rgb(255, 119, 95)','bhl':'rgb(0, 142, 184)','yet':'color:white','small':'color:white;opacity:0.5;','spanop':'0.1','headingsspanop':'0.3','addbook':'rgba(103, 186, 255, 0.63)','addmovie':'rgba(245, 105, 121, 0.83)',";
 
                       if(done.styleint===1){
                         style=style1;
