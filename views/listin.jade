@@ -324,14 +324,15 @@ head
                        {
                         popbookclass='alreadyb';
                        }
-                       var popinsert = "<div class='row flickb' id='book"+element.bid+"'><div class='col-xs-12'><h4 style='margin-left:40px;' class='"+popbookclass+"'>"+element.booktitle+" <small> "+element.author+" </small>";
+                       var popinsert = "<div class='row flickb' onclick='openmodpanel("+element.bid+")' id='book"+element.bid+"'><div class='col-xs-12'><h4 style='margin-left:40px;' class='"+popbookclass+"'>"+element.booktitle+" <small> "+element.author+" </small>";
                        if(element.star===1&&element.newbook===0){
                          popinsert+="<span style='color:#F2D45C;margin-left:10px;' class='glyphicon glyphicon-star'></span>";
                        }
                        if(element.attention===1&&element.newbook===1){
                          popinsert+="<span style='color:rgba(255, 255, 255, 0.65);margin-left:10px;' class='glyphicon glyphicon-exclamation-sign'></span>";
                        }
-                       popinsert+="</h4></div></div>";
+                       popinsert+="</h4></div></div><div class='row modpanel' id='modbook"+element.bid+"' style='text-align:center;display:none;background-color:#333;'><div class='col-xs-12'>";
+                       popinsert+="<button class='btn btn-danger' onclick='modify(1,"+element.bid+")' type='button'>Add to my list</button></div</div>";
                        $('#bookinsert').prepend(popinsert);
                     });}
         if(movies!=0)
@@ -342,14 +343,15 @@ head
                        {
                         popmovieclass='alreadym';
                        }
-                       var popinsert = "<div class='row flickm' id='movie"+element.mid+"'><div class='col-xs-12'><h4 style='margin-left:40px;' class='"+popmovieclass+"'>"+element.movietitle+" <small> "+element.year+" </small>";
+                       var popinsert = "<div class='row flickm' onclick='openmodmoviepanel("+element.mid+")' id='movie"+element.mid+"'><div class='col-xs-12'><h4 style='margin-left:40px;' class='"+popmovieclass+"'>"+element.movietitle+" <small> "+element.year+" </small>";
                        if(element.star===1&&element.newmovie===0){
                          popinsert+="<span style='color:#F2D45C;margin-left:10px;' class='glyphicon glyphicon-star'></span>";
                        }
                        if(element.attention===1&&element.newmovie===1){
                          popinsert+="<span style='color:rgba(255, 255, 255, 0.65);margin-left:10px;' class='glyphicon glyphicon-exclamation-sign'></span>";
                        }
-                       popinsert+="</h4></div></div>";
+                       popinsert+="</h4></div></div><div class='row modpanel' id='modbook"+element.bid+"' style='text-align:center;display:none;background-color:#333;'><div class='col-xs-12'>";
+                       popinsert+="<button class='btn btn-danger' onclick='modify(1,"+element.bid+")' type='button'>Add to my list</button></div</div>";
                        $('#movieinsert').prepend(popinsert);
                     });}
         //end of populating the columns
@@ -379,6 +381,18 @@ head
                         break;
                       }
         };
+         // Function for opening panel with remove/modify buttons
+        function openmodpanel(bid) {
+          eval("$('#modbook"+bid+"').slideToggle();");
+          eval("$('.modpanel').each(function(){ if($(this).css('display')==='block'&& $(this).attr('id')!='modbook"+bid+"'){$(this).slideToggle(); }});");
+        }
+        //end of openmodpanel funciton
+        // Function for opening panel with remove/modify buttons in movies column
+        function openmodmoviepanel(mid) {
+          eval("$('#modmovie"+mid+"').slideToggle();");
+          eval("$('.modpanel').each(function(){if($(this).css('display')==='block'&& $(this).attr('id')!='modmovie"+mid+"'){$(this).slideToggle();}});");
+        }
+        //end of openmodpanel funciton for movies column
         $('#movies').click(function() {
           console.log('container touch');
          if(counter)
