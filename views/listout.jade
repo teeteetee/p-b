@@ -380,6 +380,15 @@ head
                         break;
                       }
         };
+        //
+        $('.container').click(function(){
+          if($('#cbp-spmenu-s1').hasClass('cbp-spmenu-open' );){
+            $('#showLeft').removeClass('active' );
+            $('#cbp-spmenu-s1').removeClass('cbp-spmenu-open' );
+            $('.container').css({'-webkit-filter':'brightness(1)','-moz-filter':'brightness(1)','filter':'brightness(1)'});
+            $('.bckgrnd').css({'-webkit-filter':'brightness(1)','-moz-filter':'brightness(1)','filter':'brightness(1)'});
+          }
+          });
          // Function for opening panel with remove/modify buttons
         function openmodpanel(bid) {
           eval("$('#modbook"+bid+"').slideToggle();");
