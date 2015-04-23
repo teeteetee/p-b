@@ -194,7 +194,9 @@ app.get('/lists/:lid',function(req,res){
         }
         else {
           if(done.pub===1)
-           {res.send('listout')}
+           {var xx = "'mh':'white','bh':'white','mhl':'#F56979','bhl':'rgb(103, 186, 255)','yet':'0:0','small':'0:0','spanop':'0.1',";
+            eval("res.render('listout',{"+xx+"'mail':done.mail,'books':booksvar,'movies':moviesvar,'uid':done.uid,'newbooks':done.newbooks,'readbooks':done.readbooks,'newmovies':done.newmovies,'seenmovies':done.seenmovies});");
+            }
            else {
             res.render('restricted');
            }
