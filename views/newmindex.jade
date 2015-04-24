@@ -162,6 +162,26 @@ head
       .navbar-right {
         float: none !important; 
       }
+      #showLeft{
+         color:white;
+         font-size:30px;
+         position:absolute;
+         bottom:15px;
+         right:15px;
+         border:0px;
+         background-color:transparent;
+        }
+      @media screen and (device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) {
+        #showLeft{
+         color:white;
+         font-size:30px;
+         position:absolute;
+         bottom:15px;
+         right:-20px;
+         border:0px;
+         background-color:transparent;
+        }
+      }
   body
     nav(class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1")
       img(class="media-object img-circle" src="/images/pblogov4.png" style='margin-top:20px;margin-bottom:20px;margin-left:auto;margin-right:auto;width:64px;height:64px;' alt="...")
@@ -187,7 +207,7 @@ head
                   a( id='login' style='font-size:20px;border-radius:30px;') Войти
                 li(class='next')
                   a(id='regbutton' style='font-size:20px;border-radius:30px;') Регистрация
-    button(type='button' id='showLeft' style='color:white;font-size:30px;position:absolute;bottom:15px;right:-20px;border:0px;background-color:transparent;') 
+    button(type='button' id='showLeft') 
       span(class='glyphicon glyphicon-align-justify ')
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
     script(src='/js/bootstrap.min.js')
