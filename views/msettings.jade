@@ -149,6 +149,9 @@ head
       .activemenuitem {
         background-color:#333;
       }
+      .drkrw{
+        background-color:#C8C8C8;
+      }
   body
     //script.
     //  if(screen.width < 414){
@@ -162,23 +165,23 @@ head
       a(href='/about') О проекте
       a(href="/logout") Выйти
     .container( id='maincont' style='-webkit-filter:brightness(1);overflow:auto;min-height:100vh;background-color:#ddd;')  
-      .row
+      .row.drkrw
         .col-xs-12
-          h3(style='color:#004C5E;') Your email:
+          h3 Your email:
       .row
         .col-xs-12
           h4 #{mail}
-      .row
+      .row.drkrw
         .col-xs-12
-          h3(style='color:#004C5E;') Your lists are:
+          h3 Your lists are:
       .row
         .col-xs-12
           .btn-group(role="group" aria-label="...")
             button(type="button" id='private' onclick='pubchange(0)' class="btn btn-warning") Private
             button(type="button" id='public' onclick='pubchange(1)' class="btn btn-warning") Public
-      .row
+      .row.drkrw
         .col-xs-12
-          h3(style='color:#004C5E;') Color themes:
+          h3 Color themes:
       .row
         .col-xs-12
           .checkbox
@@ -207,9 +210,9 @@ head
               span(class='glyphicon glyphicon-stop' style='font-size:30px;color:#2e83b0;')
           button(class='btn btn-default' id='changecolor' type='button') Change color
       #pageoutlink(style='display:none;')
-        .row
+        .row.drkrw
           .col-xs-12
-            h3(style='color:#004C5E;') Share your page:
+            h3 Share your page:
         .row
           .col-xs-12
             .highlight
