@@ -30,7 +30,7 @@ head
       }
       body {
       font-family:roboto-thin;
-      background-color:#2F83B0;
+      background-color:#ddd;
       }
       .navbar-nav {
        float: right;
@@ -149,9 +149,6 @@ head
           outline:0px !important;
           -webkit-appearance:none;
       }
-      a {
-        color:white !important;
-      }
       .activemenuitem {
         background-color:#333;
       }
@@ -168,59 +165,59 @@ head
       a(href='/about') О проекте
       a(href="/logout") Выйти
     .container( id='maincont' style='-webkit-filter:brightness(1);overflow:auto;height:100%;')  
-      .row(style='color:white;')
+      .row
         .col-xs-12
           h3(style='color:#004C5E;') Your email:
+          .row
+            .col-xs-12
+              h4 #{mail}
       .row
-        .col-xs-12
-          h4(style='color:white;') #{mail}
-      .row(style='color:white;')
         .col-xs-12
           h3(style='color:#004C5E;') Your lists are:
+          .row
+            .col-xs-12
+              .btn-group(role="group" aria-label="...")
+                button(type="button" id='private' onclick='pubchange(0)' class="btn btn-warning") Private
+                button(type="button" id='public' onclick='pubchange(1)' class="btn btn-warning") Public
       .row
-        .col-xs-12
-          .btn-group(role="group" aria-label="...")
-            button(type="button" id='private' onclick='pubchange(0)' class="btn btn-warning") Private
-            button(type="button" id='public' onclick='pubchange(1)' class="btn btn-warning") Public
-      .row(style='color:white;')
         .col-xs-12
           h3(style='color:#004C5E;') Color themes:
-      .row
-        .col-xs-12
-          .checkbox
-            label
-              input(type="checkbox" id='first' ) 
-              span(class='glyphicon glyphicon-stop' style='font-size:30px;color:#52CA8F;')
-              span(class='glyphicon glyphicon-stop' style='font-size:30px;color:#FAB142;')
-          .checkbox
-            label
-              input(type="checkbox" id='second' ) 
-              span(class='glyphicon glyphicon-stop' style='font-size:30px;color:rgb(213, 74, 95);')
-              span(class='glyphicon glyphicon-stop' style='font-size:30px;color:#00788E;')
-          .checkbox
-            label
-              input(type="checkbox" id='third' ) 
-              span(class='glyphicon glyphicon-stop' style='font-size:30px;color:#00657C;')
-              span(class='glyphicon glyphicon-stop' style='font-size:30px;color:rgb(0, 182, 205);')
-          .checkbox
-            label
-              input(type="checkbox" id='fourth' ) 
-              span(class='glyphicon glyphicon-stop' style='font-size:30px;color:white;')
-              span(class='glyphicon glyphicon-stop' style='font-size:30px;color:gray;')
-          .checkbox
-            label
-              input(type="checkbox" id='fifth' ) 
-              span(class='glyphicon glyphicon-stop' style='font-size:30px;color:#2e83b0;')
-          button(class='btn btn-default' id='changecolor' type='button') Change color
+          .row
+            .col-xs-12
+              .checkbox
+                label
+                  input(type="checkbox" id='first' ) 
+                  span(class='glyphicon glyphicon-stop' style='font-size:30px;color:#52CA8F;')
+                  span(class='glyphicon glyphicon-stop' style='font-size:30px;color:#FAB142;')
+              .checkbox
+                label
+                  input(type="checkbox" id='second' ) 
+                  span(class='glyphicon glyphicon-stop' style='font-size:30px;color:rgb(213, 74, 95);')
+                  span(class='glyphicon glyphicon-stop' style='font-size:30px;color:#00788E;')
+              .checkbox
+                label
+                  input(type="checkbox" id='third' ) 
+                  span(class='glyphicon glyphicon-stop' style='font-size:30px;color:#00657C;')
+                  span(class='glyphicon glyphicon-stop' style='font-size:30px;color:rgb(0, 182, 205);')
+              .checkbox
+                label
+                  input(type="checkbox" id='fourth' ) 
+                  span(class='glyphicon glyphicon-stop' style='font-size:30px;color:white;')
+                  span(class='glyphicon glyphicon-stop' style='font-size:30px;color:gray;')
+              .checkbox
+                label
+                  input(type="checkbox" id='fifth' ) 
+                  span(class='glyphicon glyphicon-stop' style='font-size:30px;color:#2e83b0;')
+              button(class='btn btn-default' id='changecolor' type='button') Change color
       #pageoutlink(style='display:none;')
         .row
           .col-xs-12
             h3(style='color:#004C5E;') Share your page:
-        .row
-          .col-xs-12
-            .highlight
-              pre
-                code(class='language-bash') http://peopleandbooks.com/lists/#{uid}
+            .row
+              .col-xs-12
+                .highlight
+                  pre
+                    code(class='language-bash') http://peopleandbooks.com/lists/#{uid}
     button(type='button' id='showLeft' style='color:white;font-size:30px;position:absolute;bottom:15px;right:15px;border:0px;background-color:transparent;') 
       span(class='glyphicon glyphicon-align-justify ')          
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')

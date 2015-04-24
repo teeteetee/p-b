@@ -1179,6 +1179,9 @@ app.get('/m/settings',function(req,res){
                     case(4):
                      checkbox='fourth';
                     break
+                    case(5):
+                     checkbox='fifth';
+                    break
                   }
                   res.render('msettings',{'mail':done.mail,'uid':done.uid,'checkbox':checkbox,'pub':done.pub});
                 }
