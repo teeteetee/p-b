@@ -43,6 +43,7 @@ head
       }
       h3{
         font-family:roboto-thin;
+        margin-top:10px;
       }
       h4{
         font-family:roboto-thin;
@@ -170,11 +171,11 @@ head
           h3 Your email:
       .row
         .col-xs-12
-          h4 #{mail}
+          h3 #{mail}
       .row.drkrw
         .col-xs-12
           h3 Your lists are:
-      .row
+      .row(style='padding-top:20px;padding-bottom:20px;')
         .col-xs-12
           .btn-group(role="group" aria-label="...")
             button(type="button" id='private' onclick='pubchange(0)' class="btn btn-warning") Private
