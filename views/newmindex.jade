@@ -92,7 +92,7 @@ head
       }
       .cbp-spmenu {
         background: #1d1d1d;
-        position:fixed;
+        position: fixed;
       }
       
       .cbp-spmenu h3 {
@@ -120,14 +120,35 @@ head
         background: #afdefa;
         color: #47a3da;
       }
-      .cbp-spmenu-horizontal {
+      .cbp-spmenu-vertical {
         width: 100%;
-        height: 150px;
+        border-left:1px solid #333;
+        height: 80%;
+        top: 0;
         z-index: 1000;
-        overflow: hidden;
+      }
+      .old-cbp-spmenu-vertical {
+        width: 240px;
+        margin-left:74px;
+        border-left:1px solid #333;
+        height: 100%;
+        top: 0;
+        z-index: 1000;
       }
       .cbp-spmenu-vertical a {
         padding: 1em;
+      }
+      .old-cbp-spmenu-left {
+        left: -315px;
+      }
+      .old-cbp-spmenu-left.cbp-spmenu-open {
+        left: -74px;
+      }
+      .cbp-spmenu-left {
+        bottom: 80%;
+      }
+      .cbp-spmenu-left.cbp-spmenu-open {
+        left: 0;
       }
       .cbp-spmenu-push {
         overflow-x: hidden;
@@ -154,28 +175,68 @@ head
       .navbar-right {
         float: none !important; 
       }
-      #showBottom{
+      #showLeft{
          color:white;
          font-size:30px;
          position:absolute;
          bottom:15px;
-         left: 15px;
+         margin-left: auto;
+         margin-right: auto;
+         left: 0;
+         right: 0;
          border:0px;
          background-color:transparent;
         }
-      .cbp-spmenu-bottom {
-        bottom: -150px;
+      #showleft{
+       position: fixed;
+       bottom: 15px;
+       right: 75%;
+       width: 44px;
+       height: 44px;
       }
-      .cbp-spmenu-bottom.cbp-spmenu-open {
-        bottom: 0px;
+        #provoutah{
+         text-align:center;
+         margin-top:15vh;
+         margin-bottom:10vh;
+        }
+      @media screen and (device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) {
+        #provoutah{
+         text-align:center;
+         margin-top:5vh;
+         margin-bottom:5vh;
+        }
+        #showleft{
+         color:white;
+         font-size:30px;
+         position:absolute;
+         bottom:15px;
+         right:5px;
+         border:0px;
+         background-color:transparent;
+        }
       }
-      
+      @media screen and (device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) {
+        #provoutah{
+         text-align:center;
+         margin-top:5vh;
+         margin-bottom:5vh;
+        }
+        #showleft{
+         color:white;
+         font-size:30px;
+         position:absolute;
+         bottom:15px;
+         right:5px;
+         border:0px;
+         background-color:transparent;
+        }
+      }
   body
-    nav(class="cbp-spmenu cbp-spmenu-horizontal cbp-spmenu-bottom" id="cbp-spmenu-s1")
+    nav(class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1")
       img(class="media-object img-circle" src="/images/pblogov4.png" style='margin-top:20px;margin-bottom:20px;margin-left:auto;margin-right:auto;width:64px;height:64px;' alt="...")
       a(href='http://m.peopleandbooks.com/about') О проекте
-      //button(type='button' id='showBottom') 
-        //span(class='glyphicon glyphicon-align-justify ')
+      button(type='button' id='showLeft') 
+        span(class='glyphicon glyphicon-align-justify ')
     .bckgrnd
     .container(style='width:100%;')
       .row(id='provoutah')
@@ -199,35 +260,34 @@ head
                   a(id='regbutton' style='font-size:20px;border-radius:30px;') Регистрация
       .row(style='position:absolute;bottom:0px;')
         .col-xs-12
-          button(type='button' id='showBottom') 
+          button(type='button' id='showLeft') 
             span(class='glyphicon glyphicon-align-justify ')
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
     script(src='/js/bootstrap.min.js')
     script.
-      $('#showBottom').click(fooley);
       $('#shownav').click(function(){
           $('#shownav').fadeOut();
           $('#nav').fadeIn();
           });
         $('#login').click(authsubmit);
       var counter =0;
-        var menuBottom = document.getElementById( 'cbp-spmenu-s1' ),
-            showBottom = document.getElementById( 'showBottom' ),
+        var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
+            menuRight = document.getElementById( 'cbp-spmenu-s2' ),
+            showLeft = document.getElementById( 'showLeft' ),
+            showRight = document.getElementById( 'showRight' ),
             body = document.body;
         
-        //showBottom.onclick = 
-        function fooley() {
-          console.log('hey');
+        showLeft.onclick = function() {
           switch(counter)
             {case(1):
                          counter=0;
-                         $('#showBottom').removeClass('active' );
+                         $('#showLeft').removeClass('active' );
                          $('#cbp-spmenu-s1').removeClass('cbp-spmenu-open' );
                          $('.container').css('-webkit-filter','brightness(1)');
                         break;
                         case(0):
                           counter=1;
-                          $('#showBottom').addClass('active' );
+                          $('#showLeft').addClass('active' );
                           $('#cbp-spmenu-s1').addClass('cbp-spmenu-open' );
                           $('.container').css('-webkit-filter','brightness(0.6)');
                         break;
