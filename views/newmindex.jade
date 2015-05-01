@@ -123,24 +123,8 @@ head
       .cbp-spmenu-horizontal {
         width: 100%;
         height: 150px;
-        left: 0;
         z-index: 1000;
         overflow: hidden;
-      }
-      .cbp-spmenu-vertical {
-        width: 100%;
-        border-left:1px solid #333;
-        height: 80%;
-        top: 0;
-        z-index: 1000;
-      }
-      .old-cbp-spmenu-vertical {
-        width: 240px;
-        margin-left:74px;
-        border-left:1px solid #333;
-        height: 100%;
-        top: 0;
-        z-index: 1000;
       }
       .cbp-spmenu-vertical a {
         padding: 1em;
@@ -182,12 +166,13 @@ head
          border:0px;
          background-color:transparent;
         }
-      .cbp-spmenu-bottom{
-       bottom: -150px;
+      .cbp-spmenu-bottom {
+        bottom: -150px;
       }
-      .cbp-spmenu-bottom.cbp-spmenu-open {
+      .cbp-spmenu-left.cbp-spmenu-open {
         bottom: 0px;
       }
+      
   body
     nav(class="cbp-spmenu cbp-spmenu-horizontal cbp-spmenu-bottom" id="cbp-spmenu-s1")
       img(class="media-object img-circle" src="/images/pblogov4.png" style='margin-top:20px;margin-bottom:20px;margin-left:auto;margin-right:auto;width:64px;height:64px;' alt="...")
@@ -235,11 +220,13 @@ head
           switch(counter)
             {case(1):
                          counter=0;
+                         $('#showBottom').removeClass('active' );
                          $('#cbp-spmenu-s1').removeClass('cbp-spmenu-open' );
                          $('.container').css('-webkit-filter','brightness(1)');
                         break;
                         case(0):
                           counter=1;
+                          $('#showBottom').addClass('active' );
                           $('#cbp-spmenu-s1').addClass('cbp-spmenu-open' );
                           $('.container').css('-webkit-filter','brightness(0.6)');
                         break;
