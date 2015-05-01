@@ -174,8 +174,8 @@ head
     nav(class="cbp-spmenu cbp-spmenu-horizontal cbp-spmenu-bottom" id="cbp-spmenu-s1")
       img(class="media-object img-circle" src="/images/pblogov4.png" style='margin-top:20px;margin-bottom:20px;margin-left:auto;margin-right:auto;width:64px;height:64px;' alt="...")
       a(href='http://m.peopleandbooks.com/about') О проекте
-      button(type='button' id='showBottom') 
-        span(class='glyphicon glyphicon-align-justify ')
+      //button(type='button' id='showBottom') 
+        //span(class='glyphicon glyphicon-align-justify ')
     .bckgrnd
     .container(style='width:100%;')
       .row(id='provoutah')
@@ -204,6 +204,7 @@ head
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
     script(src='/js/bootstrap.min.js')
     script.
+      $('#showBottom').click(people);
       $('#shownav').click(function(){
           $('#shownav').fadeOut();
           $('#nav').fadeIn();
@@ -215,7 +216,9 @@ head
             body = document.body;
         
         //showBottom.onclick = 
-        $('#showBottom').click(function(){console.log('funck');});
+        function people() {
+          console.log('jesus man!');
+        }
         function fooley() {
           console.log('hey');
           switch(counter)
