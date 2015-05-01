@@ -216,7 +216,9 @@ head
             showBottom = document.getElementById( 'showBottom' ),
             body = document.body;
         
-        showBottom.onclick = function() {
+        //showBottom.onclick = 
+        $('#showBottom').click(fooley);
+        function fooley() {
           console.log('hey');
           switch(counter)
             {case(1):
