@@ -120,29 +120,30 @@ head
         background: #afdefa;
         color: #47a3da;
       }
+      .cbp-spmenu-horizontal {
+        width: 100%;
+        height: 150px;
+        left: 0;
+        z-index: 1000;
+        overflow: hidden;
+      }
       .cbp-spmenu-vertical {
-        width: 240px;
-        margin-left:74px;
+        width: 100%;
         border-left:1px solid #333;
         height: 80%;
         top: 0;
         z-index: 1000;
       }
-      
+      .old-cbp-spmenu-vertical {
+        width: 240px;
+        margin-left:74px;
+        border-left:1px solid #333;
+        height: 100%;
+        top: 0;
+        z-index: 1000;
+      }
       .cbp-spmenu-vertical a {
         padding: 1em;
-      }
-      .old-cbp-spmenu-left {
-        left: -315px;
-      }
-      .old-cbp-spmenu-left.cbp-spmenu-open {
-        left: -74px;
-      }
-      .cbp-spmenu-left {
-        bottom: 80%;
-      }
-      .cbp-spmenu-left.cbp-spmenu-open {
-        left: 0;
       }
       .cbp-spmenu-push {
         overflow-x: hidden;
@@ -181,52 +182,14 @@ head
          border:0px;
          background-color:transparent;
         }
-      #showleft{
-       position: fixed;
-       bottom: 15px;
-       right: 75%;
-       width: 44px;
-       height: 44px;
-      }
-        #provoutah{
-         text-align:center;
-         margin-top:15vh;
-         margin-bottom:10vh;
-        }
-      @media screen and (device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) {
-        #provoutah{
-         text-align:center;
-         margin-top:5vh;
-         margin-bottom:5vh;
-        }
-        #showleft{
-         color:white;
-         font-size:30px;
-         position:absolute;
-         bottom:15px;
-         right:5px;
-         border:0px;
-         background-color:transparent;
-        }
-      }
-      @media screen and (device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) {
-        #provoutah{
-         text-align:center;
-         margin-top:5vh;
-         margin-bottom:5vh;
-        }
-        #showleft{
-         color:white;
-         font-size:30px;
-         position:absolute;
-         bottom:15px;
-         right:5px;
-         border:0px;
-         background-color:transparent;
-        }
-      }
+     .cbp-menu-bottom{
+      bottom: -150px;
+     }
+     .cbp-spmenu-bottom.cbp-spmenu-open {
+       bottom: 0px;
+     }
   body
-    nav(class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1")
+    nav(class="cbp-spmenu cbp-spmenu-horizontal cbp-spmenu-bottom" id="cbp-spmenu-s1")
       img(class="media-object img-circle" src="/images/pblogov4.png" style='margin-top:20px;margin-bottom:20px;margin-left:auto;margin-right:auto;width:64px;height:64px;' alt="...")
       a(href='http://m.peopleandbooks.com/about') О проекте
       button(type='button' id='showLeft') 
