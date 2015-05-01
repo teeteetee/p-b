@@ -124,7 +124,7 @@ head
         width: 240px;
         margin-left:74px;
         border-left:1px solid #333;
-        height: 100%;
+        height: 80%;
         top: 0;
         z-index: 1000;
       }
@@ -132,11 +132,17 @@ head
       .cbp-spmenu-vertical a {
         padding: 1em;
       }
-      .cbp-spmenu-left {
+      .old-cbp-spmenu-left {
         left: -315px;
       }
-      .cbp-spmenu-left.cbp-spmenu-open {
+      .old-cbp-spmenu-left.cbp-spmenu-open {
         left: -74px;
+      }
+      .cbp-spmenu-left {
+        bottom: 80%;
+      }
+      .cbp-spmenu-left.cbp-spmenu-open {
+        left: 0;
       }
       .cbp-spmenu-push {
         overflow-x: hidden;
@@ -223,6 +229,8 @@ head
     nav(class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1")
       img(class="media-object img-circle" src="/images/pblogov4.png" style='margin-top:20px;margin-bottom:20px;margin-left:auto;margin-right:auto;width:64px;height:64px;' alt="...")
       a(href='http://m.peopleandbooks.com/about') О проекте
+      button(type='button' id='showLeft') 
+        span(class='glyphicon glyphicon-align-justify ')
     .bckgrnd
     .container(style='width:100%;')
       .row(id='provoutah')
