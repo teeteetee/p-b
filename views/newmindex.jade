@@ -170,7 +170,7 @@ head
       .navbar-right {
         float: none !important; 
       }
-      #showLeft{
+      #showBottom{
          color:white;
          font-size:30px;
          position:absolute;
@@ -192,7 +192,7 @@ head
     nav(class="cbp-spmenu cbp-spmenu-horizontal cbp-spmenu-bottom" id="cbp-spmenu-s1")
       img(class="media-object img-circle" src="/images/pblogov4.png" style='margin-top:20px;margin-bottom:20px;margin-left:auto;margin-right:auto;width:64px;height:64px;' alt="...")
       a(href='http://m.peopleandbooks.com/about') О проекте
-      button(type='button' id='showLeft') 
+      button(type='button' id='showBottom') 
         span(class='glyphicon glyphicon-align-justify ')
     .bckgrnd
     .container(style='width:100%;')
@@ -215,7 +215,7 @@ head
                   a( id='login' style='font-size:20px;border-radius:30px;') Войти
                 li(class='next')
                   a(id='regbutton' style='font-size:20px;border-radius:30px;') Регистрация
-    button(type='button' id='showLeft') 
+    button(type='button' id='showBottom') 
       span(class='glyphicon glyphicon-align-justify ')
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
     script(src='/js/bootstrap.min.js')
@@ -228,21 +228,21 @@ head
       var counter =0;
         var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
             menuRight = document.getElementById( 'cbp-spmenu-s2' ),
-            showLeft = document.getElementById( 'showLeft' ),
+            showBottom = document.getElementById( 'showBottom' ),
             showRight = document.getElementById( 'showRight' ),
             body = document.body;
         
-        showLeft.onclick = function() {
+        showBottom.onclick = function() {
           switch(counter)
             {case(1):
                          counter=0;
-                         $('#showLeft').removeClass('active' );
+                         $('#showBottom').removeClass('active' );
                          $('#cbp-spmenu-s1').removeClass('cbp-spmenu-open' );
                          $('.container').css('-webkit-filter','brightness(1)');
                         break;
                         case(0):
                           counter=1;
-                          $('#showLeft').addClass('active' );
+                          $('#showBottom').addClass('active' );
                           $('#cbp-spmenu-s1').addClass('cbp-spmenu-open' );
                           $('.container').css('-webkit-filter','brightness(0.6)');
                         break;
