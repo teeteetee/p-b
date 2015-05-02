@@ -169,6 +169,10 @@ head
          border:0px;
          background-color:transparent;
         }
+      .padding15 {
+        padding-left:15px;
+        padding-right:15px;
+      }
   body
     nav(class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1")
       img(class="media-object img-circle" src="/images/pblogov4.png" style='margin-top:20px;margin-bottom:20px;margin-left:auto;margin-right:auto;width:64px;height:64px;' alt="...")
@@ -176,14 +180,14 @@ head
       //button(type='button' id='showLeft') 
         //span(class='glyphicon glyphicon-align-justify ')
     .bckgrnd
-    .container(style='width:100%;')
-      .row(id='provoutah')
+    .container(style='width:100%;padding-left:0px;pading-right:0px;')
+      .row.padding15(id='provoutah')
         .col-xs-12
           h1(style='font-size:50px;') Organize your reading. 
           h3 Never forget a book.
-      .row
+      .row.padding15
         #message.col-xs-12
-      .row(style='text-align:center;')
+      .row.padding15(style='text-align:center;')
         .col-xs-12
           input(class='form-control' type='email' style='margin-bottom:10px;font-size:20px;height:auto;' id='vlgn' name='mail' placeholder='email')
           input(class='form-control' type='password' style='margin-bottom:10px;font-size:20px;height:auto;' id='vphr' name='p' placeholder='password')
