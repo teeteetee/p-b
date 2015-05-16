@@ -17,6 +17,10 @@ head
       script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')     
     style.
       @font-face {
+      font-family:roboto-condensed;
+      src:url('/bootstrap/fonts/RobotoCondensed-Light.ttf');
+      }
+      @font-face {
       font-family:roboto-thin;
       src:url('/bootstrap/fonts/Roboto-Thin.ttf');
       }
@@ -291,7 +295,7 @@ head
         .col-xs-6(id='books' style='background-color:#{bh};height:100%;overflow:auto;')
           .row
             .col-xs-12(style='text-align:center;')
-              h1(id='booksfigures' style='font-family:high;font-size:200px;font-weight:bold;color:#{bcl};')
+              h1(id='booksfigures' style='font-family:roboto-condensed;font-size:100px;font-weight:bold;color:#{bcl};')
               button(class='btn btn-default addbookbutton' style='border-radius:30px;margin-bottom:20px;border:0px;color:white;background-color:#{addbook};' type='button') Добавить книгу
           .row.adding(id='addbook' style='display:none;padding-top:20px;')
             .col-xs-12
